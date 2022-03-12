@@ -2,10 +2,13 @@ import { FunctionalComponent, h } from 'preact';
 import { Link } from 'preact-router/match';
 import style from './style.css';
 
-const Header: FunctionalComponent = () => {
+export interface HeaderProps {
+  siteUrlPrefix: string;
+}
+
+const Header: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
   // use default URL prefix (no prefix) if in development
-  const SITE_URL_PREFIX: string =
-    process.env.NODE_ENV === 'production' ? '/TaiwanVtuberData-Preact' : '';
+  const SITE_URL_PREFIX: string = props.siteUrlPrefix;
 
   const LinkElement = (text: string, linkTo: string): h.JSX.Element => {
     return (
