@@ -1,0 +1,5 @@
+node_modules
+/build
+/*.log
+/gh-pages
+/gh-pages.pub
