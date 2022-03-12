@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 describe('Initial Test of the Header', () => {
     test('Header renders 3 nav items', () => {
         const context = shallow(<Header />);
-        expect(context.find('h1').text()).toBe('Preact App');
-        expect(context.find('Link').length).toBe(3);
+        expect(context.find('h1').text()).toBe('臺灣 VTuber 列表 (目前無內容)');
+        expect(context.find('Link').length).toBe(11);
     });
 });
