@@ -9,6 +9,7 @@
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "format": "prettier --config .prettierrc src/**/*.{js,jsx,ts,tsx,css} --write",
     "test": "jest ./tests"
   },
   "eslintConfig": {
@@ -38,6 +39,7 @@
     "jest": "^27.2.5",
     "jest-preset-preact": "^4.0.2",
     "preact-cli": "^3.0.0",
+    "prettier": "^2.5.1",
     "sirv-cli": "^1.0.0-next.3",
     "typescript": "^4.5.2"
   },
