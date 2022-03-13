@@ -3,12 +3,12 @@ import { Link } from 'preact-router/match';
 import style from './style.css';
 
 export interface HeaderProps {
-  siteUrlPrefix: string;
+  siteUrlPrefix?: string;
 }
 
 const Header: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
   // use default URL prefix (no prefix) if in development
-  const SITE_URL_PREFIX: string = props.siteUrlPrefix;
+  const SITE_URL_PREFIX: string = props.siteUrlPrefix ?? '';
 
   const LinkElement = (text: string, linkTo: string): h.JSX.Element => {
     return (
