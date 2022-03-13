@@ -5,6 +5,24 @@
   width: 100%;
 }
 
+.profileImg__DvgtD {
+  width: 88px;
+  height: 88px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.YouTubeImg__LvwUa {
+  content: url(/e9de82b38d0f0c1f717a69f6d4a58f3d.png);
+  width: 48px;
+  height: 48px;
+}
+
+.TwitchImg__ckBvR {
+  content: url(/5e9a0314aec235a0f7851a98eb5db19f.png);
+  width: 48px;
+  height: 48px;
+}
 
 .notfound__Ecgkh {
   padding: 0 5%;
@@ -42,4 +60,4 @@
 }
 
 
-/*# sourceMappingURL=ssr-bundle.f2330.css.map*/
+/*# sourceMappingURL=ssr-bundle.64c9f.css.map*/
