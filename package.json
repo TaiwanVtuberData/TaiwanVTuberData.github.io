@@ -23,6 +23,8 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.26.1",
+    "miragejs": "^0.1.43",
     "preact": "^10.3.1",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
