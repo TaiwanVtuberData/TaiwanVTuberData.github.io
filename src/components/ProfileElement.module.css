@@ -1,0 +1,45 @@
+.displayName {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: auto;
+  align-items: center;
+}
+
+.displayName .profileImg {
+  width: 88px;
+  height: 88px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.displayName span {
+  margin-left: 8px;
+  margin-right: 8px;
+  width: 100%;
+  text-align: left;
+}
+
+.channelLink {
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.channelLink .YouTubeImg {
+  content: url(../assets/icons/youtube_social_circle_dark.png);
+  width: 48px;
+  height: 48px;
+}
+
+.channelLink .TwitchImg {
+  content: url(../assets/icons//TwitchGlitchBlackOps.png);
+  width: 48px;
+  height: 48px;
+}
