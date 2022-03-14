@@ -31,7 +31,7 @@ jobs:
       - name: npm ci, build and test
         run: |
           npm ci
-          npm run build --if-present
+          npm run build:gh
           npm test
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3

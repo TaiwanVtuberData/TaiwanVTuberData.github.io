@@ -1,28 +1,20 @@
 import { FunctionalComponent, h } from 'preact';
 import { Router } from 'preact-router';
-import createHashHistory from 'history/createHashHistory';
+import Header from './header';
 import Home from '../routes/home';
 import AllVTubersPage from '../routes/AllVTubers';
 import NotFoundPage from '../routes/notfound';
-import Header from './header';
+import baseroute from '../baseroute';
 
 const App: FunctionalComponent = () => {
-  const RouterElement = (): h.JSX.Element | undefined => {
-    if (typeof window !== 'undefined') {
-      return (
-        <Router history={createHashHistory()}>
-          <Home path="/" />
-          <AllVTubersPage path="/all-vtubers" />
-          <NotFoundPage default />
-        </Router>
-      );
-    }
-  };
-
   return (
     <div id="preact_root">
-      <Header />
-      {RouterElement()}
+      <Header siteUrlPrefix={baseroute} />
+      <Router>
+        <Home path={`${baseroute}/`} />
+        <AllVTubersPage path={`${baseroute}/all-vtubers`} />
+        <NotFoundPage default />
+      </Router>
     </div>
   );
 };

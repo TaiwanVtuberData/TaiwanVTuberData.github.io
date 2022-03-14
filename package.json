@@ -5,9 +5,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "preact build",
+    "build:gh": "GITHUB_PAGES=TaiwanVtuberData-Preact preact build && dot-json ./build/manifest.json start_url \"/TaiwanVtuberData-Preact/\"",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
@@ -26,8 +25,6 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
-    "gh-pages": "^3.2.3",
-    "history": "^4.10.1",
     "miragejs": "^0.1.43",
     "preact": "^10.3.1",
     "preact-render-to-string": "^5.1.4",
@@ -37,10 +34,10 @@
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
-    "@types/history": "^4.7.11",
     "@types/jest": "^26.0.8",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
+    "dot-json": "^1.2.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^3.1.0",
     "eslint": "^6.8.0",
