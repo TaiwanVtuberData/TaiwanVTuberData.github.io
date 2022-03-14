@@ -5,6 +5,7 @@ import * as Api from '../../services/ApiService';
 import ProfileImage from '../../components/ProfileImage';
 import ChannelLinks from '../../components/ChannelLinks';
 import { VTuberData } from '../../types/VTuberData';
+import { DataTablePaginationComponent } from '../../components/DataTablePaginationComponentOptions';
 
 const AllVTubersPage: FunctionalComponent = () => {
   interface VTuberDisplayData {
@@ -73,9 +74,12 @@ const AllVTubersPage: FunctionalComponent = () => {
     nationality: e.nationality,
   });
 
+  const [pending, setPending] = useState(true);
+
   const getVTubers = async (): Promise<void> => {
     await Api.getVTubers().then((res) => {
       setData(res.data.VTubers.map((e) => dataToDisplayData(e)));
+      setPending(false);
     });
   };
 
@@ -83,7 +87,16 @@ const AllVTubersPage: FunctionalComponent = () => {
     getVTubers();
   }, []);
 
-  return <DataTable columns={columns} data={data} />;
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      progressPending={pending}
+      progressComponent={'載入中'}
+      pagination
+      paginationComponentOptions={DataTablePaginationComponent}
+    />
+  );
 };
 
 export default AllVTubersPage;
