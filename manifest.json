@@ -1,7 +1,7 @@
 {
   "name": "preact-deploy",
   "short_name": "preact-deploy",
-  "start_url": "/",
+  "start_url": "/TaiwanVtuberData-Preact/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
