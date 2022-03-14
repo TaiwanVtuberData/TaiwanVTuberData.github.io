@@ -2,16 +2,20 @@ import { FunctionalComponent, h } from 'preact';
 import style from './style.module.css';
 
 export interface ChannelLinksProps {
-  YouTubeUrl?: string;
-  TwitchUrl?: string;
+  YouTubeId?: string;
+  TwitchId?: string;
 }
 
 const ChannelLinks: FunctionalComponent<ChannelLinksProps> = (
   props: ChannelLinksProps
 ): h.JSX.Element => {
-  const IconLink = (imgClass: string, url?: string): h.JSX.Element | null => {
-    return url === undefined ? null : (
-      <a href={url} target="_blank" rel="noopener noreferrer">
+  const IconLink = (
+    imgClass: string,
+    prefix: string,
+    id?: string
+  ): h.JSX.Element | null => {
+    return id === undefined ? null : (
+      <a href={prefix + id} target="_blank" rel="noopener noreferrer">
         <img class={imgClass} />
       </a>
     );
@@ -19,8 +23,12 @@ const ChannelLinks: FunctionalComponent<ChannelLinksProps> = (
 
   return (
     <div>
-      {IconLink(style.YouTubeImg, props.YouTubeUrl)}
-      {IconLink(style.TwitchImg, props.TwitchUrl)}
+      {IconLink(
+        style.YouTubeImg,
+        'https://www.youtube.com/channel/',
+        props.YouTubeId
+      )}
+      {IconLink(style.TwitchImg, 'https://www.twitch.tv/', props.TwitchId)}
     </div>
   );
 };

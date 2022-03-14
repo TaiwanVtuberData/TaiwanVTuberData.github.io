@@ -64,8 +64,8 @@ const AllVTubersPage: FunctionalComponent = () => {
     profileImg: ProfileImage({ imgUrl: e.imgUrl }),
     name: e.name,
     channelLinks: ChannelLinks({
-      YouTubeUrl: e.YouTube?.url,
-      TwitchUrl: e.Twitch?.url,
+      YouTubeId: e.YouTube?.id,
+      TwitchId: e.Twitch?.id,
     }),
     YouTubeSubscriberCount: e.YouTube?.subscriberCount ?? 0,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
