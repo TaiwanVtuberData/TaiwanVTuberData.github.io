@@ -6,19 +6,10 @@ import ProfileImage from '../../components/ProfileImage';
 import ChannelLinks from '../../components/ChannelLinks';
 import { VTuberData } from '../../types/VTuberData';
 import { DataTablePaginationComponent } from '../../components/DataTablePaginationComponentOptions';
+import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
+import { VTuberDisplayData } from '../../types/VTuberDisplayData';
 
 const AllVTubersPage: FunctionalComponent = () => {
-  interface VTuberDisplayData {
-    id: string;
-    profileImg: h.JSX.Element | null;
-    name: string;
-    channelLinks: h.JSX.Element | null;
-    YouTubeSubscriberCount: number;
-    TwitchFollowerCount: number;
-    group?: string;
-    nationality?: string;
-  }
-
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
@@ -37,14 +28,20 @@ const AllVTubersPage: FunctionalComponent = () => {
     },
     {
       name: 'YouTube 訂閱人數',
-      selector: (row: { YouTubeSubscriberCount: number }): number =>
-        row.YouTubeSubscriberCount,
+      selector: (row: {
+        hasYouTube: boolean;
+        YouTubeSubscriberCount?: number;
+      }): number | string =>
+        row.hasYouTube ? row.YouTubeSubscriberCount ?? '未顯示人數' : '',
       sortable: true,
+      sortFunction: YouTubeSubscriberCountSort,
     },
     {
       name: 'Twitch 追隨人數',
-      selector: (row: { TwitchFollowerCount: number }): number =>
-        row.TwitchFollowerCount,
+      selector: (row: {
+        hasTwitch: boolean;
+        TwitchFollowerCount: number;
+      }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
       sortable: true,
     },
     {
@@ -68,7 +65,9 @@ const AllVTubersPage: FunctionalComponent = () => {
       YouTubeId: e.YouTube?.id,
       TwitchId: e.Twitch?.id,
     }),
-    YouTubeSubscriberCount: e.YouTube?.subscriberCount ?? 0,
+    hasYouTube: e.YouTube !== undefined,
+    YouTubeSubscriberCount: e.YouTube?.subscriberCount,
+    hasTwitch: e.Twitch !== undefined,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
     group: e.group,
     nationality: e.nationality,

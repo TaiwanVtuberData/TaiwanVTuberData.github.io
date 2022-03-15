@@ -1,4 +1,4 @@
 export interface YouTubeData {
   id: string;
-  subscriberCount: number;
+  subscriberCount?: number;
 }
