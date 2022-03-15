@@ -1,6 +1,7 @@
 const en = {
   header: {
     title: 'Taiwan VTuber Data (No Content Yet)',
+    chooseLanguage: 'Choose language:',
     home: 'Home',
     eventCalendar: 'Event Calendar',
     allVTubers: 'All VTubers',

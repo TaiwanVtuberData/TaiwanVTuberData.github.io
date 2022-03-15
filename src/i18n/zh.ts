@@ -1,6 +1,7 @@
 const zh = {
   header: {
     title: '臺灣 VTuber 列表 (目前無內容)',
+    chooseLanguage: '選擇語言:',
     home: '首頁',
     eventCalendar: '重大活動月曆',
     allVTubers: '所有 VTuber',

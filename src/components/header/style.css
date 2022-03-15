@@ -25,3 +25,9 @@
 .gridItem a:hover {
   background-color: #cccccc;
 }
+
+.dropDown {
+  padding: 5px;
+  border: 3px solid #636363;
+  border-radius: 5px;
+}
