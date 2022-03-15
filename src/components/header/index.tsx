@@ -1,4 +1,5 @@
 import { FunctionalComponent, h } from 'preact';
+import { Text } from 'preact-i18n';
 import { Link } from 'preact-router/match';
 import style from './style.css';
 
@@ -10,40 +11,62 @@ const Header: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
   // use default URL prefix (no prefix) if in development
   const SITE_URL_PREFIX: string = props.siteUrlPrefix ?? '';
 
-  const LinkElement = (text: string, linkTo: string): h.JSX.Element => {
+  const LinkElement = (textID: string, linkTo: string): h.JSX.Element => {
     return (
       <div class={style.gridItem}>
-        <Link href={linkTo}>{text}</Link>
+        <Link href={linkTo}>
+          <Text id={textID}>empty</Text>
+        </Link>
       </div>
     );
   };
 
   return (
     <header>
-      <h1 class={style.title}>臺灣 VTuber 列表 (目前無內容)</h1>
+      <h1 class={style.title}>
+        <Text id="header.title">Taiwan VTuber Data</Text>
+      </h1>
       <nav class={style.navGrid}>
         {[
-          { text: '首頁', linkTo: `${SITE_URL_PREFIX}/` },
-          { text: '重大活動月曆', linkTo: `${SITE_URL_PREFIX}/event-calendar` },
-          { text: '所有 VTuber', linkTo: `${SITE_URL_PREFIX}/all-vtubers` },
-          { text: '團體列表', linkTo: `${SITE_URL_PREFIX}/group-calendar` },
+          { textID: 'header.home', linkTo: `${SITE_URL_PREFIX}/` },
           {
-            text: '熱門 VTuber',
+            textID: 'header.eventCalendar',
+            linkTo: `${SITE_URL_PREFIX}/event-calendar`,
+          },
+          {
+            textID: 'header.allVTubers',
+            linkTo: `${SITE_URL_PREFIX}/all-vtubers`,
+          },
+          {
+            textID: 'header.groupList',
+            linkTo: `${SITE_URL_PREFIX}/group-calendar`,
+          },
+          {
+            textID: 'header.trendingVTubers',
             linkTo: `${SITE_URL_PREFIX}/trending-vtubers`,
           },
-          { text: '熱門影片', linkTo: `${SITE_URL_PREFIX}/trending-videos` },
           {
-            text: '成長中 VTuber',
+            textID: 'header.trendingVideos',
+            linkTo: `${SITE_URL_PREFIX}/trending-videos`,
+          },
+          {
+            textID: 'header.growingVTubers',
             linkTo: `${SITE_URL_PREFIX}/growing-vtubers`,
           },
-          { text: '近期出道', linkTo: `${SITE_URL_PREFIX}/debut-vtubers` },
-          { text: '近期畢業', linkTo: `${SITE_URL_PREFIX}/graduate-vtubers` },
           {
-            text: '資料登載/錯誤回報',
+            textID: 'header.debutVTubers',
+            linkTo: `${SITE_URL_PREFIX}/debut-vtubers`,
+          },
+          {
+            textID: 'header.graduateVTubers',
+            linkTo: `${SITE_URL_PREFIX}/graduate-vtubers`,
+          },
+          {
+            textID: 'header.reportIssue',
             linkTo: `${SITE_URL_PREFIX}/report-issue`,
           },
-          { text: '關於', linkTo: `${SITE_URL_PREFIX}/about` },
-        ].map((e) => LinkElement(e.text, e.linkTo))}
+          { textID: 'header.about', linkTo: `${SITE_URL_PREFIX}/about` },
+        ].map((e) => LinkElement(e.textID, e.linkTo))}
       </nav>
     </header>
   );
