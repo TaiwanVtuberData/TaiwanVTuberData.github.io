@@ -33,7 +33,7 @@ const App: FunctionalComponent = () => {
         />
         <Router>
           <Home path={`${baseroute}/`} />
-          <AllVTubersPage path={`${baseroute}/all-vtubers`} />
+          <AllVTubersPage path={`${baseroute}/all-vtubers`} locale={locale} />
           <NotFoundPage default />
         </Router>
       </IntlProvider>

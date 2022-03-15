@@ -8,36 +8,49 @@ import { VTuberData } from '../../types/VTuberData';
 import { DataTablePaginationComponent } from '../../components/DataTablePaginationComponentOptions';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import { VTuberDisplayData } from '../../types/VTuberDisplayData';
+import { intl, Text } from 'preact-i18n';
+import { validI18n } from '../../types/LanguageOptions';
 
-const AllVTubersPage: FunctionalComponent = () => {
-  const columns: Array<TableColumn<VTuberDisplayData>> = [
+export interface AllVTubersPageProps {
+  locale: validI18n;
+}
+
+const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
+  props: AllVTubersPageProps
+) => {
+  // translation won't switch on it's own, so pass a locale to trigger useEffect
+  const defaultColumns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
         row.profileImg,
     },
     {
-      name: '名稱',
+      name: <Text id="table.displayName">Name</Text>,
       selector: (row: { name: string }): string => row.name,
     },
     {
-      name: '相關連結',
+      name: <Text id="table.links">Links</Text>,
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
-      name: 'YouTube 訂閱人數',
-      selector: (row: {
+      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
-      }): number | string =>
-        row.hasYouTube ? row.YouTubeSubscriberCount ?? '未顯示人數' : '',
+      }): h.JSX.Element | number | null =>
+        row.hasYouTube
+          ? row.YouTubeSubscriberCount ?? (
+              <Text id="table.hiddenCount">hidden</Text>
+            )
+          : null,
       sortable: true,
       sortFunction: YouTubeSubscriberCountSort,
     },
     {
-      name: 'Twitch 追隨人數',
+      name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
       selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
@@ -45,16 +58,18 @@ const AllVTubersPage: FunctionalComponent = () => {
       sortable: true,
     },
     {
-      name: '團體',
+      name: <Text id="table.group">Group</Text>,
       selector: (row: { group?: string }): string => row.group ?? '',
     },
     {
-      name: '國家',
+      name: <Text id="table.nationality">Nationality</Text>,
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
     },
   ];
 
+  const [columns, setColumns] =
+    useState<Array<TableColumn<VTuberDisplayData>>>(defaultColumns);
   const [data, setData] = useState<Array<VTuberDisplayData>>([]);
 
   const dataToDisplayData = (e: VTuberData): VTuberDisplayData => ({
@@ -85,6 +100,10 @@ const AllVTubersPage: FunctionalComponent = () => {
   useEffect(() => {
     getVTubers();
   }, []);
+
+  useEffect(() => {
+    setColumns(defaultColumns);
+  }, [props.locale]);
 
   return (
     <DataTable

@@ -14,6 +14,15 @@ const en = {
     reportIssue: 'Data Posting/Report Issue',
     about: 'About',
   },
+  table: {
+    displayName: 'Name',
+    links: 'Links',
+    YouTubeSubscriberCount: 'YouTube Subscribers',
+    TwitchFollowerCount: 'Twitch Followers',
+    group: 'Group',
+    nationality: 'Nationality',
+    hiddenCount: 'hidden',
+  },
 } as const;
 
 export default en;

@@ -14,6 +14,15 @@ const zh = {
     reportIssue: '資料登載/錯誤回報',
     about: '關於',
   },
+  table: {
+    displayName: '名稱',
+    links: '相關連結',
+    YouTubeSubscriberCount: 'YouTube 訂閱人數',
+    TwitchFollowerCount: 'Twitch 追隨人數',
+    group: '團體',
+    nationality: '國家',
+    hiddenCount: '未顯示',
+  },
 } as const;
 
 export default zh;
