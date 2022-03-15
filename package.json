@@ -10,7 +10,7 @@
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --config .prettierrc src/**/*.{js,jsx,ts,tsx,css} --write",
+    "format": "prettier --config .prettierrc src/**/*.{js,jsx,ts,tsx,css,json} --write",
     "test": "jest ./tests"
   },
   "eslintConfig": {
@@ -27,6 +27,7 @@
     "axios": "^0.26.1",
     "miragejs": "^0.1.43",
     "preact": "^10.3.1",
+    "preact-i18n": "^2.4.0-preactx",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^4.0.1",
     "react-data-table-component": "^7.4.7",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.8",
+    "@types/preact-i18n": "^2.3.1",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "dot-json": "^1.2.2",
