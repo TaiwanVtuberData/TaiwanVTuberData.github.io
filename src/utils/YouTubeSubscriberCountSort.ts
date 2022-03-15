@@ -4,18 +4,27 @@ import { VTuberDisplayData } from '../types/VTuberDisplayData';
 export const YouTubeSubscriberCountSort: ColumnSortFunction<
   VTuberDisplayData
 > = (rowA, rowB) => {
-  const a = rowA.YouTubeSubscriberCount;
-  const b = rowB.YouTubeSubscriberCount;
+  const aExist = rowA.hasYouTube;
+  const bExist = rowB.hasYouTube;
 
-  if (a === undefined && b === undefined) return 0;
+  if (!aExist && !bExist) return 0;
 
-  if (b === undefined) return 1;
+  if (!bExist) return 1;
 
-  if (a === undefined) return -1;
+  if (!aExist) return -1;
 
-  if (a > b) return 1;
+  const aCount = rowA.YouTubeSubscriberCount;
+  const bCount = rowB.YouTubeSubscriberCount;
 
-  if (b > a) return -1;
+  if (aCount === undefined && bCount === undefined) return 0;
+
+  if (bCount === undefined) return 1;
+
+  if (aCount === undefined) return -1;
+
+  if (aCount > bCount) return 1;
+
+  if (bCount > aCount) return -1;
 
   return 0;
 };
