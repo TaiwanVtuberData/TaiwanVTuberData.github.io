@@ -29,6 +29,12 @@
   background-color: #cccccc;
 }
 
+.dropDown__wbdZN {
+  padding: 5px;
+  border: 3px solid #636363;
+  border-radius: 5px;
+}
+
 .home__uRcqa {
   padding: 56px 20px;
   min-height: 100%;
@@ -60,4 +66,4 @@
 }
 
 
-/*# sourceMappingURL=ssr-bundle.46359.css.map*/
+/*# sourceMappingURL=ssr-bundle.1bcab.css.map*/
