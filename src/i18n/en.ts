@@ -25,6 +25,14 @@ const en: Dictionary = {
     nationality: 'Nationality',
     hiddenCount: 'hidden',
     searchByDisplayName: 'Search by name',
+    loading: 'Loading...',
+    paginationOptions: {
+      noRowsPerPage: false,
+      rowsPerPageText: 'Rows per page',
+      rangeSeparatorText: 'of',
+      selectAllRowsItem: true,
+      selectAllRowsItemText: 'All',
+    },
   },
 } as const;
 

@@ -25,6 +25,14 @@ const zh: Dictionary = {
     nationality: '國家',
     hiddenCount: '未顯示',
     searchByDisplayName: '依名稱搜尋',
+    loading: '載入中...',
+    paginationOptions: {
+      noRowsPerPage: false,
+      rowsPerPageText: '每頁數量',
+      rangeSeparatorText: '共有',
+      selectAllRowsItem: true,
+      selectAllRowsItemText: '所有',
+    },
   },
 } as const;
 

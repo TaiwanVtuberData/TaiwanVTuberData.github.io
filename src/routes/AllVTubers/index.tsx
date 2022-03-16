@@ -5,10 +5,9 @@ import * as Api from '../../services/ApiService';
 import ProfileImage from '../../components/ProfileImage';
 import ChannelLinks from '../../components/ChannelLinks';
 import { VTuberData } from '../../types/VTuberData';
-import { DataTablePaginationComponent } from '../../components/DataTablePaginationComponentOptions';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import { VTuberDisplayData } from '../../types/VTuberDisplayData';
-import { Text, translate } from 'preact-i18n';
+import { Text } from 'preact-i18n';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 
@@ -99,11 +98,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     return (
       <Fragment>
         <SearchBar
-          placeholderText={translate(
-            'table.searchByDisplayName',
-            '',
-            props.dictionary
-          )}
+          placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any) => setFilterName(e.target.value)}
           onClear={handleClear}
           filterText={filterName}
@@ -146,9 +141,9 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       columns={columns}
       data={filteredData}
       progressPending={pending}
-      progressComponent={'載入中'}
+      progressComponent={props.dictionary.table.loading}
       pagination
-      paginationComponentOptions={DataTablePaginationComponent}
+      paginationComponentOptions={props.dictionary.table.paginationOptions}
       subHeader
       subHeaderComponent={searchBarComponent}
     />

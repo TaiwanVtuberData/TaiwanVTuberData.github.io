@@ -1,3 +1,5 @@
+import { PaginationOptions } from 'react-data-table-component';
+
 export interface Dictionary {
   header: {
     title: string;
@@ -23,5 +25,7 @@ export interface Dictionary {
     nationality: string;
     hiddenCount: string;
     searchByDisplayName: string;
+    loading: string;
+    paginationOptions: PaginationOptions;
   };
 }
