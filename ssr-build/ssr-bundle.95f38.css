@@ -60,10 +60,21 @@
   height: 48px;
 }
 
+.textField__bDpXR {
+  border: 3px solid #636363;
+  border-radius: 5px;
+}
+
+.button__maFzS {
+  float: right;
+  border: 3px solid #636363;
+  border-radius: 5px;
+}
+
 .notfound__Ecgkh {
   padding: 0 5%;
   margin: 100px 0;
 }
 
 
-/*# sourceMappingURL=ssr-bundle.d54fb.css.map*/
+/*# sourceMappingURL=ssr-bundle.95f38.css.map*/
