@@ -20,7 +20,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   props: AllVTubersPageProps
 ) => {
   const profileImgColumnWidth: number = 75 as const;
-  // translation won't switch on it's own, so pass a locale to trigger useEffect
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
