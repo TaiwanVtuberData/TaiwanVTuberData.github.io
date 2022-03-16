@@ -8,18 +8,19 @@ import { VTuberData } from '../../types/VTuberData';
 import { DataTablePaginationComponent } from '../../components/DataTablePaginationComponentOptions';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import { VTuberDisplayData } from '../../types/VTuberDisplayData';
-import { Text } from 'preact-i18n';
-import { validI18n } from '../../types/LanguageOptions';
+import { Text, translate } from 'preact-i18n';
+import SearchBar from '../../components/SearchBar';
+import { Dictionary } from '../../i18n/Dictionary';
 
 export interface AllVTubersPageProps {
-  locale: validI18n;
+  dictionary: Dictionary;
 }
 
 const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   props: AllVTubersPageProps
 ) => {
   // translation won't switch on it's own, so pass a locale to trigger useEffect
-  const defaultColumns: Array<TableColumn<VTuberDisplayData>> = [
+  const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
@@ -68,11 +69,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
   ];
 
-  const [columns, setColumns] =
-    useState<Array<TableColumn<VTuberDisplayData>>>(defaultColumns);
-  const [data, setData] = useState<Array<VTuberDisplayData>>([]);
-
   // search filter
+  const [data, setData] = useState<Array<VTuberDisplayData>>([]);
   const [filterName, setFilterName] = useState<string>('');
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
@@ -81,25 +79,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
   );
 
-  const FilterComponent = ({
-    filterText,
-    onFilter,
-    onClear,
-  }: {
-    filterText: string;
-    onFilter: (e: any) => any;
-    onClear: () => any;
-  }): h.JSX.Element => (
-    <input
-      type="text"
-      placeholder="Filter By Name"
-      value={filterText}
-      onChange={onFilter}
-    />
-  );
-
-  const SubHeaderComponentMemo = useMemo(() => {
-    const handleClear = () => {
+  const searchBarComponent = useMemo(() => {
+    const handleClear = (): void => {
       if (filterName) {
         setResetPaginationToggle(!resetPaginationToggle);
         setFilterName('');
@@ -107,13 +88,20 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     };
 
     return (
-      <FilterComponent
-        onFilter={(e: any) => setFilterName(e.target.value)}
-        onClear={handleClear}
-        filterText={filterName}
-      />
+      <Fragment>
+        <SearchBar
+          placeholderText={translate(
+            'table.searchByDisplayName',
+            '',
+            props.dictionary
+          )}
+          onFilter={(e: any) => setFilterName(e.target.value)}
+          onClear={handleClear}
+          filterText={filterName}
+        />
+      </Fragment>
     );
-  }, [filterName, resetPaginationToggle]);
+  }, [filterName, resetPaginationToggle, props.dictionary]);
 
   const dataToDisplayData = (e: VTuberData): VTuberDisplayData => ({
     id: e.id,
@@ -144,10 +132,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     getVTubers();
   }, []);
 
-  useEffect(() => {
-    setColumns(defaultColumns);
-  }, [props.locale]);
-
   return (
     <DataTable
       columns={columns}
@@ -157,7 +141,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       pagination
       paginationComponentOptions={DataTablePaginationComponent}
       subHeader
-      subHeaderComponent={SubHeaderComponentMemo}
+      subHeaderComponent={searchBarComponent}
     />
   );
 };

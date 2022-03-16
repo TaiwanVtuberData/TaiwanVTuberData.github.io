@@ -1,4 +1,6 @@
-const zh = {
+import { Dictionary } from './Dictionary';
+
+const zh: Dictionary = {
   header: {
     title: '臺灣 VTuber 列表 (目前無內容)',
     chooseLanguage: '選擇語言:',
@@ -22,6 +24,7 @@ const zh = {
     group: '團體',
     nationality: '國家',
     hiddenCount: '未顯示',
+    searchByDisplayName: '依名稱搜尋',
   },
 } as const;
 

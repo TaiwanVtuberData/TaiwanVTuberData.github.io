@@ -1,4 +1,6 @@
-const en = {
+import { Dictionary } from './Dictionary';
+
+const en: Dictionary = {
   header: {
     title: 'Taiwan VTuber Data (No Content Yet)',
     chooseLanguage: 'Choose language:',
@@ -22,6 +24,7 @@ const en = {
     group: 'Group',
     nationality: 'Nationality',
     hiddenCount: 'hidden',
+    searchByDisplayName: 'Search by name',
   },
 } as const;
 

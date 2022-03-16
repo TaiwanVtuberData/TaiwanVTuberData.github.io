@@ -10,10 +10,11 @@ import en from '../i18n/en';
 import zh from '../i18n/zh';
 import { useEffect, useState } from 'preact/hooks';
 import { validI18n } from '../types/LanguageOptions';
+import { Dictionary } from '../i18n/Dictionary';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>('zh');
-  const [definition, setDefinition] = useState<any>(zh);
+  const [definition, setDefinition] = useState<Dictionary>(zh);
 
   useEffect(() => {
     if (locale === 'zh') {
@@ -33,7 +34,10 @@ const App: FunctionalComponent = () => {
         />
         <Router>
           <Home path={`${baseroute}/`} />
-          <AllVTubersPage path={`${baseroute}/all-vtubers`} locale={locale} />
+          <AllVTubersPage
+            path={`${baseroute}/all-vtubers`}
+            dictionary={definition}
+          />
           <NotFoundPage default />
         </Router>
       </IntlProvider>
