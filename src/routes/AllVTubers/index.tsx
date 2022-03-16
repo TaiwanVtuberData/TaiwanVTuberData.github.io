@@ -88,11 +88,10 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       (item) =>
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
-    .filter(
-      (item) =>
-        item.group &&
-        item.group.toLowerCase().includes(filterGroup.toLowerCase())
-    );
+    .filter((item) => {
+      if (item.group === undefined) return true;
+      return item.group.toLowerCase().includes(filterGroup.toLowerCase());
+    });
 
   const searchBarComponent = useMemo(() => {
     const handleClearName = (): void => {
