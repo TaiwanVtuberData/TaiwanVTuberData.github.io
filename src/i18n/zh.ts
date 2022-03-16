@@ -25,6 +25,7 @@ const zh: Dictionary = {
     nationality: '國家',
     hiddenCount: '未顯示',
     searchByDisplayName: '依名稱搜尋',
+    searchByGroup: '依團體搜尋',
     loading: '載入中...',
     paginationOptions: {
       noRowsPerPage: false,

@@ -25,6 +25,7 @@ export interface Dictionary {
     nationality: string;
     hiddenCount: string;
     searchByDisplayName: string;
+    searchByGroup: string;
     loading: string;
     paginationOptions: PaginationOptions;
   };

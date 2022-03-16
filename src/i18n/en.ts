@@ -25,6 +25,7 @@ const en: Dictionary = {
     nationality: 'Nationality',
     hiddenCount: 'hidden',
     searchByDisplayName: 'Search by name',
+    searchByGroup: 'Search by group',
     loading: 'Loading...',
     paginationOptions: {
       noRowsPerPage: false,

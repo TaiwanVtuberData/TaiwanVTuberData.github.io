@@ -80,18 +80,32 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   // search filter
   const [data, setData] = useState<Array<VTuberDisplayData>>([]);
   const [filterName, setFilterName] = useState<string>('');
+  const [filterGroup, setFilterGroup] = useState<string>('');
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
-  const filteredData = data.filter(
-    (item) =>
-      item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
-  );
+  const filteredData = data
+    .filter(
+      (item) =>
+        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
+    )
+    .filter(
+      (item) =>
+        item.group &&
+        item.group.toLowerCase().includes(filterGroup.toLowerCase())
+    );
 
   const searchBarComponent = useMemo(() => {
-    const handleClear = (): void => {
+    const handleClearName = (): void => {
       if (filterName) {
         setResetPaginationToggle(!resetPaginationToggle);
         setFilterName('');
+      }
+    };
+
+    const handleClearGroup = (): void => {
+      if (filterGroup) {
+        setResetPaginationToggle(!resetPaginationToggle);
+        setFilterGroup('');
       }
     };
 
@@ -100,12 +114,18 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any) => setFilterName(e.target.value)}
-          onClear={handleClear}
+          onClear={handleClearName}
           filterText={filterName}
+        />
+        <SearchBar
+          placeholderText={props.dictionary.table.searchByGroup}
+          onFilter={(e: any) => setFilterGroup(e.target.value)}
+          onClear={handleClearGroup}
+          filterText={filterGroup}
         />
       </Fragment>
     );
-  }, [filterName, resetPaginationToggle, props.dictionary]);
+  }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
 
   const dataToDisplayData = (e: VTuberData): VTuberDisplayData => ({
     id: e.id,
