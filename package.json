@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "preact build",
-    "build:gh": "GITHUB_PAGES=TaiwanVtuberData-Preact preact build && dot-json ./build/manifest.json start_url \"/TaiwanVtuberData-Preact/\"",
+    "build:gh": "GITHUB_PAGES=TaiwanVtuberData-Preact preact build && dot-json ./build/manifest.json start_url \"/TaiwanVtuberData-Preact/\" && cp 404.html build/404.html",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
