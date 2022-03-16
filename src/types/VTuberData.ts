@@ -1,8 +1,10 @@
+import { Activity } from './Activity';
 import { TwitchData } from './TwitchData';
 import { YouTubeData } from './YouTubeData';
 
 export interface VTuberData {
   id: string;
+  activity: Activity;
   name: string;
   imgUrl?: string;
   YouTube?: YouTubeData;

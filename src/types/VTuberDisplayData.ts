@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Activity } from './Activity';
 
 export interface VTuberDisplayData {
   id: string;
@@ -11,4 +12,5 @@ export interface VTuberDisplayData {
   TwitchFollowerCount: number;
   group?: string;
   nationality?: string;
+  activity: Activity;
 }

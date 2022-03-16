@@ -28,13 +28,13 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: `calc(${profileImgColumnWidth}px-20%)`,
+      width: `calc(${profileImgColumnWidth}px-25%)`,
       wrap: true,
       selector: (row: { name: string }): string => row.name,
     },
     {
       name: <Text id="table.links">Links</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
+      width: `calc(${profileImgColumnWidth}px-10%)`,
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
@@ -65,7 +65,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
-      width: `calc(${profileImgColumnWidth}px-20%)`,
+      width: `calc(${profileImgColumnWidth}px-25%)`,
       wrap: true,
       selector: (row: { group?: string }): string => row.group ?? '',
     },
@@ -121,6 +121,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
     group: e.group,
     nationality: e.nationality,
+    activity: e.activity,
   });
 
   const [pending, setPending] = useState(true);
@@ -136,6 +137,29 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     getVTubers();
   }, []);
 
+  const conditionalRowStyles = [
+    {
+      when: (row: VTuberDisplayData) => row.activity === 'preparing',
+      style: {
+        backgroundColor: 'rgba(248, 148, 6, 0.9)',
+        color: 'white',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+    {
+      when: (row: VTuberDisplayData) => row.activity === 'graduate',
+      style: {
+        backgroundColor: 'rgba(123, 123, 123, 0.9)',
+        color: 'white',
+        '&:hover': {
+          cursor: 'not-allowed',
+        },
+      },
+    },
+  ];
+
   return (
     <DataTable
       columns={columns}
@@ -146,6 +170,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       paginationComponentOptions={props.dictionary.table.paginationOptions}
       subHeader
       subHeaderComponent={searchBarComponent}
+      conditionalRowStyles={conditionalRowStyles}
     />
   );
 };
