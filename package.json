@@ -37,6 +37,7 @@
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.8",
     "@types/preact-i18n": "^2.3.1",
+    "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "dot-json": "^1.2.2",
