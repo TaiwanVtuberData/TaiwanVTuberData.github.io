@@ -1,13 +1,11 @@
 h1 {
   text-align: center;
-}
-
-.title__-i7Rc {
-  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .sidebarOverlay__r9CJz {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -17,49 +15,71 @@ h1 {
 }
 
 .sidebarContent__QUi\+P {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 45vw;
   height: 100%;
+  overflow: auto;
   z-index: 999;
   background-color: white;
 }
 
 .navButton__0SqJv {
-  position: absolute;
-  top: 5px;
-  left: 5px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 4vw;
+  height: 4vw;
+  padding: 0;
   background-color: transparent;
   border: transparent;
   z-index: 999;
+}
+
+.navButton__0SqJv:hover {
+  background-color: grey;
 }
 
 .navIcon__A\+BCb {
   content: url(/TaiwanVtuberData-Preact/d1be5cd37bd7f38b776669e873874892.png);
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  height: 100%;
 }
 
 .xButton__oBNNg {
   position: relative;
-  top: 5px;
-  left: 5px;
+  top: 15px;
+  left: 15px;
+  width: 4vw;
+  height: 4vw;
+  padding: 0;
   background-color: transparent;
   border: transparent;
   z-index: 999;
 }
 
+.xButton__oBNNg:hover {
+  background-color: grey;
+}
+
 .xIcon__IzjSm {
   content: url(/TaiwanVtuberData-Preact/af891809934d76ef134eac823f6fab2e.png);
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  height: 100%;
 }
 
 .navGrid__1hJMb {
+  margin-top: 20px;
+  width: auto;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-row: auto;
+}
+
+.gridItem__bx73M {
+  height: 50px;
 }
 
 .gridItem__bx73M a {
@@ -74,8 +94,8 @@ h1 {
   text-decoration: none;
   margin: 1px;
   padding-left: 15px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .gridItem__bx73M a:hover {
@@ -94,22 +114,48 @@ h1 {
 }
 
 .profileImg__DvgtD {
-  width: 44px;
-  height: 44px;
+  width: 66px;
+  height: 66px;
   border: 1px solid black;
   border-radius: 50%;
 }
 
+@media screen and (max-width: 1280px) {
+  .profileImg__DvgtD {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profileImg__DvgtD {
+    width: 33px;
+    height: 33px;
+  }
+}
+
 .YouTubeImg__LvwUa {
   content: url(/TaiwanVtuberData-Preact/e9de82b38d0f0c1f717a69f6d4a58f3d.png);
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
 }
 
 .TwitchImg__ckBvR {
   content: url(/TaiwanVtuberData-Preact/5e9a0314aec235a0f7851a98eb5db19f.png);
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
+}
+
+@media screen and (max-width: 1280px) {
+  .YouTubeImg__LvwUa {
+    width: 32px;
+    height: 32px;
+  }
+
+  .TwitchImg__ckBvR {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .textField__bDpXR {
@@ -129,4 +175,4 @@ h1 {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.8074b.css.map*/
+/*# sourceMappingURL=ssr-bundle.a0f40.css.map*/
