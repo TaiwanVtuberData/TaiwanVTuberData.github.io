@@ -1,9 +1,5 @@
-.title {
-  text-align: center;
-}
-
 .sidebarOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,19 +9,23 @@
 }
 
 .sidebarContent {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 45vw;
   height: 100%;
+  overflow: auto;
   z-index: 999;
   background-color: white;
 }
 
 .navButton {
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 15px;
+  width: 4vw;
+  height: 4vw;
+  padding: 0;
   background-color: transparent;
   border: transparent;
   z-index: 999;
@@ -37,14 +37,17 @@
 
 .navIcon {
   content: url(../../assets/icons/hamburger.png);
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  height: 100%;
 }
 
 .xButton {
   position: relative;
   top: 15px;
   left: 15px;
+  width: 4vw;
+  height: 4vw;
+  padding: 0;
   background-color: transparent;
   border: transparent;
   z-index: 999;
@@ -56,15 +59,14 @@
 
 .xIcon {
   content: url(../../assets/icons/xmark.png);
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  height: 100%;
 }
 
 .navGrid {
-  position: relative;
-  top: 50px;
-  left: 15px;
-  width: 220px;
+  margin-top: 20px;
+  width: auto;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-row: auto;

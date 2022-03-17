@@ -1,11 +1,23 @@
 .YouTubeImg {
   content: url(../../assets/icons/youtube_social_circle_dark.png);
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
 }
 
 .TwitchImg {
   content: url(../../assets/icons/TwitchGlitchBlackOps.png);
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
+}
+
+@media screen and (max-width: 1280px) {
+  .YouTubeImg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .TwitchImg {
+    width: 32px;
+    height: 32px;
+  }
 }
