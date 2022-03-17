@@ -10,6 +10,7 @@ import { VTuberDisplayData } from '../../types/VTuberDisplayData';
 import { Text } from 'preact-i18n';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
+import '../../style/index.css';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -18,6 +19,7 @@ export interface AllVTubersPageProps {
 const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   props: AllVTubersPageProps
 ) => {
+  document.title = `${props.dictionary.header.allVTubers} | ${props.dictionary.header.title}`;
   const profileImgColumnWidth: number = 75 as const;
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
@@ -180,18 +182,23 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   ];
 
   return (
-    <DataTable
-      columns={columns}
-      data={filteredData}
-      progressPending={pending}
-      progressComponent={props.dictionary.table.loading}
-      pagination
-      paginationComponentOptions={props.dictionary.table.paginationOptions}
-      subHeader
-      subHeaderComponent={searchBarComponent}
-      conditionalRowStyles={conditionalRowStyles}
-      fixedHeader
-    />
+    <Fragment>
+      <h1>
+        <Text id="header.allVTubers">All VTubers</Text>
+      </h1>
+      <DataTable
+        columns={columns}
+        data={filteredData}
+        progressPending={pending}
+        progressComponent={props.dictionary.table.loading}
+        pagination
+        paginationComponentOptions={props.dictionary.table.paginationOptions}
+        subHeader
+        subHeaderComponent={searchBarComponent}
+        conditionalRowStyles={conditionalRowStyles}
+        fixedHeader
+      />
+    </Fragment>
   );
 };
 
