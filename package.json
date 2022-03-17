@@ -1,7 +1,7 @@
 {
   "homepage": "https://nh60211as.github.io/TaiwanVtuberData-Preact",
   "private": true,
-  "name": "preact-deploy",
+  "name": "taiwan-vtuber-data-preact",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
