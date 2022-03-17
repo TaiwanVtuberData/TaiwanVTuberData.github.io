@@ -1,4 +1,6 @@
 # preact-deploy
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnh60211as%2FTaiwanVtuberData-Preact.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnh60211as%2FTaiwanVtuberData-Preact?ref=badge_shield)
+
 
 ## CLI Commands
 *   `npm install`: Installs dependencies
@@ -17,3 +19,7 @@
 
 
 For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnh60211as%2FTaiwanVtuberData-Preact.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnh60211as%2FTaiwanVtuberData-Preact?ref=badge_large)
