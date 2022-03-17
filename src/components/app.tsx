@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from 'preact';
 import { IntlProvider } from 'preact-i18n';
 import { Router } from 'preact-router';
-import Header from './header';
+import Sidebar from './Sidebar';
 import Home from '../routes/home';
 import AllVTubersPage from '../routes/AllVTubers';
 import NotFoundPage from '../routes/notfound';
@@ -27,7 +27,7 @@ const App: FunctionalComponent = () => {
   return (
     <div id="preact_root">
       <IntlProvider definition={definition}>
-        <Header
+        <Sidebar
           siteUrlPrefix={baseroute}
           locale={locale}
           setLocale={setLocale}

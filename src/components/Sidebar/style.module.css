@@ -1,0 +1,82 @@
+.title {
+  text-align: center;
+}
+
+.sidebarOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.sidebarContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  z-index: 999;
+  background-color: white;
+}
+
+.navButton {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: transparent;
+  border: transparent;
+  z-index: 999;
+}
+
+.navIcon {
+  content: url(../../assets/icons/hamburger.png);
+  width: 32px;
+  height: 32px;
+}
+
+.xButton {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  background-color: transparent;
+  border: transparent;
+  z-index: 999;
+}
+
+.xIcon {
+  content: url(../../assets/icons/xmark.png);
+  width: 32px;
+  height: 32px;
+}
+
+.navGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row: auto;
+}
+
+.gridItem a {
+  display: flex;
+  color: #000000;
+  background-color: #e1e1e1;
+  border: 1px solid #808080;
+  text-align: left;
+  align-items: center;
+  text-decoration: none;
+  margin: 1px;
+  padding-left: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.gridItem a:hover {
+  background-color: #cccccc;
+}
+
+.dropDown {
+  border: 3px solid #636363;
+  border-radius: 5px;
+}
