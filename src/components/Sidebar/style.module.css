@@ -24,11 +24,15 @@
 
 .navButton {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 15px;
+  left: 15px;
   background-color: transparent;
   border: transparent;
   z-index: 999;
+}
+
+.navButton:hover {
+  background-color: grey;
 }
 
 .navIcon {
@@ -39,11 +43,15 @@
 
 .xButton {
   position: relative;
-  top: 5px;
-  left: 5px;
+  top: 15px;
+  left: 15px;
   background-color: transparent;
   border: transparent;
   z-index: 999;
+}
+
+.xButton:hover {
+  background-color: grey;
 }
 
 .xIcon {
@@ -53,9 +61,17 @@
 }
 
 .navGrid {
+  position: relative;
+  top: 50px;
+  left: 15px;
+  width: 220px;
   display: grid;
   grid-template-columns: 1fr;
   grid-row: auto;
+}
+
+.gridItem {
+  height: 50px;
 }
 
 .gridItem a {
@@ -68,8 +84,8 @@
   text-decoration: none;
   margin: 1px;
   padding-left: 15px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .gridItem a:hover {

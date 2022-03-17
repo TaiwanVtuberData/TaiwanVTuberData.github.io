@@ -28,7 +28,7 @@ const Sidebar: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
     setLocale: StateUpdater<validI18n>
   ): h.JSX.Element => {
     return (
-      <Fragment>
+      <div class={style.gridItem}>
         <Text id="header.chooseLanguage">Choose language:</Text>
         <select
           class={style.dropDown}
@@ -43,7 +43,7 @@ const Sidebar: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
             </option>
           ))}
         </select>
-      </Fragment>
+      </div>
     );
   };
 
@@ -115,8 +115,8 @@ const Sidebar: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
             },
             { textID: 'header.about', linkTo: `${SITE_URL_PREFIX}/about` },
           ].map((e) => LinkElement(e.textID, e.linkTo))}
+          {DropDownElement(LanguageOptions, props.locale, props.setLocale)}
         </nav>
-        {DropDownElement(LanguageOptions, props.locale, props.setLocale)}
       </div>
     </header>
   );
