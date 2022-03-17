@@ -190,6 +190,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       subHeader
       subHeaderComponent={searchBarComponent}
       conditionalRowStyles={conditionalRowStyles}
+      fixedHeader
     />
   );
 };
