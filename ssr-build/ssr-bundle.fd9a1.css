@@ -4,6 +4,11 @@ h1 {
   margin-bottom: 0;
 }
 
+.highlightText {
+  color: mediumblue;
+  font-weight: 700;
+}
+
 .sidebarOverlay__r9CJz {
   position: fixed;
   top: 0;
@@ -175,4 +180,4 @@ h1 {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.a0f40.css.map*/
+/*# sourceMappingURL=ssr-bundle.fd9a1.css.map*/
