@@ -12,6 +12,8 @@ import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberData } from '../../types/VTuberData';
+import Profile from '../../components/Profile';
+import { GroupNameSort } from '../../utils/GroupNameSort';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -24,9 +26,10 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
   const columns: Array<TableColumn<GroupDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '25%',
+      width: '20%',
       wrap: true,
       sortable: true,
+      sortFunction: GroupNameSort,
       cell: (row: { name: string }): h.JSX.Element => (
         <a class={tableStyle.groupLink} href={`${baseroute}/group/${row.name}`}>
           {row.name}
@@ -65,9 +68,9 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.memberList">Members</Text>,
-      width: `10%`,
+      width: `30%`,
       cell: (row: { memberList: h.JSX.Element | null }): h.JSX.Element | null =>
-        null,
+        row.memberList,
     },
   ];
 
@@ -101,7 +104,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     );
   }, [filterGroup, resetPaginationToggle, props.dictionary]);
 
-  const accumulator = (prev: number, current: VTuberData) =>
+  const accumulator = (prev: number, current: VTuberData): number =>
     prev +
     (current.YouTube?.subscriberCount ?? 0) +
     (current.Twitch?.followerCount ?? 0);
@@ -116,7 +119,13 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         : 0,
     totalSubscriberCount: e.members.reduce(accumulator, 0),
     memberCount: e.members.length,
-    memberList: null,
+    memberList: (
+      <Fragment>
+        {e.members.map((e) => (
+          <Profile key={e.id} VTuber={e} />
+        ))}
+      </Fragment>
+    ),
   });
 
   const [pending, setPending] = useState(true);
