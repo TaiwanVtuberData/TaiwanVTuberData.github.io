@@ -53,6 +53,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
               <Text id="table.hiddenCount">hidden</Text>
             )
           : null,
+      right: true,
       sortable: true,
       sortFunction: YouTubeSubscriberCountSort,
     },
@@ -63,6 +64,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         hasTwitch: boolean;
         TwitchFollowerCount: number;
       }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
+      right: true,
       sortable: true,
     },
     {
