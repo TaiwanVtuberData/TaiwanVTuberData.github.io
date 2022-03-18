@@ -75,6 +75,9 @@ const Sidebar: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
           <img class={style.xIcon} />
         </button>
         <nav class={style.navGrid}>
+          <h1>
+            <Text id="header.title">Taiwan VTuber Data</Text>
+          </h1>
           {[
             { textID: 'header.home', linkTo: `${SITE_URL_PREFIX}/` },
             {

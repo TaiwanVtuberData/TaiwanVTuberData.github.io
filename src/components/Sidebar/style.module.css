@@ -23,16 +23,14 @@
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 4vw;
-  height: 4vw;
-  padding: 0;
-  background-color: transparent;
-  border: transparent;
+  max-width: 5vw;
+  max-height: 5vw;
+  padding: 8px;
   z-index: 999;
 }
 
 .navButton:hover {
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .navIcon {
@@ -45,16 +43,14 @@
   position: relative;
   top: 15px;
   left: 15px;
-  width: 4vw;
-  height: 4vw;
-  padding: 0;
-  background-color: transparent;
-  border: transparent;
+  max-width: 5vw;
+  max-height: 5vw;
+  padding: 8px;
   z-index: 999;
 }
 
 .xButton:hover {
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .xIcon {

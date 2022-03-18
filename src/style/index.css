@@ -8,3 +8,9 @@ h1 {
   color: mediumblue;
   font-weight: 700;
 }
+
+button {
+  background-color: transparent;
+  border: transparent;
+  border-radius: 50%;
+}
