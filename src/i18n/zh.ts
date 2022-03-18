@@ -29,6 +29,11 @@ const zh: Dictionary = {
     searchByDisplayName: '依名稱搜尋',
     searchByGroup: '依團體搜尋',
     loading: '載入中...',
+    popularity: '熱度',
+    averageSubscriberCount: '平均訂閱人數',
+    totalSubscriberCount: '總訂閱人數',
+    memberCount: '成員人數',
+    memberList: '成員',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: '每頁數量',

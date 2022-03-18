@@ -29,6 +29,11 @@ const en: Dictionary = {
     searchByDisplayName: 'Search by name',
     searchByGroup: 'Search by group',
     loading: 'Loading...',
+    popularity: 'Popularity',
+    averageSubscriberCount: 'Average Subscribers',
+    totalSubscriberCount: 'Total Subscribers',
+    memberCount: 'Member Count',
+    memberList: 'Members',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',

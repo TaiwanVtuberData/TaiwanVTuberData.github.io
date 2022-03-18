@@ -1,6 +1,6 @@
 import { VTuberData } from '../types/VTuberData';
 
-export const GroupMembersMock: ReadonlyArray<VTuberData> = [
+export const CloudHorizonMock: ReadonlyArray<VTuberData> = [
   {
     id: '1',
     activity: 'active',
@@ -52,5 +52,25 @@ export const GroupMembersMock: ReadonlyArray<VTuberData> = [
     },
     group: '雲際線工作室',
     nationality: 'TW',
+  },
+];
+
+export const MeridianProjectMock: ReadonlyArray<VTuberData> = [
+  {
+    id: '5',
+    activity: 'active',
+    name: '浠Mizuki',
+    imgUrl:
+      'https://yt3.ggpht.com/PNidqKT0wybKejx1NdZLteTlXP3Omy-ti1LFqekGs0Ms0ExfAiWv4Btmzgu4clH9A1QQ8yv-sA=s88-c-k-c0x00ffffff-no-rj',
+    YouTube: {
+      id: 'UCjv4bfP_67WLuPheS-Z8Ekg',
+      subscriberCount: 108000,
+    },
+    Twitch: {
+      id: 'mizukimilk723',
+      followerCount: 903,
+    },
+    group: '子午計劃',
+    nationality: 'UNKNOWN',
   },
 ];

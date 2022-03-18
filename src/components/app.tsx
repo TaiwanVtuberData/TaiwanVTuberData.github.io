@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import Home from '../routes/home';
 import AllVTubersPage from '../routes/AllVTubers';
 import GroupPage from '../routes/Group';
+import GroupListPage from '../routes/GroupList';
 import NotFoundPage from '../routes/notfound';
 import baseroute from '../baseroute';
 import en from '../i18n/en';
@@ -39,6 +40,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/all-vtubers`}
             dictionary={definition}
             component={AllVTubersPage}
+          />
+          <Route
+            path={`${baseroute}/group-list`}
+            dictionary={definition}
+            component={GroupListPage}
           />
           <Route
             path={`${baseroute}/group/:groupName`}

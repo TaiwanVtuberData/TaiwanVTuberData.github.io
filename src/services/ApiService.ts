@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { GroupDataResponse } from '../types/GroupData';
 import { VTuberDataResponse } from '../types/VTuberData';
 
 interface CommitDetail {
@@ -44,4 +45,8 @@ export const getGroupVTubers = (
   group: string
 ): Promise<AxiosResponse<VTuberDataResponse>> => {
   return AxiosGetWrapper<VTuberDataResponse>(`/groups/${group}/vtubers.json`);
+};
+
+export const getGroups = (): Promise<AxiosResponse<GroupDataResponse>> => {
+  return AxiosGetWrapper<GroupDataResponse>(`/groups.json`);
 };
