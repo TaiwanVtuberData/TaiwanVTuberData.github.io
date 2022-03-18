@@ -12,7 +12,8 @@ import { VTuberData } from '../../types/VTuberData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import '../../style/index.css';
-import '../../style/DataTableStyle.css';
+import '../../style/DataTableStyle.module.css';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface GroupPageProps {
   groupName: string;
@@ -149,6 +150,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        conditionalRowStyles={ActivityRowStyles}
         progressComponent={props.dictionary.table.loading}
         progressPending={pending}
         subHeader

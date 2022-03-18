@@ -13,7 +13,8 @@ import { VTuberDisplayData } from '../../types/VTuberDisplayData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import '../../style/index.css';
-import '../../style/DataTableStyle.css';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -76,7 +77,12 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       wrap: true,
       cell: (row: { group?: string }): h.JSX.Element | null =>
         row.group !== undefined ? (
-          <a href={`${baseroute}/group/${row.group}`}>{row.group}</a>
+          <a
+            class={tableStyle.groupLink}
+            href={`${baseroute}/group/${row.group}`}
+          >
+            {row.group}
+          </a>
         ) : null,
     },
     {
@@ -175,6 +181,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        conditionalRowStyles={ActivityRowStyles}
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={props.dictionary.table.loading}

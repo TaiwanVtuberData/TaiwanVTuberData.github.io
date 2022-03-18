@@ -10,7 +10,7 @@ import SearchBar from '../../components/SearchBar';
 import { GroupData } from '../../types/GroupData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
-import '../../style/DataTableStyle.css';
+import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberData } from '../../types/VTuberData';
 
 export interface GroupListPageProps {
@@ -28,7 +28,9 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       wrap: true,
       sortable: true,
       cell: (row: { name: string }): h.JSX.Element => (
-        <a href={`${baseroute}/group/${row.name}`}>{row.name}</a>
+        <a class={tableStyle.groupLink} href={`${baseroute}/group/${row.name}`}>
+          {row.name}
+        </a>
       ),
     },
     {
