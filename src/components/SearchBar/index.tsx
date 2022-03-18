@@ -4,8 +4,8 @@ import style from './style.module.css';
 export interface SearchBarProps {
   placeholderText?: string;
   filterText: string;
-  onFilter: (e: any) => any;
-  onClear: () => any;
+  onFilter: (e: unknown) => unknown;
+  onClear: () => unknown;
 }
 
 const SearchBar: FunctionalComponent<SearchBarProps> = (

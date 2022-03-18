@@ -1,15 +1,16 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
 import { useEffect, useMemo, useState } from 'preact/hooks';
+import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import ChannelLinks from '../../components/ChannelLinks';
 import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
 import { GroupMemberDisplayData } from '../../types/GroupMemberDisplayData';
 import { VTuberData } from '../../types/VTuberData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
-import * as Api from '../../services/ApiService';
 import '../../style/index.css';
 import '../../style/DataTableStyle.css';
 
@@ -100,7 +101,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
       <Fragment>
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
-          onFilter={(e: any) => setFilterName(e.target.value)}
+          onFilter={(e: any): void => setFilterName(e.target.value)}
           onClear={handleClearName}
           filterText={filterName}
         />
@@ -137,29 +138,6 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     getVTubers();
   }, []);
 
-  const conditionalRowStyles = [
-    {
-      when: (row: GroupMemberDisplayData) => row.activity === 'preparing',
-      style: {
-        backgroundColor: 'rgba(248, 148, 6, 0.9)',
-        color: 'white',
-        '&:hover': {
-          cursor: 'pointer',
-        },
-      },
-    },
-    {
-      when: (row: GroupMemberDisplayData) => row.activity === 'graduate',
-      style: {
-        backgroundColor: 'rgba(123, 123, 123, 0.9)',
-        color: 'white',
-        '&:hover': {
-          cursor: 'not-allowed',
-        },
-      },
-    },
-  ];
-
   return (
     <Fragment>
       <h1>
@@ -168,16 +146,12 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
         <Text id="header.memberList">members</Text>
       </h1>
       <DataTable
+        {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
         progressPending={pending}
-        progressComponent={props.dictionary.table.loading}
-        pagination
-        paginationComponentOptions={props.dictionary.table.paginationOptions}
         subHeader
         subHeaderComponent={searchBarComponent}
-        conditionalRowStyles={conditionalRowStyles}
-        fixedHeader
       />
     </Fragment>
   );

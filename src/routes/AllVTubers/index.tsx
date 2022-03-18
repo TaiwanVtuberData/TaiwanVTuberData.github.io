@@ -1,18 +1,19 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
-import DataTable, { TableColumn } from 'react-data-table-component';
 import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as Api from '../../services/ApiService';
-import ProfileImage from '../../components/ProfileImage';
-import ChannelLinks from '../../components/ChannelLinks';
-import { VTuberData } from '../../types/VTuberData';
-import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
-import { VTuberDisplayData } from '../../types/VTuberDisplayData';
 import { Text } from 'preact-i18n';
+import DataTable, { TableColumn } from 'react-data-table-component';
+import baseroute from '../../baseroute';
+import ChannelLinks from '../../components/ChannelLinks';
+import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import { VTuberData } from '../../types/VTuberData';
+import { VTuberDisplayData } from '../../types/VTuberDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import '../../style/index.css';
 import '../../style/DataTableStyle.css';
-import baseroute from '../../baseroute';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -119,13 +120,13 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       <Fragment>
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
-          onFilter={(e: any) => setFilterName(e.target.value)}
+          onFilter={(e: any): void => setFilterName(e.target.value)}
           onClear={handleClearName}
           filterText={filterName}
         />
         <SearchBar
           placeholderText={props.dictionary.table.searchByGroup}
-          onFilter={(e: any) => setFilterGroup(e.target.value)}
+          onFilter={(e: any): void => setFilterGroup(e.target.value)}
           onClear={handleClearGroup}
           filterText={filterGroup}
         />
@@ -163,45 +164,20 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     getVTubers();
   }, []);
 
-  const conditionalRowStyles = [
-    {
-      when: (row: VTuberDisplayData) => row.activity === 'preparing',
-      style: {
-        backgroundColor: 'rgba(248, 148, 6, 0.9)',
-        color: 'white',
-        '&:hover': {
-          cursor: 'pointer',
-        },
-      },
-    },
-    {
-      when: (row: VTuberDisplayData) => row.activity === 'graduate',
-      style: {
-        backgroundColor: 'rgba(123, 123, 123, 0.9)',
-        color: 'white',
-        '&:hover': {
-          cursor: 'not-allowed',
-        },
-      },
-    },
-  ];
-
   return (
     <Fragment>
       <h1>
         <Text id="header.allVTubers">All VTubers</Text>
       </h1>
       <DataTable
+        {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        progressPending={pending}
-        progressComponent={props.dictionary.table.loading}
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
+        progressPending={pending}
         subHeader
         subHeaderComponent={searchBarComponent}
-        conditionalRowStyles={conditionalRowStyles}
-        fixedHeader
       />
     </Fragment>
   );
