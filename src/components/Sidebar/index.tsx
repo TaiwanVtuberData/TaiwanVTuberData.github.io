@@ -90,7 +90,7 @@ const Sidebar: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
             },
             {
               textID: 'header.groupList',
-              linkTo: `${SITE_URL_PREFIX}/group-calendar`,
+              linkTo: `${SITE_URL_PREFIX}/group-list`,
             },
             {
               textID: 'header.trendingVTubers',
