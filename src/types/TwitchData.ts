@@ -1,4 +1,4 @@
 export interface TwitchData {
-  id: string;
-  followerCount: number;
+  readonly id: string;
+  readonly followerCount: number;
 }

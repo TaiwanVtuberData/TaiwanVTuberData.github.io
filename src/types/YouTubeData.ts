@@ -1,4 +1,4 @@
 export interface YouTubeData {
-  id: string;
-  subscriberCount?: number;
+  readonly id: string;
+  readonly subscriberCount?: number;
 }

@@ -3,16 +3,16 @@ import { TwitchData } from './TwitchData';
 import { YouTubeData } from './YouTubeData';
 
 export interface VTuberData {
-  id: string;
-  activity: Activity;
-  name: string;
-  imgUrl?: string;
-  YouTube?: YouTubeData;
-  Twitch?: TwitchData;
-  group?: string;
-  nationality?: string;
+  readonly id: string;
+  readonly activity: Activity;
+  readonly name: string;
+  readonly imgUrl?: string;
+  readonly YouTube?: YouTubeData;
+  readonly Twitch?: TwitchData;
+  readonly group?: string;
+  readonly nationality?: string;
 }
 
 export interface VTuberDataResponse {
-  VTubers: Array<VTuberData>;
+  readonly VTubers: ReadonlyArray<VTuberData>;
 }
