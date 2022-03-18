@@ -9,6 +9,16 @@ h1 {
   font-weight: 700;
 }
 
+button {
+  background-color: transparent;
+  border: transparent;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
 .sidebarOverlay__r9CJz {
   position: fixed;
   top: 0;
@@ -34,16 +44,10 @@ h1 {
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 4vw;
-  height: 4vw;
-  padding: 0;
-  background-color: transparent;
-  border: transparent;
+  max-width: 5vw;
+  max-height: 5vw;
+  padding: 8px;
   z-index: 999;
-}
-
-.navButton__0SqJv:hover {
-  background-color: grey;
 }
 
 .navIcon__A\+BCb {
@@ -56,16 +60,10 @@ h1 {
   position: relative;
   top: 15px;
   left: 15px;
-  width: 4vw;
-  height: 4vw;
-  padding: 0;
-  background-color: transparent;
-  border: transparent;
+  max-width: 5vw;
+  max-height: 5vw;
+  padding: 8px;
   z-index: 999;
-}
-
-.xButton__oBNNg:hover {
-  background-color: grey;
 }
 
 .xIcon__IzjSm {
@@ -118,27 +116,6 @@ h1 {
   width: 100%;
 }
 
-.profileImg__DvgtD {
-  width: 66px;
-  height: 66px;
-  border: 1px solid black;
-  border-radius: 50%;
-}
-
-@media screen and (max-width: 1280px) {
-  .profileImg__DvgtD {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .profileImg__DvgtD {
-    width: 33px;
-    height: 33px;
-  }
-}
-
 .YouTubeImg__LvwUa {
   content: url(/TaiwanVtuberData-Preact/e9de82b38d0f0c1f717a69f6d4a58f3d.png);
   width: 48px;
@@ -163,6 +140,27 @@ h1 {
   }
 }
 
+.profileImg__DvgtD {
+  width: 66px;
+  height: 66px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 1280px) {
+  .profileImg__DvgtD {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profileImg__DvgtD {
+    width: 33px;
+    height: 33px;
+  }
+}
+
 .textField__bDpXR {
   border: 3px solid #636363;
   border-radius: 5px;
@@ -174,10 +172,22 @@ h1 {
   border-radius: 5px;
 }
 
+.rdt_Table a {
+  background-color: transparent;
+  border: transparent;
+  text-decoration: none;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.rdt_Table a:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
 .notfound__Ecgkh {
   padding: 0 5%;
   margin: 100px 0;
 }
 
 
-/*# sourceMappingURL=ssr-bundle.fd9a1.css.map*/
+/*# sourceMappingURL=ssr-bundle.39f35.css.map*/
