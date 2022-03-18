@@ -10,6 +10,8 @@ import { GroupMemberDisplayData } from '../../types/GroupMemberDisplayData';
 import { VTuberData } from '../../types/VTuberData';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import * as Api from '../../services/ApiService';
+import '../../style/index.css';
+import '../../style/DataTableStyle.css';
 
 export interface GroupPageProps {
   groupName: string;

@@ -11,6 +11,7 @@ import { Text } from 'preact-i18n';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import '../../style/index.css';
+import '../../style/DataTableStyle.css';
 import baseroute from '../../baseroute';
 
 export interface AllVTubersPageProps {

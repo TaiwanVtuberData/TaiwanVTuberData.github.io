@@ -29,10 +29,6 @@
   z-index: 999;
 }
 
-.navButton:hover {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
 .navIcon {
   content: url(../../assets/icons/hamburger.png);
   width: 100%;
@@ -47,10 +43,6 @@
   max-height: 5vw;
   padding: 8px;
   z-index: 999;
-}
-
-.xButton:hover {
-  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .xIcon {
