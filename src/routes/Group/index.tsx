@@ -149,6 +149,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        progressComponent={props.dictionary.table.loading}
         progressPending={pending}
         subHeader
         subHeaderComponent={searchBarComponent}

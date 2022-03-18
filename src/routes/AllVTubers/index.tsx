@@ -175,6 +175,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         data={filteredData}
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
+        progressComponent={props.dictionary.table.loading}
         progressPending={pending}
         subHeader
         subHeaderComponent={searchBarComponent}
