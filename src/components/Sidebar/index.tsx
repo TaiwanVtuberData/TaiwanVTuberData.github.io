@@ -9,13 +9,13 @@ import {
 } from '../../types/LanguageOptions';
 import style from './style.module.css';
 
-export interface HeaderProps {
+export interface SidebarProps {
   siteUrlPrefix?: string;
   locale: validI18n;
   setLocale: StateUpdater<validI18n>;
 }
 
-const Sidebar: FunctionalComponent<HeaderProps> = (props: HeaderProps) => {
+const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const open = (): void => setSidebarOpen(true);
   const close = (): void => setSidebarOpen(false);
