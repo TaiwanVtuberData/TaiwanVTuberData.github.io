@@ -1,11 +1,11 @@
 {
-  "name": "preact-deploy",
-  "short_name": "preact-deploy",
+  "name": "Taiwan VTuber Data",
+  "short_name": "TW VT Data",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff",
-  "theme_color": "#673ab8",
+  "background_color": "#96A0FF",
+  "theme_color": "#F16FFF",
   "icons": [
     {
       "src": "./assets/icons/android-chrome-192x192.png",
