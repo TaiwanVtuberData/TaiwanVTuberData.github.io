@@ -74,8 +74,10 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       name: <Text id="table.group">Group</Text>,
       width: `calc(${profileImgColumnWidth}px-25%)`,
       wrap: true,
-      cell: (row: { group?: string }): h.JSX.Element | string =>
-        <a href={`${baseroute}/group/${row.group}`}>{row.group}</a> ?? '',
+      cell: (row: { group?: string }): h.JSX.Element | null =>
+        row.group !== undefined ? (
+          <a href={`${baseroute}/group/${row.group}`}>{row.group}</a>
+        ) : null,
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
