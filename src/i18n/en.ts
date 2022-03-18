@@ -15,6 +15,8 @@ const en: Dictionary = {
     graduateVTubers: 'Graduate VTubers',
     reportIssue: 'Data Posting/Report Issue',
     about: 'About',
+    group: 'Group',
+    memberList: 'Members',
   },
   table: {
     displayName: 'Name',

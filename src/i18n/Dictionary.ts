@@ -15,6 +15,8 @@ export interface Dictionary {
     graduateVTubers: string;
     reportIssue: string;
     about: string;
+    group: string;
+    memberList: string;
   };
   table: {
     displayName: string;

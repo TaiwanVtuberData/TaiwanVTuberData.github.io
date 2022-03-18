@@ -1,28 +1,28 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
-import DataTable, { TableColumn } from 'react-data-table-component';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import * as Api from '../../services/ApiService';
-import ProfileImage from '../../components/ProfileImage';
-import ChannelLinks from '../../components/ChannelLinks';
-import { VTuberData } from '../../types/VTuberData';
-import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
-import { VTuberDisplayData } from '../../types/VTuberDisplayData';
 import { Text } from 'preact-i18n';
+import { useEffect, useMemo, useState } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
+import ChannelLinks from '../../components/ChannelLinks';
+import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
-import '../../style/index.css';
-import baseroute from '../../baseroute';
+import { GroupMemberDisplayData } from '../../types/GroupMemberDisplayData';
+import { VTuberData } from '../../types/VTuberData';
+import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
+import * as Api from '../../services/ApiService';
 
-export interface AllVTubersPageProps {
+export interface GroupPageProps {
+  groupName: string;
   dictionary: Dictionary;
 }
 
-const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
-  props: AllVTubersPageProps
+const GroupPage: FunctionalComponent<GroupPageProps> = (
+  props: GroupPageProps
 ) => {
-  document.title = `${props.dictionary.header.allVTubers} | ${props.dictionary.header.title}`;
+  document.title = `${props.groupName} | ${props.dictionary.header.title}`;
+
   const profileImgColumnWidth: number = 75 as const;
-  const columns: Array<TableColumn<VTuberDisplayData>> = [
+  const columns: Array<TableColumn<GroupMemberDisplayData>> = [
     {
       name: '',
       width: `${profileImgColumnWidth}px`,
@@ -31,20 +31,20 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: `calc(${profileImgColumnWidth}px-25%)`,
+      width: `calc(${profileImgColumnWidth}px-30%)`,
       wrap: true,
       selector: (row: { name: string }): string => row.name,
     },
     {
       name: <Text id="table.links">Links</Text>,
-      width: `calc(${profileImgColumnWidth}px-10%)`,
+      width: `calc(${profileImgColumnWidth}px-15%)`,
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
+      width: `calc(${profileImgColumnWidth}px-20%)`,
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
@@ -60,7 +60,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
+      width: `calc(${profileImgColumnWidth}px-20%)`,
       selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
@@ -69,48 +69,28 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       sortable: true,
     },
     {
-      name: <Text id="table.group">Group</Text>,
-      width: `calc(${profileImgColumnWidth}px-25%)`,
-      wrap: true,
-      cell: (row: { group?: string }): h.JSX.Element | string =>
-        <a href={`${baseroute}/group/${row.group}`}>{row.group}</a> ?? '',
-    },
-    {
       name: <Text id="table.nationality">Nationality</Text>,
-      width: `calc(${profileImgColumnWidth}px-10%)`,
+      width: `calc(${profileImgColumnWidth}px-15%)`,
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
     },
   ];
 
   // search filter
-  const [data, setData] = useState<Array<VTuberDisplayData>>([]);
+  const [data, setData] = useState<Array<GroupMemberDisplayData>>([]);
   const [filterName, setFilterName] = useState<string>('');
-  const [filterGroup, setFilterGroup] = useState<string>('');
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
-  const filteredData = data
-    .filter(
-      (item) =>
-        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
-    )
-    .filter((item) => {
-      if (item.group === undefined) return true;
-      return item.group.toLowerCase().includes(filterGroup.toLowerCase());
-    });
+  const filteredData = data.filter(
+    (item) =>
+      item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
+  );
 
   const searchBarComponent = useMemo(() => {
     const handleClearName = (): void => {
       if (filterName) {
         setResetPaginationToggle(!resetPaginationToggle);
         setFilterName('');
-      }
-    };
-
-    const handleClearGroup = (): void => {
-      if (filterGroup) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterGroup('');
       }
     };
 
@@ -122,17 +102,11 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
           onClear={handleClearName}
           filterText={filterName}
         />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByGroup}
-          onFilter={(e: any) => setFilterGroup(e.target.value)}
-          onClear={handleClearGroup}
-          filterText={filterGroup}
-        />
       </Fragment>
     );
-  }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
+  }, [filterName, resetPaginationToggle, props.dictionary]);
 
-  const dataToDisplayData = (e: VTuberData): VTuberDisplayData => ({
+  const dataToDisplayData = (e: VTuberData): GroupMemberDisplayData => ({
     id: e.id,
     profileImg: ProfileImage({ imgUrl: e.imgUrl }),
     name: e.name,
@@ -144,7 +118,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     YouTubeSubscriberCount: e.YouTube?.subscriberCount,
     hasTwitch: e.Twitch !== undefined,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    group: e.group,
     nationality: e.nationality,
     activity: e.activity,
   });
@@ -152,7 +125,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getVTubers().then((res) => {
+    await Api.getGroupVTubers(props.groupName).then((res) => {
       setData(res.data.VTubers.map((e) => dataToDisplayData(e)));
       setPending(false);
     });
@@ -164,7 +137,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
 
   const conditionalRowStyles = [
     {
-      when: (row: VTuberDisplayData) => row.activity === 'preparing',
+      when: (row: GroupMemberDisplayData) => row.activity === 'preparing',
       style: {
         backgroundColor: 'rgba(248, 148, 6, 0.9)',
         color: 'white',
@@ -174,7 +147,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       },
     },
     {
-      when: (row: VTuberDisplayData) => row.activity === 'graduate',
+      when: (row: GroupMemberDisplayData) => row.activity === 'graduate',
       style: {
         backgroundColor: 'rgba(123, 123, 123, 0.9)',
         color: 'white',
@@ -188,7 +161,9 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   return (
     <Fragment>
       <h1>
-        <Text id="header.allVTubers">All VTubers</Text>
+        <Text id="header.group">Group</Text>
+        <span class="highlightText"> {props.groupName} </span>
+        <Text id="header.memberList">members</Text>
       </h1>
       <DataTable
         columns={columns}
@@ -206,4 +181,4 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   );
 };
 
-export default AllVTubersPage;
+export default GroupPage;

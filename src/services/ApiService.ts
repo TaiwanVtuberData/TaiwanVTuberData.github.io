@@ -39,3 +39,9 @@ const AxiosGetWrapper = async <DataType>(
 export const getVTubers = (): Promise<AxiosResponse<VTuberDataResponse>> => {
   return AxiosGetWrapper<VTuberDataResponse>('/vtubers.json');
 };
+
+export const getGroupVTubers = (
+  group: string
+): Promise<AxiosResponse<VTuberDataResponse>> => {
+  return AxiosGetWrapper<VTuberDataResponse>(`/groups/${group}/vtubers.json`);
+};

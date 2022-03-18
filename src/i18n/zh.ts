@@ -15,6 +15,8 @@ const zh: Dictionary = {
     graduateVTubers: '近期畢業',
     reportIssue: '資料登載/錯誤回報',
     about: '關於',
+    group: '團體',
+    memberList: '成員列表',
   },
   table: {
     displayName: '名稱',
