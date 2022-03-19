@@ -74,7 +74,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     {
       name: <Text id="table.group">Group</Text>,
       width: `calc(${profileImgColumnWidth}px-25%)`,
-      wrap: true,
       cell: (row: { group?: string }): h.JSX.Element | null =>
         row.group !== undefined ? (
           <a

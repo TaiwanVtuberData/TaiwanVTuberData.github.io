@@ -27,8 +27,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
   const columns: Array<TableColumn<GroupDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '10%',
-      wrap: true,
+      width: '20%',
       sortable: true,
       sortFunction: NameSort,
       cell: (row: { name: string }): h.JSX.Element => (
