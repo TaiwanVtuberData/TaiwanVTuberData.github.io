@@ -27,6 +27,13 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
 
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
+      name: '#',
+      width: '70px',
+      wrap: false,
+      selector: (row: { ranking: number }): number => row.ranking,
+      sortable: true,
+    },
+    {
       name: '',
       width: '75px',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
@@ -146,7 +153,8 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
   }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
 
   const dataToDisplayData = (
-    e: VTuberPopularityData
+    e: VTuberPopularityData,
+    ranking: number
   ): VTuberPopularityDisplayData => ({
     id: e.id,
     profileImg: ProfileImage({ imgUrl: e.imgUrl }),
@@ -163,16 +171,18 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     nationality: e.nationality,
     activity: e.activity,
     popularity: e.popularity,
+    ranking: ranking,
   });
 
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
     await Api.getPopularVTubers().then((res) => {
+      // thanks to JavaScript sorting being mutable, I have to convert ReadonlyArray to Array first
       setData(
-        res.data.VTubers.map((e) => dataToDisplayData(e)).sort(
-          (a, b) => b.popularity - a.popularity
-        )
+        res.data.VTubers.map((e) => e)
+          .sort((a, b) => b.popularity - a.popularity)
+          .map((e, index) => dataToDisplayData(e, index + 1))
       );
       setPending(false);
     });
