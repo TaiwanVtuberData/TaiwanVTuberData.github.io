@@ -13,6 +13,7 @@ import zh from '../i18n/zh';
 import { useEffect, useState } from 'preact/hooks';
 import { validI18n } from '../types/LanguageOptions';
 import { Dictionary } from '../i18n/Dictionary';
+import TrendingVTubersPage from '../routes/TrendingVTubers';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>('zh');
@@ -45,6 +46,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/group-list`}
             dictionary={definition}
             component={GroupListPage}
+          />
+          <Route
+            path={`${baseroute}/trending-vtubers`}
+            dictionary={definition}
+            component={TrendingVTubersPage}
           />
           <Route
             path={`${baseroute}/group/:groupName`}
