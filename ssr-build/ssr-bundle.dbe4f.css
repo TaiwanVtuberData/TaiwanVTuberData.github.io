@@ -196,16 +196,55 @@ button:hover {
   border-radius: 5px;
 }
 
-.rdt_Table a {
-  background-color: transparent;
-  border: transparent;
+.x4dKXRdnDI9qgFfe4BsDUQ\=\= {
+  background-color: #e6e6e6;
   text-decoration: none;
-  color: #000000;
-  background-color: rgba(255, 255, 255, 0.12);
+  color: black;
+  padding: 5px;
+  border: 3px solid #636363;
+  border-radius: 5px;
 }
 
-.rdt_Table a:hover {
-  background-color: rgba(0, 0, 0, 0.12);
+.x4dKXRdnDI9qgFfe4BsDUQ\=\=:hover {
+  background-color: #f1f1f1;
+}
+
+.profileGrid__glJEL {
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-row: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .profileGrid__glJEL {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* copied from https://www.w3schools.com/css/css_tooltip.asp */
+.tooltip__fpzpj {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip__fpzpj .tooltipText__hC64z {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip__fpzpj:hover .tooltipText__hC64z {
+  visibility: visible;
 }
 
 .notfound__Ecgkh {
@@ -214,4 +253,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.8a80e.css.map*/
+/*# sourceMappingURL=ssr-bundle.dbe4f.css.map*/
