@@ -1,4 +1,4 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
+import { FunctionalComponent, h } from 'preact';
 import style from './style.module.css';
 
 export interface SearchBarProps {
@@ -11,7 +11,7 @@ export interface SearchBarProps {
 const SearchBar: FunctionalComponent<SearchBarProps> = (
   props: SearchBarProps
 ): h.JSX.Element => (
-  <Fragment>
+  <div>
     <input
       type="text"
       class={style.textField}
@@ -23,7 +23,7 @@ const SearchBar: FunctionalComponent<SearchBarProps> = (
     <button type="button" class={style.button} onClick={props.onClear}>
       X
     </button>
-  </Fragment>
+  </div>
 );
 
 export default SearchBar;

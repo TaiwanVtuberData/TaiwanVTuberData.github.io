@@ -124,7 +124,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     };
 
     return (
-      <Fragment>
+      <div class={tableStyle.searchBarGroup}>
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any): void => setFilterName(e.target.value)}
@@ -137,7 +137,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
           onClear={handleClearGroup}
           filterText={filterGroup}
         />
-      </Fragment>
+      </div>
     );
   }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
 

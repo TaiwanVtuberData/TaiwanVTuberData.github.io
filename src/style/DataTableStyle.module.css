@@ -10,3 +10,7 @@
 .groupLink:hover {
   background-color: #f1f1f1;
 }
+
+.searchBarGroup > * {
+  margin: 1px;
+}
