@@ -38,7 +38,11 @@ const App: FunctionalComponent = () => {
           setLocale={setLocale}
         />
         <Router>
-          <Home path={`${baseroute}/`} />
+          <Route
+            path={`${baseroute}/`}
+            dictionary={definition}
+            component={Home}
+          />
           <Route
             path={`${baseroute}/all-vtubers`}
             dictionary={definition}
