@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { VTuberData } from './VTuberData';
 
 export interface GroupDisplayData {
   id: string;
@@ -7,5 +7,5 @@ export interface GroupDisplayData {
   averageSubscriberCount: number;
   totalSubscriberCount: number;
   memberCount: number;
-  memberList: h.JSX.Element | null;
+  memberList: ReadonlyArray<VTuberData>;
 }

@@ -28,6 +28,7 @@ const en: Dictionary = {
     hiddenCount: 'hidden',
     searchByDisplayName: 'Search by name',
     searchByGroup: 'Search by group',
+    searchByGroupMember: 'Search by group member',
     loading: 'Loading...',
     popularity: 'Popularity',
     averageSubscriberCount: 'Average Subscribers',

@@ -28,6 +28,7 @@ const zh: Dictionary = {
     hiddenCount: '未顯示',
     searchByDisplayName: '依名稱搜尋',
     searchByGroup: '依團體搜尋',
+    searchByGroupMember: '依團體成員搜尋',
     loading: '載入中...',
     popularity: '熱度',
     averageSubscriberCount: '平均訂閱人數',

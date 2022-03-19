@@ -69,20 +69,37 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     {
       name: <Text id="table.memberList">Members</Text>,
       width: `25%`,
-      cell: (row: { memberList: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.memberList,
+      cell: (row: {
+        memberList: ReadonlyArray<VTuberData>;
+      }): h.JSX.Element | null => (
+        <div class={style.profileGrid}>
+          {row.memberList.map((e) => (
+            <Profile key={e.id} VTuber={e} />
+          ))}
+        </div>
+      ),
     },
   ];
 
   // search filter
   const [data, setData] = useState<Array<GroupDisplayData>>([]);
   const [filterGroup, setFilterGroup] = useState<string>('');
+  const [filterGroupMember, setFilterGroupMember] = useState<string>('');
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
-  const filteredData = data.filter((item) => {
-    if (item.name === undefined) return true;
-    return item.name.toLowerCase().includes(filterGroup.toLowerCase());
-  });
+  const filteredData = data
+    .filter((item) => {
+      if (item.name === undefined) return true;
+      return item.name.toLowerCase().includes(filterGroup.toLowerCase());
+    })
+    .filter((item) => {
+      if (item.memberList === undefined) return true;
+      return item.memberList
+        .map((e) =>
+          e.name.toLowerCase().includes(filterGroupMember.toLowerCase())
+        )
+        .includes(true);
+    });
 
   const searchBarComponent = useMemo(() => {
     const handleClearGroup = (): void => {
@@ -92,17 +109,30 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       }
     };
 
+    const handleClearGroupMember = (): void => {
+      if (filterGroupMember) {
+        setResetPaginationToggle(!resetPaginationToggle);
+        setFilterGroupMember('');
+      }
+    };
+
     return (
-      <Fragment>
+      <div class={tableStyle.searchBarGroup}>
         <SearchBar
           placeholderText={props.dictionary.table.searchByGroup}
           onFilter={(e: any): void => setFilterGroup(e.target.value)}
           onClear={handleClearGroup}
           filterText={filterGroup}
         />
-      </Fragment>
+        <SearchBar
+          placeholderText={props.dictionary.table.searchByGroupMember}
+          onFilter={(e: any): void => setFilterGroupMember(e.target.value)}
+          onClear={handleClearGroupMember}
+          filterText={filterGroupMember}
+        />
+      </div>
     );
-  }, [filterGroup, resetPaginationToggle, props.dictionary]);
+  }, [filterGroup, filterGroupMember, resetPaginationToggle, props.dictionary]);
 
   const accumulator = (prev: number, current: VTuberData): number =>
     prev +
@@ -119,13 +149,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         : 0,
     totalSubscriberCount: e.members.reduce(accumulator, 0),
     memberCount: e.members.length,
-    memberList: (
-      <div class={style.profileGrid}>
-        {e.members.map((e) => (
-          <Profile key={e.id} VTuber={e} />
-        ))}
-      </div>
-    ),
+    memberList: e.members,
   });
 
   const [pending, setPending] = useState(true);

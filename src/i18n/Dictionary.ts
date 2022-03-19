@@ -28,6 +28,7 @@ export interface Dictionary {
     hiddenCount: string;
     searchByDisplayName: string;
     searchByGroup: string;
+    searchByGroupMember: string;
     loading: string;
     popularity: string;
     averageSubscriberCount: string;
