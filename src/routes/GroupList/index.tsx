@@ -27,7 +27,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
   const columns: Array<TableColumn<GroupDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '20%',
+      minWidth: '100px',
+      maxWidth: '150px',
       sortable: true,
       sortFunction: NameSort,
       cell: (row: { name: string }): h.JSX.Element => (
@@ -68,7 +69,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.memberList">Members</Text>,
-      width: `25%`,
+      width: `30%`,
       cell: (row: {
         memberList: ReadonlyArray<VTuberData>;
       }): h.JSX.Element | null => (
