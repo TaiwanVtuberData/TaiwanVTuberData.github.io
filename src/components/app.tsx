@@ -1,19 +1,20 @@
 import { FunctionalComponent, h } from 'preact';
+import { useEffect, useState } from 'preact/hooks';
 import { IntlProvider } from 'preact-i18n';
 import { Route, Router } from 'preact-router';
 import Sidebar from './Sidebar';
-import Home from '../routes/home';
-import AllVTubersPage from '../routes/AllVTubers';
-import GroupPage from '../routes/Group';
-import GroupListPage from '../routes/GroupList';
-import NotFoundPage from '../routes/notfound';
 import baseroute from '../baseroute';
+import { Dictionary } from '../i18n/Dictionary';
 import en from '../i18n/en';
 import zh from '../i18n/zh';
-import { useEffect, useState } from 'preact/hooks';
-import { validI18n } from '../types/LanguageOptions';
-import { Dictionary } from '../i18n/Dictionary';
+import Home from '../routes/home';
+import AllVTubersPage from '../routes/AllVTubers';
+import DebutVTubersPage from '../routes/DebutVTubers';
+import GroupPage from '../routes/Group';
+import GroupListPage from '../routes/GroupList';
 import TrendingVTubersPage from '../routes/TrendingVTubers';
+import NotFoundPage from '../routes/notfound';
+import { validI18n } from '../types/LanguageOptions';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>('zh');
@@ -51,6 +52,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/trending-vtubers`}
             dictionary={definition}
             component={TrendingVTubersPage}
+          />
+          <Route
+            path={`${baseroute}/debut-vtubers`}
+            dictionary={definition}
+            component={DebutVTubersPage}
           />
           <Route
             path={`${baseroute}/group/:groupName`}

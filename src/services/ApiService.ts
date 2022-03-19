@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { GroupDataResponse } from '../types/GroupData';
 import { VTuberDataResponse } from '../types/VTuberData';
+import { VTuberDebutDataResponse } from '../types/VTuberDebutData';
 import { VTuberPopularityDataResponse } from '../types/VTuberPopularityData';
 
 interface CommitDetail {
@@ -56,4 +57,10 @@ export const getPopularVTubers = (): Promise<
   AxiosResponse<VTuberPopularityDataResponse>
 > => {
   return AxiosGetWrapper<VTuberPopularityDataResponse>('/popular-vtubers.json');
+};
+
+export const getDebutVTubers = (): Promise<
+  AxiosResponse<VTuberDebutDataResponse>
+> => {
+  return AxiosGetWrapper<VTuberDebutDataResponse>('/debut-vtubers.json');
 };

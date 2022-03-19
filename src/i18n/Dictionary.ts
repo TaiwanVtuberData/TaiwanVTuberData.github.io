@@ -29,12 +29,14 @@ export interface Dictionary {
     searchByDisplayName: string;
     searchByGroup: string;
     searchByGroupMember: string;
+    searchByDate: string;
     loading: string;
     popularity: string;
     averageSubscriberCount: string;
     totalSubscriberCount: string;
     memberCount: string;
     memberList: string;
+    debutDate: string;
     paginationOptions: PaginationOptions;
   };
 }
