@@ -48,6 +48,7 @@ button:hover {
   height: 64px;
   padding: 8px;
   z-index: 999;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .navIcon__A\+BCb {
@@ -253,4 +254,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.dbe4f.css.map*/
+/*# sourceMappingURL=ssr-bundle.9dab9.css.map*/
