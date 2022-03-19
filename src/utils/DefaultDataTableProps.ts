@@ -9,7 +9,6 @@ const DefaultDataTableProps = <
   columns: [],
   data: [],
   conditionalRowStyles: ActivityRowStyles,
-  fixedHeader: true,
 });
 
 export default DefaultDataTableProps;

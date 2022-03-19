@@ -151,6 +151,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        fixedHeader
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={props.dictionary.table.loading}

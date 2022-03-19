@@ -182,6 +182,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         columns={columns}
         data={filteredData}
         conditionalRowStyles={ActivityRowStyles}
+        fixedHeader
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={props.dictionary.table.loading}
