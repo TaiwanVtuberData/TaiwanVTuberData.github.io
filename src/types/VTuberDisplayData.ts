@@ -10,7 +10,7 @@ export interface VTuberDisplayData {
   YouTubeSubscriberCount?: number;
   hasTwitch: boolean;
   TwitchFollowerCount: number;
-  group?: string;
+  group: string;
   nationality?: string;
   activity: Activity;
 }

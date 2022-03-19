@@ -1,9 +1,9 @@
 import { ColumnSortFunction } from 'react-data-table-component/dist/src/DataTable/types';
-import { VTuberDisplayData } from '../types/VTuberDisplayData';
 
-export const YouTubeSubscriberCountSort: ColumnSortFunction<
-  VTuberDisplayData
-> = (rowA, rowB) => {
+export const YouTubeSubscriberCountSort: ColumnSortFunction<{
+  hasYouTube: boolean;
+  YouTubeSubscriberCount?: number;
+}> = (rowA, rowB) => {
   const aExist = rowA.hasYouTube;
   const bExist = rowB.hasYouTube;
 

@@ -70,8 +70,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
-      cell: (row: { group?: string }): h.JSX.Element | null =>
-        row.group !== undefined ? (
+      cell: (row: { group: string }): h.JSX.Element | null =>
+        row.group !== '' ? (
           <a
             class={tableStyle.groupLink}
             href={`${baseroute}/group/${row.group}`}
@@ -150,7 +150,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     YouTubeSubscriberCount: e.YouTube?.subscriberCount,
     hasTwitch: e.Twitch !== undefined,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    group: e.group,
+    group: e.group ?? '',
     nationality: e.nationality,
     activity: e.activity,
   });
