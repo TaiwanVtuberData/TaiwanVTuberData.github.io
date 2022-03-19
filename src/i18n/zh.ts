@@ -37,6 +37,7 @@ const zh: Dictionary = {
     memberCount: '成員人數',
     memberList: '成員',
     debutDate: '出道日期',
+    graduateDate: '畢業日期',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: '每頁數量',

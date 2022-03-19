@@ -37,6 +37,7 @@ const en: Dictionary = {
     memberCount: 'Member Count',
     memberList: 'Members',
     debutDate: 'Debut Date',
+    graduateDate: 'Graduation Date',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',

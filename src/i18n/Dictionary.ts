@@ -37,6 +37,7 @@ export interface Dictionary {
     memberCount: string;
     memberList: string;
     debutDate: string;
+    graduateDate: string;
     paginationOptions: PaginationOptions;
   };
 }
