@@ -1,0 +1,13 @@
+.profileGrid {
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-row: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .profileGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

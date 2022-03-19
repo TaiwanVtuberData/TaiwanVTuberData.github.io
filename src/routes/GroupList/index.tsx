@@ -10,10 +10,11 @@ import SearchBar from '../../components/SearchBar';
 import { GroupData } from '../../types/GroupData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
+import style from './style.module.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberData } from '../../types/VTuberData';
 import Profile from '../../components/Profile';
-import { GroupNameSort } from '../../utils/GroupNameSort';
+import { NameSort } from '../../utils/NameSort';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -26,10 +27,10 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
   const columns: Array<TableColumn<GroupDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '20%',
+      width: '10%',
       wrap: true,
       sortable: true,
-      sortFunction: GroupNameSort,
+      sortFunction: NameSort,
       cell: (row: { name: string }): h.JSX.Element => (
         <a class={tableStyle.groupLink} href={`${baseroute}/group/${row.name}`}>
           {row.name}
@@ -38,14 +39,14 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      width: `10%`,
+      width: `15%`,
       right: true,
       sortable: true,
       selector: (row: { popularity: number }): number => row.popularity,
     },
     {
       name: <Text id="table.averageSubscriberCount">Average Subscribers</Text>,
-      width: `10%`,
+      width: `15%`,
       right: true,
       sortable: true,
       selector: (row: { averageSubscriberCount: number }): number =>
@@ -53,7 +54,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.totalSubscriberCount">Total Subscribers</Text>,
-      width: `10%`,
+      width: `15%`,
       right: true,
       sortable: true,
       selector: (row: { totalSubscriberCount: number }): number =>
@@ -68,7 +69,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.memberList">Members</Text>,
-      width: `30%`,
+      width: `25%`,
       cell: (row: { memberList: h.JSX.Element | null }): h.JSX.Element | null =>
         row.memberList,
     },
@@ -115,16 +116,16 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     popularity: e.popularity,
     averageSubscriberCount:
       e.members.length !== 0
-        ? e.members.reduce(accumulator, 0) / e.members.length
+        ? Math.round(e.members.reduce(accumulator, 0) / e.members.length)
         : 0,
     totalSubscriberCount: e.members.reduce(accumulator, 0),
     memberCount: e.members.length,
     memberList: (
-      <Fragment>
+      <div class={style.profileGrid}>
         {e.members.map((e) => (
           <Profile key={e.id} VTuber={e} />
         ))}
-      </Fragment>
+      </div>
     ),
   });
 
