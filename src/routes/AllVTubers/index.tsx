@@ -24,30 +24,28 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   props: AllVTubersPageProps
 ) => {
   document.title = `${props.dictionary.header.allVTubers} | ${props.dictionary.header.title}`;
-  const profileImgColumnWidth: number = 75 as const;
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
-      width: `${profileImgColumnWidth}px`,
+      width: '75px',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
         row.profileImg,
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: `calc(${profileImgColumnWidth}px-25%)`,
       wrap: true,
       selector: (row: { name: string }): string => row.name,
     },
     {
       name: <Text id="table.links">Links</Text>,
-      width: `calc(${profileImgColumnWidth}px-10%)`,
+      minWidth: '50px',
+      maxWidth: '150px',
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
@@ -63,7 +61,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
       selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
@@ -73,7 +70,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
-      width: `calc(${profileImgColumnWidth}px-25%)`,
       cell: (row: { group?: string }): h.JSX.Element | null =>
         row.group !== undefined ? (
           <a
@@ -86,7 +82,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      width: `calc(${profileImgColumnWidth}px-10%)`,
+      minWidth: '25px',
+      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
     },

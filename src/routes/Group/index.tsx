@@ -25,30 +25,28 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
 ) => {
   document.title = `${props.groupName} | ${props.dictionary.header.title}`;
 
-  const profileImgColumnWidth: number = 75 as const;
   const columns: Array<TableColumn<GroupMemberDisplayData>> = [
     {
       name: '',
-      width: `${profileImgColumnWidth}px`,
+      width: '75px',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
         row.profileImg,
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: `calc(${profileImgColumnWidth}px-30%)`,
       wrap: true,
       selector: (row: { name: string }): string => row.name,
     },
     {
       name: <Text id="table.links">Links</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
+      minWidth: '50px',
+      maxWidth: '150px',
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
-      width: `calc(${profileImgColumnWidth}px-20%)`,
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
@@ -64,7 +62,6 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     },
     {
       name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      width: `calc(${profileImgColumnWidth}px-20%)`,
       selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
@@ -74,7 +71,8 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      width: `calc(${profileImgColumnWidth}px-15%)`,
+      minWidth: '25px',
+      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
     },
