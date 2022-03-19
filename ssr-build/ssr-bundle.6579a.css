@@ -210,17 +210,21 @@ button:hover {
   background-color: #f1f1f1;
 }
 
+.R1T8\+hwxvBovrVdGHizUFw\=\= > * {
+  margin: 1px;
+}
+
 .profileGrid__glJEL {
   width: auto;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(15, 1fr);
   grid-row: auto;
 }
 
 @media screen and (max-width: 800px) {
   .profileGrid__glJEL {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(10, 1fr);
   }
 }
 
@@ -254,4 +258,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.9dab9.css.map*/
+/*# sourceMappingURL=ssr-bundle.6579a.css.map*/
