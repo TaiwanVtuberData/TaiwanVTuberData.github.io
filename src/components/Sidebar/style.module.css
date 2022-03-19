@@ -27,6 +27,7 @@
   height: 64px;
   padding: 8px;
   z-index: 999;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .navIcon {
