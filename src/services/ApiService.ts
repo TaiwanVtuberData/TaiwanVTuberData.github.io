@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { GroupDataResponse } from '../types/GroupData';
 import { VTuberDataResponse } from '../types/VTuberData';
+import { VTuberPopularityDataResponse } from '../types/VTuberPopularityData';
 
 interface CommitDetail {
   sha: string;
@@ -49,4 +50,10 @@ export const getGroupVTubers = (
 
 export const getGroups = (): Promise<AxiosResponse<GroupDataResponse>> => {
   return AxiosGetWrapper<GroupDataResponse>(`/groups.json`);
+};
+
+export const getPopularVTubers = (): Promise<
+  AxiosResponse<VTuberPopularityDataResponse>
+> => {
+  return AxiosGetWrapper<VTuberPopularityDataResponse>('/popular-vtubers.json');
 };
