@@ -156,7 +156,11 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
 
   const getVTubers = async (): Promise<void> => {
     await Api.getGroups().then((res) => {
-      setData(res.data.groups.map((e) => dataToDisplayData(e)));
+      setData(
+        res.data.groups
+          .map((e) => dataToDisplayData(e))
+          .sort((a, b) => b.popularity - a.popularity) // sort in descending order
+      );
       setPending(false);
     });
   };
