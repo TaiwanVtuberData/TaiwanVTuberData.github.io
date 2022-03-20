@@ -35,6 +35,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
           value={locale}
           onChange={(event: any) => {
             setLocale(event.target.value);
+            close();
           }}
         >
           {languageOptions.map((e) => (
