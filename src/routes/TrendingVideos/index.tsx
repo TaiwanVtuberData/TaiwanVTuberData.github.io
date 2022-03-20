@@ -14,6 +14,7 @@ import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPo
 import VideoLink from '../../components/VideoLink';
 import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import DropDownList from '../../components/DropDownList';
+import baseroute from '../../baseroute';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
@@ -125,7 +126,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
           optionValue={optionValue}
           onChange={(e: any) => {
             console.log('e', e.target.value);
-            window.location.href = `/trending-videos/${e.target.value}`;
+            window.location.href = `${baseroute}/trending-videos/${e.target.value}`;
           }}
         />
         <SearchBar
