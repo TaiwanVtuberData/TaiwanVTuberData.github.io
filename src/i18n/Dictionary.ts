@@ -38,6 +38,10 @@ export interface Dictionary {
     memberList: string;
     debutDate: string;
     graduateDate: string;
+    _7DaysGrowth: string;
+    _30DaysGrowth: string;
+    atLeast: string;
+    noRecord: string;
     paginationOptions: PaginationOptions;
   };
 }

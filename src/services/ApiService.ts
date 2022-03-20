@@ -3,6 +3,7 @@ import { GroupDataResponse } from '../types/GroupData';
 import { VTuberDataResponse } from '../types/VTuberData';
 import { VTuberDebutDataResponse } from '../types/VTuberDebutData';
 import { VTuberGraduateDataResponse } from '../types/VTuberGraduateData';
+import { VTuberGrowthDataResponse } from '../types/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/VTuberPopularityData';
 
 interface CommitDetail {
@@ -58,6 +59,12 @@ export const getPopularVTubers = (): Promise<
   AxiosResponse<VTuberPopularityDataResponse>
 > => {
   return AxiosGetWrapper<VTuberPopularityDataResponse>('/popular-vtubers.json');
+};
+
+export const getGrowingVTubers = (): Promise<
+  AxiosResponse<VTuberGrowthDataResponse>
+> => {
+  return AxiosGetWrapper<VTuberGrowthDataResponse>('/growing-vtubers.json');
 };
 
 export const getDebutVTubers = (): Promise<

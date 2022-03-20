@@ -1,4 +1,4 @@
-import { VTuberDebutData } from '../types/VTuberDebutData';
+import { VTuberDebutData } from '../../types/VTuberDebutData';
 
 export const DebutVTubersMock: ReadonlyArray<VTuberDebutData> = [
   {

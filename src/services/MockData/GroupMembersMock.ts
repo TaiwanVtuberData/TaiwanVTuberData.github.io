@@ -1,4 +1,4 @@
-import { VTuberData } from '../types/VTuberData';
+import { VTuberData } from '../../types/VTuberData';
 
 export const CloudHorizonMock: ReadonlyArray<VTuberData> = [
   {

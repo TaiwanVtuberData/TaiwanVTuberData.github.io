@@ -38,6 +38,10 @@ const en: Dictionary = {
     memberList: 'Members',
     debutDate: 'Debut Date',
     graduateDate: 'Graduation Date',
+    _7DaysGrowth: '7 Days Growth (Percent)',
+    _30DaysGrowth: '30 Days Growth (Percent)',
+    atLeast: 'at least',
+    noRecord: 'no record',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',

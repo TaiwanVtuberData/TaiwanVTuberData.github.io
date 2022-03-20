@@ -3,12 +3,14 @@ import { GroupDataResponse } from '../types/GroupData';
 import { VTuberDataResponse } from '../types/VTuberData';
 import { VTuberDebutDataResponse } from '../types/VTuberDebutData';
 import { VTuberGraduateDataResponse } from '../types/VTuberGraduateData';
+import { VTuberGrowthDataResponse } from '../types/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/VTuberPopularityData';
-import { AllVTuberMock } from './AllVTubersMock';
-import { DebutVTubersMock } from './DebutVTubersMock';
-import { CloudHorizonMock } from './GroupMembersMock';
-import { GroupMock } from './GroupMock';
-import { PopularVTubersMock } from './PopularVTubersMock';
+import { AllVTuberMock } from './MockData/AllVTubersMock';
+import { DebutVTubersMock } from './MockData/DebutVTubersMock';
+import { CloudHorizonMock } from './MockData/GroupMembersMock';
+import { GroupMock } from './MockData/GroupMock';
+import { GrowingVTubersMock } from './MockData/GrowingVTubersMock';
+import { PopularVTubersMock } from './MockData/PopularVTubersMock';
 
 export function MockService(): void {
   createServer({
@@ -35,6 +37,13 @@ export function MockService(): void {
         '/:hash/api/v0/popular-vtubers.json',
         () => ({
           VTubers: PopularVTubersMock,
+        })
+      );
+
+      this.get<VTuberGrowthDataResponse>(
+        '/:hash/api/v0/growing-vtubers.json',
+        () => ({
+          VTubers: GrowingVTubersMock,
         })
       );
 

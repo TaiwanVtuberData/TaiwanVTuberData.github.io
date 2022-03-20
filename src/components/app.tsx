@@ -16,6 +16,7 @@ import TrendingVTubersPage from '../routes/TrendingVTubers';
 import NotFoundPage from '../routes/notfound';
 import { validI18n } from '../types/LanguageOptions';
 import GraduateVTubersPage from '../routes/GraduateVTubers';
+import GrowingVTubersPage from '../routes/GrowingVTubers';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>('zh');
@@ -57,6 +58,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/trending-vtubers`}
             dictionary={definition}
             component={TrendingVTubersPage}
+          />
+          <Route
+            path={`${baseroute}/growing-vtubers`}
+            dictionary={definition}
+            component={GrowingVTubersPage}
           />
           <Route
             path={`${baseroute}/debut-vtubers`}

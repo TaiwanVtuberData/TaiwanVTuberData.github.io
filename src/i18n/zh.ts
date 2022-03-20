@@ -38,6 +38,10 @@ const zh: Dictionary = {
     memberList: '成員',
     debutDate: '出道日期',
     graduateDate: '畢業日期',
+    _7DaysGrowth: '7 日成長 (幅度)',
+    _30DaysGrowth: '30 日成長 (幅度)',
+    atLeast: '至少',
+    noRecord: '無紀錄',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: '每頁數量',
