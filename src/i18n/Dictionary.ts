@@ -47,6 +47,8 @@ export interface Dictionary {
     _30DaysGrowth: string;
     atLeast: string;
     noRecord: string;
+    noDuplicate: string;
+    allVideos: string;
     paginationOptions: PaginationOptions;
   };
 }

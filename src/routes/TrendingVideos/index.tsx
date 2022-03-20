@@ -13,6 +13,7 @@ import { VideoPopularityData } from '../../types/ApiData/VideoPopularityData';
 import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPopularityDisplayData';
 import VideoLink from '../../components/VideoLink';
 import { getFormattedDateTime } from '../../utils/DateTimeUtils';
+import DropDownList from '../../components/DropDownList';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
@@ -102,8 +103,31 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
       }
     };
 
+    const optionValue: Array<{
+      option: h.JSX.Element;
+      value: Api.TrendingVideosModifier;
+    }> = [
+      {
+        option: <Text id="table.noDuplicate">One video per VTuber</Text>,
+        value: 'no-duplicate',
+      },
+      {
+        option: <Text id="table.allVideos">All videos</Text>,
+        value: 'all',
+      },
+    ];
+
     return (
       <div class={tableStyle.searchBarGroup}>
+        <DropDownList
+          tipText="選項"
+          value={props.modifier}
+          optionValue={optionValue}
+          onChange={(e: any) => {
+            console.log('e', e.target.value);
+            window.location.href = `/trending-videos/${e.target.value}`;
+          }}
+        />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any): void => setFilterName(e.target.value)}
@@ -118,7 +142,13 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         />
       </div>
     );
-  }, [filterName, filterTitle, resetPaginationToggle, props.dictionary]);
+  }, [
+    filterName,
+    filterTitle,
+    resetPaginationToggle,
+    props.modifier,
+    props.dictionary,
+  ]);
 
   const dataToDisplayData = (
     e: VideoPopularityData,
@@ -154,7 +184,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
 
   useEffect(() => {
     getVideos();
-  }, []);
+  }, [props.modifier]);
 
   return (
     <Fragment>

@@ -47,6 +47,8 @@ const en: Dictionary = {
     _30DaysGrowth: '30 Days Growth (Percent)',
     atLeast: 'at least',
     noRecord: 'no record',
+    noDuplicate: 'One video per VTuber',
+    allVideos: 'All videos',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',

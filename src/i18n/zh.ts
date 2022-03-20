@@ -47,6 +47,8 @@ const zh: Dictionary = {
     _30DaysGrowth: '30 日成長 (幅度)',
     atLeast: '至少',
     noRecord: '無紀錄',
+    noDuplicate: '同一 VTuber 一影片',
+    allVideos: '所有影片',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: '每頁數量',
