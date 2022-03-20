@@ -1,8 +1,10 @@
 import { h } from 'preact';
-import { Activity } from './Activity';
+import { Activity } from '../Common/Activity';
 
-export interface VTuberDisplayData {
+export interface VTuberGraduateDisplayData {
   id: string;
+  isToday: boolean;
+  graduateDate: string;
   profileImg: h.JSX.Element | null;
   name: string;
   channelLinks: h.JSX.Element | null;

@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { Activity } from './Activity';
+import { Activity } from '../Common/Activity';
 
 export interface VTuberDebutDisplayData {
   id: string;

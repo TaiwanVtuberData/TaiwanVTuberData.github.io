@@ -1,4 +1,4 @@
-import { VTuberData } from '../../types/VTuberData';
+import { VTuberData } from '../../types/ApiData/VTuberData';
 
 export const AllVTuberMock: ReadonlyArray<VTuberData> = [
   {

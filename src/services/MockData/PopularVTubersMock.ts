@@ -1,4 +1,4 @@
-import { VTuberPopularityData } from '../../types/VTuberPopularityData';
+import { VTuberPopularityData } from '../../types/ApiData/VTuberPopularityData';
 
 export const PopularVTubersMock: ReadonlyArray<VTuberPopularityData> = [
   {

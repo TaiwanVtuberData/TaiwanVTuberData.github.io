@@ -1,4 +1,4 @@
-import { GrowthData } from './GrowthData';
+import { GrowthData } from '../Common/GrowthData';
 import { YouTubeData } from './YouTubeData';
 
 export interface YouTubeGrowthData extends YouTubeData {

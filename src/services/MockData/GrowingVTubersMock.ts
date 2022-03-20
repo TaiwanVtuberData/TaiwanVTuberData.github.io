@@ -1,4 +1,4 @@
-import { VTuberGrowthData } from '../../types/VTuberGrowthData';
+import { VTuberGrowthData } from '../../types/ApiData/VTuberGrowthData';
 
 export const GrowingVTubersMock: ReadonlyArray<VTuberGrowthData> = [
   {

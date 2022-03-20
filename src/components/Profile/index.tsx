@@ -1,5 +1,5 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { VTuberData } from '../../types/VTuberData';
+import { FunctionalComponent, h } from 'preact';
+import { VTuberData } from '../../types/ApiData/VTuberData';
 import ProfileImage from '../ProfileImage';
 import style from './style.module.css';
 

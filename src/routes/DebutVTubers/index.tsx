@@ -13,8 +13,8 @@ import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSo
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { VTuberDebutDisplayData } from '../../types/VTuberDebutDisplayData';
-import { VTuberDebutData } from '../../types/VTuberDebutData';
+import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
+import { VTuberDebutData } from '../../types/ApiData/VTuberDebutData';
 import { getISODateString } from '../../utils/DateUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 

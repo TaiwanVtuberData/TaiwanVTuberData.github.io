@@ -1,7 +1,7 @@
 import { h } from 'preact';
-import { Activity } from './Activity';
+import { Activity } from '../Common/Activity';
 
-export interface GroupMemberDisplayData {
+export interface VTuberDisplayData {
   id: string;
   profileImg: h.JSX.Element | null;
   name: string;
@@ -10,6 +10,7 @@ export interface GroupMemberDisplayData {
   YouTubeSubscriberCount?: number;
   hasTwitch: boolean;
   TwitchFollowerCount: number;
+  group: string;
   nationality?: string;
   activity: Activity;
 }

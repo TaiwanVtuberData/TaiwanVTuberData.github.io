@@ -5,14 +5,14 @@ import DataTable, { TableColumn } from 'react-data-table-component';
 import baseroute from '../../baseroute';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
-import { GroupDisplayData } from '../../types/GroupDisplayData';
+import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData';
 import SearchBar from '../../components/SearchBar';
-import { GroupData } from '../../types/GroupData';
+import { GroupData } from '../../types/ApiData/GroupData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import style from './style.module.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
-import { VTuberData } from '../../types/VTuberData';
+import { VTuberData } from '../../types/ApiData/VTuberData';
 import Profile from '../../components/Profile';
 import { NameSort } from '../../utils/NameSort';
 

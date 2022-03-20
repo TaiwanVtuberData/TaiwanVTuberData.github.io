@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import { Activity } from './Activity';
-import { GrowthData } from './GrowthData';
+import { Activity } from '../Common/Activity';
+import { GrowthData } from '../Common/GrowthData';
 
 export interface GrowthDisplayData extends GrowthData {
   percentage: number;

@@ -1,4 +1,4 @@
-import { VTuberData } from './VTuberData';
+import { VTuberData } from '../ApiData/VTuberData';
 
 export interface GroupDisplayData {
   id: string;

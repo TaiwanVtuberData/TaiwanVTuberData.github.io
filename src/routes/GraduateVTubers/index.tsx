@@ -15,8 +15,8 @@ import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { getISODateString } from '../../utils/DateUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
-import { VTuberGraduateDisplayData } from '../../types/VTuberGraduateDisplayData';
-import { VTuberGraduateData } from '../../types/VTuberGraduateData';
+import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
+import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;

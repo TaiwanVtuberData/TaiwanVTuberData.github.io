@@ -15,9 +15,9 @@ import ActivityRowStyles from '../../style/ActivityRowStyles';
 import {
   GrowthDisplayData,
   VTuberGrowthDisplayData,
-} from '../../types/VTuberGrowthDisplayData';
-import { VTuberGrowthData } from '../../types/VTuberGrowthData';
-import { GrowthData } from '../../types/GrowthData';
+} from '../../types/TableDisplayData/VTuberGrowthDisplayData';
+import { VTuberGrowthData } from '../../types/ApiData/VTuberGrowthData';
+import { GrowthData } from '../../types/Common/GrowthData';
 import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../utils/GrowthSort';
 import { PrependSign } from '../../utils/NumberUtils';
 

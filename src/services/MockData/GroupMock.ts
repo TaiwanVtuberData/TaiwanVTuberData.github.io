@@ -1,4 +1,4 @@
-import { GroupData } from '../../types/GroupData';
+import { GroupData } from '../../types/ApiData/GroupData';
 import { CloudHorizonMock, MeridianProjectMock } from './GroupMembersMock';
 
 export const GroupMock: ReadonlyArray<GroupData> = [

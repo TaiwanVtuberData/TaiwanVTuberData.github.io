@@ -1,10 +1,10 @@
 import { createServer } from 'miragejs';
-import { GroupDataResponse } from '../types/GroupData';
-import { VTuberDataResponse } from '../types/VTuberData';
-import { VTuberDebutDataResponse } from '../types/VTuberDebutData';
-import { VTuberGraduateDataResponse } from '../types/VTuberGraduateData';
-import { VTuberGrowthDataResponse } from '../types/VTuberGrowthData';
-import { VTuberPopularityDataResponse } from '../types/VTuberPopularityData';
+import { GroupDataResponse } from '../types/ApiData/GroupData';
+import { VTuberDataResponse } from '../types/ApiData/VTuberData';
+import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
+import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
+import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
+import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
 import { AllVTuberMock } from './MockData/AllVTubersMock';
 import { DebutVTubersMock } from './MockData/DebutVTubersMock';
 import { CloudHorizonMock } from './MockData/GroupMembersMock';

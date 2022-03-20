@@ -1,4 +1,4 @@
-import { Activity } from './Activity';
+import { Activity } from '../Common/Activity';
 import { TwitchData } from './TwitchData';
 import { YouTubeData } from './YouTubeData';
 
