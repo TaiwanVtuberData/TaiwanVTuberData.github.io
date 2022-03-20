@@ -25,11 +25,16 @@ export interface Dictionary {
     TwitchFollowerCount: string;
     group: string;
     nationality: string;
+    title: string;
+    video: string;
+    viewCount: string;
+    uploadTime: string;
     hiddenCount: string;
     searchByDisplayName: string;
     searchByGroup: string;
     searchByGroupMember: string;
     searchByDate: string;
+    searchByTitle: string;
     loading: string;
     popularity: string;
     averageSubscriberCount: string;

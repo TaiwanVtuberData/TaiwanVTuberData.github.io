@@ -13,7 +13,7 @@ import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSo
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { getISODateString } from '../../utils/DateUtils';
+import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
 import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';

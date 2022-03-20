@@ -1,6 +1,6 @@
-import { getISODateString } from "../src/utils/DateUtils";
+import { getISODateString } from "../src/utils/DateTimeUtils";
 
-describe('DateUtils Test', () => {
+describe('getISODateString Test', () => {
     test('Expected new Date(\'2022-03-19\') to be parsed as \'2022-03-19\'', () => {
         const date = new Date('2022-03-19'); 
         expect(getISODateString(date, 8)).toBe('2022-03-19');

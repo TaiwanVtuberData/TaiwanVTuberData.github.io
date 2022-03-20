@@ -1,0 +1,19 @@
+import { FunctionalComponent, h } from 'preact';
+import style from './style.module.css';
+
+export interface VideoLinkProps {
+  thumbnailUrl: string;
+  videoUrl: string;
+}
+
+const VideoLink: FunctionalComponent<VideoLinkProps> = (
+  props: VideoLinkProps
+): h.JSX.Element => {
+  return (
+    <a href={props.videoUrl} target="_blank" rel="noopener noreferrer">
+      <img class={style.thumbnail} src={props.thumbnailUrl} loading="lazy" />
+    </a>
+  );
+};
+
+export default VideoLink;

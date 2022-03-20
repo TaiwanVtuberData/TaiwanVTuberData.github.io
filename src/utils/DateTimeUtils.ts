@@ -23,3 +23,19 @@ export const getISODateString = (
     prefixZero(date.getDate())
   );
 };
+
+export const getFormattedDateTime = (date: Date): string => {
+  return (
+    date.getFullYear() +
+    '-' +
+    prefixZero(date.getMonth() + 1) +
+    '-' +
+    prefixZero(date.getDate()) +
+    ' ' +
+    prefixZero(date.getHours()) +
+    ':' +
+    prefixZero(date.getMinutes()) +
+    ':' +
+    prefixZero(date.getSeconds())
+  );
+};

@@ -1,5 +1,6 @@
 import { createServer } from 'miragejs';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
+import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { VTuberDataResponse } from '../types/ApiData/VTuberData';
 import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
 import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
@@ -10,6 +11,7 @@ import { DebutVTubersMock } from './MockData/DebutVTubersMock';
 import { CloudHorizonMock } from './MockData/GroupMembersMock';
 import { GroupMock } from './MockData/GroupMock';
 import { GrowingVTubersMock } from './MockData/GrowingVTubersMock';
+import { PopularVideosMock } from './MockData/PopularVideosMock';
 import { PopularVTubersMock } from './MockData/PopularVTubersMock';
 
 export function MockService(): void {
@@ -58,6 +60,13 @@ export function MockService(): void {
         '/:hash/api/v0/graduate-vtubers.json',
         () => ({
           VTubers: [],
+        })
+      );
+
+      this.get<VideoPopularityDataResponse>(
+        '/:hash/api/v0/popular-videos.json',
+        () => ({
+          videos: PopularVideosMock,
         })
       );
     },

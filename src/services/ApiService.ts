@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
+import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { VTuberDataResponse } from '../types/ApiData/VTuberData';
 import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
 import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
@@ -77,4 +78,10 @@ export const getGraduateVTubers = (): Promise<
   AxiosResponse<VTuberGraduateDataResponse>
 > => {
   return AxiosGetWrapper<VTuberGraduateDataResponse>('/graduate-vtubers.json');
+};
+
+export const getPopularVideos = (): Promise<
+  AxiosResponse<VideoPopularityDataResponse>
+> => {
+  return AxiosGetWrapper<VideoPopularityDataResponse>('/popular-videos.json');
 };

@@ -15,7 +15,7 @@ import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
 import { VTuberDebutData } from '../../types/ApiData/VTuberDebutData';
-import { getISODateString } from '../../utils/DateUtils';
+import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 
 export interface DebutVTubersPageProps {
