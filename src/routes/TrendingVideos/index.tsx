@@ -16,6 +16,7 @@ import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
+  modifier: Api.TrendingVideosModifier;
 }
 
 const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
@@ -139,7 +140,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVideos = async (): Promise<void> => {
-    await Api.getPopularVideos().then((res) => {
+    await Api.getTrendingVideos(props.modifier).then((res) => {
       // thanks to JavaScript sorting being mutable, I have to convert ReadonlyArray to Array first
       setData(
         res.data.videos

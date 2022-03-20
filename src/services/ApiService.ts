@@ -80,8 +80,12 @@ export const getGraduateVTubers = (): Promise<
   return AxiosGetWrapper<VTuberGraduateDataResponse>('/graduate-vtubers.json');
 };
 
-export const getPopularVideos = (): Promise<
-  AxiosResponse<VideoPopularityDataResponse>
-> => {
-  return AxiosGetWrapper<VideoPopularityDataResponse>('/popular-videos.json');
+export type TrendingVideosModifier = 'all' | 'no-duplicate';
+
+export const getTrendingVideos = (
+  modifier: TrendingVideosModifier
+): Promise<AxiosResponse<VideoPopularityDataResponse>> => {
+  return AxiosGetWrapper<VideoPopularityDataResponse>(
+    `/trending-videos/${modifier}.json`
+  );
 };

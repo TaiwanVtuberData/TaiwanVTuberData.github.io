@@ -64,7 +64,14 @@ export function MockService(): void {
       );
 
       this.get<VideoPopularityDataResponse>(
-        '/:hash/api/v0/popular-videos.json',
+        '/:hash/api/v0/trending-videos/no-duplicate.json',
+        () => ({
+          videos: PopularVideosMock,
+        })
+      );
+
+      this.get<VideoPopularityDataResponse>(
+        '/:hash/api/v0/trending-videos/all.json',
         () => ({
           videos: PopularVideosMock,
         })

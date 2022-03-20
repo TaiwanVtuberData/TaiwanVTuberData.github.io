@@ -99,7 +99,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             },
             {
               textID: 'header.trendingVideos',
-              linkTo: `${SITE_URL_PREFIX}/trending-videos`,
+              linkTo: `${SITE_URL_PREFIX}/trending-videos/no-duplicate`,
             },
             {
               textID: 'header.growingVTubers',

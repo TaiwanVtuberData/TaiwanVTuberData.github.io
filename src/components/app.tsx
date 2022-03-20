@@ -61,7 +61,7 @@ const App: FunctionalComponent = () => {
             component={TrendingVTubersPage}
           />
           <Route
-            path={`${baseroute}/trending-videos`}
+            path={`${baseroute}/trending-videos/:modifier`}
             dictionary={definition}
             component={TrendingVideosPage}
           />
