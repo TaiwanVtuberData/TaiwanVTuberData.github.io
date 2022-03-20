@@ -1,3 +1,4 @@
 .thumbnail {
   max-width: 100%;
+  border: 1px solid black;
 }
