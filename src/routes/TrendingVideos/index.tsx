@@ -1,7 +1,10 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
-import DataTable, { TableColumn } from 'react-data-table-component';
+import DataTable, {
+  TableColumn,
+  TableStyles,
+} from 'react-data-table-component';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import SearchBar from '../../components/SearchBar';
@@ -53,7 +56,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     },
     {
       name: <Text id="table.video">Video</Text>,
-      width: '256px',
+      width: '200px',
       cell: (row: { videoLink: h.JSX.Element | null }): h.JSX.Element | null =>
         row.videoLink,
     },
@@ -187,6 +190,31 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     getVideos();
   }, [props.modifier]);
 
+  const customStyles: TableStyles = {
+    table: {
+      style: {
+        maxHeight: '80vh',
+      },
+    },
+    rows: {
+      style: {
+        minHeight: '36px', // override the row height
+      },
+    },
+    headCells: {
+      style: {
+        paddingLeft: '5px', // override the cell padding for head cells
+        paddingRight: '5px',
+      },
+    },
+    cells: {
+      style: {
+        paddingLeft: '5px', // override the cell padding for data cells
+        paddingRight: '5px',
+      },
+    },
+  };
+
   return (
     <Fragment>
       <h1>
@@ -196,6 +224,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        customStyles={customStyles}
         fixedHeader
         progressComponent={props.dictionary.table.loading}
         progressPending={pending}
