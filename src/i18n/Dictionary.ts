@@ -18,6 +18,7 @@ export interface Dictionary {
     group: string;
     memberList: string;
     top10: string;
+    YouTubeSubPlusTwitchFollowers: string;
   };
   table: {
     displayName: string;

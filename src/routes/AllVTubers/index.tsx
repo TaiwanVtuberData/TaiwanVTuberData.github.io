@@ -3,18 +3,16 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import baseroute from '../../baseroute';
-import ChannelLinks from '../../components/ChannelLinks';
-import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
-import { VTuberData } from '../../types/ApiData/VTuberData';
 import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
+import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransfrom';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -138,28 +136,11 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     );
   }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
 
-  const dataToDisplayData = (e: VTuberData): VTuberDisplayData => ({
-    id: e.id,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
-    name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
-    hasYouTube: e.YouTube !== undefined,
-    YouTubeSubscriberCount: e.YouTube?.subscriberCount,
-    hasTwitch: e.Twitch !== undefined,
-    TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    group: e.group ?? '',
-    nationality: e.nationality,
-    activity: e.activity,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
     await Api.getVTubers('all').then((res) => {
-      setData(res.data.VTubers.map((e) => dataToDisplayData(e)));
+      setData(res.data.VTubers.map((e) => VTuberBasicToDisplay(e)));
       setPending(false);
     });
   };

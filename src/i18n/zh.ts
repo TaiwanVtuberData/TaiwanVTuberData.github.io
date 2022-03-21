@@ -18,6 +18,7 @@ const zh: Dictionary = {
     group: '團體',
     memberList: '成員列表',
     top10: '前 10',
+    YouTubeSubPlusTwitchFollowers: 'YouTube 訂閱 + Twitch 追隨',
   },
   table: {
     displayName: '名稱',

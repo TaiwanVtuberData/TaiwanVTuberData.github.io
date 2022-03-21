@@ -18,6 +18,7 @@ const en: Dictionary = {
     group: 'Group',
     memberList: 'Members',
     top10: 'Top 10',
+    YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
   },
   table: {
     displayName: 'Name',
