@@ -14,7 +14,7 @@ const zh: Dictionary = {
     debutVTubers: '近期出道',
     graduateVTubers: '近期畢業',
     reportIssue: '資料登載/錯誤回報',
-    about: '關於',
+    about: '關於本站',
     group: '團體',
     memberList: '成員列表',
   },

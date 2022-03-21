@@ -18,6 +18,7 @@ import { validI18n } from '../types/LanguageOptions';
 import GraduateVTubersPage from '../routes/GraduateVTubers';
 import GrowingVTubersPage from '../routes/GrowingVTubers';
 import TrendingVideosPage from '../routes/TrendingVideos';
+import AboutPage from '../routes/About';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>('zh');
@@ -84,6 +85,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/group/:groupName`}
             dictionary={definition}
             component={GroupPage}
+          />
+          <Route
+            path={`${baseroute}/about`}
+            dictionary={definition}
+            component={AboutPage}
           />
           <NotFoundPage default />
         </Router>
