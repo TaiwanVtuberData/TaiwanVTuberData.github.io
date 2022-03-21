@@ -220,6 +220,8 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
         data={filteredData}
         conditionalRowStyles={ActivityRowStyles}
         fixedHeader
+        pagination
+        paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={props.dictionary.table.loading}
         progressPending={pending}
         subHeader
