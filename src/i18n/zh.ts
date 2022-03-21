@@ -17,6 +17,7 @@ const zh: Dictionary = {
     about: '關於本站',
     group: '團體',
     memberList: '成員列表',
+    top10: '前 10',
   },
   table: {
     displayName: '名稱',

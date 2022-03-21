@@ -17,6 +17,7 @@ export interface Dictionary {
     about: string;
     group: string;
     memberList: string;
+    top10: string;
   };
   table: {
     displayName: string;

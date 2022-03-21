@@ -17,6 +17,7 @@ const en: Dictionary = {
     about: 'About The Site',
     group: 'Group',
     memberList: 'Members',
+    top10: 'Top 10',
   },
   table: {
     displayName: 'Name',
