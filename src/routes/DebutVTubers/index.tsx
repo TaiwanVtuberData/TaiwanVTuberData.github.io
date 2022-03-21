@@ -3,8 +3,6 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import baseroute from '../../baseroute';
-import ChannelLinks from '../../components/ChannelLinks';
-import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
@@ -14,9 +12,9 @@ import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
-import { VTuberDebutData } from '../../types/ApiData/VTuberDebutData';
 import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
+import { VTuberDebutToDisplay } from '../../types/ApiToDisplayData/DebutTransform';
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -171,28 +169,6 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     props.dictionary,
   ]);
 
-  const dataToDisplayData = (
-    e: VTuberDebutData,
-    todayDate: string
-  ): VTuberDebutDisplayData => ({
-    id: e.id,
-    isToday: e.debutDate === todayDate,
-    debutDate: e.debutDate,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
-    name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
-    hasYouTube: e.YouTube !== undefined,
-    YouTubeSubscriberCount: e.YouTube?.subscriberCount,
-    hasTwitch: e.Twitch !== undefined,
-    TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    group: e.group ?? '',
-    nationality: e.nationality,
-    activity: e.activity,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
@@ -201,7 +177,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.debutDate.localeCompare(a.debutDate))
-          .map((e) => dataToDisplayData(e, todayDate))
+          .map((e) => VTuberDebutToDisplay(e, todayDate))
       );
       setPending(false);
     });
