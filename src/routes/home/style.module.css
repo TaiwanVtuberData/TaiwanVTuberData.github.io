@@ -1,0 +1,17 @@
+.tableGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .tableGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: auto;
+  }
+}
+
+.tableGrid .tableItem {
+  margin: 10px;
+}

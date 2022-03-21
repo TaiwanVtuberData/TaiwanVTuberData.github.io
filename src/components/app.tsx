@@ -7,7 +7,7 @@ import baseroute from '../baseroute';
 import { Dictionary } from '../i18n/Dictionary';
 import en from '../i18n/en';
 import zh from '../i18n/zh';
-import Home from '../routes/home';
+import HomePage from '../routes/home';
 import AllVTubersPage from '../routes/AllVTubers';
 import DebutVTubersPage from '../routes/DebutVTubers';
 import GroupPage from '../routes/Group';
@@ -44,7 +44,7 @@ const App: FunctionalComponent = () => {
           <Route
             path={`${baseroute}/`}
             dictionary={definition}
-            component={Home}
+            component={HomePage}
           />
           <Route
             path={`${baseroute}/all-vtubers`}
