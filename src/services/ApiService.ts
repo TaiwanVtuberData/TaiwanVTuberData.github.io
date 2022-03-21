@@ -42,8 +42,12 @@ const AxiosGetWrapper = async <DataType>(
   return axios.get<DataType>(url);
 };
 
-export const getVTubers = (): Promise<AxiosResponse<VTuberDataResponse>> => {
-  return AxiosGetWrapper<VTuberDataResponse>('/vtubers.json');
+export type GetVTubersModifier = '10' | 'all';
+
+export const getVTubers = (
+  modifier: GetVTubersModifier
+): Promise<AxiosResponse<VTuberDataResponse>> => {
+  return AxiosGetWrapper<VTuberDataResponse>(`/vtubers/${modifier}.json`);
 };
 
 export const getGroupVTubers = (
@@ -56,28 +60,44 @@ export const getGroups = (): Promise<AxiosResponse<GroupDataResponse>> => {
   return AxiosGetWrapper<GroupDataResponse>(`/groups.json`);
 };
 
-export const getPopularVTubers = (): Promise<
-  AxiosResponse<VTuberPopularityDataResponse>
-> => {
-  return AxiosGetWrapper<VTuberPopularityDataResponse>('/popular-vtubers.json');
+export type GetTrendingVTubersModifier = '10' | '100';
+
+export const getTrendingVTubers = (
+  modifier: GetTrendingVTubersModifier
+): Promise<AxiosResponse<VTuberPopularityDataResponse>> => {
+  return AxiosGetWrapper<VTuberPopularityDataResponse>(
+    `/trending-vtubers/${modifier}.json`
+  );
 };
 
-export const getGrowingVTubers = (): Promise<
-  AxiosResponse<VTuberGrowthDataResponse>
-> => {
-  return AxiosGetWrapper<VTuberGrowthDataResponse>('/growing-vtubers.json');
+export type GetGrowingVTubersModifier = '10' | '100' | 'all';
+
+export const getGrowingVTubers = (
+  modifier: GetGrowingVTubersModifier
+): Promise<AxiosResponse<VTuberGrowthDataResponse>> => {
+  return AxiosGetWrapper<VTuberGrowthDataResponse>(
+    `/growing-vtubers/${modifier}.json`
+  );
 };
 
-export const getDebutVTubers = (): Promise<
-  AxiosResponse<VTuberDebutDataResponse>
-> => {
-  return AxiosGetWrapper<VTuberDebutDataResponse>('/debut-vtubers.json');
+export type GetDebutVTubersModifier = 'next-7-days' | 'recent';
+
+export const getDebutVTubers = (
+  modifier: GetDebutVTubersModifier
+): Promise<AxiosResponse<VTuberDebutDataResponse>> => {
+  return AxiosGetWrapper<VTuberDebutDataResponse>(
+    `/debut-vtubers/${modifier}.json`
+  );
 };
 
-export const getGraduateVTubers = (): Promise<
-  AxiosResponse<VTuberGraduateDataResponse>
-> => {
-  return AxiosGetWrapper<VTuberGraduateDataResponse>('/graduate-vtubers.json');
+export type GetGraduateVTubersModifier = 'next-7-days' | 'recent';
+
+export const getGraduateVTubers = (
+  modifier: GetGraduateVTubersModifier
+): Promise<AxiosResponse<VTuberGraduateDataResponse>> => {
+  return AxiosGetWrapper<VTuberGraduateDataResponse>(
+    `/graduate-vtubers/${modifier}.json`
+  );
 };
 
 export type TrendingVideosModifier = 'all' | 'no-duplicate';

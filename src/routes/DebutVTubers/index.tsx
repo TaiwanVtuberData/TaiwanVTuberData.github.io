@@ -197,7 +197,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
 
   const getVTubers = async (): Promise<void> => {
     const todayDate: string = getISODateString(new Date(), 8);
-    await Api.getDebutVTubers().then((res) => {
+    await Api.getDebutVTubers('recent').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.debutDate.localeCompare(a.debutDate))

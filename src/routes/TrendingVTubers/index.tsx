@@ -177,7 +177,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getPopularVTubers().then((res) => {
+    await Api.getTrendingVTubers('100').then((res) => {
       // thanks to JavaScript sorting being mutable, I have to convert ReadonlyArray to Array first
       setData(
         res.data.VTubers.map((e) => e)

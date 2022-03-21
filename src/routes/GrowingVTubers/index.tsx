@@ -195,7 +195,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getGrowingVTubers().then((res) => {
+    await Api.getGrowingVTubers('100').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .map((e) => dataToDisplayData(e))

@@ -197,7 +197,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
 
   const getVTubers = async (): Promise<void> => {
     const todayDate: string = getISODateString(new Date(), 8);
-    await Api.getGraduateVTubers().then((res) => {
+    await Api.getGraduateVTubers('recent').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.graduateDate.localeCompare(a.graduateDate))
