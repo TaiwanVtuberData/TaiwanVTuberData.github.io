@@ -2,7 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import { Dictionary } from '../../../i18n/Dictionary';
 import * as Api from '../../../services/ApiService';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
@@ -10,13 +9,7 @@ import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
 import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/PopularityTransform';
 
-export interface TrendingVTubersTableProps {
-  dictionary: Dictionary;
-}
-
-const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
-  props: TrendingVTubersTableProps
-) => {
+const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
       name: '#',
@@ -76,7 +69,7 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
         data={data}
         conditionalRowStyles={ActivityRowStyles}
         fixedHeader
-        progressComponent={props.dictionary.table.loading}
+        progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}
       />
     </Fragment>

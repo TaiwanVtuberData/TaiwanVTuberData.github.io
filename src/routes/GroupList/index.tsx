@@ -182,7 +182,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         fixedHeader
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
-        progressComponent={props.dictionary.table.loading}
+        progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}
         subHeader
         subHeaderComponent={searchBarComponent}

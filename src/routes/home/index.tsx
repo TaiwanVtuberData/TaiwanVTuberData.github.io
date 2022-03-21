@@ -20,10 +20,10 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
       </h1>
       <div class={style.tableGrid}>
         <div class={style.tableItem}>
-          <TrendingVTubersTable dictionary={props.dictionary} />
+          <TrendingVTubersTable />
         </div>
         <div class={style.tableItem}>
-          <DebutVTubersTable dictionary={props.dictionary} />
+          <DebutVTubersTable />
         </div>
         <div class={style.tableItem}>123</div>
         <div class={style.tableItem}>123</div>

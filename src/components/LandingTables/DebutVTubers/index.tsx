@@ -2,7 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import { Dictionary } from '../../../i18n/Dictionary';
 import * as Api from '../../../services/ApiService';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
@@ -12,13 +11,7 @@ import { getISODateString } from '../../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
 import { VTuberDebutToDisplay } from '../../../types/ApiToDisplayData/DebutTransform';
 
-export interface DebutVTubersTableProps {
-  dictionary: Dictionary;
-}
-
-const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
-  props: DebutVTubersTableProps
-) => {
+const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
@@ -83,7 +76,7 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
         )}
         fixedHeader
         progressPending={pending}
-        progressComponent={props.dictionary.table.loading}
+        progressComponent={<Text id="table.loading">Loading...</Text>}
       />
     </Fragment>
   );
