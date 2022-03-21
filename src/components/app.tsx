@@ -14,14 +14,35 @@ import GroupPage from '../routes/Group';
 import GroupListPage from '../routes/GroupList';
 import TrendingVTubersPage from '../routes/TrendingVTubers';
 import NotFoundPage from '../routes/notfound';
-import { validI18n } from '../types/LanguageOptions';
+import { validI18n, validI18nArray } from '../types/LanguageOptions';
 import GraduateVTubersPage from '../routes/GraduateVTubers';
 import GrowingVTubersPage from '../routes/GrowingVTubers';
 import TrendingVideosPage from '../routes/TrendingVideos';
 import AboutPage from '../routes/About';
 
 const App: FunctionalComponent = () => {
-  const [locale, setLocale] = useState<validI18n>('zh');
+  const getCookieLocale = (): validI18n => {
+    // https://www.w3schools.com/js/js_cookies.asp
+    const target = 'locale=' as const;
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf('locale=') == 0) {
+        const parsedLocale = c.substring(target.length, c.length);
+        if (validI18nArray.includes(parsedLocale)) return parsedLocale;
+
+        return 'zh';
+      }
+    }
+    return 'zh';
+  };
+
+  const currentLocale: validI18n = getCookieLocale();
+  const [locale, setLocale] = useState<validI18n>(currentLocale);
   const [definition, setDefinition] = useState<Dictionary>(zh);
 
   useEffect(() => {
@@ -30,6 +51,8 @@ const App: FunctionalComponent = () => {
     } else {
       setDefinition(en);
     }
+
+    document.cookie = `locale=${locale}; expires=2038-01-19T04:14:07Z; path=/`;
   }, [locale]);
 
   return (
