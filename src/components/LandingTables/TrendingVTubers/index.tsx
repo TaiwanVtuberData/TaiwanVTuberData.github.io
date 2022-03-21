@@ -12,12 +12,6 @@ import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/Popul
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
-      name: '#',
-      width: '70px',
-      wrap: false,
-      selector: (row: { ranking: number }): number => row.ranking,
-    },
-    {
       name: '',
       width: '75px',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
@@ -27,6 +21,14 @@ const TrendingVTubersTable: FunctionalComponent = () => {
       name: <Text id="table.displayName">Name</Text>,
       wrap: true,
       selector: (row: { name: string }): string => row.name,
+    },
+    {
+      name: <Text id="table.links">Links</Text>,
+      minWidth: '50px',
+      maxWidth: '150px',
+      cell: (row: {
+        channelLinks: h.JSX.Element | null;
+      }): h.JSX.Element | null => row.channelLinks,
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
