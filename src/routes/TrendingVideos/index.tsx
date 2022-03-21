@@ -60,7 +60,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     {
       name: <Text id="table.viewCount">View Count</Text>,
       selector: (row: { viewCount: number }): number => row.viewCount,
-      width: '75px',
+      width: '80px',
       right: true,
       sortable: true,
     },
