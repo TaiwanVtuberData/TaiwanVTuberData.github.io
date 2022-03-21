@@ -28,7 +28,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   document.title = `${props.dictionary.header.graduateVTubers} | ${props.dictionary.header.title}`;
   const columns: Array<TableColumn<VTuberGraduateDisplayData>> = [
     {
-      name: <Text id="table.graduateData">Graduation Date</Text>,
+      name: <Text id="table.graduateDate">Graduation Date</Text>,
       width: '100px',
       selector: (row: { graduateDate: string }): string => row.graduateDate,
       sortable: true,
