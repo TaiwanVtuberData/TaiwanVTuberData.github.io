@@ -6,11 +6,9 @@ import { Dictionary } from '../../../i18n/Dictionary';
 import * as Api from '../../../services/ApiService';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
-import { VTuberPopularityData } from '../../../types/ApiData/VTuberPopularityData';
-import ProfileImage from '../../../components/ProfileImage';
-import ChannelLinks from '../../../components/ChannelLinks';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
+import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/PopularityTransform';
 
 export interface TrendingVTubersTableProps {
   dictionary: Dictionary;
@@ -44,30 +42,7 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
     },
   ];
 
-  // search filter
   const [data, setData] = useState<Array<VTuberPopularityDisplayData>>([]);
-
-  const dataToDisplayData = (
-    e: VTuberPopularityData,
-    ranking: number
-  ): VTuberPopularityDisplayData => ({
-    id: e.id,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
-    name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
-    hasYouTube: e.YouTube !== undefined,
-    YouTubeSubscriberCount: e.YouTube?.subscriberCount,
-    hasTwitch: e.Twitch !== undefined,
-    TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    group: e.group ?? '',
-    nationality: e.nationality,
-    activity: e.activity,
-    popularity: e.popularity,
-    ranking: ranking,
-  });
 
   const [pending, setPending] = useState(true);
 
@@ -77,7 +52,7 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.popularity - a.popularity)
-          .map((e, index) => dataToDisplayData(e, index + 1))
+          .map((e, index) => VTuberPopularityToDisplay(e, index + 1))
       );
       setPending(false);
     });
