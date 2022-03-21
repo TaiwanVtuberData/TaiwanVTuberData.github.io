@@ -19,7 +19,7 @@ import {
 import { VTuberGrowthData } from '../../types/ApiData/VTuberGrowthData';
 import { GrowthData } from '../../types/Common/GrowthData';
 import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../utils/GrowthSort';
-import { PrependSign } from '../../utils/NumberUtils';
+import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -29,24 +29,6 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
   props: GrowingVTubersPageProps
 ) => {
   document.title = `${props.dictionary.header.growingVTubers} | ${props.dictionary.header.title}`;
-
-  const valueToPercentString = (value: number): string =>
-    (value * 100).toFixed(2);
-
-  const growthDisplayDataToString = (e: GrowthDisplayData): string => {
-    switch (e.recordType) {
-      case 'none':
-        return props.dictionary.table.noRecord;
-      case 'partial':
-        return `${props.dictionary.table.atLeast} ${PrependSign(
-          e.diff
-        )} (${valueToPercentString(e.percentage)}%)`;
-      case 'full':
-        return `${PrependSign(e.diff)} (${valueToPercentString(
-          e.percentage
-        )}%)`;
-    }
-  };
 
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
@@ -78,7 +60,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     {
       name: <Text id="table._7DaysGrowth">7 Days Growth (Percent)</Text>,
       cell: (row: { _7DaysGrowth: GrowthDisplayData }): string =>
-        growthDisplayDataToString(row._7DaysGrowth),
+        GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
       right: true,
       sortable: true,
       sortFunction: _7DaysGrowthSort,
@@ -86,7 +68,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     {
       name: <Text id="table._30DaysGrowth">30 Days Growth (Percent)</Text>,
       cell: (row: { _30DaysGrowth: GrowthDisplayData }): string =>
-        growthDisplayDataToString(row._30DaysGrowth),
+        GrowthDisplayDataToString(row._30DaysGrowth, props.dictionary.table),
       right: true,
       sortable: true,
       sortFunction: _30DaysGrowthSort,
