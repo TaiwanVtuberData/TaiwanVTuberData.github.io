@@ -61,9 +61,9 @@ const TrendingVTubersTable: FunctionalComponent = () => {
     <Fragment>
       <h3>
         <Text id="header.trendingVTubers">Trending VTubers</Text>
-        {/* Yes. Adding a space between two texts require a span */}
-        <span> </span>
-        <Text id="header.top10">Top Ten</Text>
+        {/* Yes. Adding a space between two texts require a Fragment */}
+        <Fragment> </Fragment>
+        <Text id="header.top10">Top 10</Text>
       </h3>
       <DataTable
         {...DefaultDataTableProps}

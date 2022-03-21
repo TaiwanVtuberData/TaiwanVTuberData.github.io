@@ -113,8 +113,8 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     <Fragment>
       <h3>
         <Text id="header.growingVTubers">Growing VTubers</Text>
-        <span> </span>
-        <Text id="header.top10">Top Ten</Text>
+        <Fragment> </Fragment>
+        <Text id="header.top10">Top 10</Text>
       </h3>
       <DataTable
         {...DefaultDataTableProps}
