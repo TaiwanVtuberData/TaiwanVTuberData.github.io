@@ -226,6 +226,8 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         data={filteredData}
         customStyles={customStyles}
         fixedHeader
+        pagination
+        paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}
         subHeader
