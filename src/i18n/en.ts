@@ -64,6 +64,37 @@ const en: Dictionary = {
     reportUsingGoogleForm: 'Report using Google Form',
     reportUsingGitHub: 'Report using GitHub',
   },
+  termsOfService: {
+    termsOfService: 'Terms Of Service',
+    lastUpdated: 'Last Updated: 2021/12/31',
+    line1: `臺灣 VTuber 列表 ("The site") uses <a href="https://developers.google.com/youtube" text-decoration="none" target="_blank" rel="noopener noreferrer">YouTube API Services</a> to keep recorded VTuber YouTube channels data up-to-date.`,
+    line2: 'The data collected are as followed:',
+    YouTubeBulletPoint1: 'Channel subscribers count',
+    YouTubeBulletPoint2:
+      'Channel subscribers count difference in last 7 days / 30 days',
+    YouTubeBulletPoint3: 'Channel median video view count in last 30 days',
+    YouTubeBulletPoint4: 'Channel highest viewed video in last 30 days',
+    line3: `By using this site, you hereby agreed to be bound by <a href="https://www.youtube.com/t/terms" text-decoration="none" target="_blank" rel="noopener noreferrer">YouTube Terms Of Service</a>.`,
+    line4: `The site uses <a href="https://dev.twitch.tv/docs/api/" text-decoration="none" target="_blank" rel="noopener noreferrer">Twitch API</a> to keep recorded VTuber Twitch channels data up-to-date.`,
+    TwitchBulletPoint1: 'Channel followers count',
+    TwitchBulletPoint2:
+      'Channel median past broadcast view count in last 30 days',
+    TwitchBulletPoint3: 'Channel highest viewed past broadcast in last 30 days',
+  },
+  privacyPolicy: {
+    privacyPolicy: 'Privacy Policy',
+    lastUpdated: 'Last Updated: 2022/03/22',
+    bulletPoint1: `The site does not ask for or collect user's personal data. However, it could not guarantee that the site's web hosting provider(GitHub) does not collect user's personal data.`,
+    bulletPoint2: `The site only store user's language setting as cookie; and does not use any other cookies or similar technology to track user's usage record. However, it could not guarantee that the embedded Google Calendar, YouTube videos, or Twitch videos do not track user's usage record.`,
+    referToGoogle: `Refer to Google Privacy Policy: <a href="http://www.google.com/policies/privacy" text-decoration="none" target="_blank" rel="noopener noreferrer">http://www.google.com/policies/privacy</a>.`,
+    bulletPoint3: `The site could not guarantee that the external sites it linked to do not collect user's personal data.`,
+  },
+  technicalDetails: {
+    technicalDetails: 'Technical Details',
+    bulletPoint1: `Data source: <a href="https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData</a>`,
+    bulletPoint2: 'Data update time: Every day at 05:55 UTC+8',
+    bulletPoint3: `Site source code: <a href="https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
+  },
 } as const;
 
 export default en;

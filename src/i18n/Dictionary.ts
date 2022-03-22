@@ -58,4 +58,33 @@ export interface Dictionary {
     reportUsingGoogleForm: string;
     reportUsingGitHub: string;
   };
+  termsOfService: {
+    termsOfService: string;
+    lastUpdated: string;
+    line1: string;
+    line2: string;
+    YouTubeBulletPoint1: string;
+    YouTubeBulletPoint2: string;
+    YouTubeBulletPoint3: string;
+    YouTubeBulletPoint4: string;
+    line3: string;
+    line4: string;
+    TwitchBulletPoint1: string;
+    TwitchBulletPoint2: string;
+    TwitchBulletPoint3: string;
+  };
+  privacyPolicy: {
+    privacyPolicy: string;
+    lastUpdated: string;
+    bulletPoint1: string;
+    bulletPoint2: string;
+    referToGoogle: string;
+    bulletPoint3: string;
+  };
+  technicalDetails: {
+    technicalDetails: string;
+    bulletPoint1: string;
+    bulletPoint2: string;
+    bulletPoint3: string;
+  };
 }

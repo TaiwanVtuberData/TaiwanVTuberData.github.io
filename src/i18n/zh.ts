@@ -64,6 +64,35 @@ const zh: Dictionary = {
     reportUsingGoogleForm: '使用 Google 表單回報',
     reportUsingGitHub: '使用 GitHub Issue 回報',
   },
+  termsOfService: {
+    termsOfService: '使用條款',
+    lastUpdated: '更新日期：2021/12/31',
+    line1: `臺灣 VTuber 列表 (下稱本站) 使用 <a href="https://developers.google.com/youtube" text-decoration="none" target="_blank" rel="noopener noreferrer">YouTube API 服務</a> 定期更新收錄之 VTuber YouTube 頻道資料。`,
+    line2: '每次更新收集之資料如下：',
+    YouTubeBulletPoint1: '頻道訂閱者人數',
+    YouTubeBulletPoint2: '近 7 日 / 30 日頻道訂閱者人數變化',
+    YouTubeBulletPoint3: '頻道近 30 日影片觀看中位數',
+    YouTubeBulletPoint4: '頻道近 30 日最高觀看影片',
+    line3: `使用此站代表您同意遵守 <a href="https://www.youtube.com/t/terms" text-decoration="none" target="_blank" rel="noopener noreferrer">YouTube 服務條款</a>。`,
+    line4: `本站使用 <a href="https://dev.twitch.tv/docs/api/" text-decoration="none" target="_blank" rel="noopener noreferrer">Twitch API</a> 定期更新收錄之 VTuber Twitch 頻道資料。`,
+    TwitchBulletPoint1: '頻道追隨者人數',
+    TwitchBulletPoint2: '頻道近 30 日過去實況觀看中位數',
+    TwitchBulletPoint3: '頻道近 30 日最高觀看過去實況',
+  },
+  privacyPolicy: {
+    privacyPolicy: '隱私權政策',
+    lastUpdated: '更新日期：2022/03/22',
+    bulletPoint1: `本站不會主動要求或是收集使用者個人資料，但是無法保證網站服務提供者 (GitHub) 不會蒐集使用者個人資料。`,
+    bulletPoint2: `本站只會以 Cookie 儲存使用者的語言設定，並且不使用任何其他 Cookie 或是其他追蹤技術追蹤使用者使用記錄，但是無法保證所提供之內嵌 Google 日曆、YouTube 影片、或 Twitch 影片不會追蹤使用者資料。`,
+    referToGoogle: `關於 Google 隱私權政策請見連結：<a href="http://www.google.com/policies/privacy" text-decoration="none" target="_blank" rel="noopener noreferrer">http://www.google.com/policies/privacy</a>。`,
+    bulletPoint3: `本站無法保證所提供之其他網站連結不會蒐集使用者資料。`,
+  },
+  technicalDetails: {
+    technicalDetails: '技術細節',
+    bulletPoint1: `資料來源：<a href="https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData</a>`,
+    bulletPoint2: '資料更新時間：每日 05:55 UTC+8',
+    bulletPoint3: `本站原始碼：<a href="https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
+  },
 } as const;
 
 export default zh;
