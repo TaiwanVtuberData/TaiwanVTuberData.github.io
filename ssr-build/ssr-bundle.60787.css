@@ -340,6 +340,14 @@ button:hover {
   background-color: #cccccc;
 }
 
+.GoogleFormIcon__Jbfuv {
+  content: url(/TaiwanVtuberData-Preact/0deb6f6635f63db7f5296af002671739.png);
+}
+
+.GitHubIcon__7OXUQ {
+  content: url(/TaiwanVtuberData-Preact/0035c307a36c17babb8d25cd02fb6488.png);
+}
+
 .scrollToTopBottom__9cupg {
   position: fixed;
   bottom: 5rem;
@@ -388,4 +396,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.75066.css.map*/
+/*# sourceMappingURL=ssr-bundle.60787.css.map*/
