@@ -32,3 +32,11 @@
 .flexButton a:hover {
   background-color: #cccccc;
 }
+
+.GoogleFormIcon {
+  content: url(../../assets/icons/google-forms.png);
+}
+
+.GitHubIcon {
+  content: url(../../assets/icons/GitHub-Mark-32px.png);
+}

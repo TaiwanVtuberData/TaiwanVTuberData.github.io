@@ -24,7 +24,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="../../assets/icons/google-forms.png" />
+            <img class={style.GoogleFormIcon} />
             <Text id="text.reportUsingGoogleForm">
               Report using Google Form
             </Text>
@@ -36,7 +36,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="../../assets/icons/GitHub-Mark-32px.png" />
+            <img class={style.GitHubIcon} />
             <Text id="text.reportUsingGitHub">Report using GitHub</Text>
           </a>
         </div>
