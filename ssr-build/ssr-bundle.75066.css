@@ -340,5 +340,52 @@ button:hover {
   background-color: #cccccc;
 }
 
+.scrollToTopBottom__9cupg {
+  position: fixed;
+  bottom: 5rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: fadeIn__CgoDN 700ms ease-in-out 1s both;
+          animation: fadeIn__CgoDN 700ms ease-in-out 1s both;
+  cursor: pointer;
 
-/*# sourceMappingURL=ssr-bundle.0d43b.css.map*/
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row: auto;
+}
+
+.scrollToTopBottom__9cupg > * {
+  margin: 1px;
+}
+
+@-webkit-keyframes fadeIn__CgoDN {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn__CgoDN {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scrollToTopBottom__9cupg .scrollButton__tWotF {
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  background-color: white;
+  border: 3px solid #636363;
+  border-radius: 5px;
+}
+
+
+/*# sourceMappingURL=ssr-bundle.75066.css.map*/
