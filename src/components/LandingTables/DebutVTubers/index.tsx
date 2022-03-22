@@ -10,6 +10,7 @@ import { VTuberDebutDisplayData } from '../../../types/TableDisplayData/VTuberDe
 import { getISODateString } from '../../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
 import { VTuberDebutToDisplay } from '../../../types/ApiToDisplayData/DebutTransform';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
 
 const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
@@ -74,6 +75,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
         conditionalRowStyles={ActivityRowStyles.concat(
           IsTodayRowStyle as Array<any>
         )}
+        customStyles={CompactTableStyle}
         fixedHeader
         progressPending={pending}
         progressComponent={<Text id="table.loading">Loading...</Text>}

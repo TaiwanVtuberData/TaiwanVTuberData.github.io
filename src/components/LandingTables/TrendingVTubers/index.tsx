@@ -8,6 +8,7 @@ import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
 import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/PopularityTransform';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
 
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
@@ -70,6 +71,7 @@ const TrendingVTubersTable: FunctionalComponent = () => {
         columns={columns}
         data={data}
         conditionalRowStyles={ActivityRowStyles}
+        customStyles={CompactTableStyle}
         fixedHeader
         progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}

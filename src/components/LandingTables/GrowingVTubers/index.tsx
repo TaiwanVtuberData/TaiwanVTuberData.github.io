@@ -17,6 +17,7 @@ import { GrowthData } from '../../../types/Common/GrowthData';
 import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../../utils/GrowthSort';
 import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
 import { Dictionary } from '../../../i18n/Dictionary';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -121,6 +122,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
         columns={columns}
         data={data}
         conditionalRowStyles={ActivityRowStyles}
+        customStyles={CompactTableStyle}
         fixedHeader
         progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}

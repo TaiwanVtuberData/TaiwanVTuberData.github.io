@@ -8,6 +8,7 @@ import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberBasicToDisplay } from '../../../types/ApiToDisplayData/BasicTransfrom';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
 
 const TopVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDisplayData>> = [
@@ -82,6 +83,7 @@ const TopVTubersTable: FunctionalComponent = () => {
         columns={columns}
         data={data}
         conditionalRowStyles={ActivityRowStyles}
+        customStyles={CompactTableStyle}
         fixedHeader
         progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}
