@@ -39,6 +39,19 @@ const DebutVTubersTable: FunctionalComponent = () => {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
     },
+    {
+      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      cell: (row: {
+        hasYouTube: boolean;
+        YouTubeSubscriberCount?: number;
+      }): h.JSX.Element | number | null =>
+        row.hasYouTube
+          ? row.YouTubeSubscriberCount ?? (
+              <Text id="table.hiddenCount">hidden</Text>
+            )
+          : null,
+      right: true,
+    },
   ];
 
   // search filter
