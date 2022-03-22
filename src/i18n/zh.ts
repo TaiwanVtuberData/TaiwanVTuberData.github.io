@@ -6,6 +6,7 @@ const zh: Dictionary = {
     chooseLanguage: '選擇語言:',
     home: '首頁',
     eventCalendar: '重大活動月曆',
+    eventCalendarDetail: '(由 Discord 群 <b>避難所</b> 提供)',
     allVTubers: '所有 VTuber',
     groupList: '團體列表',
     trendingVTubers: '熱門 VTuber',

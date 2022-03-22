@@ -19,6 +19,7 @@ import GraduateVTubersPage from '../routes/GraduateVTubers';
 import GrowingVTubersPage from '../routes/GrowingVTubers';
 import TrendingVideosPage from '../routes/TrendingVideos';
 import AboutPage from '../routes/About';
+import EventCalendarPage from '../routes/EventCalendar';
 
 const App: FunctionalComponent = () => {
   const getCookieLocale = (): validI18n => {
@@ -26,7 +27,7 @@ const App: FunctionalComponent = () => {
     const target = 'locale=' as const;
 
     // Preact cannot compile pre-render code using DOM or Web APIs.
-    if (typeof window != "undefined") {
+    if (typeof window != 'undefined') {
       const decodedCookie = decodeURIComponent(document.cookie);
       const ca = decodedCookie.split(';');
       for (let i = 0; i < ca.length; i++) {
@@ -37,7 +38,7 @@ const App: FunctionalComponent = () => {
         if (c.indexOf('locale=') == 0) {
           const parsedLocale = c.substring(target.length, c.length);
           if (validI18nArray.includes(parsedLocale)) return parsedLocale;
-  
+
           return 'zh';
         }
       }
@@ -74,6 +75,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/`}
             dictionary={definition}
             component={HomePage}
+          />
+          <Route
+            path={`${baseroute}/event-calendar`}
+            dictionary={definition}
+            component={EventCalendarPage}
           />
           <Route
             path={`${baseroute}/all-vtubers`}

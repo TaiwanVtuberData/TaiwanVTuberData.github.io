@@ -6,6 +6,7 @@ export interface Dictionary {
     chooseLanguage: string;
     home: string;
     eventCalendar: string;
+    eventCalendarDetail: string;
     allVTubers: string;
     groupList: string;
     trendingVTubers: string;

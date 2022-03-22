@@ -6,6 +6,7 @@ const en: Dictionary = {
     chooseLanguage: 'Choose language:',
     home: 'Home',
     eventCalendar: 'Event Calendar',
+    eventCalendarDetail: '(Provided By Discord Server <b>DD Refuge</b>)',
     allVTubers: 'All VTubers',
     groupList: 'Group List',
     trendingVTubers: 'Trending VTubers',
