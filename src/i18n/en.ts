@@ -95,6 +95,10 @@ const en: Dictionary = {
     bulletPoint2: 'Data update time: Every day at 05:55 UTC+8',
     bulletPoint3: `Site source code: <a href="https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
+  scroll: {
+    top: 'To Top',
+    bottom: 'To Bottom',
+  },
 } as const;
 
 export default en;

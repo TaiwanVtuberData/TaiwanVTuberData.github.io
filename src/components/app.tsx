@@ -21,6 +21,7 @@ import TrendingVideosPage from '../routes/TrendingVideos';
 import AboutPage from '../routes/About';
 import EventCalendarPage from '../routes/EventCalendar';
 import ReportIssuePage from '../routes/ReportIssue';
+import ScrollToTopBottom from './ScrollToTopBottom';
 
 const App: FunctionalComponent = () => {
   const getCookieLocale = (): validI18n => {
@@ -134,6 +135,7 @@ const App: FunctionalComponent = () => {
           />
           <NotFoundPage default />
         </Router>
+        <ScrollToTopBottom />
       </IntlProvider>
     </div>
   );

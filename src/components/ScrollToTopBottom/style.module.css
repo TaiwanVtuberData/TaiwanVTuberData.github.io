@@ -1,0 +1,34 @@
+.scrollToTopBottom {
+  position: fixed;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row: auto;
+}
+
+.scrollToTopBottom > * {
+  margin: 1px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scrollToTopBottom .scrollButton {
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  background-color: white;
+  border: 3px solid #636363;
+  border-radius: 5px;
+}

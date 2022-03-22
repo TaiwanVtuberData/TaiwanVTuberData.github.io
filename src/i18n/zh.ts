@@ -93,6 +93,10 @@ const zh: Dictionary = {
     bulletPoint2: '資料更新時間：每日 05:55 UTC+8',
     bulletPoint3: `本站原始碼：<a href="https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
+  scroll: {
+    top: '至頁頂',
+    bottom: '至頁尾',
+  },
 } as const;
 
 export default zh;
