@@ -60,6 +60,10 @@ const en: Dictionary = {
       selectAllRowsItemText: 'All',
     },
   },
+  text: {
+    reportUsingGoogleForm: 'Report using Google Form',
+    reportUsingGitHub: 'Report using GitHub',
+  },
 } as const;
 
 export default en;

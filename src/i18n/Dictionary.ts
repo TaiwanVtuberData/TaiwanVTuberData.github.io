@@ -54,4 +54,8 @@ export interface Dictionary {
     allVideos: string;
     paginationOptions: PaginationOptions;
   };
+  text: {
+    reportUsingGoogleForm: string;
+    reportUsingGitHub: string;
+  };
 }

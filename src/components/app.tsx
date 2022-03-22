@@ -20,6 +20,7 @@ import GrowingVTubersPage from '../routes/GrowingVTubers';
 import TrendingVideosPage from '../routes/TrendingVideos';
 import AboutPage from '../routes/About';
 import EventCalendarPage from '../routes/EventCalendar';
+import ReportIssuePage from '../routes/ReportIssue';
 
 const App: FunctionalComponent = () => {
   const getCookieLocale = (): validI18n => {
@@ -120,6 +121,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/group/:groupName`}
             dictionary={definition}
             component={GroupPage}
+          />
+          <Route
+            path={`${baseroute}/report-issue`}
+            dictionary={definition}
+            component={ReportIssuePage}
           />
           <Route
             path={`${baseroute}/about`}

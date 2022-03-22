@@ -60,6 +60,10 @@ const zh: Dictionary = {
       selectAllRowsItemText: '所有',
     },
   },
+  text: {
+    reportUsingGoogleForm: '使用 Google 表單回報',
+    reportUsingGitHub: '使用 GitHub Issue 回報',
+  },
 } as const;
 
 export default zh;
