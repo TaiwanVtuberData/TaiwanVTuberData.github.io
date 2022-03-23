@@ -13,6 +13,8 @@ import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransfrom';
+import { openModal } from '../../global/modalState';
+import { VideoInfo } from '../../types/Common/VideoInfo';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -65,6 +67,18 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
       right: true,
       sortable: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value="顯示影片"
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
     {
       name: <Text id="table.group">Group</Text>,

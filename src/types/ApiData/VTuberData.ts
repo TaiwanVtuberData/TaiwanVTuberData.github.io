@@ -1,4 +1,5 @@
 import { Activity } from '../Common/Activity';
+import { VideoInfo } from '../Common/VideoInfo';
 import { TwitchData } from './TwitchData';
 import { YouTubeData } from './YouTubeData';
 
@@ -9,6 +10,7 @@ export interface VTuberData {
   readonly imgUrl?: string;
   readonly YouTube?: YouTubeData;
   readonly Twitch?: TwitchData;
+  readonly popularVideo?: VideoInfo;
   readonly group?: string;
   readonly nationality?: string;
 }

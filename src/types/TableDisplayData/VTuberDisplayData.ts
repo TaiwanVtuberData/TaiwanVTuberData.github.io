@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { VideoInfo } from '../Common/VideoInfo';
 import { Activity } from '../Common/Activity';
 
 export interface VTuberDisplayData {
@@ -10,6 +11,7 @@ export interface VTuberDisplayData {
   YouTubeSubscriberCount?: number;
   hasTwitch: boolean;
   TwitchFollowerCount: number;
+  popularVideo?: VideoInfo;
   group: string;
   nationality?: string;
   activity: Activity;

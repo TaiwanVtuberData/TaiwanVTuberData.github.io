@@ -17,7 +17,12 @@ const VideoModal: FunctionalComponent = (): h.JSX.Element => {
         <span class={style.closeButton} onClick={(): void => closeModal()}>
           &times;
         </span>
-        <iframe src="" width={640} height={360} allowFullScreen={true} />
+        <iframe
+          src={modalState.frameSrc}
+          width={640}
+          height={360}
+          allowFullScreen={true}
+        />
       </div>
     </div>
   );
