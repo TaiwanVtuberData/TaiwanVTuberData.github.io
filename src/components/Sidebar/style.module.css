@@ -19,6 +19,16 @@
   background-color: white;
 }
 
+button {
+  background-color: transparent;
+  border: transparent;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
 .navButton {
   position: fixed;
   top: 1%;
