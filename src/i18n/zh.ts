@@ -53,6 +53,7 @@ const zh: Dictionary = {
     noRecord: '無紀錄',
     noDuplicate: '同一 VTuber 一影片',
     allVideos: '所有影片',
+    popularVideo: '熱門影片',
     options: '選項:',
     paginationOptions: {
       noRowsPerPage: false,

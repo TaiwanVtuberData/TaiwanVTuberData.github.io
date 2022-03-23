@@ -54,6 +54,7 @@ export interface Dictionary {
     noDuplicate: string;
     allVideos: string;
     options: string;
+    popularVideo: string;
     paginationOptions: PaginationOptions;
   };
   text: {

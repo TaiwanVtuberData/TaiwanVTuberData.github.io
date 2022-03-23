@@ -54,6 +54,7 @@ const en: Dictionary = {
     noDuplicate: 'One video per VTuber',
     allVideos: 'All videos',
     options: 'Options:',
+    popularVideo: 'Popular Video',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',
