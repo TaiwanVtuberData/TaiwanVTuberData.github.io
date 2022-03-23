@@ -20,7 +20,7 @@ export function MockService(): void {
       this.urlPrefix =
         'https://cdn.statically.io/gh/nh60211as/TaiwanVtuberTrackingDataJson';
 
-      this.get<VTuberDataResponse>('/:hash/api/v0/vtubers.json', () => ({
+      this.get<VTuberDataResponse>('/:hash/api/v0/vtubers/all.json', () => ({
         VTubers: AllVTuberMock,
       }));
 
@@ -36,28 +36,28 @@ export function MockService(): void {
       }));
 
       this.get<VTuberPopularityDataResponse>(
-        '/:hash/api/v0/popular-vtubers.json',
+        '/:hash/api/v0/trending-vtubers/100.json',
         () => ({
           VTubers: PopularVTubersMock,
         })
       );
 
       this.get<VTuberGrowthDataResponse>(
-        '/:hash/api/v0/growing-vtubers.json',
+        '/:hash/api/v0/growing-vtubers/all.json',
         () => ({
           VTubers: GrowingVTubersMock,
         })
       );
 
       this.get<VTuberDebutDataResponse>(
-        '/:hash/api/v0/debut-vtubers.json',
+        '/:hash/api/v0/debut-vtubers/recent.json',
         () => ({
           VTubers: DebutVTubersMock,
         })
       );
 
       this.get<VTuberGraduateDataResponse>(
-        '/:hash/api/v0/graduate-vtubers.json',
+        '/:hash/api/v0/graduate-vtubers/recent.json',
         () => ({
           VTubers: [],
         })
