@@ -39,14 +39,16 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      width: `15%`,
+      minWidth: '50px',
+      maxWidth: '125px',
       right: true,
       sortable: true,
       selector: (row: { popularity: number }): number => row.popularity,
     },
     {
       name: <Text id="table.averageSubscriberCount">Average Subscribers</Text>,
-      width: `15%`,
+      minWidth: '50px',
+      maxWidth: '125px',
       right: true,
       sortable: true,
       selector: (row: { averageSubscriberCount: number }): number =>
@@ -54,7 +56,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.totalSubscriberCount">Total Subscribers</Text>,
-      width: `15%`,
+      minWidth: '50px',
+      maxWidth: '125px',
       right: true,
       sortable: true,
       selector: (row: { totalSubscriberCount: number }): number =>
@@ -62,14 +65,14 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.memberCount">Member Count</Text>,
-      width: `10%`,
+      minWidth: '50px',
+      maxWidth: '125px',
       right: true,
       sortable: true,
       selector: (row: { memberCount: number }): number => row.memberCount,
     },
     {
       name: <Text id="table.memberList">Members</Text>,
-      width: `30%`,
       cell: (row: {
         memberList: ReadonlyArray<VTuberData>;
       }): h.JSX.Element | null => (
