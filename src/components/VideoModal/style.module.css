@@ -1,0 +1,66 @@
+/* The Modal (background) */
+.modal {
+  /*display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  z-index: 999;
+}
+
+/* Modal Content */
+.modalContent {
+  margin: auto;
+  width: 80%;
+}
+
+/* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
+.modalContent iframe {
+  width: 75vw;
+  height: 42.1875vw;
+  max-height: 75vh;
+  max-width: 133.3333vh;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0; /* vertical center */
+  left: 0;
+  right: 0; /* horizontal center */
+  background-color: transparent;
+}
+
+@media screen and (max-width: 800px) {
+  .modalContent iframe {
+    width: 90vw;
+    height: 50.625vw;
+    max-height: 90vh;
+    max-width: 160vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0; /* vertical center */
+    left: 0;
+    right: 0; /* horizontal center */
+    background-color: transparent;
+  }
+}
+
+/* The Close Button */
+.closeButton {
+  color: #000000;
+  float: right;
+  font-size: 100px;
+  font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: #222222;
+  text-decoration: none;
+  cursor: pointer;
+}

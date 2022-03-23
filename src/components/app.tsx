@@ -22,6 +22,7 @@ import AboutPage from '../routes/About';
 import EventCalendarPage from '../routes/EventCalendar';
 import ReportIssuePage from '../routes/ReportIssue';
 import ScrollToTopBottom from './ScrollToTopBottom';
+import VideoModal from './VideoModal';
 
 const App: FunctionalComponent = () => {
   const getCookieLocale = (): validI18n => {
@@ -72,6 +73,7 @@ const App: FunctionalComponent = () => {
           locale={locale}
           setLocale={setLocale}
         />
+        <VideoModal />
         <Router>
           <Route
             path={`${baseroute}/`}
