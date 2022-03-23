@@ -17,6 +17,7 @@ import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
 import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -215,6 +216,11 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.graduateVTubers">Graduate VTubers</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={<Text id="toolTip.graduateVTubers">tooltip text</Text>}
+        />
       </h1>
       <DataTable
         {...DefaultDataTableProps}

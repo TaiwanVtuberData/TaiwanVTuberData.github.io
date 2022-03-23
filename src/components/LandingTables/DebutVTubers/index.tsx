@@ -78,7 +78,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
   return (
     <Fragment>
       <h3>
-        <Text id="header.debutVTubers">Debut VTubers</Text>
+        <Text id="header.debutVTubersIn7Days">VTubers Debut in 7 days</Text>
       </h3>
       <DataTable
         {...DefaultDataTableProps}

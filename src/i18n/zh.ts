@@ -13,6 +13,7 @@ const zh: Dictionary = {
     trendingVideos: '熱門影片',
     growingVTubers: '成長中 VTuber',
     debutVTubers: '近期出道',
+    debutVTubersIn7Days: '近 7 日出道 VTuber',
     graduateVTubers: '近期畢業',
     reportIssue: '資料登載/錯誤回報',
     about: '關於本站',
@@ -66,9 +67,12 @@ const zh: Dictionary = {
     reportUsingGitHub: '使用 GitHub Issue 回報',
   },
   toolTip: {
+    eventCalendar: '月曆非由本站維護者維護',
     trendingVTubers:
       '熱度計算方式：近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去實況的觀看中位數',
     growingVTubers: '只會顯示近 7 日人數成長至少 100 人的頻道',
+    debutVTubers: '只會顯示近 30 日出道/即將出道的 VTuber',
+    graduateVTubers: '只會顯示近 30 日畢業/即將畢業的 VTuber',
   },
   termsOfService: {
     termsOfService: '使用條款',

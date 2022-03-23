@@ -13,6 +13,7 @@ const en: Dictionary = {
     trendingVideos: 'Trending Videos',
     growingVTubers: 'Growing VTubers',
     debutVTubers: 'Debut VTubers',
+    debutVTubersIn7Days: 'VTubers Debut in 7 days',
     graduateVTubers: 'Graduate VTubers',
     reportIssue: 'Data Posting/Report Issue',
     about: 'About The Site',
@@ -66,11 +67,18 @@ const en: Dictionary = {
     reportUsingGitHub: 'Report using GitHub',
   },
   toolTip: {
+    eventCalendar: 'The calendar is not maintained by the site owner',
     trendingVTubers:
       'Popularity: Median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days',
     growingVTubers:
       'Only showing VTubers with YouTube subscribers growth over 100 within 7 days',
+
+    debutVTubers: 'Only showing VTubers debut/about to debut in 30 days',
+
+    graduateVTubers:
+      'Only showing VTubers graduated/about to graduate in 30 days',
   },
+
   termsOfService: {
     termsOfService: 'Terms Of Service',
     lastUpdated: 'Last Updated: 2021/12/31',

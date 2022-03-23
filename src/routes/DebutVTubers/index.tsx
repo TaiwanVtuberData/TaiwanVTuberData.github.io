@@ -15,6 +15,7 @@ import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebut
 import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 import { VTuberDebutToDisplay } from '../../types/ApiToDisplayData/DebutTransform';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -191,6 +192,11 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.debutVTubers">Debut VTubers</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={<Text id="toolTip.debutVTubers">tooltip text</Text>}
+        />
       </h1>
       <DataTable
         {...DefaultDataTableProps}

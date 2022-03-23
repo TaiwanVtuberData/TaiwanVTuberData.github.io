@@ -176,7 +176,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"
-          text={props.dictionary.toolTip.trendingVTubers}
+          text={<Text id="toolTip.trendingVTubers">tooltip text</Text>}
         />
       </h1>
       <DataTable

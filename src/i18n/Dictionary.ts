@@ -13,6 +13,7 @@ export interface Dictionary {
     trendingVideos: string;
     growingVTubers: string;
     debutVTubers: string;
+    debutVTubersIn7Days: string;
     graduateVTubers: string;
     reportIssue: string;
     about: string;
@@ -60,8 +61,11 @@ export interface Dictionary {
     reportUsingGitHub: string;
   };
   toolTip: {
+    eventCalendar: string;
     trendingVTubers: string;
     growingVTubers: string;
+    debutVTubers: string;
+    graduateVTubers: string;
   };
   termsOfService: {
     termsOfService: string;

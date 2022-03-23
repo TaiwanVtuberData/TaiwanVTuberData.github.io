@@ -120,7 +120,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"
-          text={props.dictionary.toolTip.growingVTubers}
+          text={<Text id="toolTip.growingVTubers">tooltip text</Text>}
         />
       </h3>
       <DataTable

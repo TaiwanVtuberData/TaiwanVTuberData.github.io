@@ -1,7 +1,10 @@
 h1 {
-  text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
 
 h1 > * {
@@ -15,9 +18,13 @@ h2 {
 }
 
 h3 {
-  text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  height: 30px;
 }
 
 h3 > * {
