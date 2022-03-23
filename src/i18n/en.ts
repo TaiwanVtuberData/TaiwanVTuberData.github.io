@@ -64,6 +64,10 @@ const en: Dictionary = {
     reportUsingGoogleForm: 'Report using Google Form',
     reportUsingGitHub: 'Report using GitHub',
   },
+  toolTip: {
+    trendingVTubers:
+      'Popularity: Median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days',
+  },
   termsOfService: {
     termsOfService: 'Terms Of Service',
     lastUpdated: 'Last Updated: 2021/12/31',

@@ -58,6 +58,9 @@ export interface Dictionary {
     reportUsingGoogleForm: string;
     reportUsingGitHub: string;
   };
+  toolTip: {
+    trendingVTubers: string;
+  };
   termsOfService: {
     termsOfService: string;
     lastUpdated: string;

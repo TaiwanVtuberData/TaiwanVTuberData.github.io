@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from 'preact';
 import { VTuberData } from '../../types/ApiData/VTuberData';
 import ProfileImage from '../ProfileImage';
-import ToolTip from '../Tooltip';
+import ToolTip from '../ToolTip';
 
 export interface ProfileProps {
   VTuber: VTuberData;

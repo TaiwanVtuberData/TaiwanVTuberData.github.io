@@ -13,6 +13,7 @@ import { VTuberPopularityDisplayData } from '../../types/TableDisplayData/VTuber
 import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberPopularityToDisplay } from '../../types/ApiToDisplayData/PopularityTransform';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -172,6 +173,11 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.trendingVTubers">Trending VTubers</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={props.dictionary.toolTip.trendingVTubers}
+        />
       </h1>
       <DataTable
         {...DefaultDataTableProps}

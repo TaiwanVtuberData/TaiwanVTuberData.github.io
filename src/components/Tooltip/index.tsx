@@ -4,6 +4,8 @@ import style from './style.module.css';
 export interface ToolTipProps {
   text: string;
   children: React.ReactNode;
+  width?: string;
+  fontSize?: string;
 }
 
 const ToolTip: FunctionalComponent<ToolTipProps> = (
@@ -12,7 +14,12 @@ const ToolTip: FunctionalComponent<ToolTipProps> = (
   return (
     <div class={style.tooltip}>
       {props.children}
-      <span class={style.tooltipText}>{props.text}</span>
+      <span
+        class={style.tooltipText}
+        style={{ width: props.width, fontSize: props.fontSize }}
+      >
+        {props.text}
+      </span>
     </div>
   );
 };

@@ -64,6 +64,10 @@ const zh: Dictionary = {
     reportUsingGoogleForm: '使用 Google 表單回報',
     reportUsingGitHub: '使用 GitHub Issue 回報',
   },
+  toolTip: {
+    trendingVTubers:
+      '熱度計算方式：近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去實況的觀看中位數',
+  },
   termsOfService: {
     termsOfService: '使用條款',
     lastUpdated: '更新日期：2021/12/31',

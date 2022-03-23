@@ -6,7 +6,8 @@
 
 .tooltip .tooltipText {
   visibility: hidden;
-  width: 120px;
+  min-width: 120px;
+  max-width: 250px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -15,7 +16,7 @@
 
   /* Position the tooltip */
   position: absolute;
-  z-index: 1;
+  z-index: 999;
 }
 
 .tooltip:hover .tooltipText {
