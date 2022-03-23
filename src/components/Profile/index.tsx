@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from 'preact';
 import { VTuberData } from '../../types/ApiData/VTuberData';
 import ProfileImage from '../ProfileImage';
-import style from './style.module.css';
+import ToolTip from '../Tooltip';
 
 export interface ProfileProps {
   VTuber: VTuberData;
@@ -10,7 +10,7 @@ export interface ProfileProps {
 const Profile: FunctionalComponent<ProfileProps> = (
   props: ProfileProps
 ): h.JSX.Element => {
-  const LinkToolTip = (props: {
+  const ChannelImageLink = (props: {
     VTuber: VTuberData;
     children: React.ReactNode;
   }): h.JSX.Element | null => {
@@ -29,7 +29,6 @@ const Profile: FunctionalComponent<ProfileProps> = (
     // YouTube or Twitch will exist by the pre-condition
     return renderYouTube ? (
       <a
-        class={style.tooltip}
         href={YouTubePrefix + props.VTuber.YouTube?.id}
         target="_blank"
         rel="noopener noreferrer"
@@ -38,7 +37,6 @@ const Profile: FunctionalComponent<ProfileProps> = (
       </a>
     ) : (
       <a
-        class={style.tooltip}
         href={TwitchPrefix + props.VTuber.Twitch?.id}
         target="_blank"
         rel="noopener noreferrer"
@@ -49,10 +47,11 @@ const Profile: FunctionalComponent<ProfileProps> = (
   };
 
   return (
-    <LinkToolTip VTuber={props.VTuber}>
-      {ProfileImage({ imgUrl: props.VTuber.imgUrl })}
-      <span class={style.tooltipText}>{props.VTuber.name}</span>
-    </LinkToolTip>
+    <ToolTip text={props.VTuber.name}>
+      <ChannelImageLink VTuber={props.VTuber}>
+        {ProfileImage({ imgUrl: props.VTuber.imgUrl })}
+      </ChannelImageLink>
+    </ToolTip>
   );
 };
 
