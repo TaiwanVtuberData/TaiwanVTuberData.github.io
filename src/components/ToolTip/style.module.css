@@ -1,0 +1,24 @@
+/* copied from https://www.w3schools.com/css/css_tooltip.asp */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltipText {
+  visibility: hidden;
+  min-width: 120px;
+  max-width: 250px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 999;
+}
+
+.tooltip:hover .tooltipText {
+  visibility: visible;
+}
