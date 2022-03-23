@@ -9,6 +9,7 @@ import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
 import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/PopularityTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
@@ -65,6 +66,11 @@ const TrendingVTubersTable: FunctionalComponent = () => {
         {/* Yes. Adding a space between two texts require a Fragment */}
         <Fragment> </Fragment>
         <Text id="header.top10">Top 10</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={<Text id="toolTip.trendingVTubers">tooltip text</Text>}
+        />
       </h3>
       <DataTable
         {...DefaultDataTableProps}

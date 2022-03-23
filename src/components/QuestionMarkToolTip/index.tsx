@@ -3,7 +3,7 @@ import ToolTip from '../ToolTip';
 import style from './style.module.css';
 
 export interface QuestionMarkToolTip {
-  text: string;
+  text: string | React.ReactNode;
   width?: string;
   fontSize?: string;
 }

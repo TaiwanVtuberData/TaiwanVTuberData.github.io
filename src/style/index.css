@@ -20,6 +20,10 @@ h3 {
   margin-bottom: 0;
 }
 
+h3 > * {
+  margin: 5px;
+}
+
 .highlightText {
   color: mediumblue;
   font-weight: 700;

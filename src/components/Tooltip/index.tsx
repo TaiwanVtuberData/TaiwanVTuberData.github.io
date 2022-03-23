@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from 'preact';
 import style from './style.module.css';
 
 export interface ToolTipProps {
-  text: string;
+  text: string | React.ReactNode;
   children: React.ReactNode;
   width?: string;
   fontSize?: string;
