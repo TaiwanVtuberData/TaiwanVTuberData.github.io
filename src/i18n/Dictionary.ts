@@ -52,6 +52,7 @@ export interface Dictionary {
     noRecord: string;
     noDuplicate: string;
     allVideos: string;
+    options: string;
     paginationOptions: PaginationOptions;
   };
   text: {

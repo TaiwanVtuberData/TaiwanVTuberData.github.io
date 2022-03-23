@@ -124,7 +124,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     return (
       <div class={tableStyle.searchBarGroup}>
         <DropDownList
-          tipText="選項"
+          tipText={props.dictionary.table.options}
           value={props.modifier}
           optionValue={optionValue}
           onChange={(e: any) => {
