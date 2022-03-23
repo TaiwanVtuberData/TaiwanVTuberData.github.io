@@ -61,6 +61,7 @@ export interface Dictionary {
   };
   toolTip: {
     trendingVTubers: string;
+    growingVTubers: string;
   };
   termsOfService: {
     termsOfService: string;

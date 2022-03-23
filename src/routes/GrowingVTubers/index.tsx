@@ -20,6 +20,7 @@ import { VTuberGrowthData } from '../../types/ApiData/VTuberGrowthData';
 import { GrowthData } from '../../types/Common/GrowthData';
 import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../utils/GrowthSort';
 import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -195,6 +196,11 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.growingVTubers">Growing VTubers</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={props.dictionary.toolTip.growingVTubers}
+        />
       </h1>
       <DataTable
         {...DefaultDataTableProps}

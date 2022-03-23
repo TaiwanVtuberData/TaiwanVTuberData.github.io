@@ -18,6 +18,7 @@ import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../../utils/GrowthSort';
 import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
 import { Dictionary } from '../../../i18n/Dictionary';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -116,6 +117,11 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
         <Text id="header.growingVTubers">Growing VTubers</Text>
         <Fragment> </Fragment>
         <Text id="header.top10">Top 10</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={props.dictionary.toolTip.growingVTubers}
+        />
       </h3>
       <DataTable
         {...DefaultDataTableProps}

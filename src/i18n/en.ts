@@ -68,6 +68,8 @@ const en: Dictionary = {
   toolTip: {
     trendingVTubers:
       'Popularity: Median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days',
+    growingVTubers:
+      'Only showing VTubers with YouTube subscribers growth over 100 within 7 days',
   },
   termsOfService: {
     termsOfService: 'Terms Of Service',

@@ -68,6 +68,7 @@ const zh: Dictionary = {
   toolTip: {
     trendingVTubers:
       '熱度計算方式：近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去實況的觀看中位數',
+    growingVTubers: '只會顯示近 7 日人數成長至少 100 人的頻道',
   },
   termsOfService: {
     termsOfService: '使用條款',
