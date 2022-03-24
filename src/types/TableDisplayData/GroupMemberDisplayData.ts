@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { Activity } from '../Common/Activity';
+import { VideoInfo } from '../Common/VideoInfo';
 
 export interface GroupMemberDisplayData {
   id: string;
@@ -10,6 +11,7 @@ export interface GroupMemberDisplayData {
   YouTubeSubscriberCount?: number;
   hasTwitch: boolean;
   TwitchFollowerCount: number;
+  popularVideo?: VideoInfo;
   nationality?: string;
   activity: Activity;
 }

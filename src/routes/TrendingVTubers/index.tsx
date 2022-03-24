@@ -14,6 +14,8 @@ import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSo
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberPopularityToDisplay } from '../../types/ApiToDisplayData/PopularityTransform';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { openModal } from '../../global/modalState';
+import { VideoInfo } from '../../types/Common/VideoInfo';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -80,6 +82,18 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
       }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
       right: true,
       sortable: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
     {
       name: <Text id="table.group">Group</Text>,

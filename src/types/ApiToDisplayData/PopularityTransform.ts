@@ -19,6 +19,7 @@ export const VTuberPopularityToDisplay = (
   hasTwitch: e.Twitch !== undefined,
   TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
   group: e.group ?? '',
+  popularVideo: e.popularVideo,
   nationality: e.nationality,
   activity: e.activity,
   popularity: e.popularity,

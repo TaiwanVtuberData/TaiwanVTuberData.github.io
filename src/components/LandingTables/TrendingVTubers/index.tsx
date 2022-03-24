@@ -10,8 +10,17 @@ import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTu
 import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/PopularityTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
+import { VideoInfo } from '../../../types/Common/VideoInfo';
+import { openModal } from '../../../global/modalState';
+import { Dictionary } from '../../../i18n/Dictionary';
 
-const TrendingVTubersTable: FunctionalComponent = () => {
+export interface TrendingVTubersTableProps {
+  dictionary: Dictionary;
+}
+
+const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
+  props: TrendingVTubersTableProps
+) => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
       name: '',
@@ -26,8 +35,7 @@ const TrendingVTubersTable: FunctionalComponent = () => {
     },
     {
       name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
+      width: '75px',
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
@@ -36,6 +44,18 @@ const TrendingVTubersTable: FunctionalComponent = () => {
       name: <Text id="table.popularity">Popularity</Text>,
       selector: (row: { popularity: number }): number => row.popularity,
       right: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
   ];
 

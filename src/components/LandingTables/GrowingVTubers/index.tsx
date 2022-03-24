@@ -19,6 +19,8 @@ import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
 import { Dictionary } from '../../../i18n/Dictionary';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
+import { VideoInfo } from '../../../types/Common/VideoInfo';
+import { openModal } from '../../../global/modalState';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -41,8 +43,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     },
     {
       name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
+      width: '75px',
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
@@ -58,6 +59,18 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
       cell: (row: { _7DaysGrowth: GrowthDisplayData }): string =>
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
       right: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
   ];
 
@@ -89,6 +102,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
       e.YouTube._30DaysGrowth,
       e.YouTube.subscriberCount
     ),
+    popularVideo: e.popularVideo,
     group: e.group ?? '',
     nationality: e.nationality,
     activity: e.activity,

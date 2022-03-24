@@ -22,16 +22,16 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
       </h1>
       <div class={style.tableGrid}>
         <div class={style.tableItem}>
-          <TrendingVTubersTable />
+          <TrendingVTubersTable dictionary={props.dictionary} />
         </div>
         <div class={style.tableItem}>
-          <DebutVTubersTable />
+          <DebutVTubersTable dictionary={props.dictionary} />
         </div>
         <div class={style.tableItem}>
           <GrowingVTubersTable dictionary={props.dictionary} />
         </div>
         <div class={style.tableItem}>
-          <TopVTubersTable />
+          <TopVTubersTable dictionary={props.dictionary} />
         </div>
       </div>
     </Fragment>

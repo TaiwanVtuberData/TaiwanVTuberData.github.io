@@ -9,8 +9,17 @@ import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberBasicToDisplay } from '../../../types/ApiToDisplayData/BasicTransfrom';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import { openModal } from '../../../global/modalState';
+import { VideoInfo } from '../../../types/Common/VideoInfo';
+import { Dictionary } from '../../../i18n/Dictionary';
 
-const TopVTubersTable: FunctionalComponent = () => {
+export interface TopVTubersTableProps {
+  dictionary: Dictionary;
+}
+
+const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
+  props: TopVTubersTableProps
+) => {
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
@@ -25,8 +34,7 @@ const TopVTubersTable: FunctionalComponent = () => {
     },
     {
       name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
+      width: '75px',
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
@@ -51,6 +59,18 @@ const TopVTubersTable: FunctionalComponent = () => {
         TwitchFollowerCount: number;
       }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
       right: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
   ];
 

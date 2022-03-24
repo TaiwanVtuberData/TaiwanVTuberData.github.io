@@ -11,8 +11,17 @@ import { getISODateString } from '../../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
 import { VTuberDebutToDisplay } from '../../../types/ApiToDisplayData/DebutTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import { VideoInfo } from '../../../types/Common/VideoInfo';
+import { openModal } from '../../../global/modalState';
+import { Dictionary } from '../../../i18n/Dictionary';
 
-const DebutVTubersTable: FunctionalComponent = () => {
+export interface DebutVTubersTableProps {
+  dictionary: Dictionary;
+}
+
+const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
+  props: DebutVTubersTableProps
+) => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
@@ -33,8 +42,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
     },
     {
       name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
+      width: '75px',
       cell: (row: {
         channelLinks: h.JSX.Element | null;
       }): h.JSX.Element | null => row.channelLinks,
@@ -51,6 +59,18 @@ const DebutVTubersTable: FunctionalComponent = () => {
             )
           : null,
       right: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
   ];
 

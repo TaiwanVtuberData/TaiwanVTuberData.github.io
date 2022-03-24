@@ -14,6 +14,8 @@ import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSo
 import '../../style/index.css';
 import '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
+import { VideoInfo } from '../../types/Common/VideoInfo';
+import { openModal } from '../../global/modalState';
 
 export interface GroupPageProps {
   groupName: string;
@@ -70,6 +72,18 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
       sortable: true,
     },
     {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
+    },
+    {
       name: <Text id="table.nationality">Nationality</Text>,
       minWidth: '25px',
       maxWidth: '100px',
@@ -120,6 +134,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     YouTubeSubscriberCount: e.YouTube?.subscriberCount,
     hasTwitch: e.Twitch !== undefined,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
+    popularVideo: e.popularVideo,
     nationality: e.nationality,
     activity: e.activity,
   });

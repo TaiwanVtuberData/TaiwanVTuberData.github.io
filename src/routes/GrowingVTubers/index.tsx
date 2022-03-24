@@ -21,6 +21,8 @@ import { GrowthData } from '../../types/Common/GrowthData';
 import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../utils/GrowthSort';
 import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { VideoInfo } from '../../types/Common/VideoInfo';
+import { openModal } from '../../global/modalState';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -73,6 +75,18 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       right: true,
       sortable: true,
       sortFunction: _30DaysGrowthSort,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
     {
       name: <Text id="table.group">Group</Text>,
@@ -170,6 +184,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       e.YouTube._30DaysGrowth,
       e.YouTube.subscriberCount
     ),
+    popularVideo: e.popularVideo,
     group: e.group ?? '',
     nationality: e.nationality,
     activity: e.activity,

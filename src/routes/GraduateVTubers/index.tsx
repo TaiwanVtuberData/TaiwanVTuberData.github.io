@@ -18,6 +18,8 @@ import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
 import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { VideoInfo } from '../../types/Common/VideoInfo';
+import { openModal } from '../../global/modalState';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -76,6 +78,18 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
       }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
       right: true,
       sortable: true,
+    },
+    {
+      name: <Text id="table.popularVideo">Popular Video</Text>,
+      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
+        row.popularVideo !== undefined ? (
+          <input
+            type="button"
+            value={props.dictionary.text.showVideo}
+            // TypeScript, I'm pretty sure row.popularVideo is defined here
+            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
+          />
+        ) : null,
     },
     {
       name: <Text id="table.group">Group</Text>,

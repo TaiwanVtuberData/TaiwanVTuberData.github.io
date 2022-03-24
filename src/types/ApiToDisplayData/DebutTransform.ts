@@ -20,6 +20,7 @@ export const VTuberDebutToDisplay = (
   YouTubeSubscriberCount: e.YouTube?.subscriberCount,
   hasTwitch: e.Twitch !== undefined,
   TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
+  popularVideo: e.popularVideo,
   group: e.group ?? '',
   nationality: e.nationality,
   activity: e.activity,
