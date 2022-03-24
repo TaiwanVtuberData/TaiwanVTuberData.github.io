@@ -35,8 +35,12 @@
 
 .GoogleFormIcon {
   content: url(../../assets/icons/google-forms.png);
+  width: 32px;
+  height: 32px;
 }
 
 .GitHubIcon {
   content: url(../../assets/icons/GitHub-Mark-32px.png);
+  width: 32px;
+  height: 32px;
 }
