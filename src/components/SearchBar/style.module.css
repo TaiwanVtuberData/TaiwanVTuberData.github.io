@@ -5,6 +5,11 @@
 
 .button {
   float: right;
+  background-color: #e6e6e6;
   border: 3px solid #636363;
   border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #979797;
 }
