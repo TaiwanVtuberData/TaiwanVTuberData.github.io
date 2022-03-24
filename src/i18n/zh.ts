@@ -66,6 +66,7 @@ const zh: Dictionary = {
   text: {
     reportUsingGoogleForm: '使用 Google 表單回報',
     reportUsingGitHub: '使用 GitHub Issue 回報',
+    showVideo: '顯示影片',
   },
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',

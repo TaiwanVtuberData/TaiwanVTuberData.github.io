@@ -74,7 +74,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         row.popularVideo !== undefined ? (
           <input
             type="button"
-            value="顯示影片"
+            value={props.dictionary.text.showVideo}
             // TypeScript, I'm pretty sure row.popularVideo is defined here
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />

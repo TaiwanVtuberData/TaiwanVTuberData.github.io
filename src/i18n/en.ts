@@ -66,6 +66,7 @@ const en: Dictionary = {
   text: {
     reportUsingGoogleForm: 'Report using Google Form',
     reportUsingGitHub: 'Report using GitHub',
+    showVideo: 'show video',
   },
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',

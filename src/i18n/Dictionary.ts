@@ -60,6 +60,7 @@ export interface Dictionary {
   text: {
     reportUsingGoogleForm: string;
     reportUsingGitHub: string;
+    showVideo: string;
   };
   toolTip: {
     eventCalendar: string;
