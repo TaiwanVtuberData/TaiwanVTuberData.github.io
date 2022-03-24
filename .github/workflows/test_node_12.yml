@@ -1,6 +1,6 @@
 # Copied from
 # https://github.com/adityac-addepar/todolist/blob/main/.github/workflows/deploy_react.yml
-name: Test Node.js 14 build
+name: Test Node.js 12 build
 
 # Controls when the action will run.
 on:
