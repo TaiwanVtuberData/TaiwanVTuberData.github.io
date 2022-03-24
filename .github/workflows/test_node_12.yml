@@ -1,6 +1,6 @@
 # Copied from
 # https://github.com/adityac-addepar/todolist/blob/main/.github/workflows/deploy_react.yml
-name: Test Node.js 16 build
+name: Test Node.js 14 build
 
 # Controls when the action will run.
 on:
@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x] # We will deploy with only one version of node  
+        node-version: [12.x] # We will deploy with only one version of node  
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
