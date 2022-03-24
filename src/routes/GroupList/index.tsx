@@ -15,6 +15,7 @@ import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberData } from '../../types/ApiData/VTuberData';
 import Profile from '../../components/Profile';
 import { NameSort } from '../../utils/NameSort';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -177,6 +178,11 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.groupList">Group List</Text>
+        <QuestionMarkToolTip
+          width="300px"
+          fontSize="13px"
+          text={<Text id="toolTip.groupList">tooltip text</Text>}
+        />
       </h1>
       <DataTable
         {...DefaultDataTableProps}

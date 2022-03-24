@@ -73,11 +73,11 @@ const en: Dictionary = {
       'Popularity: Median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days',
     growingVTubers:
       'Only showing VTubers with YouTube subscribers growth over 100 within 7 days',
-
     debutVTubers: 'Only showing VTubers debut/about to debut in 30 days',
-
     graduateVTubers:
       'Only showing VTubers graduated/about to graduate in 30 days',
+    groupList:
+      "Popularity: All channels'median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days",
   },
 
   termsOfService: {

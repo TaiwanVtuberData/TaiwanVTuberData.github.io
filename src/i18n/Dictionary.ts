@@ -67,6 +67,7 @@ export interface Dictionary {
     growingVTubers: string;
     debutVTubers: string;
     graduateVTubers: string;
+    groupList: string;
   };
   termsOfService: {
     termsOfService: string;

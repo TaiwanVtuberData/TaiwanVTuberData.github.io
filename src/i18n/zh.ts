@@ -74,6 +74,8 @@ const zh: Dictionary = {
     growingVTubers: '只會顯示近 7 日人數成長至少 100 人的頻道',
     debutVTubers: '只會顯示近 30 日出道/即將出道的 VTuber',
     graduateVTubers: '只會顯示近 30 日畢業/即將畢業的 VTuber',
+    groupList:
+      '熱度計算方式：所有頻道近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去實況的觀看中位數',
   },
   termsOfService: {
     termsOfService: '使用條款',
