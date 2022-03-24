@@ -103,4 +103,9 @@ export interface Dictionary {
     top: string;
     bottom: string;
   };
+  notFound: {
+    title: string;
+    detail: string;
+    goHome: string;
+  };
 }

@@ -1,16 +1,23 @@
-import { FunctionalComponent, h } from 'preact';
+import { Fragment, FunctionalComponent, h } from 'preact';
 import { Link } from 'preact-router/match';
-import style from './style.css';
+import { Text } from 'preact-i18n';
+import baseroute from '../../baseroute';
 
 const Notfound: FunctionalComponent = () => {
   return (
-    <div class={style.notfound}>
-      <h1>Error 404</h1>
-      <p>That page doesn&apos;t exist.</p>
-      <Link href="/">
-        <h4>Back to Home</h4>
+    <Fragment>
+      <h1>
+        <Text id="notFound.title">Error</Text>
+      </h1>
+      <p style={{ textAlign: 'center' }}>
+        <Text id="notFound.detail">This page does not exists.</Text>
+      </p>
+      <Link href={`${baseroute}/`}>
+        <h4 style={{ textAlign: 'center' }}>
+          <Text id="notFound.goHome">Go back to home page.</Text>
+        </h4>
       </Link>
-    </div>
+    </Fragment>
   );
 };
 

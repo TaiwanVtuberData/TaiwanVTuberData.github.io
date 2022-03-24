@@ -80,7 +80,6 @@ const en: Dictionary = {
     groupList:
       "Popularity: All channels'median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days",
   },
-
   termsOfService: {
     termsOfService: 'Terms Of Service',
     lastUpdated: 'Last Updated: 2021/12/31',
@@ -115,6 +114,11 @@ const en: Dictionary = {
   scroll: {
     top: 'To Top',
     bottom: 'To Bottom',
+  },
+  notFound: {
+    title: 'Error',
+    detail: 'This page does not exists.',
+    goHome: 'Go back to home page.',
   },
 } as const;
 
