@@ -32,7 +32,6 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberGraduateDisplayData>> = [
     {
       name: <Text id="table.graduateDate">Graduation Date</Text>,
-      width: '100px',
       selector: (row: { graduateDate: string }): string => row.graduateDate,
       sortable: true,
     },

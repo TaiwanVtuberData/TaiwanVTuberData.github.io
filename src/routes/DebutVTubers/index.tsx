@@ -30,7 +30,6 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
-      width: '100px',
       selector: (row: { debutDate: string }): string => row.debutDate,
       sortable: true,
     },
