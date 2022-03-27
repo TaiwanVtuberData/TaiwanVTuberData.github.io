@@ -41,7 +41,7 @@ button:hover {
 }
 
 .navIcon {
-  content: url(../../assets/icons/hamburger.png);
+  content: url(../../assets/icons/hamburger.svg);
   width: 48px;
   height: 48px;
 }
@@ -57,7 +57,7 @@ button:hover {
 }
 
 .xIcon {
-  content: url(../../assets/icons/xmark.png);
+  content: url(../../assets/icons/cross-mark.svg);
   width: 48px;
   height: 48px;
 }
