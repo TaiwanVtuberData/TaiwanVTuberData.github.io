@@ -21,6 +21,8 @@ export interface Dictionary {
     memberList: string;
     top10: string;
     YouTubeSubPlusTwitchFollowers: string;
+    statisticUpdateTime: string;
+    VTuberDataUpdateTime: string;
   };
   table: {
     displayName: string;

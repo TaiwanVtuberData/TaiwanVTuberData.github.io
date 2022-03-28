@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
+import { UpdateTimeResponse } from '../types/ApiData/UpdateTime';
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { VTuberDataResponse } from '../types/ApiData/VTuberData';
 import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
@@ -40,6 +41,10 @@ const AxiosGetWrapper = async <DataType>(
   if (commitDetail === undefined) await setCommitDetail();
 
   return axios.get<DataType>(url);
+};
+
+export const getUpdateTime = (): Promise<AxiosResponse<UpdateTimeResponse>> => {
+  return AxiosGetWrapper<UpdateTimeResponse>(`/update-time.json`);
 };
 
 export type GetVTubersModifier = '10' | 'all';
