@@ -21,6 +21,8 @@ const en: Dictionary = {
     memberList: 'Members',
     top10: 'Top 10',
     YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
+    statisticUpdateTime: 'Statistic update time:',
+    VTuberDataUpdateTime: 'VTuber data update time:',
   },
   table: {
     displayName: 'Name',

@@ -1,12 +1,14 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
+import { FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { Link } from 'preact-router/match';
-import { StateUpdater, useState } from 'preact/hooks';
+import { StateUpdater, useEffect, useState } from 'preact/hooks';
+import * as Api from '../../services/ApiService';
 import {
   LanguageOption,
   LanguageOptions,
   validI18n,
 } from '../../types/LanguageOptions';
+import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import style from './style.module.css';
 
 export interface SidebarProps {
@@ -21,6 +23,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const close = (): void => setSidebarOpen(false);
   // use default URL prefix (no prefix) if in development
   const SITE_URL_PREFIX: string = props.siteUrlPrefix ?? '';
+
+  const [statisticUpdateTime, setStatisticUpdateTime] = useState<string>();
+  const [VTuberDataUpdateTime, setVTuberDataUpdateTime] = useState<string>();
 
   const DropDownElement = (
     languageOptions: Array<LanguageOption>,
@@ -57,6 +62,21 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
       </div>
     );
   };
+
+  const getUpdateTime = async (): Promise<void> => {
+    await Api.getUpdateTime().then((res) => {
+      setStatisticUpdateTime(
+        getFormattedDateTime(new Date(res.data.time.statisticUpdateTime))
+      );
+      setVTuberDataUpdateTime(
+        getFormattedDateTime(new Date(res.data.time.VTuberDataUpdateTime))
+      );
+    });
+  };
+
+  useEffect(() => {
+    getUpdateTime();
+  }, []);
 
   return (
     <header>
@@ -119,6 +139,16 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             },
             { textID: 'header.about', linkTo: `${SITE_URL_PREFIX}/about` },
           ].map((e) => LinkElement(e.textID, e.linkTo))}
+          <span>
+            <Text id="header.statisticUpdateTime">Statistic update time:</Text>
+            {statisticUpdateTime}
+          </span>
+          <span>
+            <Text id="header.VTuberDataUpdateTime">
+              VTuber data update time:
+            </Text>
+            {VTuberDataUpdateTime}
+          </span>
           {DropDownElement(LanguageOptions, props.locale, props.setLocale)}
         </nav>
       </div>

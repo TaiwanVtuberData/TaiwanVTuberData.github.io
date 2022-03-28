@@ -3,7 +3,7 @@ import { Dictionary } from './Dictionary';
 const zh: Dictionary = {
   header: {
     title: '臺灣 VTuber 列表 (此網站仍在建置中)',
-    chooseLanguage: '選擇語言:',
+    chooseLanguage: '選擇語言：',
     home: '首頁',
     eventCalendar: '重大活動月曆',
     eventCalendarDetail: '(由 Discord 群 <b>避難所</b> 提供)',
@@ -21,6 +21,8 @@ const zh: Dictionary = {
     memberList: '成員列表',
     top10: '前 10',
     YouTubeSubPlusTwitchFollowers: 'YouTube 訂閱 + Twitch 追隨',
+    statisticUpdateTime: '數據更新時間：',
+    VTuberDataUpdateTime: 'VTuber 資料更新時間：',
   },
   table: {
     displayName: '名稱',
