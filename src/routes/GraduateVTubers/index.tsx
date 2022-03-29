@@ -9,7 +9,6 @@ import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
@@ -20,6 +19,7 @@ import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { openModal } from '../../global/modalState';
+import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -55,28 +55,18 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
-      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      name: (
+        <Text id="table.YouTubeTwitchCount">
+          YouTube Subscribers + Twitch Followers
+        </Text>
+      ),
+      width: 'auto',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
-      }): h.JSX.Element | number | null =>
-        row.hasYouTube
-          ? row.YouTubeSubscriberCount ?? (
-              <Text id="table.hiddenCount">hidden</Text>
-            )
-          : null,
-      right: true,
-      sortable: true,
-      sortFunction: YouTubeSubscriberCountSort,
-    },
-    {
-      name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
-      }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
-      right: true,
-      sortable: true,
+      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
