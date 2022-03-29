@@ -3,10 +3,10 @@
   "private": true,
   "name": "taiwan-vtuber-data-preact",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "scripts": {
     "build": "preact build",
-    "build:gh": "GITHUB_PAGES=TaiwanVTuberData-Preact preact build && dot-json ./build/manifest.json start_url \"/TaiwanVtuberData-Preact/\" && cp src/404.html build/404.html",
+    "build:gh": "GITHUB_PAGES=TaiwanVTuberData-Preact preact build && dot-json ./build/manifest.json start_url \"/TaiwanVTuberData-Preact/\" && cp src/404.html build/404.html",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
