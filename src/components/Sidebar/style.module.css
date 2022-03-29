@@ -121,3 +121,7 @@ button:hover {
   border: 3px solid #636363;
   border-radius: 5px;
 }
+
+.rightAlignText {
+  text-align: right;
+}
