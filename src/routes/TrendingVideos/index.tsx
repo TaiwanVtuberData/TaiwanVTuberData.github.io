@@ -128,7 +128,6 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
           value={props.modifier}
           optionValue={optionValue}
           onChange={(e: any) => {
-            console.log('e', e.target.value);
             window.location.href = `${baseroute}/trending-videos/${e.target.value}`;
           }}
         />
