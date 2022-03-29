@@ -58,6 +58,7 @@ export interface Dictionary {
     options: string;
     popularVideo: string;
     YouTubeTwitchCount: string;
+    sortingMethod: string;
     paginationOptions: PaginationOptions;
   };
   text: {

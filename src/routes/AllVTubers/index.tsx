@@ -15,6 +15,11 @@ import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransfro
 import { openModal } from '../../global/modalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
+import DropDownList from '../../components/DropDownList';
+import {
+  SortMethod,
+  SubscriberCountDescendingSort,
+} from '../../utils/SubscriberCountSort';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -24,6 +29,9 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   props: AllVTubersPageProps
 ) => {
   document.title = `${props.dictionary.header.allVTubers} | ${props.dictionary.header.title}`;
+
+  const [sortMethod, setSortMethod] = useState<SortMethod>('YouTube+Twitch');
+
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
@@ -107,7 +115,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     .filter((item) => {
       if (item.group === undefined) return true;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
-    });
+    })
+    .sort(SubscriberCountDescendingSort(sortMethod));
 
   const searchBarComponent = useMemo(() => {
     const handleClearName = (): void => {
@@ -124,8 +133,38 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       }
     };
 
+    const optionValue: Array<{
+      option: h.JSX.Element;
+      value: SortMethod;
+    }> = [
+      {
+        option: (
+          <Text id="table.YouTubeTwitchCount">
+            YouTube Subscribers + Twitch Followers
+          </Text>
+        ),
+        value: 'YouTube+Twitch',
+      },
+      {
+        option: (
+          <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
+        ),
+        value: 'YouTube',
+      },
+      {
+        option: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
+        value: 'Twitch',
+      },
+    ];
+
     return (
       <div class={tableStyle.searchBarGroup}>
+        <DropDownList
+          tipText={props.dictionary.table.sortingMethod}
+          value={sortMethod}
+          optionValue={optionValue}
+          onChange={(e: any) => setSortMethod(e.target.value)}
+        />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any): void => setFilterName(e.target.value)}
