@@ -35,6 +35,10 @@ const setCommitDetail = async (): Promise<void> => {
   axios.defaults.baseURL = `https://cdn.statically.io/gh/nh60211as/TaiwanVtuberTrackingDataJson/${commitDetail.sha}/api/v0`;
 };
 
+export const bootstrapApi = async (): Promise<void> => {
+  await setCommitDetail();
+}
+
 const AxiosGetWrapper = async <DataType>(
   url: string
 ): Promise<AxiosResponse<DataType>> => {
