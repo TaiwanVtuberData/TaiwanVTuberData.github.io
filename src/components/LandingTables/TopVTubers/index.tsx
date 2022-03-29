@@ -12,6 +12,7 @@ import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import { openModal } from '../../../global/modalState';
 import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { Dictionary } from '../../../i18n/Dictionary';
+import YouTubeTwitchCount from '../../YouTubeTwitchCount';
 
 export interface TopVTubersTableProps {
   dictionary: Dictionary;
@@ -40,25 +41,18 @@ const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
-      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      name: (
+        <Text id="table.YouTubeTwitchCount">
+          YouTube Subscribers + Twitch Followers
+        </Text>
+      ),
+      width: 'auto',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
-      }): h.JSX.Element | number | null =>
-        row.hasYouTube
-          ? row.YouTubeSubscriberCount ?? (
-              <Text id="table.hiddenCount">hidden</Text>
-            )
-          : null,
-      right: true,
-    },
-    {
-      name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
-      }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
-      right: true,
+      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,

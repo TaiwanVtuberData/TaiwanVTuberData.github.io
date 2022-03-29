@@ -57,6 +57,8 @@ const en: Dictionary = {
     allVideos: 'All videos',
     options: 'Options:',
     popularVideo: 'Popular Video',
+    YouTubeTwitchCount: 'YouTube Subscribers + Twitch Followers',
+    sortingMethod: 'Sort by:',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',

@@ -10,12 +10,13 @@ import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberPopularityDisplayData } from '../../types/TableDisplayData/VTuberPopularityDisplayData';
-import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberPopularityToDisplay } from '../../types/ApiToDisplayData/PopularityTransform';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { openModal } from '../../global/modalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
+import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/SubscriberCountSort';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -60,28 +61,20 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
       sortable: true,
     },
     {
-      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      name: (
+        <Text id="table.YouTubeTwitchCount">
+          YouTube Subscribers + Twitch Followers
+        </Text>
+      ),
+      width: 'auto',
+      sortable: true,
+      sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
-      }): h.JSX.Element | number | null =>
-        row.hasYouTube
-          ? row.YouTubeSubscriberCount ?? (
-              <Text id="table.hiddenCount">hidden</Text>
-            )
-          : null,
-      right: true,
-      sortable: true,
-      sortFunction: YouTubeSubscriberCountSort,
-    },
-    {
-      name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
-      }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
-      right: true,
-      sortable: true,
+      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,

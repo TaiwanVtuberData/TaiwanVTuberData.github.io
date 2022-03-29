@@ -8,13 +8,18 @@ import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import { YouTubeSubscriberCountSort } from '../../utils/YouTubeSubscriberCountSort';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransfrom';
 import { openModal } from '../../global/modalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
+import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
+import DropDownList from '../../components/DropDownList';
+import {
+  SortMethod,
+  SubscriberCountDescendingSort,
+} from '../../utils/SubscriberCountSort';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -24,6 +29,9 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   props: AllVTubersPageProps
 ) => {
   document.title = `${props.dictionary.header.allVTubers} | ${props.dictionary.header.title}`;
+
+  const [sortMethod, setSortMethod] = useState<SortMethod>('YouTube+Twitch');
+
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: '',
@@ -45,31 +53,22 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       }): h.JSX.Element | null => row.channelLinks,
     },
     {
-      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      name: (
+        <Text id="table.YouTubeTwitchCount">
+          YouTube Subscribers + Twitch Followers
+        </Text>
+      ),
+      width: 'auto',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
-      }): h.JSX.Element | number | null =>
-        row.hasYouTube
-          ? row.YouTubeSubscriberCount ?? (
-              <Text id="table.hiddenCount">hidden</Text>
-            )
-          : null,
-      right: true,
-      sortable: true,
-      sortFunction: YouTubeSubscriberCountSort,
-    },
-    {
-      name: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-      selector: (row: {
         hasTwitch: boolean;
         TwitchFollowerCount: number;
-      }): number | string => (row.hasTwitch ? row.TwitchFollowerCount : ''),
-      right: true,
-      sortable: true,
+      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: 'auto',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -82,6 +81,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
+      width: 'auto',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -115,7 +115,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     .filter((item) => {
       if (item.group === undefined) return true;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
-    });
+    })
+    .sort(SubscriberCountDescendingSort(sortMethod));
 
   const searchBarComponent = useMemo(() => {
     const handleClearName = (): void => {
@@ -132,8 +133,38 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       }
     };
 
+    const optionValue: Array<{
+      option: h.JSX.Element;
+      value: SortMethod;
+    }> = [
+      {
+        option: (
+          <Text id="table.YouTubeTwitchCount">
+            YouTube Subscribers + Twitch Followers
+          </Text>
+        ),
+        value: 'YouTube+Twitch',
+      },
+      {
+        option: (
+          <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
+        ),
+        value: 'YouTube',
+      },
+      {
+        option: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
+        value: 'Twitch',
+      },
+    ];
+
     return (
       <div class={tableStyle.searchBarGroup}>
+        <DropDownList
+          tipText={props.dictionary.table.sortingMethod}
+          value={sortMethod}
+          optionValue={optionValue}
+          onChange={(e: any) => setSortMethod(e.target.value)}
+        />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any): void => setFilterName(e.target.value)}

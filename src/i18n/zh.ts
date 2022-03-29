@@ -57,6 +57,8 @@ const zh: Dictionary = {
     allVideos: '所有影片',
     popularVideo: '熱門影片',
     options: '選項:',
+    YouTubeTwitchCount: 'YouTube 訂閱人數 + Twitch 追隨人數',
+    sortingMethod: '排序方式：',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: '每頁數量',
