@@ -58,7 +58,6 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
-      width: 'auto',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;

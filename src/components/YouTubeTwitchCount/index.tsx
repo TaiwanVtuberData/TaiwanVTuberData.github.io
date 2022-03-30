@@ -1,6 +1,7 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import '../../style/index.css';
+import style from './style.module.css';
 
 export interface YouTubeTwitchCountProps {
   hasYouTube: boolean;
@@ -14,14 +15,16 @@ const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
 ): h.JSX.Element => {
   const YouTubeSpan = (YouTubeSubscriberCount?: number): h.JSX.Element => {
     return (
-      <span class="YouTubeRed">
+      <span class={`${style.noWrap} YouTubeRed`}>
         {YouTubeSubscriberCount ?? <Text id="table.hiddenCount">hidden</Text>}
       </span>
     );
   };
 
   const TwitchSpan = (TwitchFollowerCount: number): h.JSX.Element => {
-    return <span class="TwitchPurple">{TwitchFollowerCount}</span>;
+    return (
+      <span class={`${style.noWrap} TwitchPurple`}>{TwitchFollowerCount}</span>
+    );
   };
 
   const CountSpan = (props: YouTubeTwitchCountProps): h.JSX.Element | null => {

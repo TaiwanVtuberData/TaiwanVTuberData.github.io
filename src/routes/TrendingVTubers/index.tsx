@@ -66,7 +66,6 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
-      width: 'auto',
       sortable: true,
       sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
       cell: (row: {
