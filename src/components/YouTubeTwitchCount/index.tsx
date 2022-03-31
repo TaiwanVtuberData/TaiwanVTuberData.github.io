@@ -33,7 +33,7 @@ const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
         <Fragment>
           {YouTubeSpan(props.YouTubeSubscriberCount)}
           {/* extra white space. will be rendered as " + " */}
-          <span>&nbsp;+&nbsp;</span>
+          <span class={style.noWrap}>&nbsp;+&nbsp;</span>
           {TwitchSpan(props.TwitchFollowerCount)}
         </Fragment>
       );
