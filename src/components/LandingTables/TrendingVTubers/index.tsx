@@ -13,6 +13,11 @@ import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { openModal } from '../../../global/modalState';
 import { Dictionary } from '../../../i18n/Dictionary';
+import {
+  PopularityCountAscendingSort,
+  PopularityCountDescendingSort,
+} from '../../../utils/PopularityCountSort';
+import YouTubeTwitchCount from '../../YouTubeTwitchCount';
 
 export interface TrendingVTubersTableProps {
   dictionary: Dictionary;
@@ -42,8 +47,21 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      selector: (row: { popularity: number }): number => row.popularity,
-      right: true,
+      sortable: true,
+      sortFunction: PopularityCountAscendingSort,
+      cell: (row: {
+        hasYouTube: boolean;
+        YouTubePopularity: number;
+        hasTwitch: boolean;
+        TwitchPopularity: number;
+      }): h.JSX.Element => (
+        <YouTubeTwitchCount
+          hasYouTube={row.hasYouTube}
+          YouTubeSubscriberCount={row.YouTubePopularity}
+          hasTwitch={row.hasTwitch}
+          TwitchFollowerCount={row.TwitchPopularity}
+        />
+      ),
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
@@ -65,11 +83,11 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
 
   const getVTubers = async (): Promise<void> => {
     await Api.getTrendingVTubers('10').then((res) => {
-      // thanks to JavaScript sorting being mutable, I have to convert ReadonlyArray to Array first
       setData(
         res.data.VTubers.map((e) => e)
-          .sort((a, b) => b.popularity - a.popularity)
           .map((e, index) => VTuberPopularityToDisplay(e, index + 1))
+          .sort(PopularityCountDescendingSort)
+          .map((e, index) => ({ ...e, ranking: index + 1 }))
       );
       setPending(false);
     });

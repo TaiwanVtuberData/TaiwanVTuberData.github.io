@@ -37,7 +37,7 @@ const setCommitDetail = async (): Promise<void> => {
 
 export const bootstrapApi = async (): Promise<void> => {
   await setCommitDetail();
-}
+};
 
 const AxiosGetWrapper = async <DataType>(
   url: string
