@@ -17,6 +17,10 @@ import { openModal } from '../../global/modalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/SubscriberCountSort';
+import {
+  PopularityCountAscendingSort,
+  PopularityCountDescendingSort,
+} from '../../utils/PopularityCountSort';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -56,9 +60,21 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      selector: (row: { popularity: number }): number => row.popularity,
-      right: true,
       sortable: true,
+      sortFunction: PopularityCountAscendingSort,
+      cell: (row: {
+        hasYouTube: boolean;
+        YouTubePopularity: number;
+        hasTwitch: boolean;
+        TwitchPopularity: number;
+      }): h.JSX.Element => (
+        <YouTubeTwitchCount
+          hasYouTube={row.hasYouTube}
+          YouTubeSubscriberCount={row.YouTubePopularity}
+          hasTwitch={row.hasTwitch}
+          TwitchFollowerCount={row.TwitchPopularity}
+        />
+      ),
     },
     {
       name: (
@@ -161,11 +177,11 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
 
   const getVTubers = async (): Promise<void> => {
     await Api.getTrendingVTubers('100').then((res) => {
-      // thanks to JavaScript sorting being mutable, I have to convert ReadonlyArray to Array first
       setData(
         res.data.VTubers.map((e) => e)
-          .sort((a, b) => b.popularity - a.popularity)
           .map((e, index) => VTuberPopularityToDisplay(e, index + 1))
+          .sort(PopularityCountDescendingSort)
+          .map((e, index) => ({ ...e, ranking: index + 1 }))
       );
       setPending(false);
     });

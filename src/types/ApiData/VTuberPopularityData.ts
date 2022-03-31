@@ -1,7 +1,10 @@
+import { TwitchPopularityData } from './TwitchPopularityData';
 import { VTuberData } from './VTuberData';
+import { YouTubePopularityData } from './YouTubePopularityData';
 
 export interface VTuberPopularityData extends VTuberData {
-  readonly popularity: number;
+  readonly YouTube?: YouTubePopularityData;
+  readonly Twitch?: TwitchPopularityData;
 }
 
 export interface VTuberPopularityDataResponse {
