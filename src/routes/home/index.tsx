@@ -13,7 +13,9 @@ export interface HomePageProps {
 }
 
 const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
-  document.title = `${props.dictionary.header.title}`;
+  if (typeof window !== "undefined") {
+    document.title = `${props.dictionary.header.title}`;
+  }
 
   return (
     <Fragment>
