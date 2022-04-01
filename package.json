@@ -2,7 +2,7 @@
   "homepage": "https://taiwanvtuberdata.github.io/TaiwanVTuberData-Preact",
   "private": true,
   "name": "taiwan-vtuber-data-preact",
-  "version": "0.0.0",
+  "version": "0.9.0",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "preact build",
