@@ -15,6 +15,7 @@ import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { openModal } from '../../../global/modalState';
 import { Dictionary } from '../../../i18n/Dictionary';
 import ProfileImageLink from '../../ProfileImageLink';
+import YouTubeTwitchCount from '../../YouTubeTwitchCount';
 
 export interface DebutVTubersTableProps {
   dictionary: Dictionary;
@@ -42,17 +43,17 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
       }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
-      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      name: (
+        <Text id="table.YouTubeTwitchCount">
+          YouTube Subscribers + Twitch Followers
+        </Text>
+      ),
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
-      }): h.JSX.Element | number | null =>
-        row.hasYouTube
-          ? row.YouTubeSubscriberCount ?? (
-              <Text id="table.hiddenCount">hidden</Text>
-            )
-          : null,
-      right: true,
+        hasTwitch: boolean;
+        TwitchFollowerCount: number;
+      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
