@@ -18,6 +18,7 @@ import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { openModal } from '../../global/modalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
+import ProfileImageLink from '../../components/ProfileImageLink';
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -30,27 +31,18 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
+      width: '100px',
       selector: (row: { debutDate: string }): string => row.debutDate,
       sortable: true,
     },
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: (
@@ -67,6 +59,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -79,6 +72,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
+      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a

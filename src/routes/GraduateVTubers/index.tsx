@@ -3,8 +3,6 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import baseroute from '../../baseroute';
-import ChannelLinks from '../../components/ChannelLinks';
-import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
@@ -20,6 +18,7 @@ import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { openModal } from '../../global/modalState';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
+import ProfileImageLink from '../../components/ProfileImageLink';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -32,27 +31,18 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberGraduateDisplayData>> = [
     {
       name: <Text id="table.graduateDate">Graduation Date</Text>,
+      width: '100px',
       selector: (row: { graduateDate: string }): string => row.graduateDate,
       sortable: true,
     },
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: (
@@ -69,6 +59,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -81,6 +72,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
+      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -181,16 +173,15 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
     id: e.id,
     isToday: e.graduateDate === todayDate,
     graduateDate: e.graduateDate,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
     name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
+    imgUrl: e.imgUrl,
     hasYouTube: e.YouTube !== undefined,
+    YouTubeId: e.YouTube?.id,
     YouTubeSubscriberCount: e.YouTube?.subscriberCount,
     hasTwitch: e.Twitch !== undefined,
+    TwitchId: e.Twitch?.id,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
+    popularVideo: e.popularVideo,
     group: e.group ?? '',
     nationality: e.nationality,
     activity: e.activity,

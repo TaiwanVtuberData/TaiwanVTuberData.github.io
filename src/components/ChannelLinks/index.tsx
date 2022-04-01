@@ -22,7 +22,7 @@ const ChannelLinks: FunctionalComponent<ChannelLinksProps> = (
   };
 
   return (
-    <div>
+    <div class={style.container}>
       {IconLink(
         style.YouTubeImg,
         'https://www.youtube.com/channel/',

@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { Activity } from '../Common/Activity';
 import { VideoInfo } from '../Common/VideoInfo';
 
@@ -6,12 +5,13 @@ export interface VTuberDebutDisplayData {
   id: string;
   isToday: boolean;
   debutDate: string;
-  profileImg: h.JSX.Element | null;
   name: string;
-  channelLinks: h.JSX.Element | null;
+  imgUrl?: string;
   hasYouTube: boolean;
+  YouTubeId?: string;
   YouTubeSubscriberCount?: number;
   hasTwitch: boolean;
+  TwitchId?: string;
   TwitchFollowerCount: number;
   popularVideo?: VideoInfo;
   group: string;

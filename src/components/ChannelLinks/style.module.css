@@ -1,3 +1,14 @@
+.container {
+  display: flex;
+  margin: auto;
+  width: auto;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
 .YouTubeImg {
   content: url(../../assets/icons/youtube_social_circle_dark.png);
   width: 48px;

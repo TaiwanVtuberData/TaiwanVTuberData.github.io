@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { Activity } from '../Common/Activity';
 import { GrowthData } from '../Common/GrowthData';
 import { VideoInfo } from '../Common/VideoInfo';
@@ -9,9 +8,10 @@ export interface GrowthDisplayData extends GrowthData {
 
 export interface VTuberGrowthDisplayData {
   id: string;
-  profileImg: h.JSX.Element | null;
   name: string;
-  channelLinks: h.JSX.Element | null;
+  imgUrl?: string;
+  YouTubeId?: string;
+  TwitchId?: string;
   YouTubeSubscriberCount: number;
   _7DaysGrowth: GrowthDisplayData;
   _30DaysGrowth: GrowthDisplayData;

@@ -21,6 +21,8 @@ import {
   PopularityCountAscendingSort,
   PopularityCountDescendingSort,
 } from '../../utils/PopularityCountSort';
+import ProfileImageLink from '../../components/ProfileImageLink';
+import { CompactTableStyle } from '../../style/CompactTableStyle';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -34,29 +36,21 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
       name: '#',
-      width: '70px',
+      width: '30px',
       wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
       sortable: true,
     },
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
+      minWidth: '300px',
+      maxWidth: '500px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
@@ -93,6 +87,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -105,6 +100,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
+      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -206,6 +202,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         columns={columns}
         data={filteredData}
         conditionalRowStyles={ActivityRowStyles}
+        customStyles={CompactTableStyle}
         fixedHeader
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}

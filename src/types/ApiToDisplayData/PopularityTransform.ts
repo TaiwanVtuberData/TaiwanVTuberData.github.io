@@ -8,21 +8,19 @@ export const VTuberPopularityToDisplay = (
   ranking: number
 ): VTuberPopularityDisplayData => ({
   id: e.id,
-  profileImg: ProfileImage({ imgUrl: e.imgUrl }),
   name: e.name,
-  channelLinks: ChannelLinks({
-    YouTubeId: e.YouTube?.id,
-    TwitchId: e.Twitch?.id,
-  }),
-  ranking: ranking,
+  imgUrl: e.imgUrl,
   hasYouTube: e.YouTube !== undefined,
-  YouTubePopularity: e.YouTube?.popularity ?? 0,
+  YouTubeId: e.YouTube?.id,
   YouTubeSubscriberCount: e.YouTube?.subscriberCount,
   hasTwitch: e.Twitch !== undefined,
-  TwitchPopularity: e.Twitch?.popularity ?? 0,
+  TwitchId: e.Twitch?.id,
   TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-  group: e.group ?? '',
   popularVideo: e.popularVideo,
+  group: e.group ?? '',
   nationality: e.nationality,
   activity: e.activity,
+  YouTubePopularity: e.YouTube?.popularity ?? 0,
+  TwitchPopularity: e.Twitch?.popularity ?? 0,
+  ranking: ranking,
 });
