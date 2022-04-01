@@ -1,7 +1,7 @@
 {
   "name": "Taiwan VTuber Data",
   "short_name": "TW VT Data",
-  "start_url": "/TaiwanVTuberData-Preact/",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#96A0FF",
