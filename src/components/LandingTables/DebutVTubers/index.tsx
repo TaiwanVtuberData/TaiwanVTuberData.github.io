@@ -14,6 +14,7 @@ import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { openModal } from '../../../global/modalState';
 import { Dictionary } from '../../../i18n/Dictionary';
+import ProfileImageLink from '../../ProfileImageLink';
 
 export interface DebutVTubersTableProps {
   dictionary: Dictionary;
@@ -30,22 +31,15 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
       sortable: true,
     },
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      width: '75px',
+      minWidth: '250px',
+      maxWidth: '500px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
@@ -62,6 +56,7 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input

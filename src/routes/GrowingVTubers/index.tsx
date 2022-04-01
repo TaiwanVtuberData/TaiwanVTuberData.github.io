@@ -23,6 +23,7 @@ import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { openModal } from '../../global/modalState';
+import ProfileImageLink from '../../components/ProfileImageLink';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -35,23 +36,15 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
 
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
+      width: '300px',
+      maxWidth: '500px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
@@ -78,6 +71,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -90,6 +84,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
+      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -169,12 +164,10 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
 
   const dataToDisplayData = (e: VTuberGrowthData): VTuberGrowthDisplayData => ({
     id: e.id,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
     name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
+    imgUrl: e.imgUrl,
+    YouTubeId: e.YouTube.id,
+    TwitchId: e.Twitch?.id,
     YouTubeSubscriberCount: e.YouTube.subscriberCount ?? 0,
     _7DaysGrowth: growthDataToDisplayDate(
       e.YouTube._7DaysGrowth,

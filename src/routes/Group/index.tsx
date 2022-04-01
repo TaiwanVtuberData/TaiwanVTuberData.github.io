@@ -16,6 +16,7 @@ import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { openModal } from '../../global/modalState';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
+import ProfileImageLink from '../../components/ProfileImageLink';
 
 export interface GroupPageProps {
   groupName: string;
@@ -29,23 +30,13 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
 
   const columns: Array<TableColumn<GroupMemberDisplayData>> = [
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: (
@@ -62,6 +53,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -113,15 +105,13 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
 
   const dataToDisplayData = (e: VTuberData): GroupMemberDisplayData => ({
     id: e.id,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
     name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
+    imgUrl: e.imgUrl,
     hasYouTube: e.YouTube !== undefined,
+    YouTubeId: e.YouTube?.id,
     YouTubeSubscriberCount: e.YouTube?.subscriberCount,
     hasTwitch: e.Twitch !== undefined,
+    TwitchId: e.Twitch?.id,
     TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
     popularVideo: e.popularVideo,
     nationality: e.nationality,

@@ -2,8 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import ChannelLinks from '../../../components/ChannelLinks';
-import ProfileImage from '../../../components/ProfileImage';
 import * as Api from '../../../services/ApiService';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
@@ -21,6 +19,7 @@ import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { openModal } from '../../../global/modalState';
+import ProfileImageLink from '../../ProfileImageLink';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -31,22 +30,15 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
 ) => {
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      width: '75px',
+      width: '300px',
+      maxWidth: '300px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
@@ -62,6 +54,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -87,12 +80,10 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
 
   const dataToDisplayData = (e: VTuberGrowthData): VTuberGrowthDisplayData => ({
     id: e.id,
-    profileImg: ProfileImage({ imgUrl: e.imgUrl }),
     name: e.name,
-    channelLinks: ChannelLinks({
-      YouTubeId: e.YouTube?.id,
-      TwitchId: e.Twitch?.id,
-    }),
+    imgUrl: e.imgUrl,
+    YouTubeId: e.YouTube.id,
+    TwitchId: e.Twitch?.id,
     YouTubeSubscriberCount: e.YouTube.subscriberCount ?? 0,
     _7DaysGrowth: growthDataToDisplayDate(
       e.YouTube._7DaysGrowth,

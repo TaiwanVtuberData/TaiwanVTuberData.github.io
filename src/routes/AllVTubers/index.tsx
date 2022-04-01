@@ -20,6 +20,7 @@ import {
   SortMethod,
   SubscriberCountDescendingSort,
 } from '../../utils/SubscriberCountSort';
+import ProfileImageLink from '../../components/ProfileImageLink';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -34,23 +35,13 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
 
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-    },
-    {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      minWidth: '50px',
-      maxWidth: '150px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: (
@@ -67,7 +58,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: 'auto',
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -80,7 +71,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.group">Group</Text>,
-      width: 'auto',
+      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a

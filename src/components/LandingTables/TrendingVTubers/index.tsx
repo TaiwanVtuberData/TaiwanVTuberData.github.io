@@ -18,6 +18,7 @@ import {
   PopularityCountDescendingSort,
 } from '../../../utils/PopularityCountSort';
 import YouTubeTwitchCount from '../../YouTubeTwitchCount';
+import ProfileImageLink from '../../ProfileImageLink';
 
 export interface TrendingVTubersTableProps {
   dictionary: Dictionary;
@@ -28,22 +29,22 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
 ) => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
-      name: '',
-      width: '75px',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
+      name: '#',
+      width: '30px',
+      wrap: false,
+      selector: (row: { ranking: number }): number => row.ranking,
+      sortable: true,
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      wrap: true,
-      selector: (row: { name: string }): string => row.name,
-    },
-    {
-      name: <Text id="table.links">Links</Text>,
-      width: '75px',
+      minWidth: '250px',
+      maxWidth: '500px',
       cell: (row: {
-        channelLinks: h.JSX.Element | null;
-      }): h.JSX.Element | null => row.channelLinks,
+        imgUrl?: string;
+        name: string;
+        YouTubeId?: string;
+        TwitchId?: string;
+      }): h.JSX.Element => <ProfileImageLink {...row} />,
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
@@ -65,6 +66,7 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
+      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
