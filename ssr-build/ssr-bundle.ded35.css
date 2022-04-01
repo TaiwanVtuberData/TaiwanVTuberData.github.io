@@ -84,6 +84,12 @@ input[type='button']:hover {
   background-color: white;
 }
 
+@media screen and (max-width: 800px) {
+  .sidebarContent__QUi\+P {
+    width: 80vw;
+  }
+}
+
 button {
   background-color: transparent;
   border: transparent;
@@ -604,4 +610,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.11d21.css.map*/
+/*# sourceMappingURL=ssr-bundle.ded35.css.map*/
