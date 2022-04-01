@@ -2,7 +2,7 @@ import { Dictionary } from './Dictionary';
 
 const en: Dictionary = {
   header: {
-    title: 'Taiwan VTuber Data (Site Under Construction)',
+    title: 'Taiwan VTuber Data',
     chooseLanguage: 'Choose language:',
     home: 'Home',
     eventCalendar: 'Event Calendar',

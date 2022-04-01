@@ -2,7 +2,7 @@ import { Dictionary } from './Dictionary';
 
 const zh: Dictionary = {
   header: {
-    title: '臺灣 VTuber 列表 (此網站仍在建置中)',
+    title: '臺灣 VTuber 列表',
     chooseLanguage: '選擇語言：',
     home: '首頁',
     eventCalendar: '重大活動月曆',
