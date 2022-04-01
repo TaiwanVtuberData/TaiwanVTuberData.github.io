@@ -32,7 +32,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
         </div>
         <div class={style.flexButton}>
           <a
-            href="https://github.com/TaiwanVtuberData/TaiwanVTuberData-Preact/issues/new/choose"
+            href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose"
             target="_blank"
             rel="noopener noreferrer"
           >
