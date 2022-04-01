@@ -311,6 +311,10 @@ button:hover {
   }
 }
 
+.noWrap__BzT1O {
+  white-space: nowrap;
+}
+
 /* copied from https://www.w3schools.com/css/css_tooltip.asp */
 .tooltip__vtGmz {
   position: relative;
@@ -340,10 +344,6 @@ button:hover {
   content: url(/TaiwanVTuberData-Preact/834dbaf0aa4b168079983723a8948317.png);
   width: 24px;
   height: 24px;
-}
-
-.noWrap__BzT1O {
-  white-space: nowrap;
 }
 
 .tableGrid__Ju0u9 {
@@ -604,4 +604,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.573b2.css.map*/
+/*# sourceMappingURL=ssr-bundle.11d21.css.map*/
