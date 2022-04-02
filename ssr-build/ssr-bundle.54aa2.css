@@ -90,13 +90,13 @@ input[type='button']:hover {
   }
 }
 
-button {
+.roundButton__84n5b {
   background-color: transparent;
   border: transparent;
   border-radius: 50%;
 }
 
-button:hover {
+.roundButton__84n5b:hover {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
@@ -518,6 +518,8 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr;
   grid-row: auto;
+
+  z-index: 999;
 }
 
 .scrollToTopBottom__9cupg > * {
@@ -546,9 +548,13 @@ button:hover {
   width: 150px;
   height: 30px;
   text-align: center;
-  background-color: white;
+  background-color: #e6e6e6;
   border: 3px solid #636363;
   border-radius: 5px;
+}
+
+.scrollToTopBottom__9cupg .scrollButton__tWotF:hover {
+  background-color: #979797;
 }
 
 /* The Modal (background) */
@@ -619,4 +625,4 @@ button:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.f7c0b.css.map*/
+/*# sourceMappingURL=ssr-bundle.54aa2.css.map*/
