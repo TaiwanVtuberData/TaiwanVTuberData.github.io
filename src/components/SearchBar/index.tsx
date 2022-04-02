@@ -11,7 +11,7 @@ export interface SearchBarProps {
 const SearchBar: FunctionalComponent<SearchBarProps> = (
   props: SearchBarProps
 ): h.JSX.Element => (
-  <div>
+  <div class={style.container}>
     <input
       type="text"
       class={style.textField}
