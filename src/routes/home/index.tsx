@@ -13,7 +13,7 @@ export interface HomePageProps {
 }
 
 const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     document.title = `${props.dictionary.header.title}`;
   }
 
