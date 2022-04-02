@@ -80,7 +80,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
 
   return (
     <header>
-      <button class={style.navButton} onClick={open}>
+      <button class={`${style.navButton} ${style.roundButton}`} onClick={open}>
         <img class={style.navIcon} />
       </button>
       <div
@@ -92,7 +92,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         class={style.sidebarContent}
         style={{ display: sidebarOpen ? 'block' : 'none' }}
       >
-        <button class={style.xButton} onClick={close}>
+        <button class={`${style.xButton} ${style.roundButton}`} onClick={close}>
           <img class={style.xIcon} />
         </button>
         <nav class={style.navGrid}>

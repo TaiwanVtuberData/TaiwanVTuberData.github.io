@@ -9,6 +9,8 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-row: auto;
+
+  z-index: 999;
 }
 
 .scrollToTopBottom > * {
@@ -28,7 +30,11 @@
   width: 150px;
   height: 30px;
   text-align: center;
-  background-color: white;
+  background-color: #e6e6e6;
   border: 3px solid #636363;
   border-radius: 5px;
+}
+
+.scrollToTopBottom .scrollButton:hover {
+  background-color: #979797;
 }

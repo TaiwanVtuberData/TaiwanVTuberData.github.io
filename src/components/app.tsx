@@ -73,6 +73,7 @@ const App: FunctionalComponent = () => {
           locale={locale}
           setLocale={setLocale}
         />
+        <ScrollToTopBottom />
         <VideoModal />
         <Router>
           <Route
@@ -137,7 +138,6 @@ const App: FunctionalComponent = () => {
           />
           <NotFoundPage default />
         </Router>
-        <ScrollToTopBottom />
       </IntlProvider>
     </div>
   );
