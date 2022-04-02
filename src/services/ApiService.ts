@@ -18,7 +18,7 @@ let commitDetail: CommitDetail;
 const setCommitDetail = async (): Promise<void> => {
   await axios
     .get(
-      'https://api.github.com/repos/nh60211as/TaiwanVtuberTrackingDataJson/commits/master'
+      'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master'
     )
     .then((res) => {
       commitDetail = {
@@ -32,7 +32,7 @@ const setCommitDetail = async (): Promise<void> => {
       };
     });
 
-  axios.defaults.baseURL = `https://cdn.statically.io/gh/nh60211as/TaiwanVtuberTrackingDataJson/${commitDetail.sha}/api/v0`;
+  axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v0`;
 };
 
 export const bootstrapApi = async (): Promise<void> => {

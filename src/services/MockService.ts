@@ -20,7 +20,7 @@ export function MockService(): void {
   createServer({
     routes() {
       this.urlPrefix =
-        'https://cdn.statically.io/gh/nh60211as/TaiwanVtuberTrackingDataJson';
+        'https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson';
 
       this.get<UpdateTimeResponse>('/:hash/api/v0/update-time.json', () => ({
         time: UpdateTimeMock,
