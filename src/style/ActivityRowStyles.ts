@@ -5,8 +5,7 @@ const ActivityRowStyles = [
     when: (row: { activity: Activity }): boolean =>
       row.activity === 'preparing',
     style: {
-      backgroundColor: 'rgba(248, 148, 6, 0.9)',
-      color: 'white',
+      backgroundColor: 'rgba(141, 209, 157, 0.9)',
       '&:hover': {
         cursor: 'pointer',
       },
