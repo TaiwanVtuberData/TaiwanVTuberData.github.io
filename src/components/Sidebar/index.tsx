@@ -33,7 +33,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
     setLocale: StateUpdater<validI18n>
   ): h.JSX.Element => {
     return (
-      <div class={style.rightAlignText}>
+      <div class={style.sidebarText}>
         <Text id="header.chooseLanguage">Choose language:</Text>
         <select
           class={style.dropDown}
@@ -139,11 +139,11 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             },
             { textID: 'header.about', linkTo: `${SITE_URL_PREFIX}/about` },
           ].map((e) => LinkElement(e.textID, e.linkTo))}
-          <span class={style.rightAlignText}>
+          <span class={style.sidebarText}>
             <Text id="header.statisticUpdateTime">Statistic update time:</Text>
             {statisticUpdateTime}
           </span>
-          <span class={style.rightAlignText}>
+          <span class={style.sidebarText}>
             <Text id="header.VTuberDataUpdateTime">
               VTuber data update time:
             </Text>

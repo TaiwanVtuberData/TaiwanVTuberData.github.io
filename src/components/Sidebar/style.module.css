@@ -128,6 +128,7 @@ button:hover {
   border-radius: 5px;
 }
 
-.rightAlignText {
+.sidebarText {
   text-align: right;
+  white-space: nowrap;
 }
