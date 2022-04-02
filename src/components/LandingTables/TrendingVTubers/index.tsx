@@ -33,12 +33,9 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
       width: '30px',
       wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
-      sortable: true,
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      minWidth: '250px',
-      maxWidth: '500px',
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -48,8 +45,7 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      sortable: true,
-      sortFunction: PopularityCountAscendingSort,
+      maxWidth: '250px',
       cell: (row: {
         hasYouTube: boolean;
         YouTubePopularity: number;

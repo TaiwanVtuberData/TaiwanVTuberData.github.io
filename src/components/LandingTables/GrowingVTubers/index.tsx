@@ -31,8 +31,6 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '300px',
-      maxWidth: '300px',
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -42,15 +40,15 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
+      maxWidth: '250px',
       selector: (row: { YouTubeSubscriberCount: number }): number =>
         row.YouTubeSubscriberCount,
-      right: true,
     },
     {
       name: <Text id="table._7DaysGrowth">7 Days Growth (Percent)</Text>,
+      maxWidth: '250px',
       cell: (row: { _7DaysGrowth: GrowthDisplayData }): string =>
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
-      right: true,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,

@@ -25,8 +25,6 @@ const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '300px',
-      maxWidth: '500px',
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -40,6 +38,7 @@ const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
+      maxWidth: '250px',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;

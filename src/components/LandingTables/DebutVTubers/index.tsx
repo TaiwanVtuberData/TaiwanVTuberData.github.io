@@ -33,8 +33,6 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      minWidth: '250px',
-      maxWidth: '500px',
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -48,6 +46,7 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
+      maxWidth: '250px',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
