@@ -2,8 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import ChannelLinks from '../../components/ChannelLinks';
-import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
@@ -11,12 +9,12 @@ import { GroupMemberDisplayData } from '../../types/TableDisplayData/GroupMember
 import { VTuberData } from '../../types/ApiData/VTuberData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
-import '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { openModal } from '../../global/modalState';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
 import ProfileImageLink from '../../components/ProfileImageLink';
+import tableStyle from '../../style/DataTableStyle.module.css';
 
 export interface GroupPageProps {
   groupName: string;
@@ -92,14 +90,14 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     };
 
     return (
-      <Fragment>
+      <div class={tableStyle.searchBarGroup}>
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any): void => setFilterName(e.target.value)}
           onClear={handleClearName}
           filterText={filterName}
         />
-      </Fragment>
+      </div>
     );
   }, [filterName, resetPaginationToggle, props.dictionary]);
 
