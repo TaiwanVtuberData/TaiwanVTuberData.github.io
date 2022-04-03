@@ -13,9 +13,7 @@ import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { openModal } from '../../../global/modalState';
 import { Dictionary } from '../../../i18n/Dictionary';
-import {
-  PopularityCountDescendingSort,
-} from '../../../utils/PopularityCountSort';
+import { PopularityCountDescendingSort } from '../../../utils/PopularityCountSort';
 import YouTubeTwitchCount from '../../YouTubeTwitchCount';
 import ProfileImageLink from '../../ProfileImageLink';
 

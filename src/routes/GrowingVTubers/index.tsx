@@ -3,8 +3,6 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import baseroute from '../../baseroute';
-import ChannelLinks from '../../components/ChannelLinks';
-import ProfileImage from '../../components/ProfileImage';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
@@ -153,7 +151,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     );
   }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
 
-  const growthDataToDisplayDate = (
+  const growthDataToDisplayData = (
     e: GrowthData,
     subCount?: number
   ): GrowthDisplayData => ({
@@ -169,11 +167,11 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     YouTubeId: e.YouTube.id,
     TwitchId: e.Twitch?.id,
     YouTubeSubscriberCount: e.YouTube.subscriberCount ?? 0,
-    _7DaysGrowth: growthDataToDisplayDate(
+    _7DaysGrowth: growthDataToDisplayData(
       e.YouTube._7DaysGrowth,
       e.YouTube.subscriberCount
     ),
-    _30DaysGrowth: growthDataToDisplayDate(
+    _30DaysGrowth: growthDataToDisplayData(
       e.YouTube._30DaysGrowth,
       e.YouTube.subscriberCount
     ),
