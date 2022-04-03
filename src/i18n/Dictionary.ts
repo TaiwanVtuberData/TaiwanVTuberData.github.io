@@ -11,6 +11,7 @@ export interface Dictionary {
     groupList: string;
     trendingVTubers: string;
     trendingVideos: string;
+    VTubersViewCount: string;
     growingVTubers: string;
     debutVTubers: string;
     debutVTubersIn7Days: string;
@@ -51,6 +52,8 @@ export interface Dictionary {
     graduateDate: string;
     _7DaysGrowth: string;
     _30DaysGrowth: string;
+    _7DaysViewCountGrowth: string;
+    _30DaysViewCountGrowth: string;
     atLeast: string;
     noRecord: string;
     noDuplicate: string;
@@ -59,6 +62,7 @@ export interface Dictionary {
     popularVideo: string;
     YouTubeTwitchCount: string;
     sortingMethod: string;
+    YouTubeTotalViewCount: string;
     paginationOptions: PaginationOptions;
   };
   text: {

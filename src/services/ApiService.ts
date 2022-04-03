@@ -7,6 +7,7 @@ import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
 import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
 import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
+import { VTuberViewCountChangeDataResponse } from '../types/ApiData/VTuberViewCountChangeData';
 
 interface CommitDetail {
   sha: string;
@@ -86,6 +87,21 @@ export const getGrowingVTubers = (
 ): Promise<AxiosResponse<VTuberGrowthDataResponse>> => {
   return AxiosGetWrapper<VTuberGrowthDataResponse>(
     `/growing-vtubers/${modifier}.json`
+  );
+};
+
+export type SortOrder = '7-days' | '30-days';
+
+export interface GetVTubersViewCountChangeModifier {
+  sortBy: SortOrder;
+  count: '10' | '100' | 'all';
+}
+
+export const getVTubersViewCountChange = (
+  para: GetVTubersViewCountChangeModifier
+): Promise<AxiosResponse<VTuberViewCountChangeDataResponse>> => {
+  return AxiosGetWrapper<VTuberViewCountChangeDataResponse>(
+    `/vtubers-view-count-change/${para.sortBy}/${para.count}.json`
   );
 };
 

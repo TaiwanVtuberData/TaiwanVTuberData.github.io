@@ -23,6 +23,7 @@ import EventCalendarPage from '../routes/EventCalendar';
 import ReportIssuePage from '../routes/ReportIssue';
 import ScrollToTopBottom from './ScrollToTopBottom';
 import VideoModal from './VideoModal';
+import VTubersViewCountPage from '../routes/VTubersViewCount';
 
 const App: FunctionalComponent = () => {
   const getCookieLocale = (): validI18n => {
@@ -105,6 +106,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/trending-videos/:modifier`}
             dictionary={definition}
             component={TrendingVideosPage}
+          />
+          <Route
+            path={`${baseroute}/vtubers-view-count/:modifier`}
+            dictionary={definition}
+            component={VTubersViewCountPage}
           />
           <Route
             path={`${baseroute}/growing-vtubers`}

@@ -122,6 +122,10 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
               linkTo: `${SITE_URL_PREFIX}/trending-videos/no-duplicate`,
             },
             {
+              textID: 'header.VTubersViewCount',
+              linkTo: `${SITE_URL_PREFIX}/vtubers-view-count/7-days`,
+            },
+            {
               textID: 'header.growingVTubers',
               linkTo: `${SITE_URL_PREFIX}/growing-vtubers`,
             },
