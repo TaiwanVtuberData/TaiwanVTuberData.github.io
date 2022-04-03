@@ -132,7 +132,6 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
         data={data}
         conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
-        fixedHeader
         progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}
       />

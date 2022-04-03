@@ -104,7 +104,6 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
           IsTodayRowStyle as Array<any>
         )}
         customStyles={CompactTableStyle}
-        fixedHeader
         progressPending={pending}
         progressComponent={<Text id="table.loading">Loading...</Text>}
       />

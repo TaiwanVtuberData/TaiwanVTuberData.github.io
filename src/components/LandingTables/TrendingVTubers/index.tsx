@@ -14,7 +14,6 @@ import { VideoInfo } from '../../../types/Common/VideoInfo';
 import { openModal } from '../../../global/modalState';
 import { Dictionary } from '../../../i18n/Dictionary';
 import {
-  PopularityCountAscendingSort,
   PopularityCountDescendingSort,
 } from '../../../utils/PopularityCountSort';
 import YouTubeTwitchCount from '../../YouTubeTwitchCount';
@@ -114,7 +113,6 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
         data={data}
         conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
-        fixedHeader
         progressComponent={<Text id="table.loading">Loading...</Text>}
         progressPending={pending}
       />
