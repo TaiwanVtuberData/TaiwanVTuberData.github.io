@@ -108,7 +108,7 @@ const App: FunctionalComponent = () => {
             component={TrendingVideosPage}
           />
           <Route
-            path={`${baseroute}/vtubers-view-count`}
+            path={`${baseroute}/vtubers-view-count/:modifier`}
             dictionary={definition}
             component={VTubersViewCountPage}
           />

@@ -18,9 +18,12 @@ import ProfileImageLink from '../../components/ProfileImageLink';
 import { VTuberViewCountGrowthData } from '../../types/ApiData/VTuberViewCountChangeData';
 import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
+import DropDownList from '../../components/DropDownList';
+import { YouTubeViewCountGrowthData } from '../../types/ApiData/YouTubeViewCountGrowthData';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
+  modifier: Api.SortOrder;
 }
 
 const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
@@ -38,8 +41,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '300px',
-      maxWidth: '500px',
+      minWidth: '25%',
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -130,8 +132,30 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       }
     };
 
+    const optionValue: Array<{
+      option: h.JSX.Element;
+      value: Api.SortOrder;
+    }> = [
+      {
+        option: <Text id="table._7DaysViewCountGrowth">7 Days Growth</Text>,
+        value: '7-days',
+      },
+      {
+        option: <Text id="table._30DaysViewCountGrowth">30 Days Growth</Text>,
+        value: '30-days',
+      },
+    ];
+
     return (
       <div class={tableStyle.searchBarGroup}>
+        <DropDownList
+          tipText={props.dictionary.table.sortingMethod}
+          value={props.modifier}
+          optionValue={optionValue}
+          onChange={(e: any) => {
+            window.location.href = `${baseroute}/vtubers-view-count/${e.target.value}`;
+          }}
+        />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
           onFilter={(e: any): void => setFilterName(e.target.value)}
@@ -146,7 +170,13 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         />
       </div>
     );
-  }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
+  }, [
+    filterName,
+    filterGroup,
+    resetPaginationToggle,
+    props.modifier,
+    props.dictionary,
+  ]);
 
   const dataToDisplayData = (
     e: VTuberViewCountGrowthData,
@@ -169,14 +199,42 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
 
   const [pending, setPending] = useState(true);
 
+  const _7DaysDescendingSort = <
+    T extends { YouTube: YouTubeViewCountGrowthData }
+  >(
+    rowA: T,
+    rowB: T
+  ): number => {
+    return rowB.YouTube._7DaysGrowth.diff - rowA.YouTube._7DaysGrowth.diff;
+  };
+
+  const _30DaysDescendingSort = <
+    T extends { YouTube: YouTubeViewCountGrowthData }
+  >(
+    rowA: T,
+    rowB: T
+  ): number => {
+    return rowB.YouTube._30DaysGrowth.diff - rowA.YouTube._30DaysGrowth.diff;
+  };
+
+  const GetSortingMethod = (sortBy: Api.SortOrder) => {
+    switch (sortBy) {
+      case '7-days':
+        return _7DaysDescendingSort;
+      case '30-days':
+        return _30DaysDescendingSort;
+    }
+  };
+
   const getVTubers = async (): Promise<void> => {
-    await Api.getVTubersViewCountChange('100').then((res) => {
+    await Api.getVTubersViewCountChange({
+      sortBy: props.modifier,
+      count: '100',
+    }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .map((e) => e)
-          .sort(
-            (a, b) => b.YouTube._7DaysGrowth.diff - a.YouTube._7DaysGrowth.diff
-          )
+          .sort(GetSortingMethod(props.modifier))
           .map((e, index) => dataToDisplayData(e, index + 1))
       );
       setPending(false);

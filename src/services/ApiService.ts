@@ -90,13 +90,18 @@ export const getGrowingVTubers = (
   );
 };
 
-export type GetVTubersViewCountChangeModifier = '10' | '100' | 'all';
+export type SortOrder = '7-days' | '30-days';
+
+export interface GetVTubersViewCountChangeModifier {
+  sortBy: SortOrder;
+  count: '10' | '100' | 'all';
+}
 
 export const getVTubersViewCountChange = (
-  modifier: GetGrowingVTubersModifier
+  para: GetVTubersViewCountChangeModifier
 ): Promise<AxiosResponse<VTuberViewCountChangeDataResponse>> => {
   return AxiosGetWrapper<VTuberViewCountChangeDataResponse>(
-    `/vtubers-view-count-change/${modifier}.json`
+    `/vtubers-view-count-change/${para.sortBy}/${para.count}.json`
   );
 };
 

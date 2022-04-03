@@ -123,7 +123,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             },
             {
               textID: 'header.VTubersViewCount',
-              linkTo: `${SITE_URL_PREFIX}/vtubers-view-count`,
+              linkTo: `${SITE_URL_PREFIX}/vtubers-view-count/7-days`,
             },
             {
               textID: 'header.growingVTubers',
