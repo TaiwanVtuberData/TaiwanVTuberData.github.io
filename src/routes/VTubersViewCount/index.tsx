@@ -34,6 +34,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   const columns: Array<TableColumn<VTuberViewCountGrowthDisplayData>> = [
     {
       name: '#',
+      compact: true,
       width: '30px',
       wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
@@ -41,6 +42,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     },
     {
       name: <Text id="table.displayName">Name</Text>,
+      compact: true,
       minWidth: '25%',
       cell: (row: {
         imgUrl?: string;
@@ -53,16 +55,22 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       name: (
         <Text id="table.YouTubeTotalViewCount">YouTube Total View Count</Text>
       ),
+      compact: true,
+      right: true,
       selector: (row: { totalViewCount: number }): number => row.totalViewCount,
       sortable: true,
     },
     {
       name: <Text id="table._7DaysViewCountGrowth">7 Days Growth</Text>,
+      compact: true,
+      right: true,
       cell: (row: { _7DaysGrowth: GrowthData }): string =>
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
     },
     {
       name: <Text id="table._30DaysViewCountGrowth">30 Days Growth</Text>,
+      compact: true,
+      right: true,
       cell: (row: { _30DaysGrowth: GrowthData }): string =>
         GrowthDisplayDataToString(row._30DaysGrowth, props.dictionary.table),
     },
@@ -94,7 +102,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      minWidth: '25px',
+      minWidth: '40px',
       maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
