@@ -27,9 +27,9 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
       name: '#',
-      width: '30px',
-      wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
+      wrap: false,
+      width: '30px',
     },
     {
       name: <Text id="table.displayName">Name</Text>,
@@ -42,7 +42,6 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      maxWidth: '250px',
       cell: (row: {
         hasYouTube: boolean;
         YouTubePopularity: number;
@@ -56,10 +55,10 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
           TwitchFollowerCount={row.TwitchPopularity}
         />
       ),
+      maxWidth: '250px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -69,6 +68,7 @@ const TrendingVTubersTable: FunctionalComponent<TrendingVTubersTableProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
   ];
 

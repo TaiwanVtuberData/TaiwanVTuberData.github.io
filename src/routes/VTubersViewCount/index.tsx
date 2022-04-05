@@ -34,49 +34,51 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   const columns: Array<TableColumn<VTuberViewCountGrowthDisplayData>> = [
     {
       name: '#',
-      compact: true,
-      width: '30px',
-      wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
+      compact: true,
       sortable: true,
+      wrap: false,
+      width: '30px',
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      compact: true,
-      minWidth: '25%',
       cell: (row: {
         imgUrl?: string;
         name: string;
         YouTubeId?: string;
         TwitchId?: string;
       }): h.JSX.Element => <ProfileImageLink {...row} />,
+      compact: true,
     },
     {
       name: (
         <Text id="table.YouTubeTotalViewCount">YouTube Total View Count</Text>
       ),
+      selector: (row: { totalViewCount: number }): number => row.totalViewCount,
       compact: true,
       right: true,
-      selector: (row: { totalViewCount: number }): number => row.totalViewCount,
       sortable: true,
     },
     {
       name: <Text id="table._7DaysViewCountGrowth">7 Days Growth</Text>,
-      compact: true,
-      right: true,
       cell: (row: { _7DaysGrowth: GrowthData }): string =>
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
+      compact: true,
+      right: true,
+      width: '100px',
+      maxWidth: '200px',
     },
     {
       name: <Text id="table._30DaysViewCountGrowth">30 Days Growth</Text>,
-      compact: true,
-      right: true,
       cell: (row: { _30DaysGrowth: GrowthData }): string =>
         GrowthDisplayDataToString(row._30DaysGrowth, props.dictionary.table),
+      compact: true,
+      right: true,
+      width: '100px',
+      maxWidth: '200px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -86,10 +88,10 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
     {
       name: <Text id="table.group">Group</Text>,
-      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -99,13 +101,14 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
             {row.group}
           </a>
         ) : null,
+      maxWidth: '100px',
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      minWidth: '40px',
-      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
+      minWidth: '40px',
+      maxWidth: '100px',
     },
   ];
 

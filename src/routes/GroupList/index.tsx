@@ -28,49 +28,49 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
   const columns: Array<TableColumn<GroupDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      minWidth: '100px',
-      maxWidth: '150px',
-      sortable: true,
-      sortFunction: NameSort,
       cell: (row: { name: string }): h.JSX.Element => (
         <a class={tableStyle.groupLink} href={`${baseroute}/group/${row.name}`}>
           {row.name}
         </a>
       ),
+      sortFunction: NameSort,
+      sortable: true,
+      minWidth: '100px',
+      maxWidth: '150px',
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      minWidth: '50px',
-      maxWidth: '125px',
+      selector: (row: { popularity: number }): number => row.popularity,
       right: true,
       sortable: true,
-      selector: (row: { popularity: number }): number => row.popularity,
+      minWidth: '50px',
+      maxWidth: '125px',
     },
     {
       name: <Text id="table.averageSubscriberCount">Average Subscribers</Text>,
-      minWidth: '50px',
-      maxWidth: '125px',
-      right: true,
-      sortable: true,
       selector: (row: { averageSubscriberCount: number }): number =>
         row.averageSubscriberCount,
+      right: true,
+      sortable: true,
+      minWidth: '50px',
+      maxWidth: '125px',
     },
     {
       name: <Text id="table.totalSubscriberCount">Total Subscribers</Text>,
-      minWidth: '50px',
-      maxWidth: '125px',
-      right: true,
-      sortable: true,
       selector: (row: { totalSubscriberCount: number }): number =>
         row.totalSubscriberCount,
+      right: true,
+      sortable: true,
+      minWidth: '50px',
+      maxWidth: '125px',
     },
     {
       name: <Text id="table.memberCount">Member Count</Text>,
-      minWidth: '50px',
-      maxWidth: '125px',
+      selector: (row: { memberCount: number }): number => row.memberCount,
       right: true,
       sortable: true,
-      selector: (row: { memberCount: number }): number => row.memberCount,
+      minWidth: '50px',
+      maxWidth: '125px',
     },
     {
       name: <Text id="table.memberList">Members</Text>,

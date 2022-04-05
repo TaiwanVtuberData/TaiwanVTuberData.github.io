@@ -32,22 +32,22 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
   const columns: Array<TableColumn<VideoPopularityDisplayData>> = [
     {
       name: '#',
-      width: '70px',
-      wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
       sortable: true,
+      wrap: false,
+      width: '70px',
     },
     {
       name: '',
-      width: '75px',
       cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
         row.profileImg,
+      width: '75px',
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      maxWidth: '150px',
-      wrap: true,
       selector: (row: { name: string }): string => row.name,
+      wrap: true,
+      maxWidth: '150px',
     },
     {
       name: <Text id="table.title">Title</Text>,
@@ -56,23 +56,23 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     },
     {
       name: <Text id="table.video">Video</Text>,
-      width: '200px',
       cell: (row: { videoLink: h.JSX.Element | null }): h.JSX.Element | null =>
         row.videoLink,
+      width: '200px',
     },
     {
       name: <Text id="table.viewCount">View Count</Text>,
       selector: (row: { viewCount: number }): number => row.viewCount,
-      width: '80px',
       right: true,
       sortable: true,
+      width: '80px',
     },
     {
       name: <Text id="table.uploadTime">Upload Time</Text>,
-      width: '175px',
       selector: (row: { uploadTime: Date }): string =>
         getFormattedDateTime(row.uploadTime),
       sortable: true,
+      width: '175px',
     },
   ];
 

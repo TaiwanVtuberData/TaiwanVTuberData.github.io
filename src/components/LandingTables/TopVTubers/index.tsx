@@ -38,17 +38,16 @@ const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
-      maxWidth: '250px',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
         hasTwitch: boolean;
         TwitchFollowerCount: number;
       }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
+      maxWidth: '250px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -58,6 +57,7 @@ const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
   ];
 

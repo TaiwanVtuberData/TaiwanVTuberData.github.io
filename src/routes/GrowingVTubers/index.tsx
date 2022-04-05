@@ -35,8 +35,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
       name: <Text id="table.displayName">Name</Text>,
-      width: '300px',
-      maxWidth: '500px',
+      compact: true,
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -48,28 +47,34 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
       selector: (row: { YouTubeSubscriberCount: number }): number =>
         row.YouTubeSubscriberCount,
+      compact: true,
       right: true,
       sortable: true,
     },
     {
       name: <Text id="table._7DaysGrowth">7 Days Growth (Percent)</Text>,
+      sortFunction: _7DaysGrowthSort,
       cell: (row: { _7DaysGrowth: GrowthDisplayData }): string =>
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
+      compact: true,
       right: true,
       sortable: true,
-      sortFunction: _7DaysGrowthSort,
+      width: '150px',
+      maxWidth: '250px',
     },
     {
       name: <Text id="table._30DaysGrowth">30 Days Growth (Percent)</Text>,
       cell: (row: { _30DaysGrowth: GrowthDisplayData }): string =>
         GrowthDisplayDataToString(row._30DaysGrowth, props.dictionary.table),
+      sortFunction: _30DaysGrowthSort,
+      compact: true,
       right: true,
       sortable: true,
-      sortFunction: _30DaysGrowthSort,
+      width: '150px',
+      maxWidth: '250px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -79,10 +84,10 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
     {
       name: <Text id="table.group">Group</Text>,
-      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -92,13 +97,16 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
             {row.group}
           </a>
         ) : null,
+      compact: true,
+      maxWidth: '100px',
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      minWidth: '25px',
-      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
+      compact: true,
+      minWidth: '25px',
+      maxWidth: '100px',
     },
   ];
 

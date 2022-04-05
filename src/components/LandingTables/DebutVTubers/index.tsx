@@ -27,9 +27,8 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
-      width: '100px',
       selector: (row: { debutDate: string }): string => row.debutDate,
-      sortable: true,
+      width: '100px',
     },
     {
       name: <Text id="table.displayName">Name</Text>,
@@ -46,17 +45,16 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
-      maxWidth: '250px',
       cell: (row: {
         hasYouTube: boolean;
         YouTubeSubscriberCount?: number;
         hasTwitch: boolean;
         TwitchFollowerCount: number;
       }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
+      maxWidth: '250px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -66,6 +64,7 @@ const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
   ];
 

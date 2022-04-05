@@ -58,7 +58,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -68,10 +67,10 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
     {
       name: <Text id="table.group">Group</Text>,
-      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -81,13 +80,14 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
             {row.group}
           </a>
         ) : null,
+      maxWidth: '150px',
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      minWidth: '25px',
-      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
+      minWidth: '25px',
+      maxWidth: '100px',
     },
   ];
 

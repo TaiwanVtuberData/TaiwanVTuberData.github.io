@@ -36,15 +36,13 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
       name: '#',
-      width: '30px',
-      wrap: false,
       selector: (row: { ranking: number }): number => row.ranking,
       sortable: true,
+      wrap: false,
+      width: '30px',
     },
     {
       name: <Text id="table.displayName">Name</Text>,
-      minWidth: '300px',
-      maxWidth: '500px',
       cell: (row: {
         imgUrl?: string;
         name: string;
@@ -54,7 +52,6 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      sortable: true,
       sortFunction: PopularityCountAscendingSort,
       cell: (row: {
         hasYouTube: boolean;
@@ -69,6 +66,8 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
           TwitchFollowerCount={row.TwitchPopularity}
         />
       ),
+      sortable: true,
+      width: '150px',
     },
     {
       name: (
@@ -76,7 +75,6 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
           YouTube Subscribers + Twitch Followers
         </Text>
       ),
-      sortable: true,
       sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
       cell: (row: {
         hasYouTube: boolean;
@@ -84,10 +82,11 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         hasTwitch: boolean;
         TwitchFollowerCount: number;
       }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
+      sortable: true,
+      width: '150px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -97,10 +96,10 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
     {
       name: <Text id="table.group">Group</Text>,
-      maxWidth: '150px',
       cell: (row: { group: string }): h.JSX.Element | null =>
         row.group !== '' ? (
           <a
@@ -110,13 +109,14 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
             {row.group}
           </a>
         ) : null,
+      maxWidth: '100px',
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      minWidth: '25px',
-      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
+      minWidth: '25px',
+      maxWidth: '100px',
     },
   ];
 

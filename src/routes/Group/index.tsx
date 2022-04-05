@@ -51,7 +51,6 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -61,13 +60,14 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
-      minWidth: '25px',
-      maxWidth: '100px',
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
+      minWidth: '25px',
+      maxWidth: '100px',
     },
   ];
 

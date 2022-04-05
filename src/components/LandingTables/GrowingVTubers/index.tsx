@@ -40,19 +40,18 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
-      maxWidth: '250px',
       selector: (row: { YouTubeSubscriberCount: number }): number =>
         row.YouTubeSubscriberCount,
+      maxWidth: '250px',
     },
     {
       name: <Text id="table._7DaysGrowth">7 Days Growth (Percent)</Text>,
-      maxWidth: '250px',
       cell: (row: { _7DaysGrowth: GrowthDisplayData }): string =>
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
+      maxWidth: '250px',
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
-      width: '100px',
       cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
         row.popularVideo !== undefined ? (
           <input
@@ -62,6 +61,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      width: '100px',
     },
   ];
 
