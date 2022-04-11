@@ -32,6 +32,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
       selector: (row: { debutDate: string }): string => row.debutDate,
+      compact: true,
       sortable: true,
       width: '100px',
     },
@@ -56,6 +57,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
         hasTwitch: boolean;
         TwitchFollowerCount: number;
       }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
+      compact: true,
     },
     {
       name: <Text id="table.popularVideo">Popular Video</Text>,
@@ -68,6 +70,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
             onClick={(): void => openModal(row.popularVideo as VideoInfo)}
           />
         ) : null,
+      compact: true,
       width: '100px',
     },
     {
@@ -81,12 +84,14 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
             {row.group}
           </a>
         ) : null,
+      compact: true,
       maxWidth: '150px',
     },
     {
       name: <Text id="table.nationality">Nationality</Text>,
       selector: (row: { nationality?: string }): string =>
         row.nationality ?? '',
+      compact: true,
       minWidth: '25px',
       maxWidth: '100px',
     },
