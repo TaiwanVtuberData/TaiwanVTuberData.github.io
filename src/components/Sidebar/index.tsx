@@ -66,7 +66,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   ): h.JSX.Element => {
     return (
       <div class={style.sidebarText}>
-        <Text id="header.chooseVTuberNation">
+        <Text id="header.chooseVTuberNationality">
           Choose Display VTuber Nationality:
         </Text>
         <select
