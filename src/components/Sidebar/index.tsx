@@ -4,6 +4,10 @@ import { Link } from 'preact-router/match';
 import { StateUpdater, useEffect, useState } from 'preact/hooks';
 import * as Api from '../../services/ApiService';
 import {
+  nationalityArray,
+  NationalityModifier,
+} from '../../types/Common/NationalityModifier';
+import {
   LanguageOption,
   LanguageOptions,
   validI18n,
@@ -15,6 +19,8 @@ export interface SidebarProps {
   siteUrlPrefix?: string;
   locale: validI18n;
   setLocale: StateUpdater<validI18n>;
+  nationality: NationalityModifier;
+  setNationality: StateUpdater<NationalityModifier>;
 }
 
 const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
@@ -27,7 +33,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const [statisticUpdateTime, setStatisticUpdateTime] = useState<string>();
   const [VTuberDataUpdateTime, setVTuberDataUpdateTime] = useState<string>();
 
-  const DropDownElement = (
+  const LanguageDropDown = (
     languageOptions: Array<LanguageOption>,
     locale: string,
     setLocale: StateUpdater<validI18n>
@@ -53,6 +59,33 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
     );
   };
 
+  const NationalityDropDown = (
+    nationalityOptions: ReadonlyArray<NationalityModifier>,
+    nationality: NationalityModifier,
+    setNationality: StateUpdater<NationalityModifier>
+  ): h.JSX.Element => {
+    return (
+      <div class={style.sidebarText}>
+        <Text id="header.chooseVTuberNationality">
+          Choose Display VTuber Nationality:
+        </Text>
+        <select
+          class={style.dropDown}
+          value={nationality}
+          onChange={(event: any) => {
+            setNationality(event.target.value);
+            close();
+          }}
+        >
+          {nationalityOptions.map((e) => (
+            <option key={e} value={e}>
+              {e}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  };
   const LinkElement = (textID: string, linkTo: string): h.JSX.Element => {
     return (
       <div class={style.gridItem}>
@@ -153,7 +186,12 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             </Text>
             {VTuberDataUpdateTime}
           </span>
-          {DropDownElement(LanguageOptions, props.locale, props.setLocale)}
+          {NationalityDropDown(
+            nationalityArray,
+            props.nationality,
+            props.setNationality
+          )}
+          {LanguageDropDown(LanguageOptions, props.locale, props.setLocale)}
         </nav>
       </div>
     </header>

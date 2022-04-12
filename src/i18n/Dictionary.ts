@@ -24,6 +24,7 @@ export interface Dictionary {
     YouTubeSubPlusTwitchFollowers: string;
     statisticUpdateTime: string;
     VTuberDataUpdateTime: string;
+    chooseVTuberNationality: string;
   };
   table: {
     displayName: string;
