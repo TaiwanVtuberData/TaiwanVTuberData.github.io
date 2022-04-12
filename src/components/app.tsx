@@ -24,6 +24,14 @@ import ReportIssuePage from '../routes/ReportIssue';
 import ScrollToTopBottom from './ScrollToTopBottom';
 import VideoModal from './VideoModal';
 import VTubersViewCountPage from '../routes/VTubersViewCount';
+import {
+  nationalityArray,
+  NationalityModifier,
+} from '../types/Common/NationalityModifier';
+import {
+  getNationalityModifierState,
+  setNationalityModifier,
+} from '../global/DisplayNationality';
 
 const App: FunctionalComponent = () => {
   const getCookieLocale = (): validI18n => {
@@ -52,9 +60,43 @@ const App: FunctionalComponent = () => {
     return 'zh';
   };
 
+  const getCookieDisplayNationality = (): NationalityModifier => {
+    // https://www.w3schools.com/js/js_cookies.asp
+    const target = 'nationality=' as const;
+
+    // Preact cannot compile pre-render code using DOM or Web APIs.
+    if (typeof window != 'undefined') {
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf('nationality=') == 0) {
+          const parsedNationality = c.substring(target.length, c.length);
+          if (nationalityArray.includes(parsedNationality))
+            return parsedNationality;
+
+          return 'all';
+        }
+      }
+      return 'all';
+    }
+
+    return 'all';
+  };
+
   const currentLocale: validI18n = getCookieLocale();
   const [locale, setLocale] = useState<validI18n>(currentLocale);
   const [definition, setDefinition] = useState<Dictionary>(zh);
+
+  const [displayNationality, setDisplayNationality] =
+    useState<NationalityModifier>(getCookieDisplayNationality());
+
+  useEffect(() => {
+    setNationalityModifier(displayNationality);
+  }, []);
 
   useEffect(() => {
     if (locale === 'zh') {
@@ -66,6 +108,17 @@ const App: FunctionalComponent = () => {
     document.cookie = `locale=${locale}; expires=2038-01-19T04:14:07Z; path=/`;
   }, [locale]);
 
+  useEffect(() => {
+    const prevNationalityModifier: NationalityModifier =
+      getNationalityModifierState();
+
+    if (displayNationality !== prevNationalityModifier) {
+      setNationalityModifier(displayNationality);
+      document.cookie = `nationality=${displayNationality}; expires=2038-01-19T04:14:07Z; path=/`;
+      window.location.reload();
+    }
+  }, [displayNationality]);
+
   return (
     <div id="preact_root">
       <IntlProvider definition={definition}>
@@ -73,6 +126,8 @@ const App: FunctionalComponent = () => {
           siteUrlPrefix={baseroute}
           locale={locale}
           setLocale={setLocale}
+          nationality={displayNationality}
+          setNationality={setDisplayNationality}
         />
         <ScrollToTopBottom />
         <VideoModal />
