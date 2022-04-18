@@ -64,6 +64,7 @@ const en: Dictionary = {
     YouTubeTwitchCount: 'YouTube Subscribers + Twitch Followers',
     sortingMethod: 'Sort by:',
     YouTubeTotalViewCount: 'YouTube Total View Count',
+    activity: 'Activity',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: 'Rows per page',
@@ -72,10 +73,16 @@ const en: Dictionary = {
       selectAllRowsItemText: 'All',
     },
   },
+  activityText: {
+    preparing: 'Preparing',
+    active: 'Active',
+    graduated: 'Graduated',
+  },
   text: {
     reportUsingGoogleForm: 'Report using Google Form',
     reportUsingGitHub: 'Report using GitHub',
     showVideo: 'show video',
+    link: 'Link',
   },
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',

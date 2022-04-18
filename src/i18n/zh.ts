@@ -64,6 +64,7 @@ const zh: Dictionary = {
     YouTubeTwitchCount: 'YouTube 訂閱人數 + Twitch 追隨人數',
     sortingMethod: '排序方式：',
     YouTubeTotalViewCount: 'YouTube 總觀看次數',
+    activity: '活動狀態',
     paginationOptions: {
       noRowsPerPage: false,
       rowsPerPageText: '每頁數量',
@@ -72,10 +73,16 @@ const zh: Dictionary = {
       selectAllRowsItemText: '所有',
     },
   },
+  activityText: {
+    preparing: '準備中',
+    active: '活動中',
+    graduated: '已畢業',
+  },
   text: {
     reportUsingGoogleForm: '使用 Google 表單回報',
     reportUsingGitHub: '使用 GitHub Issue 回報',
     showVideo: '顯示影片',
+    link: '連結',
   },
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',

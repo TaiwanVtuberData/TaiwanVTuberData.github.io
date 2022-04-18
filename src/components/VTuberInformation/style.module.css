@@ -1,0 +1,12 @@
+.flexArea {
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
