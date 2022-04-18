@@ -33,6 +33,7 @@ import {
   setNationalityModifier,
 } from '../global/DisplayNationality';
 import { getCookie, setCookie } from '../utils/CookieUtils';
+import VTuberPage from '../routes/VTuber';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -133,6 +134,11 @@ const App: FunctionalComponent = () => {
             path={`${baseroute}/graduate-vtubers`}
             dictionary={definition}
             component={GraduateVTubersPage}
+          />
+          <Route
+            path={`${baseroute}/vtuber/:id`}
+            dictionary={definition}
+            component={VTuberPage}
           />
           <Route
             path={`${baseroute}/group/:groupName`}

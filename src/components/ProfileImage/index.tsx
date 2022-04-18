@@ -1,8 +1,11 @@
 import { FunctionalComponent, h } from 'preact';
+import baseroute from '../../baseroute';
 import style from './style.module.css';
 
 export interface ProfileImageProps {
+  id?: string;
   imgUrl?: string;
+  size?: number;
 }
 
 const ProfileImage: FunctionalComponent<ProfileImageProps> = (
@@ -11,14 +14,18 @@ const ProfileImage: FunctionalComponent<ProfileImageProps> = (
   // use empty img src if no URL
   // https://stackoverflow.com/a/53365710/11947017
   return (
-    <img
-      class={style.profileImg}
-      src={
-        props.imgUrl ??
-        'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-      }
-      loading="lazy"
-    />
+    <a href={`${baseroute}/vtuber/${props.id}`}>
+      <img
+        class={`${props.size ? style.fixedSize : style.profileImg}`}
+        src={
+          props.imgUrl ??
+          'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+        }
+        loading="lazy"
+        width={props.size ?? undefined}
+        height={props.size ?? undefined}
+      />
+    </a>
   );
 };
 

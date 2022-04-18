@@ -5,6 +5,7 @@ import { UpdateTimeResponse } from '../types/ApiData/UpdateTime';
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { VTuberDataResponse } from '../types/ApiData/VTuberData';
 import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
+import { SingleVTuberFullDataResponse } from '../types/ApiData/VTuberFullData';
 import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
 import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
@@ -51,6 +52,14 @@ const AxiosGetWrapperNoNationality = async <DataType>(
 
 export const getUpdateTime = (): Promise<AxiosResponse<UpdateTimeResponse>> => {
   return AxiosGetWrapperNoNationality<UpdateTimeResponse>(`update-time.json`);
+};
+
+export const getVTuber = (
+  id: string
+): Promise<AxiosResponse<SingleVTuberFullDataResponse>> => {
+  return AxiosGetWrapperNoNationality<SingleVTuberFullDataResponse>(
+    `vtubers/${id}.json`
+  );
 };
 
 const AxiosGetWrapper = async <DataType>(

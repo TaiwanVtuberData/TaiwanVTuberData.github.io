@@ -4,6 +4,7 @@ import { UpdateTimeResponse } from '../types/ApiData/UpdateTime';
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { VTuberDataResponse } from '../types/ApiData/VTuberData';
 import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
+import { SingleVTuberFullDataResponse } from '../types/ApiData/VTuberFullData';
 import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
 import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
@@ -15,6 +16,8 @@ import { GroupMock } from './MockData/GroupMock';
 import { GrowingVTubersMock } from './MockData/GrowingVTubersMock';
 import { PopularVideosMock } from './MockData/PopularVideosMock';
 import { PopularVTubersMock } from './MockData/PopularVTubersMock';
+import { LilyMock } from './MockData/LilyMock';
+import { MiruMock } from './MockData/MiruMock';
 import { UpdateTimeMock } from './MockData/UpdateTimeMock';
 
 export function MockService(): void {
@@ -27,6 +30,20 @@ export function MockService(): void {
         '/:hash/api/v0/all/update-time.json',
         () => ({
           time: UpdateTimeMock,
+        })
+      );
+
+      this.get<SingleVTuberFullDataResponse>(
+        '/:hash/api/v0/vtubers/1.json',
+        () => ({
+          VTuber: MiruMock,
+        })
+      );
+
+      this.get<SingleVTuberFullDataResponse>(
+        '/:hash/api/v0/vtubers/2.json',
+        () => ({
+          VTuber: LilyMock,
         })
       );
 

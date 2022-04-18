@@ -64,12 +64,19 @@ export interface Dictionary {
     YouTubeTwitchCount: string;
     sortingMethod: string;
     YouTubeTotalViewCount: string;
+    activity: string;
     paginationOptions: PaginationOptions;
+  };
+  activityText: {
+    preparing: string;
+    active: string;
+    graduated: string;
   };
   text: {
     reportUsingGoogleForm: string;
     reportUsingGitHub: string;
     showVideo: string;
+    link: string;
   };
   toolTip: {
     eventCalendar: string;
