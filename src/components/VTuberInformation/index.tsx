@@ -20,6 +20,14 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
 ): h.JSX.Element => {
   const vtuber: VTuberDisplayFullData | undefined = props.VTuber;
 
+  const YouTubeSubscriberCountSpan = (YouTubeSubscriberCount?: number): JSX.Element => {
+    return (
+      <span>
+        {YouTubeSubscriberCount ?? <Text id="table.hiddenCount">hidden</Text>}
+      </span>
+    );
+  };
+
   const getActivityTranslation = (activity?: Activity): JSX.Element => {
     switch (activity) {
       case 'preparing':
@@ -62,7 +70,9 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
         {vtuber?.hasYouTube && (
           <li>
             <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
-            <span>: {vtuber.YouTubeSubscriberCount} (</span>
+            <span>: </span>
+            {YouTubeSubscriberCountSpan(vtuber.YouTubeSubscriberCount)}
+            <span>(</span>
             {getYouTubeLink(vtuber.YouTubeId)}
             <span>)</span>
           </li>
