@@ -637,7 +637,8 @@ input[type='button']:hover {
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: auto;
+  width: 80%;
+  max-width: 600px;
   -ms-flex-pack: space-evenly;
       justify-content: space-evenly;
   -ms-flex-align: center;
@@ -650,5 +651,15 @@ input[type='button']:hover {
       flex-direction: row;
 }
 
+@media screen and (max-width: 800px) {
+  .flexArea__yWrku {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: auto;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+}
 
-/*# sourceMappingURL=ssr-bundle.ac599.css.map*/
+
+/*# sourceMappingURL=ssr-bundle.4b79a.css.map*/
