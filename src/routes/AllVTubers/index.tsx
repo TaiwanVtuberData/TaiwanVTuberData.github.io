@@ -11,7 +11,7 @@ import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransfrom';
+import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransform';
 import { openModal } from '../../global/modalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';

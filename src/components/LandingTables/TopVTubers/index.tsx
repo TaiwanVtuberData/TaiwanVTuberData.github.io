@@ -7,7 +7,7 @@ import { VTuberDisplayData } from '../../../types/TableDisplayData/VTuberDisplay
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
-import { VTuberBasicToDisplay } from '../../../types/ApiToDisplayData/BasicTransfrom';
+import { VTuberBasicToDisplay } from '../../../types/ApiToDisplayData/BasicTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import { openModal } from '../../../global/modalState';
 import { VideoInfo } from '../../../types/Common/VideoInfo';
