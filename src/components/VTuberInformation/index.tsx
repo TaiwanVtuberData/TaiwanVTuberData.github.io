@@ -20,7 +20,9 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
 ): h.JSX.Element => {
   const vtuber: VTuberDisplayFullData | undefined = props.VTuber;
 
-  const YouTubeSubscriberCountSpan = (YouTubeSubscriberCount?: number): JSX.Element => {
+  const YouTubeSubscriberCountSpan = (
+    YouTubeSubscriberCount?: number
+  ): JSX.Element => {
     return (
       <span>
         {YouTubeSubscriberCount ?? <Text id="table.hiddenCount">hidden</Text>}
@@ -62,7 +64,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
       <div>
         {vtuber && (
           <div>
-            <ProfileImage id={vtuber.id} imgUrl={vtuber.imgUrl} size={300} />
+            <ProfileImage id={vtuber.id} imgUrl={vtuber.imgUrl} size={240} />
           </div>
         )}
       </div>
