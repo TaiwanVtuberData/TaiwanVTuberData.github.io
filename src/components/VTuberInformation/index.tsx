@@ -64,7 +64,11 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
       <div>
         {vtuber && (
           <div>
-            <ProfileImage id={vtuber.id} imgUrl={vtuber.imgUrl} size={240} />
+            <ProfileImage
+              VTuberId={vtuber.id}
+              imgUrl={vtuber.imgUrl}
+              size={240}
+            />
           </div>
         )}
       </div>

@@ -3,7 +3,7 @@ import baseroute from '../../baseroute';
 import style from './style.module.css';
 
 export interface ProfileImageProps {
-  id?: string;
+  VTuberId: string;
   imgUrl?: string;
   size?: number;
 }
@@ -14,7 +14,7 @@ const ProfileImage: FunctionalComponent<ProfileImageProps> = (
   // use empty img src if no URL
   // https://stackoverflow.com/a/53365710/11947017
   return (
-    <a href={`${baseroute}/vtuber/${props.id}`}>
+    <a href={`${baseroute}/vtuber/${props.VTuberId}`}>
       <img
         class={`${props.size ? style.fixedSize : style.profileImg}`}
         src={

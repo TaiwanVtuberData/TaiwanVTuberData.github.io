@@ -14,7 +14,7 @@ const Profile: FunctionalComponent<ProfileProps> = (
   return (
     <ToolTip text={props.VTuber.name}>
       {ProfileImage({
-        id: props.VTuber.id,
+        VTuberId: props.VTuber.id,
         imgUrl: props.VTuber.imgUrl,
         size: props.size,
       })}

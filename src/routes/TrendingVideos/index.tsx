@@ -158,7 +158,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     ranking: number
   ): VideoPopularityDisplayData => ({
     id: e.id,
-    profileImg: ProfileImage({ id: e.id, imgUrl: e.imgUrl }),
+    profileImg: ProfileImage({ VTuberId: e.id, imgUrl: e.imgUrl }),
     name: e.name,
     title: e.title,
     videoLink: VideoLink({

@@ -26,11 +26,20 @@ const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
     {
       name: <Text id="table.displayName">Name</Text>,
       cell: (row: {
+        id: string;
         imgUrl?: string;
         name: string;
         YouTubeId?: string;
         TwitchId?: string;
-      }): h.JSX.Element => <ProfileImageLink {...row} />,
+      }): h.JSX.Element => (
+        <ProfileImageLink
+          VTuberId={row.id}
+          imgUrl={row.imgUrl}
+          name={row.name}
+          YouTubeId={row.YouTubeId}
+          TwitchId={row.TwitchId}
+        />
+      ),
     },
     {
       name: (

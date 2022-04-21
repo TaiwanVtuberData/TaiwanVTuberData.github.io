@@ -4,7 +4,7 @@ import ProfileImage from '../ProfileImage';
 import style from './style.module.css';
 
 export interface ProfileImageLinkProps {
-  id?: string;
+  VTuberId: string;
   imgUrl?: string;
   name: string;
   YouTubeId?: string;
@@ -17,7 +17,7 @@ const ProfileImageLink: FunctionalComponent<ProfileImageLinkProps> = (
   return (
     <div class={style.container}>
       <div class={style.profileImageFlex}>
-        <ProfileImage id={props.id} imgUrl={props.imgUrl} />
+        <ProfileImage VTuberId={props.VTuberId} imgUrl={props.imgUrl} />
       </div>
       <span class={style.nameFlex}>{props.name}</span>
       <div class={style.channelLinksFlex}>
