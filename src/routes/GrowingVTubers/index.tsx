@@ -2,7 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import baseroute from '../../baseroute';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
@@ -19,9 +18,10 @@ import { GrowthData } from '../../types/Common/GrowthData';
 import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../utils/GrowthSort';
 import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
-import { VideoInfo } from '../../types/Common/VideoInfo';
-import { openModal } from '../../global/modalState';
-import ProfileImageLink from '../../components/ProfileImageLink';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -34,23 +34,8 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
 
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
-      name: <Text id="table.displayName">Name</Text>,
+      ...NameColumn<VTuberGrowthDisplayData>(),
       compact: true,
-      cell: (row: {
-        id: string;
-        imgUrl?: string;
-        name: string;
-        YouTubeId?: string;
-        TwitchId?: string;
-      }): h.JSX.Element => (
-        <ProfileImageLink
-          VTuberId={row.id}
-          imgUrl={row.imgUrl}
-          name={row.name}
-          YouTubeId={row.YouTubeId}
-          TwitchId={row.TwitchId}
-        />
-      ),
     },
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
@@ -83,36 +68,16 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       maxWidth: '250px',
     },
     {
-      name: <Text id="table.popularVideo">Popular Video</Text>,
-      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
-        row.popularVideo !== undefined ? (
-          <input
-            type="button"
-            value={props.dictionary.text.showVideo}
-            // TypeScript, I'm pretty sure row.popularVideo is defined here
-            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
-          />
-        ) : null,
+      ...PopularVideoColumn(),
       width: '100px',
     },
     {
-      name: <Text id="table.group">Group</Text>,
-      cell: (row: { group: string }): h.JSX.Element | null =>
-        row.group !== '' ? (
-          <a
-            class={tableStyle.groupLink}
-            href={`${baseroute}/group/${row.group}`}
-          >
-            {row.group}
-          </a>
-        ) : null,
+      ...GroupColumn(),
       compact: true,
       maxWidth: '100px',
     },
     {
-      name: <Text id="table.nationality">Nationality</Text>,
-      selector: (row: { nationality?: string }): string =>
-        row.nationality ?? '',
+      ...NationalityColumn(),
       compact: true,
       minWidth: '25px',
       maxWidth: '100px',

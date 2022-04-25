@@ -9,63 +9,19 @@ import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberBasicToDisplay } from '../../../types/ApiToDisplayData/BasicTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
-import { openModal } from '../../../global/modalState';
-import { VideoInfo } from '../../../types/Common/VideoInfo';
-import { Dictionary } from '../../../i18n/Dictionary';
-import YouTubeTwitchCount from '../../YouTubeTwitchCount';
-import ProfileImageLink from '../../ProfileImageLink';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 
-export interface TopVTubersTableProps {
-  dictionary: Dictionary;
-}
-
-const TopVTubersTable: FunctionalComponent<TopVTubersTableProps> = (
-  props: TopVTubersTableProps
-) => {
+const TopVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDisplayData>> = [
+    NameColumn<VTuberDisplayData>(),
     {
-      name: <Text id="table.displayName">Name</Text>,
-      cell: (row: {
-        id: string;
-        imgUrl?: string;
-        name: string;
-        YouTubeId?: string;
-        TwitchId?: string;
-      }): h.JSX.Element => (
-        <ProfileImageLink
-          VTuberId={row.id}
-          imgUrl={row.imgUrl}
-          name={row.name}
-          YouTubeId={row.YouTubeId}
-          TwitchId={row.TwitchId}
-        />
-      ),
-    },
-    {
-      name: (
-        <Text id="table.YouTubeTwitchCount">
-          YouTube Subscribers + Twitch Followers
-        </Text>
-      ),
-      cell: (row: {
-        hasYouTube: boolean;
-        YouTubeSubscriberCount?: number;
-        hasTwitch: boolean;
-        TwitchFollowerCount: number;
-      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
+      ...YouTubeTwitchCountColumn(),
       maxWidth: '250px',
     },
     {
-      name: <Text id="table.popularVideo">Popular Video</Text>,
-      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
-        row.popularVideo !== undefined ? (
-          <input
-            type="button"
-            value={props.dictionary.text.showVideo}
-            // TypeScript, I'm pretty sure row.popularVideo is defined here
-            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
-          />
-        ) : null,
+      ...PopularVideoColumn(),
       width: '100px',
     },
   ];

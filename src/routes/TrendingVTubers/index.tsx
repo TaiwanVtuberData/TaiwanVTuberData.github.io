@@ -2,7 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import baseroute from '../../baseroute';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import SearchBar from '../../components/SearchBar';
@@ -13,16 +12,18 @@ import { VTuberPopularityDisplayData } from '../../types/TableDisplayData/VTuber
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberPopularityToDisplay } from '../../types/ApiToDisplayData/PopularityTransform';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
-import { openModal } from '../../global/modalState';
-import { VideoInfo } from '../../types/Common/VideoInfo';
-import YouTubeTwitchCount from '../../components/YouTubeTwitchCount';
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/SubscriberCountSort';
 import {
   PopularityCountAscendingSort,
   PopularityCountDescendingSort,
 } from '../../utils/PopularityCountSort';
-import ProfileImageLink from '../../components/ProfileImageLink';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularityColumn } from '../../tableTypes/PopularityColumn';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -41,89 +42,29 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
       wrap: false,
       width: '30px',
     },
+    NameColumn<VTuberPopularityDisplayData>(),
     {
-      name: <Text id="table.displayName">Name</Text>,
-      cell: (row: {
-        id: string;
-        imgUrl?: string;
-        name: string;
-        YouTubeId?: string;
-        TwitchId?: string;
-      }): h.JSX.Element => (
-        <ProfileImageLink
-          VTuberId={row.id}
-          imgUrl={row.imgUrl}
-          name={row.name}
-          YouTubeId={row.YouTubeId}
-          TwitchId={row.TwitchId}
-        />
-      ),
-    },
-    {
-      name: <Text id="table.popularity">Popularity</Text>,
+      ...PopularityColumn(),
       sortFunction: PopularityCountAscendingSort,
-      cell: (row: {
-        hasYouTube: boolean;
-        YouTubePopularity: number;
-        hasTwitch: boolean;
-        TwitchPopularity: number;
-      }): h.JSX.Element => (
-        <YouTubeTwitchCount
-          hasYouTube={row.hasYouTube}
-          YouTubeSubscriberCount={row.YouTubePopularity}
-          hasTwitch={row.hasTwitch}
-          TwitchFollowerCount={row.TwitchPopularity}
-        />
-      ),
       sortable: true,
       width: '150px',
     },
     {
-      name: (
-        <Text id="table.YouTubeTwitchCount">
-          YouTube Subscribers + Twitch Followers
-        </Text>
-      ),
+      ...YouTubeTwitchCountColumn(),
       sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
-      cell: (row: {
-        hasYouTube: boolean;
-        YouTubeSubscriberCount?: number;
-        hasTwitch: boolean;
-        TwitchFollowerCount: number;
-      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
       sortable: true,
       width: '150px',
     },
     {
-      name: <Text id="table.popularVideo">Popular Video</Text>,
-      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
-        row.popularVideo !== undefined ? (
-          <input
-            type="button"
-            value={props.dictionary.text.showVideo}
-            // TypeScript, I'm pretty sure row.popularVideo is defined here
-            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
-          />
-        ) : null,
+      ...PopularVideoColumn(),
       width: '100px',
     },
     {
-      name: <Text id="table.group">Group</Text>,
-      cell: (row: { group: string }): h.JSX.Element | null =>
-        row.group !== '' ? (
-          <a
-            class={tableStyle.groupLink}
-            href={`${baseroute}/group/${row.group}`}
-          >
-            {row.group}
-          </a>
-        ) : null,
+      ...GroupColumn(),
       maxWidth: '100px',
     },
     {
-      name: <Text id="table.nationality">Nationality</Text>,
-      selector: (row: { nationality?: string }): string =>
-        row.nationality ?? '',
+      ...NationalityColumn(),
       minWidth: '25px',
       maxWidth: '100px',
     },

@@ -11,68 +11,24 @@ import { getISODateString } from '../../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
 import { VTuberDebutToDisplay } from '../../../types/ApiToDisplayData/DebutTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
-import { VideoInfo } from '../../../types/Common/VideoInfo';
-import { openModal } from '../../../global/modalState';
-import { Dictionary } from '../../../i18n/Dictionary';
-import ProfileImageLink from '../../ProfileImageLink';
-import YouTubeTwitchCount from '../../YouTubeTwitchCount';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 
-export interface DebutVTubersTableProps {
-  dictionary: Dictionary;
-}
-
-const DebutVTubersTable: FunctionalComponent<DebutVTubersTableProps> = (
-  props: DebutVTubersTableProps
-) => {
+const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       name: <Text id="table.debutDate">Debut Date</Text>,
       selector: (row: { debutDate: string }): string => row.debutDate,
       width: '100px',
     },
+    NameColumn<VTuberDebutDisplayData>(),
     {
-      name: <Text id="table.displayName">Name</Text>,
-      cell: (row: {
-        id: string;
-        imgUrl?: string;
-        name: string;
-        YouTubeId?: string;
-        TwitchId?: string;
-      }): h.JSX.Element => (
-        <ProfileImageLink
-          VTuberId={row.id}
-          imgUrl={row.imgUrl}
-          name={row.name}
-          YouTubeId={row.YouTubeId}
-          TwitchId={row.TwitchId}
-        />
-      ),
-    },
-    {
-      name: (
-        <Text id="table.YouTubeTwitchCount">
-          YouTube Subscribers + Twitch Followers
-        </Text>
-      ),
-      cell: (row: {
-        hasYouTube: boolean;
-        YouTubeSubscriberCount?: number;
-        hasTwitch: boolean;
-        TwitchFollowerCount: number;
-      }): h.JSX.Element => <YouTubeTwitchCount {...row} />,
+      ...YouTubeTwitchCountColumn(),
       maxWidth: '250px',
     },
     {
-      name: <Text id="table.popularVideo">Popular Video</Text>,
-      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
-        row.popularVideo !== undefined ? (
-          <input
-            type="button"
-            value={props.dictionary.text.showVideo}
-            // TypeScript, I'm pretty sure row.popularVideo is defined here
-            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
-          />
-        ) : null,
+      ...PopularVideoColumn(),
       width: '100px',
     },
   ];

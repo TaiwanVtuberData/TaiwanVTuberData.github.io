@@ -17,9 +17,8 @@ import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
 import { Dictionary } from '../../../i18n/Dictionary';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
-import { VideoInfo } from '../../../types/Common/VideoInfo';
-import { openModal } from '../../../global/modalState';
-import ProfileImageLink from '../../ProfileImageLink';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -29,24 +28,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
   props: GrowingVTubersTableProps
 ) => {
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
-    {
-      name: <Text id="table.displayName">Name</Text>,
-      cell: (row: {
-        id: string;
-        imgUrl?: string;
-        name: string;
-        YouTubeId?: string;
-        TwitchId?: string;
-      }): h.JSX.Element => (
-        <ProfileImageLink
-          VTuberId={row.id}
-          imgUrl={row.imgUrl}
-          name={row.name}
-          YouTubeId={row.YouTubeId}
-          TwitchId={row.TwitchId}
-        />
-      ),
-    },
+    NameColumn<VTuberGrowthDisplayData>(),
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
       selector: (row: { YouTubeSubscriberCount: number }): number =>
@@ -60,16 +42,7 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
       maxWidth: '250px',
     },
     {
-      name: <Text id="table.popularVideo">Popular Video</Text>,
-      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
-        row.popularVideo !== undefined ? (
-          <input
-            type="button"
-            value={props.dictionary.text.showVideo}
-            // TypeScript, I'm pretty sure row.popularVideo is defined here
-            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
-          />
-        ) : null,
+      ...PopularVideoColumn(),
       width: '100px',
     },
   ];

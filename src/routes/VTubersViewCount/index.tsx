@@ -12,14 +12,15 @@ import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { GrowthData } from '../../types/Common/GrowthData';
 import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
-import { VideoInfo } from '../../types/Common/VideoInfo';
-import { openModal } from '../../global/modalState';
-import ProfileImageLink from '../../components/ProfileImageLink';
 import { VTuberViewCountGrowthData } from '../../types/ApiData/VTuberViewCountChangeData';
 import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
 import DropDownList from '../../components/DropDownList';
 import { YouTubeViewCountGrowthData } from '../../types/ApiData/YouTubeViewCountGrowthData';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -41,22 +42,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       width: '30px',
     },
     {
-      name: <Text id="table.displayName">Name</Text>,
-      cell: (row: {
-        id: string;
-        imgUrl?: string;
-        name: string;
-        YouTubeId?: string;
-        TwitchId?: string;
-      }): h.JSX.Element => (
-        <ProfileImageLink
-          VTuberId={row.id}
-          imgUrl={row.imgUrl}
-          name={row.name}
-          YouTubeId={row.YouTubeId}
-          TwitchId={row.TwitchId}
-        />
-      ),
+      ...NameColumn<VTuberViewCountGrowthDisplayData>(),
       compact: true,
     },
     {
@@ -87,35 +73,15 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       maxWidth: '200px',
     },
     {
-      name: <Text id="table.popularVideo">Popular Video</Text>,
-      cell: (row: { popularVideo?: VideoInfo }): h.JSX.Element | null =>
-        row.popularVideo !== undefined ? (
-          <input
-            type="button"
-            value={props.dictionary.text.showVideo}
-            // TypeScript, I'm pretty sure row.popularVideo is defined here
-            onClick={(): void => openModal(row.popularVideo as VideoInfo)}
-          />
-        ) : null,
+      ...PopularVideoColumn(),
       width: '100px',
     },
     {
-      name: <Text id="table.group">Group</Text>,
-      cell: (row: { group: string }): h.JSX.Element | null =>
-        row.group !== '' ? (
-          <a
-            class={tableStyle.groupLink}
-            href={`${baseroute}/group/${row.group}`}
-          >
-            {row.group}
-          </a>
-        ) : null,
+      ...GroupColumn(),
       maxWidth: '100px',
     },
     {
-      name: <Text id="table.nationality">Nationality</Text>,
-      selector: (row: { nationality?: string }): string =>
-        row.nationality ?? '',
+      ...NationalityColumn(),
       minWidth: '40px',
       maxWidth: '100px',
     },
