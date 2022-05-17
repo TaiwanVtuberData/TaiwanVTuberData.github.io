@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.12",
-    "@types/jest": "^26.0.8",
+    "@types/jest": "^27.5.1",
     "@types/preact-i18n": "^2.3.1",
     "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
