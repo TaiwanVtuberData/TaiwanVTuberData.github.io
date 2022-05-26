@@ -10,6 +10,15 @@ import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData'
 import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
 import { VTuberViewCountChangeDataResponse } from '../types/ApiData/VTuberViewCountChangeData';
+import {
+  DebutVTubersModifier,
+  GraduateVTubersModifier,
+  GrowingVTubersModifier,
+  TrendingVideosModifier,
+  TrendingVTubersModifier,
+  VTubersModifier,
+  VTubersViewCountChangeModifier,
+} from '../types/ApiTypes';
 
 interface CommitDetail {
   sha: string;
@@ -70,10 +79,8 @@ const AxiosGetWrapper = async <DataType>(
   return axios.get<DataType>(`${getNationalityModifierState()}/${url}`);
 };
 
-export type GetVTubersModifier = '10' | 'all';
-
 export const getVTubers = (
-  modifier: GetVTubersModifier
+  modifier: VTubersModifier
 ): Promise<AxiosResponse<VTuberDataResponse>> => {
   return AxiosGetWrapper<VTuberDataResponse>(`vtubers/${modifier}.json`);
 };
@@ -88,62 +95,45 @@ export const getGroups = (): Promise<AxiosResponse<GroupDataResponse>> => {
   return AxiosGetWrapper<GroupDataResponse>(`groups.json`);
 };
 
-export type GetTrendingVTubersModifier = '10' | '100';
-
 export const getTrendingVTubers = (
-  modifier: GetTrendingVTubersModifier
+  modifier: TrendingVTubersModifier
 ): Promise<AxiosResponse<VTuberPopularityDataResponse>> => {
   return AxiosGetWrapper<VTuberPopularityDataResponse>(
     `trending-vtubers/${modifier}.json`
   );
 };
 
-export type GetGrowingVTubersModifier = '10' | '100' | 'all';
-
 export const getGrowingVTubers = (
-  modifier: GetGrowingVTubersModifier
+  modifier: GrowingVTubersModifier
 ): Promise<AxiosResponse<VTuberGrowthDataResponse>> => {
   return AxiosGetWrapper<VTuberGrowthDataResponse>(
     `growing-vtubers/${modifier}.json`
   );
 };
 
-export type SortOrder = '7-days' | '30-days';
-
-export interface GetVTubersViewCountChangeModifier {
-  sortBy: SortOrder;
-  count: '10' | '100' | 'all';
-}
-
 export const getVTubersViewCountChange = (
-  para: GetVTubersViewCountChangeModifier
+  para: VTubersViewCountChangeModifier
 ): Promise<AxiosResponse<VTuberViewCountChangeDataResponse>> => {
   return AxiosGetWrapper<VTuberViewCountChangeDataResponse>(
     `vtubers-view-count-change/${para.sortBy}/${para.count}.json`
   );
 };
 
-export type GetDebutVTubersModifier = 'next-7-days' | 'recent';
-
 export const getDebutVTubers = (
-  modifier: GetDebutVTubersModifier
+  modifier: DebutVTubersModifier
 ): Promise<AxiosResponse<VTuberDebutDataResponse>> => {
   return AxiosGetWrapper<VTuberDebutDataResponse>(
     `debut-vtubers/${modifier}.json`
   );
 };
 
-export type GetGraduateVTubersModifier = 'next-7-days' | 'recent';
-
 export const getGraduateVTubers = (
-  modifier: GetGraduateVTubersModifier
+  modifier: GraduateVTubersModifier
 ): Promise<AxiosResponse<VTuberGraduateDataResponse>> => {
   return AxiosGetWrapper<VTuberGraduateDataResponse>(
     `graduate-vtubers/${modifier}.json`
   );
 };
-
-export type TrendingVideosModifier = 'all' | 'no-duplicate';
 
 export const getTrendingVideos = (
   modifier: TrendingVideosModifier

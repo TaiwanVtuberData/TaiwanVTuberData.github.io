@@ -3,7 +3,6 @@ import { useEffect, useState } from 'preact/hooks';
 import { IntlProvider } from 'preact-i18n';
 import { Route, Router } from 'preact-router';
 import Sidebar from './Sidebar';
-import baseroute from '../baseroute';
 import { Dictionary } from '../i18n/Dictionary';
 import en from '../i18n/en';
 import zh from '../i18n/zh';
@@ -34,6 +33,7 @@ import {
 } from '../global/DisplayNationality';
 import { getCookie, setCookie } from '../utils/CookieUtils';
 import VTuberPage from '../routes/VTuber';
+import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -76,7 +76,6 @@ const App: FunctionalComponent = () => {
     <div id="preact_root">
       <IntlProvider definition={definition}>
         <Sidebar
-          siteUrlPrefix={baseroute}
           locale={locale}
           setLocale={setLocale}
           nationality={displayNationality}
@@ -86,74 +85,77 @@ const App: FunctionalComponent = () => {
         <VideoModal />
         <Router>
           <Route
-            path={`${baseroute}/`}
+            path={GetRoute({ type: 'home' })}
             dictionary={definition}
             component={HomePage}
           />
           <Route
-            path={`${baseroute}/event-calendar`}
+            path={GetRoute({ type: 'event-calendar' })}
             dictionary={definition}
             component={EventCalendarPage}
           />
           <Route
-            path={`${baseroute}/all-vtubers`}
+            path={GetRoute({ type: 'all-vtubers' })}
             dictionary={definition}
             component={AllVTubersPage}
           />
           <Route
-            path={`${baseroute}/group-list`}
+            path={GetRoute({ type: 'group-list' })}
             dictionary={definition}
             component={GroupListPage}
           />
           <Route
-            path={`${baseroute}/trending-vtubers`}
+            path={GetRoute({ type: 'trending-vtubers' })}
             dictionary={definition}
             component={TrendingVTubersPage}
           />
           <Route
-            path={`${baseroute}/trending-videos/:modifier`}
-            dictionary={definition}
-            component={TrendingVideosPage}
-          />
-          <Route
-            path={`${baseroute}/vtubers-view-count/:modifier`}
-            dictionary={definition}
-            component={VTubersViewCountPage}
-          />
-          <Route
-            path={`${baseroute}/growing-vtubers`}
+            path={GetRoute({ type: 'growing-vtubers' })}
             dictionary={definition}
             component={GrowingVTubersPage}
           />
           <Route
-            path={`${baseroute}/debut-vtubers`}
+            path={GetRoute({ type: 'debut-vtubers' })}
             dictionary={definition}
             component={DebutVTubersPage}
           />
           <Route
-            path={`${baseroute}/graduate-vtubers`}
+            path={GetRoute({ type: 'graduate-vtubers' })}
             dictionary={definition}
             component={GraduateVTubersPage}
           />
           <Route
-            path={`${baseroute}/vtuber/:id`}
-            dictionary={definition}
-            component={VTuberPage}
-          />
-          <Route
-            path={`${baseroute}/group/:groupName`}
-            dictionary={definition}
-            component={GroupPage}
-          />
-          <Route
-            path={`${baseroute}/report-issue`}
+            path={GetRoute({ type: 'report-issue' })}
             dictionary={definition}
             component={ReportIssuePage}
           />
           <Route
-            path={`${baseroute}/about`}
+            path={GetRoute({ type: 'about' })}
             dictionary={definition}
             component={AboutPage}
+          />
+          <Route
+            path={GetPlaceholderRoute({ type: 'vtuber' }, ':id')}
+            dictionary={definition}
+            component={VTuberPage}
+          />
+          <Route
+            path={GetPlaceholderRoute({ type: 'group' }, ':groupName')}
+            dictionary={definition}
+            component={GroupPage}
+          />
+          <Route
+            path={GetPlaceholderRoute({ type: 'trending-videos' }, ':modifier')}
+            dictionary={definition}
+            component={TrendingVideosPage}
+          />
+          <Route
+            path={GetPlaceholderRoute(
+              { type: 'vtubers-view-count' },
+              ':modifier'
+            )}
+            dictionary={definition}
+            component={VTubersViewCountPage}
           />
           <NotFoundPage default />
         </Router>

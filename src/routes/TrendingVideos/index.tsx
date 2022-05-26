@@ -17,11 +17,12 @@ import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPo
 import VideoLink from '../../components/VideoLink';
 import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import DropDownList from '../../components/DropDownList';
-import baseroute from '../../baseroute';
+import { GoToPage } from '../../utils/TypeSafeRouting';
+import { TrendingVideosModifier } from '../../types/ApiTypes';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
-  modifier: Api.TrendingVideosModifier;
+  modifier: TrendingVideosModifier;
 }
 
 const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
@@ -109,7 +110,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
 
     const optionValue: Array<{
       option: h.JSX.Element;
-      value: Api.TrendingVideosModifier;
+      value: TrendingVideosModifier;
     }> = [
       {
         option: <Text id="table.noDuplicate">One video per VTuber</Text>,
@@ -127,9 +128,12 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
           tipText={props.dictionary.table.options}
           value={props.modifier}
           optionValue={optionValue}
-          onChange={(e: any) => {
-            window.location.href = `${baseroute}/trending-videos/${e.target.value}`;
-          }}
+          onChange={(e: any) =>
+            GoToPage({
+              type: 'trending-videos',
+              viewCountSortOrder: e.target.value,
+            })
+          }
         />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}

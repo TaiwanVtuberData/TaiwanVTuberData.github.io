@@ -1,12 +1,12 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
-import baseroute from '../../baseroute';
 import { openModal } from '../../global/modalState';
 import { Dictionary } from '../../i18n/Dictionary';
 import { Activity } from '../../types/Common/Activity';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
 import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
+import { GetRoute } from '../../utils/TypeSafeRouting';
 import ProfileImage from '../ProfileImage';
 import style from './style.module.css';
 
@@ -94,7 +94,11 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
         <li>
           <Text id="table.group">Group</Text>
           <span>: </span>
-          <a href={`${baseroute}/group/${vtuber?.group}`}>{vtuber?.group}</a>
+          {vtuber?.group === undefined ? null : (
+            <a href={GetRoute({ type: 'group', name: vtuber?.group })}>
+              {vtuber?.group}
+            </a>
+          )}
         </li>
         <li>
           <Text id="table.nationality">Nationality</Text>

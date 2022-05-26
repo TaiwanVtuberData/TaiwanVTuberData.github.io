@@ -2,10 +2,10 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import baseroute from '../../baseroute';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
+import { SortOrder } from '../../types/ApiTypes';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
@@ -21,10 +21,11 @@ import { NameColumn } from '../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { GoToPage } from '../../utils/TypeSafeRouting';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
-  modifier: Api.SortOrder;
+  modifier: SortOrder;
 }
 
 const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
@@ -120,7 +121,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
 
     const optionValue: Array<{
       option: h.JSX.Element;
-      value: Api.SortOrder;
+      value: SortOrder;
     }> = [
       {
         option: <Text id="table._7DaysViewCountGrowth">7 Days Growth</Text>,
@@ -138,9 +139,12 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
           tipText={props.dictionary.table.sortingMethod}
           value={props.modifier}
           optionValue={optionValue}
-          onChange={(e: any) => {
-            window.location.href = `${baseroute}/vtubers-view-count/${e.target.value}`;
-          }}
+          onChange={(e: any) =>
+            GoToPage({
+              type: 'vtubers-view-count',
+              viewCountSortOrder: e.target.value,
+            })
+          }
         />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
@@ -203,7 +207,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     return rowB.YouTube._30DaysGrowth.diff - rowA.YouTube._30DaysGrowth.diff;
   };
 
-  const GetSortingMethod = (sortBy: Api.SortOrder) => {
+  const GetSortingMethod = (sortBy: SortOrder) => {
     switch (sortBy) {
       case '7-days':
         return _7DaysDescendingSort;

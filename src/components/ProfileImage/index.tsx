@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from 'preact';
-import baseroute from '../../baseroute';
+import { GetRoute } from '../../utils/TypeSafeRouting';
 import style from './style.module.css';
 
 export interface ProfileImageProps {
@@ -14,7 +14,7 @@ const ProfileImage: FunctionalComponent<ProfileImageProps> = (
   // use empty img src if no URL
   // https://stackoverflow.com/a/53365710/11947017
   return (
-    <a href={`${baseroute}/vtuber/${props.VTuberId}`}>
+    <a href={GetRoute({ type: 'vtuber', id: props.VTuberId })}>
       <img
         class={`${props.size ? style.fixedSize : style.profileImg}`}
         src={
