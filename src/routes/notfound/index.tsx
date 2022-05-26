@@ -1,7 +1,7 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Link } from 'preact-router/match';
 import { Text } from 'preact-i18n';
-import baseroute from '../../baseroute';
+import { GetRoute } from '../../utils/TypeSafeRouting';
 
 const Notfound: FunctionalComponent = () => {
   return (
@@ -12,7 +12,7 @@ const Notfound: FunctionalComponent = () => {
       <p style={{ textAlign: 'center' }}>
         <Text id="notFound.detail">This page does not exists.</Text>
       </p>
-      <Link href={`${baseroute}/`}>
+      <Link href={GetRoute({ type: 'home' })}>
         <h4 style={{ textAlign: 'center' }}>
           <Text id="notFound.goHome">Go back to home page.</Text>
         </h4>

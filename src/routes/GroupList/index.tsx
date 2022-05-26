@@ -2,7 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import baseroute from '../../baseroute';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData';
@@ -16,6 +15,7 @@ import { VTuberData } from '../../types/ApiData/VTuberData';
 import Profile from '../../components/Profile';
 import { NameSort } from '../../utils/NameSort';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { GetRoute } from '../../utils/TypeSafeRouting';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -29,7 +29,10 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     {
       name: <Text id="table.displayName">Name</Text>,
       cell: (row: { name: string }): h.JSX.Element => (
-        <a class={tableStyle.groupLink} href={`${baseroute}/group/${row.name}`}>
+        <a
+          class={tableStyle.groupLink}
+          href={GetRoute({ type: 'group', name: row.name })}
+        >
           {row.name}
         </a>
       ),

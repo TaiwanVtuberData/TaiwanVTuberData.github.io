@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Text } from 'preact-i18n';
 import { TableColumn } from 'react-data-table-component';
-import baseroute from '../baseroute';
+import { GetRoute } from '../utils/TypeSafeRouting';
 import tableStyle from '../style/DataTableStyle.module.css';
 
 export interface GroupColumnRowData {
@@ -17,7 +17,7 @@ export const GroupColumn = <
       row.group !== '' ? (
         <a
           class={tableStyle.groupLink}
-          href={`${baseroute}/group/${row.group}`}
+          href={GetRoute({ type: 'group', name: row.group })}
         >
           {row.group}
         </a>

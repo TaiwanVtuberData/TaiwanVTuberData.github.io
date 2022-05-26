@@ -13,10 +13,10 @@ import {
   validI18n,
 } from '../../types/LanguageOptions';
 import { getFormattedDateTime } from '../../utils/DateTimeUtils';
+import { GetRoute } from '../../utils/TypeSafeRouting';
 import style from './style.module.css';
 
 export interface SidebarProps {
-  siteUrlPrefix?: string;
   locale: validI18n;
   setLocale: StateUpdater<validI18n>;
   nationality: NationalityModifier;
@@ -27,8 +27,6 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const open = (): void => setSidebarOpen(true);
   const close = (): void => setSidebarOpen(false);
-  // use default URL prefix (no prefix) if in development
-  const SITE_URL_PREFIX: string = props.siteUrlPrefix ?? '';
 
   const [statisticUpdateTime, setStatisticUpdateTime] = useState<string>();
   const [VTuberDataUpdateTime, setVTuberDataUpdateTime] = useState<string>();
@@ -86,6 +84,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
       </div>
     );
   };
+
   const LinkElement = (textID: string, linkTo: string): h.JSX.Element => {
     return (
       <div class={style.gridItem}>
@@ -133,48 +132,54 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             <Text id="header.title">Taiwan VTuber Data</Text>
           </h1>
           {[
-            { textID: 'header.home', linkTo: `${SITE_URL_PREFIX}/` },
+            { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
             {
               textID: 'header.eventCalendar',
-              linkTo: `${SITE_URL_PREFIX}/event-calendar`,
+              linkTo: GetRoute({ type: 'event-calendar' }),
             },
             {
               textID: 'header.allVTubers',
-              linkTo: `${SITE_URL_PREFIX}/all-vtubers`,
+              linkTo: GetRoute({ type: 'all-vtubers' }),
             },
             {
               textID: 'header.groupList',
-              linkTo: `${SITE_URL_PREFIX}/group-list`,
+              linkTo: GetRoute({ type: 'group-list' }),
             },
             {
               textID: 'header.trendingVTubers',
-              linkTo: `${SITE_URL_PREFIX}/trending-vtubers`,
+              linkTo: GetRoute({ type: 'trending-vtubers' }),
             },
             {
               textID: 'header.trendingVideos',
-              linkTo: `${SITE_URL_PREFIX}/trending-videos/no-duplicate`,
+              linkTo: GetRoute({
+                type: 'trending-videos',
+                viewCountSortOrder: 'no-duplicate',
+              }),
             },
             {
               textID: 'header.VTubersViewCount',
-              linkTo: `${SITE_URL_PREFIX}/vtubers-view-count/7-days`,
+              linkTo: GetRoute({
+                type: 'vtubers-view-count',
+                viewCountSortOrder: '7-days',
+              }),
             },
             {
               textID: 'header.growingVTubers',
-              linkTo: `${SITE_URL_PREFIX}/growing-vtubers`,
+              linkTo: GetRoute({ type: 'growing-vtubers' }),
             },
             {
               textID: 'header.debutVTubers',
-              linkTo: `${SITE_URL_PREFIX}/debut-vtubers`,
+              linkTo: GetRoute({ type: 'debut-vtubers' }),
             },
             {
               textID: 'header.graduateVTubers',
-              linkTo: `${SITE_URL_PREFIX}/graduate-vtubers`,
+              linkTo: GetRoute({ type: 'graduate-vtubers' }),
             },
             {
               textID: 'header.reportIssue',
-              linkTo: `${SITE_URL_PREFIX}/report-issue`,
+              linkTo: GetRoute({ type: 'report-issue' }),
             },
-            { textID: 'header.about', linkTo: `${SITE_URL_PREFIX}/about` },
+            { textID: 'header.about', linkTo: GetRoute({ type: 'about' }) },
           ].map((e) => LinkElement(e.textID, e.linkTo))}
           <span class={style.sidebarText}>
             <Text id="header.statisticUpdateTime">Statistic update time:</Text>

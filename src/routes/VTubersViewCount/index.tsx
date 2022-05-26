@@ -2,7 +2,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import baseroute from '../../baseroute';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
@@ -21,6 +20,7 @@ import { NameColumn } from '../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { GoToPage } from '../../utils/TypeSafeRouting';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -138,9 +138,12 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
           tipText={props.dictionary.table.sortingMethod}
           value={props.modifier}
           optionValue={optionValue}
-          onChange={(e: any) => {
-            window.location.href = `${baseroute}/vtubers-view-count/${e.target.value}`;
-          }}
+          onChange={(e: any) =>
+            GoToPage({
+              type: 'vtubers-view-count',
+              viewCountSortOrder: e.target.value,
+            })
+          }
         />
         <SearchBar
           placeholderText={props.dictionary.table.searchByDisplayName}
