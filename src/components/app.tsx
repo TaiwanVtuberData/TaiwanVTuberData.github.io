@@ -110,19 +110,6 @@ const App: FunctionalComponent = () => {
             component={TrendingVTubersPage}
           />
           <Route
-            path={GetPlaceholderRoute({ type: 'trending-videos' }, ':modifier')}
-            dictionary={definition}
-            component={TrendingVideosPage}
-          />
-          <Route
-            path={GetPlaceholderRoute(
-              { type: 'vtubers-view-count' },
-              ':modifier'
-            )}
-            dictionary={definition}
-            component={VTubersViewCountPage}
-          />
-          <Route
             path={GetRoute({ type: 'growing-vtubers' })}
             dictionary={definition}
             component={GrowingVTubersPage}
@@ -138,6 +125,16 @@ const App: FunctionalComponent = () => {
             component={GraduateVTubersPage}
           />
           <Route
+            path={GetRoute({ type: 'report-issue' })}
+            dictionary={definition}
+            component={ReportIssuePage}
+          />
+          <Route
+            path={GetRoute({ type: 'about' })}
+            dictionary={definition}
+            component={AboutPage}
+          />
+          <Route
             path={GetPlaceholderRoute({ type: 'vtuber' }, ':id')}
             dictionary={definition}
             component={VTuberPage}
@@ -148,14 +145,17 @@ const App: FunctionalComponent = () => {
             component={GroupPage}
           />
           <Route
-            path={GetRoute({ type: 'report-issue' })}
+            path={GetPlaceholderRoute({ type: 'trending-videos' }, ':modifier')}
             dictionary={definition}
-            component={ReportIssuePage}
+            component={TrendingVideosPage}
           />
           <Route
-            path={GetRoute({ type: 'about' })}
+            path={GetPlaceholderRoute(
+              { type: 'vtubers-view-count' },
+              ':modifier'
+            )}
             dictionary={definition}
-            component={AboutPage}
+            component={VTubersViewCountPage}
           />
           <NotFoundPage default />
         </Router>
