@@ -1,5 +1,5 @@
 import routePrefix from '../routePrefix';
-import * as Api from '../services/ApiService';
+import { SortOrder, TrendingVideosModifier } from '../types/ApiTypes';
 
 interface BaseTypeSafeRoute {
   type: string;
@@ -69,7 +69,7 @@ interface TrendingVideosPlaceholderRoute extends BaseTypeSafeRoute {
 
 interface TrendingVideosRoute extends BaseTypeSafeRoute {
   type: 'trending-videos';
-  viewCountSortOrder: Api.TrendingVideosModifier;
+  viewCountSortOrder: TrendingVideosModifier;
 }
 
 interface VTubersViewCountPlaceholderRoute extends BaseTypeSafeRoute {
@@ -78,7 +78,7 @@ interface VTubersViewCountPlaceholderRoute extends BaseTypeSafeRoute {
 
 interface VTubersViewCountRoute extends BaseTypeSafeRoute {
   type: 'vtubers-view-count';
-  viewCountSortOrder: Api.SortOrder;
+  viewCountSortOrder: SortOrder;
 }
 
 type PlaceholderRoute =

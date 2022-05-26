@@ -18,10 +18,11 @@ import VideoLink from '../../components/VideoLink';
 import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import DropDownList from '../../components/DropDownList';
 import { GoToPage } from '../../utils/TypeSafeRouting';
+import { TrendingVideosModifier } from '../../types/ApiTypes';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
-  modifier: Api.TrendingVideosModifier;
+  modifier: TrendingVideosModifier;
 }
 
 const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
@@ -109,7 +110,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
 
     const optionValue: Array<{
       option: h.JSX.Element;
-      value: Api.TrendingVideosModifier;
+      value: TrendingVideosModifier;
     }> = [
       {
         option: <Text id="table.noDuplicate">One video per VTuber</Text>,
