@@ -38,6 +38,7 @@ export interface Dictionary {
     viewCount: string;
     uploadTime: string;
     hiddenCount: string;
+    noDataCount: string;
     searchByDisplayName: string;
     searchByGroup: string;
     searchByGroupMember: string;

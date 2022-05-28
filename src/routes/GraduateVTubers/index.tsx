@@ -12,13 +12,13 @@ import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
 import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
-import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { VTuberGraduateToDisplay } from '../../utils/transform/GraduateTransform';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -77,7 +77,8 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((item) => {
-      if (item.group === undefined) return true;
+      if (filterGroup === '') return true;
+      if (item.group === undefined) return false;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
     });
 
@@ -133,27 +134,6 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
     props.dictionary,
   ]);
 
-  const dataToDisplayData = (
-    e: VTuberGraduateData,
-    todayDate: string
-  ): VTuberGraduateDisplayData => ({
-    id: e.id,
-    isToday: e.graduateDate === todayDate,
-    graduateDate: e.graduateDate,
-    name: e.name,
-    imgUrl: e.imgUrl,
-    hasYouTube: e.YouTube !== undefined,
-    YouTubeId: e.YouTube?.id,
-    YouTubeSubscriberCount: e.YouTube?.subscriberCount,
-    hasTwitch: e.Twitch !== undefined,
-    TwitchId: e.Twitch?.id,
-    TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    popularVideo: e.popularVideo,
-    group: e.group ?? '',
-    nationality: e.nationality,
-    activity: e.activity,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
@@ -162,7 +142,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.graduateDate.localeCompare(a.graduateDate))
-          .map((e) => dataToDisplayData(e, todayDate))
+          .map((e) => VTuberGraduateToDisplay(e, todayDate))
       );
       setPending(false);
     });

@@ -2,12 +2,11 @@ import { h } from 'preact';
 import { Text } from 'preact-i18n';
 import { TableColumn } from 'react-data-table-component';
 import YouTubeTwitchCount from '../components/YouTubeTwitchCount';
+import { CountType } from '../types/Common/CountType';
 
 export interface YouTubeTwitchCountColumnRowData {
-  hasYouTube: boolean;
-  YouTubeSubscriberCount?: number;
-  hasTwitch: boolean;
-  TwitchFollowerCount: number;
+  YouTubeSubscriber?: CountType;
+  TwitchFollowerCount?: number;
 }
 
 export const YouTubeTwitchCountColumn = <
@@ -21,10 +20,8 @@ export const YouTubeTwitchCountColumn = <
     ),
     cell: (row: YouTubeTwitchCountColumnRowData): h.JSX.Element => (
       <YouTubeTwitchCount
-        hasYouTube={row.hasYouTube}
-        YouTubeSubscriberCount={row.YouTubeSubscriberCount}
-        hasTwitch={row.hasTwitch}
-        TwitchFollowerCount={row.TwitchFollowerCount}
+        YouTubeCount={row.YouTubeSubscriber}
+        TwitchCount={row.TwitchFollowerCount}
       />
     ),
   };

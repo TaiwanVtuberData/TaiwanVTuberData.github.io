@@ -9,7 +9,10 @@ export const CloudHorizonMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/y_VXsJfNp8sTQCB0lFemCleWB-9HpZ9R2pk7wbCOGrvkpFS3Qa1RAXqUVpgb0NNN9_xzWT446A=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UCxWAL-c1psONO_DfG-cq2iA',
-      subscriberCount: 170000,
+      subscriber: {
+        tag: 'has',
+        count: 170000,
+      },
     },
     group: '雲際線工作室',
     nationality: 'TW',
@@ -22,7 +25,10 @@ export const CloudHorizonMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/ytc/AKedOLT45F-wtnSlvOYUFPT6kT8bVCnmhbrNJk1tqrIx=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UC-o-1qjKkMLq-ZFxXIzOUBQ',
-      subscriberCount: 60000,
+      subscriber: {
+        tag: 'has',
+        count: 60000,
+      },
     },
     group: '雲際線工作室',
     nationality: 'TW',
@@ -35,7 +41,10 @@ export const CloudHorizonMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/LmqWHwQzqspXt0i0FtMHbhLykq-q9aYRKp1GiLwnY7VNl0Jgfukehm4lRJBu80AxsH_LNa4kqA=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UCJ4VZaUiVC2vpN7TXG85M5g',
-      subscriberCount: 24800,
+      subscriber: {
+        tag: 'has',
+        count: 24800,
+      },
     },
     group: '雲際線工作室',
     nationality: 'TW',
@@ -48,7 +57,10 @@ export const CloudHorizonMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/__E4VedeoEpLn1OPMqodtM4urz99mFfhilyFzCmJJJ_FnpLr6MdrXrLwPYe7aR7lvkmk3M40Bv4=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UC_soGpcb7SORsk5yzHLMdTQ',
-      subscriberCount: 22700,
+      subscriber: {
+        tag: 'has',
+        count: 22700,
+      },
     },
     group: '雲際線工作室',
     nationality: 'TW',
@@ -64,7 +76,10 @@ export const MeridianProjectMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/PNidqKT0wybKejx1NdZLteTlXP3Omy-ti1LFqekGs0Ms0ExfAiWv4Btmzgu4clH9A1QQ8yv-sA=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UCjv4bfP_67WLuPheS-Z8Ekg',
-      subscriberCount: 108000,
+      subscriber: {
+        tag: 'has',
+        count: 108000,
+      },
     },
     Twitch: {
       id: 'mizukimilk723',

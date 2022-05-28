@@ -9,7 +9,10 @@ export const AllVTuberMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/CRhdIqMTAjxrPJJcpKYEY_Yot20ByMcBid-nsSCcl8YFRCi2wzS_oQZ0bgx490bodZPZVqvDOQ=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UCFahBR2wixu0xOex84bXFvg',
-      subscriberCount: 382000,
+      subscriber: {
+        tag: 'has',
+        count: 382000,
+      },
     },
     Twitch: {
       id: 'vtuber_amiru',
@@ -26,7 +29,10 @@ export const AllVTuberMock: ReadonlyArray<VTuberData> = [
       'https://yt3.ggpht.com/y_VXsJfNp8sTQCB0lFemCleWB-9HpZ9R2pk7wbCOGrvkpFS3Qa1RAXqUVpgb0NNN9_xzWT446A=s88-c-k-c0x00ffffff-no-rj',
     YouTube: {
       id: 'UCxWAL-c1psONO_DfG-cq2iA',
-      subscriberCount: 380000,
+      subscriber: {
+        tag: 'has',
+        count: 380000,
+      },
     },
     group: '雲際線工作室',
     nationality: 'TW',
@@ -43,5 +49,48 @@ export const AllVTuberMock: ReadonlyArray<VTuberData> = [
     },
     popularVideo: { type: 'Twitch', id: '1406985305' },
     nationality: 'TW',
+  },
+  {
+    id: '4',
+    activity: 'active',
+    name: '十五號',
+    imgUrl:
+      'https://yt3.ggpht.com/ytc/AKedOLQ6hM9Uffig6XUSxGZZIgdTh1O8NZSFFSDrY2bE=s240-c-k-c0x00ffffff-no-rj',
+    YouTube: {
+      id: 'UC_UqaRNrLcaL4fp2IAPV0OQ',
+      subscriber: {
+        tag: 'no',
+      },
+    },
+    group: 'SquareLive',
+    nationality: 'TW',
+  },
+  {
+    id: '5',
+    activity: 'active',
+    name: '天堂密室',
+    imgUrl:
+      'https://yt3.ggpht.com/ytc/AKedOLTgAzggO9m09I0djkiRiJjUeJSduOY6hnfDuzuf=s240-c-k-c0x00ffffff-no-rj',
+    YouTube: {
+      id: 'UC7P5GH9nvcjP120r62h3v3g',
+      subscriber: {
+        tag: 'hidden',
+      },
+    },
+    group: '道具屋【玉兔】',
+    nationality: 'TW',
+  },
+  {
+    id: '6',
+    activity: 'active',
+    name: '如月ルミィ',
+    YouTube: {
+      id: 'UCJcKh9mwJH4zhHsU4NDs54g',
+      subscriber: {
+        tag: 'has',
+        count: 25800,
+      },
+    },
+    nationality: 'HK',
   },
 ];

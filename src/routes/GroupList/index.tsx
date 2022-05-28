@@ -13,9 +13,10 @@ import style from './style.module.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberData } from '../../types/ApiData/VTuberData';
 import Profile from '../../components/Profile';
-import { NameSort } from '../../utils/NameSort';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { GetRoute } from '../../utils/TypeSafeRouting';
+import { GetCount } from '../../utils/GetCount';
+import { NameSort } from '../../utils/sort/NameSort';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -144,7 +145,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
 
   const accumulator = (prev: number, current: VTuberData): number =>
     prev +
-    (current.YouTube?.subscriberCount ?? 0) +
+    (GetCount(current.YouTube?.subscriber) ?? 0) +
     (current.Twitch?.followerCount ?? 0);
 
   const dataToDisplayData = (e: GroupData): GroupDisplayData => ({

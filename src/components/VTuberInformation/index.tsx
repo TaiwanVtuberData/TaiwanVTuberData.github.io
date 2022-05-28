@@ -3,11 +3,13 @@ import { Text } from 'preact-i18n';
 import { openModal } from '../../global/modalState';
 import { Dictionary } from '../../i18n/Dictionary';
 import { Activity } from '../../types/Common/Activity';
+import { CountType } from '../../types/Common/CountType';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
 import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import ProfileImage from '../ProfileImage';
+import YouTubeValueString from '../YouTubeValueString';
 import style from './style.module.css';
 
 export interface VTuberInformationProps {
@@ -21,11 +23,11 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
   const vtuber: VTuberDisplayFullData | undefined = props.VTuber;
 
   const YouTubeSubscriberCountSpan = (
-    YouTubeSubscriberCount?: number
+    YouTubeSubscriberCount: CountType
   ): JSX.Element => {
     return (
       <span>
-        {YouTubeSubscriberCount ?? <Text id="table.hiddenCount">hidden</Text>}
+        <YouTubeValueString YouTubeCount={YouTubeSubscriberCount} />{' '}
       </span>
     );
   };
@@ -73,21 +75,21 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
         )}
       </div>
       <ul>
-        {vtuber?.hasYouTube && (
+        {vtuber?.YouTube && (
           <li>
             <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
             <span>: </span>
-            {YouTubeSubscriberCountSpan(vtuber.YouTubeSubscriberCount)}
+            {YouTubeSubscriberCountSpan(vtuber.YouTube.subscriber)}
             <span>(</span>
-            {getYouTubeLink(vtuber.YouTubeId)}
+            {getYouTubeLink(vtuber.YouTube.id)}
             <span>)</span>
           </li>
         )}
-        {vtuber?.hasTwitch && (
+        {vtuber?.Twitch && (
           <li>
             <Text id="table.TwitchFollowerCount">Twitch Followers</Text>
-            <span>: {vtuber.TwitchFollowerCount} (</span>
-            {getTwitchLink(vtuber.TwitchId)}
+            <span>: {vtuber.Twitch.followerCount} (</span>
+            {getTwitchLink(vtuber.Twitch.id)}
             <span>)</span>
           </li>
         )}

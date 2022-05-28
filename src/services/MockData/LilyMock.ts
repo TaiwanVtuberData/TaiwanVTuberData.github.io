@@ -8,7 +8,10 @@ export const LilyMock: VTuberFullData = {
     'https://yt3.ggpht.com/y_VXsJfNp8sTQCB0lFemCleWB-9HpZ9R2pk7wbCOGrvkpFS3Qa1RAXqUVpgb0NNN9_xzWT446A=s88-c-k-c0x00ffffff-no-rj',
   YouTube: {
     id: 'UCxWAL-c1psONO_DfG-cq2iA',
-    subscriberCount: 380000,
+    subscriber: {
+      tag: 'has',
+      count: 380000,
+    },
   },
   group: '雲際線工作室',
   nationality: 'TW',

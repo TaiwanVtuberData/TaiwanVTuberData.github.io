@@ -1,22 +1,13 @@
-import { Activity } from '../Common/Activity';
+import { HasCountType } from '../Common/CountType';
 import { GrowthData } from '../Common/GrowthData';
-import { VideoInfo } from '../Common/VideoInfo';
+import { VTuberDisplayData } from './VTuberDisplayData';
 
 export interface GrowthDisplayData extends GrowthData {
   percentage: number;
 }
 
-export interface VTuberGrowthDisplayData {
-  id: string;
-  name: string;
-  imgUrl?: string;
-  YouTubeId?: string;
-  TwitchId?: string;
-  YouTubeSubscriberCount: number;
+export interface VTuberGrowthDisplayData extends VTuberDisplayData {
+  YouTubeSubscriber: HasCountType;
   _7DaysGrowth: GrowthDisplayData;
   _30DaysGrowth: GrowthDisplayData;
-  popularVideo?: VideoInfo;
-  group: string;
-  nationality?: string;
-  activity: Activity;
 }

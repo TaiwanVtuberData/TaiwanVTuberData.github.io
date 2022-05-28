@@ -100,7 +100,8 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((item) => {
-      if (item.group === undefined) return true;
+      if (filterGroup === '') return true;
+      if (item.group === undefined) return false;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
     });
 

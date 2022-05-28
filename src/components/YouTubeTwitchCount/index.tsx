@@ -1,50 +1,47 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
 import '../../style/index.css';
+import { CountType } from '../../types/Common/CountType';
+import YouTubeValueString from '../YouTubeValueString';
 import style from './style.module.css';
 
 export interface YouTubeTwitchCountProps {
-  hasYouTube: boolean;
-  YouTubeSubscriberCount?: number;
-  hasTwitch: boolean;
-  TwitchFollowerCount: number;
+  YouTubeCount?: CountType;
+  TwitchCount?: number;
 }
 
 const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
   props: YouTubeTwitchCountProps
 ): h.JSX.Element => {
-  const YouTubeSpan = (YouTubeSubscriberCount?: number): h.JSX.Element => {
+  const YouTubeSpan = (YouTubeCount: CountType): h.JSX.Element => {
     return (
       <span class={`${style.noWrap} YouTubeRed`}>
-        {YouTubeSubscriberCount ?? <Text id="table.hiddenCount">hidden</Text>}
+        <YouTubeValueString YouTubeCount={YouTubeCount} />
       </span>
     );
   };
 
-  const TwitchSpan = (TwitchFollowerCount: number): h.JSX.Element => {
-    return (
-      <span class={`${style.noWrap} TwitchPurple`}>{TwitchFollowerCount}</span>
-    );
+  const TwitchSpan = (TwitchCount: number): h.JSX.Element => {
+    return <span class={`${style.noWrap} TwitchPurple`}>{TwitchCount}</span>;
   };
 
   const CountSpan = (props: YouTubeTwitchCountProps): h.JSX.Element | null => {
-    if (props.hasYouTube && props.hasTwitch) {
+    if (props.YouTubeCount && props.TwitchCount) {
       return (
-        <Fragment>
-          {YouTubeSpan(props.YouTubeSubscriberCount)}
+        <>
+          {YouTubeSpan(props.YouTubeCount)}
           {/* extra white space. will be rendered as " + " */}
           <span class={style.noWrap}>&nbsp;+&nbsp;</span>
-          {TwitchSpan(props.TwitchFollowerCount)}
-        </Fragment>
+          {TwitchSpan(props.TwitchCount)}
+        </>
       );
     }
 
-    if (props.hasYouTube) {
-      return <Fragment>{YouTubeSpan(props.YouTubeSubscriberCount)}</Fragment>;
+    if (props.YouTubeCount) {
+      return <>{YouTubeSpan(props.YouTubeCount)}</>;
     }
 
-    if (props.hasTwitch) {
-      return <Fragment>{TwitchSpan(props.TwitchFollowerCount)}</Fragment>;
+    if (props.TwitchCount) {
+      return <>{TwitchSpan(props.TwitchCount)}</>;
     }
 
     return null;

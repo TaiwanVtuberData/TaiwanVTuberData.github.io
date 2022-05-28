@@ -7,13 +7,13 @@ import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
-import { VTuberPopularityToDisplay } from '../../../types/ApiToDisplayData/PopularityTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
-import { PopularityCountDescendingSort } from '../../../utils/PopularityCountSort';
 import { NameColumn } from '../../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 import { PopularityColumn } from '../../../tableTypes/PopularityColumn';
+import { VTuberPopularityToDisplay } from '../../../utils/transform/PopularityTransform';
+import { PopularityCountDescendingSort } from '../../../utils/sort/PopularityCountSort';
 
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [

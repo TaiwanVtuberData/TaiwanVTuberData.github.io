@@ -3,9 +3,9 @@ import { useEffect, useState } from 'preact/hooks';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import '../../style/index.css';
-import { VTuberFullToDisplay } from '../../types/ApiToDisplayData/FullTransform';
 import VTuberInformation from '../../components/VTuberInformation';
 import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
+import { VTuberFullToDisplay } from '../../utils/transform/FullTransform';
 
 export interface VTuberPageProps {
   id: string;

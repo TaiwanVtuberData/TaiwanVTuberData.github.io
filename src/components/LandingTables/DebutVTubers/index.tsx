@@ -9,11 +9,11 @@ import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { VTuberDebutDisplayData } from '../../../types/TableDisplayData/VTuberDebutDisplayData';
 import { getISODateString } from '../../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
-import { VTuberDebutToDisplay } from '../../../types/ApiToDisplayData/DebutTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import { NameColumn } from '../../../tableTypes/NameColumn';
 import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { VTuberDebutToDisplay } from '../../../utils/transform/DebutTransform';
 
 const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [

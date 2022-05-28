@@ -10,13 +10,7 @@ import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { VTuberPopularityDisplayData } from '../../types/TableDisplayData/VTuberPopularityDisplayData';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { VTuberPopularityToDisplay } from '../../types/ApiToDisplayData/PopularityTransform';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/SubscriberCountSort';
-import {
-  PopularityCountAscendingSort,
-  PopularityCountDescendingSort,
-} from '../../utils/PopularityCountSort';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
@@ -24,6 +18,12 @@ import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { PopularityColumn } from '../../tableTypes/PopularityColumn';
+import { VTuberPopularityToDisplay } from '../../utils/transform/PopularityTransform';
+import {
+  PopularityCountAscendingSort,
+  PopularityCountDescendingSort,
+} from '../../utils/sort/PopularityCountSort';
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -82,7 +82,8 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((item) => {
-      if (item.group === undefined) return true;
+      if (filterGroup === '') return true;
+      if (item.group === undefined) return false;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
     });
 
