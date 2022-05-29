@@ -16,12 +16,12 @@ import { VTuberViewCountGrowthData } from '../../types/ApiData/VTuberViewCountCh
 import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
 import DropDownList from '../../components/DropDownList';
-import { YouTubeViewCountGrowthData } from '../../types/ApiData/YouTubeViewCountGrowthData';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { GoToPage } from '../../utils/TypeSafeRouting';
+import { YouTubeViewCountGrowthData } from '../../types/Common/YouTube/YouTubeViewCountGrowthData';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
