@@ -65,25 +65,6 @@ const TwitchFollowerCountDescendingSort = <
   return 0;
 };
 
-// TODO: Merge the logic of descending and ascending functions
-export const YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort = <
-  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType }
->(
-  rowA: T,
-  rowB: T
-): number => {
-  const aCount =
-    (GetCount(rowA.YouTubeSubscriber) ?? 0) + (GetCount(rowA.TwitchFollower) ?? 0);
-  const bCount =
-    (GetCount(rowB.YouTubeSubscriber) ?? 0) + (GetCount(rowB.TwitchFollower) ?? 0);
-
-  if (aCount > bCount) return -1;
-
-  if (bCount > aCount) return 1;
-
-  return 0;
-};
-
 export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
   T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType }
 >(
@@ -91,9 +72,11 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
   rowB: T
 ): number => {
   const aCount =
-    (GetCount(rowA.YouTubeSubscriber) ?? 0) + (GetCount(rowA.TwitchFollower) ?? 0);
+    (GetCount(rowA.YouTubeSubscriber) ?? 0) +
+    (GetCount(rowA.TwitchFollower) ?? 0);
   const bCount =
-    (GetCount(rowB.YouTubeSubscriber) ?? 0) + (GetCount(rowB.TwitchFollower) ?? 0);
+    (GetCount(rowB.YouTubeSubscriber) ?? 0) +
+    (GetCount(rowB.TwitchFollower) ?? 0);
 
   if (aCount > bCount) return 1;
 
@@ -101,6 +84,15 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
 
   return 0;
 };
+
+// TODO: Merge the logic of descending and ascending functions
+export const YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort = <
+  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType }
+>(
+  rowA: T,
+  rowB: T
+): number =>
+  YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort(rowA, rowB) * -1;
 
 export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
   switch (sortMethod) {
