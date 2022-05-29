@@ -2,10 +2,16 @@ import { h } from 'preact';
 import { Text } from 'preact-i18n';
 import { TableColumn } from 'react-data-table-component';
 import YouTubeTwitchCount from '../components/YouTubeTwitchCount';
+import { CountType } from '../types/Common/CountType';
+
+const numberToCountType = (popularity?: number): CountType | undefined => {
+  if (popularity) return { tag: 'has', count: popularity };
+  return undefined;
+};
 
 export interface PopularityColumnRowData {
-  YouTubePopularity: number;
-  TwitchPopularity: number;
+  YouTubePopularity?: number;
+  TwitchPopularity?: number;
 }
 
 export const PopularityColumn = <
@@ -15,8 +21,8 @@ export const PopularityColumn = <
     name: <Text id="table.popularity">Popularity</Text>,
     cell: (row: PopularityColumnRowData): h.JSX.Element => (
       <YouTubeTwitchCount
-        YouTubeCount={{ tag: 'has', count: row.YouTubePopularity }}
-        TwitchCount={row.TwitchPopularity}
+        YouTubeCount={numberToCountType(row.YouTubePopularity)}
+        TwitchCount={numberToCountType(row.TwitchPopularity)}
       />
     ),
   };

@@ -7,7 +7,7 @@ export const VTuberPopularityToDisplay = (
   ranking: number
 ): VTuberPopularityDisplayData => ({
   ...VTuberBasicToDisplay(e),
-  YouTubePopularity: e.YouTube?.popularity ?? 0,
-  TwitchPopularity: e.Twitch?.popularity ?? 0,
+  YouTubePopularity: e.YouTube?.popularity,
+  TwitchPopularity: e.Twitch?.popularity,
   ranking: ranking,
 });

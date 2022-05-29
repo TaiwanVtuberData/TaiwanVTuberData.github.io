@@ -2,15 +2,15 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { CountType } from '../../types/Common/CountType';
 
-interface YouTubeValueStringProps {
-  YouTubeCount: CountType;
+interface CountStringProps {
+  countType: CountType;
 }
-const YouTubeValueString: FunctionalComponent<YouTubeValueStringProps> = (
-  props: YouTubeValueStringProps
+const CountString: FunctionalComponent<CountStringProps> = (
+  props: CountStringProps
 ): JSX.Element => {
-  switch (props.YouTubeCount.tag) {
+  switch (props.countType.tag) {
     case 'has':
-      return <>{props.YouTubeCount.count}</>;
+      return <>{props.countType.count}</>;
     case 'hidden':
       return <Text id="table.hiddenCount">hidden</Text>;
     case 'no':
@@ -18,4 +18,4 @@ const YouTubeValueString: FunctionalComponent<YouTubeValueStringProps> = (
   }
 };
 
-export default YouTubeValueString;
+export default CountString;

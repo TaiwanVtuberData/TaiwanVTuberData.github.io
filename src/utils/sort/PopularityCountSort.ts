@@ -1,11 +1,11 @@
 export const PopularityCountDescendingSort = <
-  T extends { YouTubePopularity: number; TwitchPopularity: number }
+  T extends { YouTubePopularity?: number; TwitchPopularity?: number }
 >(
   rowA: T,
   rowB: T
 ): number => {
-  const aCount = rowA.YouTubePopularity + rowA.TwitchPopularity;
-  const bCount = rowB.YouTubePopularity + rowB.TwitchPopularity;
+  const aCount = (rowA.YouTubePopularity ?? 0) + (rowA.TwitchPopularity ?? 0);
+  const bCount = (rowB.YouTubePopularity ?? 0) + (rowB.TwitchPopularity ?? 0);
 
   if (aCount > bCount) return -1;
 
@@ -15,13 +15,13 @@ export const PopularityCountDescendingSort = <
 };
 
 export const PopularityCountAscendingSort = <
-  T extends { YouTubePopularity: number; TwitchPopularity: number }
+  T extends { YouTubePopularity?: number; TwitchPopularity?: number }
 >(
   rowA: T,
   rowB: T
 ): number => {
-  const aCount = rowA.YouTubePopularity + rowA.TwitchPopularity;
-  const bCount = rowB.YouTubePopularity + rowB.TwitchPopularity;
+  const aCount = (rowA.YouTubePopularity ?? 0) + (rowA.TwitchPopularity ?? 0);
+  const bCount = (rowB.YouTubePopularity ?? 0) + (rowB.TwitchPopularity ?? 0);
 
   if (aCount > bCount) return 1;
 

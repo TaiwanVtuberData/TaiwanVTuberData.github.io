@@ -83,7 +83,10 @@ export const MeridianProjectMock: ReadonlyArray<VTuberData> = [
     },
     Twitch: {
       id: 'mizukimilk723',
-      followerCount: 903,
+      follower: {
+        tag: 'has',
+        count: 903,
+      },
     },
     group: '子午計劃',
     nationality: 'UNKNOWN',

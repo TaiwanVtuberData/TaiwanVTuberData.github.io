@@ -16,7 +16,10 @@ export const AllVTuberMock: ReadonlyArray<VTuberData> = [
     },
     Twitch: {
       id: 'vtuber_amiru',
-      followerCount: 22589,
+      follower: {
+        tag: 'has',
+        count: 22589,
+      },
     },
     popularVideo: { type: 'YouTube', id: 'qwK7r3hbZ6k' },
     nationality: 'TW',
@@ -45,7 +48,10 @@ export const AllVTuberMock: ReadonlyArray<VTuberData> = [
       'https://static-cdn.jtvnw.net/jtv_user_pictures/1594218f-190e-458f-9f81-fb80a1dee13f-profile_image-300x300.png',
     Twitch: {
       id: 'vanilla_shironeko',
-      followerCount: 17901,
+      follower: {
+        tag: 'has',
+        count: 17901,
+      },
     },
     popularVideo: { type: 'Twitch', id: '1406985305' },
     nationality: 'TW',

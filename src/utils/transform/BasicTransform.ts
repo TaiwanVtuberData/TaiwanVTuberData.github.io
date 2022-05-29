@@ -9,7 +9,7 @@ export const VTuberBasicToDisplay = (e: VTuberData): VTuberDisplayData => ({
   YouTubeId: e.YouTube?.id,
   YouTubeSubscriber: e.YouTube?.subscriber,
   TwitchId: e.Twitch?.id,
-  TwitchFollowerCount: e.Twitch?.followerCount,
+  TwitchFollower: e.Twitch?.follower,
   popularVideo: e.popularVideo,
   group: e.group,
   nationality: e.nationality,

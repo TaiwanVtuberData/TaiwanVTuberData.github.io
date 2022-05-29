@@ -33,7 +33,10 @@ export const DebutVTubersMock: ReadonlyArray<VTuberDebutData> = [
     },
     Twitch: {
       id: 'shea010',
-      followerCount: 702,
+      follower: {
+        tag: 'has',
+        count: 702,
+      },
     },
     group: 'Mirolive',
     nationality: 'TW',

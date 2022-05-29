@@ -6,7 +6,7 @@ import { CountType } from '../types/Common/CountType';
 
 export interface YouTubeTwitchCountColumnRowData {
   YouTubeSubscriber?: CountType;
-  TwitchFollowerCount?: number;
+  TwitchFollower?: CountType;
 }
 
 export const YouTubeTwitchCountColumn = <
@@ -21,7 +21,7 @@ export const YouTubeTwitchCountColumn = <
     cell: (row: YouTubeTwitchCountColumnRowData): h.JSX.Element => (
       <YouTubeTwitchCount
         YouTubeCount={row.YouTubeSubscriber}
-        TwitchCount={row.TwitchFollowerCount}
+        TwitchCount={row.TwitchFollower}
       />
     ),
   };

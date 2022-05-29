@@ -1,4 +1,4 @@
-import { TwitchPopularityData } from '../Common/TwitchPopularityData';
+import { TwitchPopularityData } from '../Common/Twitch/TwitchPopularityData';
 import { YouTubePopularityData } from '../Common/YouTube/YouTubePopularityData';
 import { VTuberData } from './VTuberData';
 

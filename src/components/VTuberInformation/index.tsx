@@ -9,7 +9,7 @@ import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDispla
 import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import ProfileImage from '../ProfileImage';
-import YouTubeValueString from '../YouTubeValueString';
+import CountString from '../CountString';
 import style from './style.module.css';
 
 export interface VTuberInformationProps {
@@ -22,12 +22,10 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
 ): h.JSX.Element => {
   const vtuber: VTuberDisplayFullData | undefined = props.VTuber;
 
-  const YouTubeSubscriberCountSpan = (
-    YouTubeSubscriberCount: CountType
-  ): JSX.Element => {
+  const CountSpan = (countType: CountType): JSX.Element => {
     return (
       <span>
-        <YouTubeValueString YouTubeCount={YouTubeSubscriberCount} />{' '}
+        <CountString countType={countType} />
       </span>
     );
   };
@@ -79,8 +77,8 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
           <li>
             <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
             <span>: </span>
-            {YouTubeSubscriberCountSpan(vtuber.YouTube.subscriber)}
-            <span>(</span>
+            {CountSpan(vtuber.YouTube.subscriber)}
+            <span> (</span>
             {getYouTubeLink(vtuber.YouTube.id)}
             <span>)</span>
           </li>
@@ -88,7 +86,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
         {vtuber?.Twitch && (
           <li>
             <Text id="table.TwitchFollowerCount">Twitch Followers</Text>
-            <span>: {vtuber.Twitch.followerCount} (</span>
+            <span>: {CountSpan(vtuber.Twitch.follower)} (</span>
             {getTwitchLink(vtuber.Twitch.id)}
             <span>)</span>
           </li>

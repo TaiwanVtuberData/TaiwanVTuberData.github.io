@@ -146,7 +146,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
   const accumulator = (prev: number, current: VTuberData): number =>
     prev +
     (GetCount(current.YouTube?.subscriber) ?? 0) +
-    (current.Twitch?.followerCount ?? 0);
+    (GetCount(current.Twitch?.follower) ?? 0);
 
   const dataToDisplayData = (e: GroupData): GroupDisplayData => ({
     id: e.id,

@@ -15,7 +15,10 @@ export const MiruMock: VTuberFullData = {
   },
   Twitch: {
     id: 'vtuber_amiru',
-    followerCount: 22589,
+    follower: {
+      tag: 'has',
+      count: 22589,
+    },
   },
   popularVideo: { type: 'YouTube', id: 'qwK7r3hbZ6k' },
   nationality: 'TW',

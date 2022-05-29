@@ -24,7 +24,10 @@ export const GrowingVTubersMock: ReadonlyArray<VTuberGrowthData> = [
     },
     Twitch: {
       id: 'ggsunbeam',
-      followerCount: 91,
+      follower: {
+        tag: 'has',
+        count: 91,
+      },
     },
     nationality: 'TW',
   },
@@ -75,7 +78,10 @@ export const GrowingVTubersMock: ReadonlyArray<VTuberGrowthData> = [
     },
     Twitch: {
       id: 'nekomatsuri_25',
-      followerCount: 756,
+      follower: {
+        tag: 'has',
+        count: 756,
+      },
     },
     nationality: 'TW',
   },

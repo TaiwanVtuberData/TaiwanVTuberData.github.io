@@ -1,12 +1,12 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 import '../../style/index.css';
 import { CountType } from '../../types/Common/CountType';
-import YouTubeValueString from '../YouTubeValueString';
+import CountString from '../CountString';
 import style from './style.module.css';
 
 export interface YouTubeTwitchCountProps {
   YouTubeCount?: CountType;
-  TwitchCount?: number;
+  TwitchCount?: CountType;
 }
 
 const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
@@ -15,13 +15,17 @@ const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
   const YouTubeSpan = (YouTubeCount: CountType): h.JSX.Element => {
     return (
       <span class={`${style.noWrap} YouTubeRed`}>
-        <YouTubeValueString YouTubeCount={YouTubeCount} />
+        <CountString countType={YouTubeCount} />
       </span>
     );
   };
 
-  const TwitchSpan = (TwitchCount: number): h.JSX.Element => {
-    return <span class={`${style.noWrap} TwitchPurple`}>{TwitchCount}</span>;
+  const TwitchSpan = (TwitchCount: CountType): h.JSX.Element => {
+    return (
+      <span class={`${style.noWrap} TwitchPurple`}>
+        <CountString countType={TwitchCount} />
+      </span>
+    );
   };
 
   const CountSpan = (props: YouTubeTwitchCountProps): h.JSX.Element | null => {

@@ -17,7 +17,10 @@ export const PopularVTubersMock: ReadonlyArray<VTuberPopularityData> = [
     },
     Twitch: {
       id: 'vtuber_amiru',
-      followerCount: 22552,
+      follower: {
+        tag: 'has',
+        count: 22552,
+      },
       popularity: 20998,
     },
     nationality: 'TW',
@@ -55,7 +58,10 @@ export const PopularVTubersMock: ReadonlyArray<VTuberPopularityData> = [
     },
     Twitch: {
       id: 'ruroroisme',
-      followerCount: 21440,
+      follower: {
+        tag: 'has',
+        count: 21440,
+      },
       popularity: 26678,
     },
     nationality: 'TW',

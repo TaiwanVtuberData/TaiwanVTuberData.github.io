@@ -1,5 +1,5 @@
 import { Activity } from '../Common/Activity';
-import { TwitchData } from '../Common/TwitchData';
+import { BaseTwitchData } from '../Common/Twitch/BaseTwitchData';
 import { VideoInfo } from '../Common/VideoInfo';
 import { BaseYouTubeData } from '../Common/YouTube/BaseYouTubeData';
 
@@ -9,7 +9,7 @@ export interface BaseVTuberData {
   readonly name: string;
   readonly imgUrl?: string;
   readonly YouTube?: BaseYouTubeData;
-  readonly Twitch?: TwitchData;
+  readonly Twitch?: BaseTwitchData;
   readonly popularVideo?: VideoInfo;
   readonly group?: string;
   readonly nationality?: string;
