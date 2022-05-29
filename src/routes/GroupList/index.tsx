@@ -15,8 +15,8 @@ import { VTuberData } from '../../types/ApiData/VTuberData';
 import Profile from '../../components/Profile';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { GetRoute } from '../../utils/TypeSafeRouting';
-import { GetCount } from '../../utils/GetCount';
 import { NameSort } from '../../utils/sort/NameSort';
+import { GetCount } from '../../utils/CountTypeUtils';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;

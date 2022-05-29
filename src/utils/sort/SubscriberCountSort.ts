@@ -1,9 +1,8 @@
 import { CountType } from '../../types/Common/CountType';
-import { GetCount } from '../GetCount';
+import { CountTypeCompare, GetCount } from '../CountTypeUtils';
 
 export type SortMethod = 'YouTube+Twitch' | 'YouTube' | 'Twitch';
 
-// Sort order: 300 > 100 > hidden > no
 const YouTubeSubscriberCountDescendingSort = <
   T extends { YouTubeSubscriber?: CountType }
 >(
@@ -19,20 +18,11 @@ const YouTubeSubscriberCountDescendingSort = <
 
   if (!aExist) return 1;
 
-  const aCount: number | null = GetCount(rowA.YouTubeSubscriber);
-  const bCount: number | null = GetCount(rowB.YouTubeSubscriber);
+  // This line does nothing but to stop TypeScript from
+  // whining about YouTubeSubscriber might be undefined
+  if (!(rowA.YouTubeSubscriber && rowB.YouTubeSubscriber)) return 0;
 
-  if (aCount === null && bCount === null) return 0;
-
-  if (bCount === null) return -1;
-
-  if (aCount === null) return 1;
-
-  if (aCount > bCount) return -1;
-
-  if (bCount > aCount) return 1;
-
-  return 0;
+  return CountTypeCompare(rowA.YouTubeSubscriber, rowB.YouTubeSubscriber) * -1;
 };
 
 const TwitchFollowerCountDescendingSort = <
@@ -50,20 +40,11 @@ const TwitchFollowerCountDescendingSort = <
 
   if (!aExist) return 1;
 
-  const aCount: number | null = GetCount(rowA.TwitchFollower);
-  const bCount: number | null = GetCount(rowB.TwitchFollower);
+  // This line does nothing but to stop TypeScript from
+  // whining about TwitchFollower might be undefined
+  if (!(rowA.TwitchFollower && rowB.TwitchFollower)) return 0;
 
-  if (aCount === null && bCount === null) return 0;
-
-  if (bCount === null) return -1;
-
-  if (aCount === null) return 1;
-
-  if (aCount > bCount) return -1;
-
-  if (bCount > aCount) return 1;
-
-  return 0;
+  return CountTypeCompare(rowA.TwitchFollower, rowB.TwitchFollower) * -1;
 };
 
 export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
