@@ -1,4 +1,4 @@
-import { getISODateString } from "../src/utils/DateTimeUtils";
+import { getISODateString } from "../utils/DateTimeUtils";
 
 describe('getISODateString Test', () => {
     test('Expected new Date(\'2022-03-19\') to be parsed as \'2022-03-19\'', () => {

@@ -1,4 +1,4 @@
-import { PrependSign } from "../src/utils/NumberUtils";
+import { PrependSign } from "../utils/NumberUtils";
 
 describe('DateUtils Test', () => {
     test('Expected 100 to be parsed as \'+100\'', () => {
