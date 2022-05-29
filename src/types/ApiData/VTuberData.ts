@@ -1,4 +1,4 @@
-import { YouTubeData } from '../Common/YouTubeData';
+import { YouTubeData } from '../Common/YouTube/YouTubeData';
 import { BaseVTuberData } from './BaseVTuberData';
 
 export interface VTuberData extends BaseVTuberData {
