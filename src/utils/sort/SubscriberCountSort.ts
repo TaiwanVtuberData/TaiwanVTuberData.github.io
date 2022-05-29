@@ -3,6 +3,7 @@ import { GetCount } from '../GetCount';
 
 export type SortMethod = 'YouTube+Twitch' | 'YouTube' | 'Twitch';
 
+// Sort order: 300 > 100 > hidden > no
 const YouTubeSubscriberCountDescendingSort = <
   T extends { YouTubeSubscriber?: CountType }
 >(
