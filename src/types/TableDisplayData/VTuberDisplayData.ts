@@ -1,18 +1,17 @@
 import { VideoInfo } from '../Common/VideoInfo';
 import { Activity } from '../Common/Activity';
+import { CountType } from '../Common/CountType';
 
 export interface VTuberDisplayData {
   id: string;
+  activity: Activity;
   name: string;
   imgUrl?: string;
-  hasYouTube: boolean;
   YouTubeId?: string;
-  YouTubeSubscriberCount?: number;
-  hasTwitch: boolean;
+  YouTubeSubscriber?: CountType;
   TwitchId?: string;
-  TwitchFollowerCount: number;
+  TwitchFollower?: CountType;
   popularVideo?: VideoInfo;
-  group: string;
+  group?: string;
   nationality?: string;
-  activity: Activity;
 }

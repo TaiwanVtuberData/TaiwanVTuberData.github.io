@@ -38,6 +38,7 @@ const zh: Dictionary = {
     viewCount: '觀看次數',
     uploadTime: '上傳時間',
     hiddenCount: '未顯示',
+    noDataCount: '無資料',
     searchByDisplayName: '依名稱搜尋',
     searchByGroup: '依團體搜尋',
     searchByGroupMember: '依團體成員搜尋',

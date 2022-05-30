@@ -1,6 +1,3 @@
-import { VTuberDisplayData } from './VTuberDisplayData';
+import { VTuberFullData } from '../ApiData/VTuberFullData';
 
-export interface VTuberDisplayFullData extends VTuberDisplayData {
-  readonly debutDate?: string;
-  readonly graduateDate?: string;
-}
+export type VTuberDisplayFullData = VTuberFullData;

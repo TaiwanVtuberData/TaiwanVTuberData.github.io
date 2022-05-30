@@ -12,13 +12,13 @@ import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
 import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
-import { VTuberDebutToDisplay } from '../../types/ApiToDisplayData/DebutTransform';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { VTuberDebutToDisplay } from '../../utils/transform/DebutTransform';
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -77,7 +77,8 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((item) => {
-      if (item.group === undefined) return true;
+      if (filterGroup === '') return true;
+      if (item.group === undefined) return false;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
     });
 

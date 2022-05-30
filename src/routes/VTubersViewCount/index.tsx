@@ -12,16 +12,16 @@ import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { GrowthData } from '../../types/Common/GrowthData';
 import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
-import { VTuberViewCountGrowthData } from '../../types/ApiData/VTuberViewCountChangeData';
 import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
 import DropDownList from '../../components/DropDownList';
-import { YouTubeViewCountGrowthData } from '../../types/ApiData/YouTubeViewCountGrowthData';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { GoToPage } from '../../utils/TypeSafeRouting';
+import { YouTubeViewCountGrowthData } from '../../types/Common/YouTube/YouTubeViewCountGrowthData';
+import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransform';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -100,7 +100,8 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((item) => {
-      if (item.group === undefined) return true;
+      if (filterGroup === '') return true;
+      if (item.group === undefined) return false;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
     });
 
@@ -167,26 +168,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     props.modifier,
     props.dictionary,
   ]);
-
-  const dataToDisplayData = (
-    e: VTuberViewCountGrowthData,
-    ranking: number
-  ): VTuberViewCountGrowthDisplayData => ({
-    id: e.id,
-    name: e.name,
-    imgUrl: e.imgUrl,
-    YouTubeId: e.YouTube.id,
-    TwitchId: e.Twitch?.id,
-    totalViewCount: e.YouTube.totalViewCount,
-    _7DaysGrowth: e.YouTube._7DaysGrowth,
-    _30DaysGrowth: e.YouTube._30DaysGrowth,
-    popularVideo: e.popularVideo,
-    group: e.group ?? '',
-    nationality: e.nationality,
-    activity: e.activity,
-    ranking: ranking,
-  });
-
   const [pending, setPending] = useState(true);
 
   const _7DaysDescendingSort = <
@@ -225,7 +206,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         res.data.VTubers.map((e) => e)
           .map((e) => e)
           .sort(GetSortingMethod(props.modifier))
-          .map((e, index) => dataToDisplayData(e, index + 1))
+          .map((e, index) => VTuberViewCountToDisplay(e, index + 1))
       );
       setPending(false);
     });

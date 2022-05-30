@@ -2,7 +2,7 @@
   "homepage": "https://taiwanvtuberdata.github.io/",
   "private": true,
   "name": "taiwan-vtuber-data",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "preact build",
@@ -11,7 +11,7 @@
     "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --config .prettierrc src/**/*.{js,jsx,ts,tsx,css,json} --write",
-    "test": "jest ./tests"
+    "test": "jest ./src/tests"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -56,8 +56,8 @@
   "jest": {
     "preset": "jest-preset-preact",
     "setupFiles": [
-      "<rootDir>/tests/__mocks__/browserMocks.ts",
-      "<rootDir>/tests/__mocks__/setupTests.ts"
+      "<rootDir>/src/tests/__mocks__/browserMocks.ts",
+      "<rootDir>/src/tests/__mocks__/setupTests.ts"
     ]
   }
 }

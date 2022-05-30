@@ -5,7 +5,7 @@ import { GetRoute } from '../utils/TypeSafeRouting';
 import tableStyle from '../style/DataTableStyle.module.css';
 
 export interface GroupColumnRowData {
-  group: string;
+  group?: string;
 }
 
 export const GroupColumn = <
@@ -14,7 +14,7 @@ export const GroupColumn = <
   return {
     name: <Text id="table.group">Group</Text>,
     cell: (row: GroupColumnRowData): h.JSX.Element | null =>
-      row.group !== '' ? (
+      row.group !== undefined ? (
         <a
           class={tableStyle.groupLink}
           href={GetRoute({ type: 'group', name: row.group })}

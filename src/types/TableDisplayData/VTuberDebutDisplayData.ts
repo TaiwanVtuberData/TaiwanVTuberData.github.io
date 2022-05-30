@@ -1,20 +1,6 @@
-import { Activity } from '../Common/Activity';
-import { VideoInfo } from '../Common/VideoInfo';
+import { VTuberDisplayData } from './VTuberDisplayData';
 
-export interface VTuberDebutDisplayData {
-  id: string;
+export interface VTuberDebutDisplayData extends VTuberDisplayData {
   isToday: boolean;
   debutDate: string;
-  name: string;
-  imgUrl?: string;
-  hasYouTube: boolean;
-  YouTubeId?: string;
-  YouTubeSubscriberCount?: number;
-  hasTwitch: boolean;
-  TwitchId?: string;
-  TwitchFollowerCount: number;
-  popularVideo?: VideoInfo;
-  group: string;
-  nationality?: string;
-  activity: Activity;
 }

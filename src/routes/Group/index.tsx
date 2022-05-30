@@ -6,7 +6,6 @@ import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import { GroupMemberDisplayData } from '../../types/TableDisplayData/GroupMemberDisplayData';
-import { VTuberData } from '../../types/ApiData/VTuberData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
@@ -15,6 +14,7 @@ import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountCol
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { GroupMemberToDisplay } from '../../utils/transform/GroupMemberTransform';
 
 export interface GroupPageProps {
   groupName: string;
@@ -70,26 +70,11 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     );
   }, [filterName, resetPaginationToggle, props.dictionary]);
 
-  const dataToDisplayData = (e: VTuberData): GroupMemberDisplayData => ({
-    id: e.id,
-    name: e.name,
-    imgUrl: e.imgUrl,
-    hasYouTube: e.YouTube !== undefined,
-    YouTubeId: e.YouTube?.id,
-    YouTubeSubscriberCount: e.YouTube?.subscriberCount,
-    hasTwitch: e.Twitch !== undefined,
-    TwitchId: e.Twitch?.id,
-    TwitchFollowerCount: e.Twitch?.followerCount ?? 0,
-    popularVideo: e.popularVideo,
-    nationality: e.nationality,
-    activity: e.activity,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
     await Api.getGroupVTubers(props.groupName).then((res) => {
-      setData(res.data.VTubers.map((e) => dataToDisplayData(e)));
+      setData(res.data.VTubers.map((e) => GroupMemberToDisplay(e)));
       setPending(false);
     });
   };

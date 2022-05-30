@@ -38,6 +38,7 @@ const en: Dictionary = {
     viewCount: 'View Count',
     uploadTime: 'Upload Time',
     hiddenCount: 'hidden',
+    noDataCount: 'no data',
     searchByDisplayName: 'Search by name',
     searchByGroup: 'Search by group',
     searchByGroupMember: 'Search by group member',

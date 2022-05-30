@@ -10,17 +10,17 @@ import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { VTuberBasicToDisplay } from '../../types/ApiToDisplayData/BasicTransform';
 import DropDownList from '../../components/DropDownList';
-import {
-  SortMethod,
-  SubscriberCountDescendingSort,
-} from '../../utils/SubscriberCountSort';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { VTuberBasicToDisplay } from '../../utils/transform/BasicTransform';
+import {
+  SortMethod,
+  SubscriberCountDescendingSort,
+} from '../../utils/sort/SubscriberCountSort';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -63,7 +63,8 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((item) => {
-      if (item.group === undefined) return true;
+      if (filterGroup === '') return true;
+      if (item.group === undefined) return false;
       return item.group.toLowerCase().includes(filterGroup.toLowerCase());
     })
     .sort(SubscriberCountDescendingSort(sortMethod));

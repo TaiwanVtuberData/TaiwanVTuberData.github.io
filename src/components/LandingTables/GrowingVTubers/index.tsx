@@ -10,15 +10,14 @@ import {
   GrowthDisplayData,
   VTuberGrowthDisplayData,
 } from '../../../types/TableDisplayData/VTuberGrowthDisplayData';
-import { VTuberGrowthData } from '../../../types/ApiData/VTuberGrowthData';
-import { GrowthData } from '../../../types/Common/GrowthData';
-import { _30DaysGrowthSort, _7DaysGrowthSort } from '../../../utils/GrowthSort';
 import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
 import { Dictionary } from '../../../i18n/Dictionary';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { NameColumn } from '../../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { HasCountType } from '../../../types/Common/CountType';
+import { VTuberGrowthToDisplay } from '../../../utils/transform/GrowthTransform';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -31,8 +30,8 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     NameColumn<VTuberGrowthDisplayData>(),
     {
       name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
-      selector: (row: { YouTubeSubscriberCount: number }): number =>
-        row.YouTubeSubscriberCount,
+      selector: (row: { YouTubeSubscriber: HasCountType }): number =>
+        row.YouTubeSubscriber.count,
       maxWidth: '250px',
     },
     {
@@ -49,43 +48,13 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
 
   const [data, setData] = useState<Array<VTuberGrowthDisplayData>>([]);
 
-  const growthDataToDisplayDate = (
-    e: GrowthData,
-    subCount?: number
-  ): GrowthDisplayData => ({
-    ...e,
-    percentage:
-      subCount !== undefined && subCount !== 0 ? e.diff / subCount : 0,
-  });
-
-  const dataToDisplayData = (e: VTuberGrowthData): VTuberGrowthDisplayData => ({
-    id: e.id,
-    name: e.name,
-    imgUrl: e.imgUrl,
-    YouTubeId: e.YouTube.id,
-    TwitchId: e.Twitch?.id,
-    YouTubeSubscriberCount: e.YouTube.subscriberCount ?? 0,
-    _7DaysGrowth: growthDataToDisplayDate(
-      e.YouTube._7DaysGrowth,
-      e.YouTube.subscriberCount
-    ),
-    _30DaysGrowth: growthDataToDisplayDate(
-      e.YouTube._30DaysGrowth,
-      e.YouTube.subscriberCount
-    ),
-    popularVideo: e.popularVideo,
-    group: e.group ?? '',
-    nationality: e.nationality,
-    activity: e.activity,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
     await Api.getGrowingVTubers('10').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
-          .map((e) => dataToDisplayData(e))
+          .map((e) => VTuberGrowthToDisplay(e))
           .sort((a, b) => b._7DaysGrowth.percentage - a._7DaysGrowth.percentage)
       );
       setPending(false);

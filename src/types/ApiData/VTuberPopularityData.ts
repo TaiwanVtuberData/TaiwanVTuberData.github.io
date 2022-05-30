@@ -1,6 +1,6 @@
-import { TwitchPopularityData } from './TwitchPopularityData';
+import { TwitchPopularityData } from '../Common/Twitch/TwitchPopularityData';
+import { YouTubePopularityData } from '../Common/YouTube/YouTubePopularityData';
 import { VTuberData } from './VTuberData';
-import { YouTubePopularityData } from './YouTubePopularityData';
 
 export interface VTuberPopularityData extends VTuberData {
   readonly YouTube?: YouTubePopularityData;

@@ -7,11 +7,11 @@ import { VTuberDisplayData } from '../../../types/TableDisplayData/VTuberDisplay
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import '../../../style/index.css';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
-import { VTuberBasicToDisplay } from '../../../types/ApiToDisplayData/BasicTransform';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import { NameColumn } from '../../../tableTypes/NameColumn';
 import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { VTuberBasicToDisplay } from '../../../utils/transform/BasicTransform';
 
 const TopVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDisplayData>> = [

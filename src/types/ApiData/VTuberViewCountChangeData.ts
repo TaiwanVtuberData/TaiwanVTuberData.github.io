@@ -1,7 +1,7 @@
-import { VTuberData } from './VTuberData';
-import { YouTubeViewCountGrowthData } from './YouTubeViewCountGrowthData';
+import { YouTubeViewCountGrowthData } from '../Common/YouTube/YouTubeViewCountGrowthData';
+import { BaseVTuberData } from './BaseVTuberData';
 
-export interface VTuberViewCountGrowthData extends VTuberData {
+export interface VTuberViewCountGrowthData extends BaseVTuberData {
   readonly YouTube: YouTubeViewCountGrowthData;
 }
 
