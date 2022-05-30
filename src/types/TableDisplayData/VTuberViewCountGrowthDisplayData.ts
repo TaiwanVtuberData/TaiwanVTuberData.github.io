@@ -12,7 +12,7 @@ export interface VTuberViewCountGrowthDisplayData {
   _7DaysGrowth: GrowthData;
   _30DaysGrowth: GrowthData;
   popularVideo?: VideoInfo;
-  group: string;
+  group?: string;
   nationality?: string;
   activity: Activity;
   ranking: number;
