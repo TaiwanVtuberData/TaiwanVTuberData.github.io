@@ -44,7 +44,7 @@ const setCommitDetail = async (): Promise<void> => {
       };
     });
 
-  axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v0`;
+  axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
 };
 
 export const bootstrapApi = async (): Promise<void> => {
