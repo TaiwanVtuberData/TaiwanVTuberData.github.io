@@ -77,7 +77,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         >
           {nationalityOptions.map((e) => (
             <option key={e} value={e}>
-              {e}
+              <Text id={`nationalityTitle.${e}`}>placeholder</Text>
             </option>
           ))}
         </select>
