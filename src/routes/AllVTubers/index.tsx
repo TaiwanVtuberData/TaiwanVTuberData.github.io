@@ -21,6 +21,7 @@ import {
   SortMethod,
   SubscriberCountDescendingSort,
 } from '../../utils/sort/SubscriberCountSort';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -149,6 +150,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.allVTubers">All VTubers</Text>
+        {GetCurrentNationalitySpan()}
       </h1>
       <DataTable
         {...DefaultDataTableProps}

@@ -17,6 +17,7 @@ import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import { NameSort } from '../../utils/sort/NameSort';
 import { GetCount } from '../../utils/CountTypeUtils';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -182,6 +183,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.groupList">Group List</Text>
+        {GetCurrentNationalitySpan()}
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"

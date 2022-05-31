@@ -24,6 +24,7 @@ import {
   PopularityCountDescendingSort,
 } from '../../utils/sort/PopularityCountSort';
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -142,6 +143,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.trendingVTubers">Trending VTubers</Text>
+        {GetCurrentNationalitySpan()}
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"

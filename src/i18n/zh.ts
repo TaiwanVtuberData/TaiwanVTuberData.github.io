@@ -84,6 +84,7 @@ const zh: Dictionary = {
     showVideo: '顯示影片',
     link: '連結',
     loading: '載入中...',
+    onlyShowing: '只顯示',
   },
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',
@@ -132,6 +133,12 @@ const zh: Dictionary = {
     title: '錯誤',
     detail: '此頁面不存在。',
     goHome: '返回首頁。',
+  },
+  nationalityTitle: {
+    all: '所有',
+    TW: '臺灣',
+    HK: '香港',
+    MY: '馬來西亞',
   },
 } as const;
 

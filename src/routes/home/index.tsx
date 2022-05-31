@@ -6,6 +6,7 @@ import TopVTubersTable from '../../components/LandingTables/TopVTubers';
 import TrendingVTubersTable from '../../components/LandingTables/TrendingVTubers';
 import { Dictionary } from '../../i18n/Dictionary';
 import '../../style/index.css';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import style from './style.module.css';
 
 export interface HomePageProps {
@@ -21,6 +22,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
     <Fragment>
       <h1>
         <Text id="header.title">Taiwan VTuber Data</Text>
+        {GetCurrentNationalitySpan()}
       </h1>
       <div class={style.tableGrid}>
         <div class={style.tableItem}>

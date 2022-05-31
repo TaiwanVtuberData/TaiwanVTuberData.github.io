@@ -19,6 +19,7 @@ import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import DropDownList from '../../components/DropDownList';
 import { GoToPage } from '../../utils/TypeSafeRouting';
 import { TrendingVideosModifier } from '../../types/ApiTypes';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
@@ -222,6 +223,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.trendingVideos">Trending Videos</Text>
+        {GetCurrentNationalitySpan()}
       </h1>
       <DataTable
         {...DefaultDataTableProps}

@@ -84,6 +84,7 @@ const en: Dictionary = {
     showVideo: 'show video',
     link: 'Link',
     loading: 'Loading...',
+    onlyShowing: 'only showing ',
   },
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',
@@ -136,6 +137,12 @@ const en: Dictionary = {
     title: 'Error',
     detail: 'This page does not exists.',
     goHome: 'Go back to home page.',
+  },
+  nationalityTitle: {
+    all: 'All',
+    TW: 'Taiwanese',
+    HK: 'Hong Kongers',
+    MY: 'Malaysian',
   },
 } as const;
 

@@ -78,6 +78,7 @@ export interface Dictionary {
     showVideo: string;
     link: string;
     loading: string;
+    onlyShowing: string;
   };
   toolTip: {
     eventCalendar: string;
@@ -124,5 +125,11 @@ export interface Dictionary {
     title: string;
     detail: string;
     goHome: string;
+  };
+  nationalityTitle: {
+    all: string;
+    TW: string;
+    HK: string;
+    MY: string;
   };
 }

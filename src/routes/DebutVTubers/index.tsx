@@ -19,6 +19,7 @@ import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { VTuberDebutToDisplay } from '../../utils/transform/DebutTransform';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -156,6 +157,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.debutVTubers">Debut VTubers</Text>
+        {GetCurrentNationalitySpan()}
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"

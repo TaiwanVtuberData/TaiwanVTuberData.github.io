@@ -25,6 +25,7 @@ import {
   _30DaysGrowthSort,
   _7DaysGrowthSort,
 } from '../../utils/sort/GrowthSort';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -158,6 +159,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.growingVTubers">Growing VTubers</Text>
+        {GetCurrentNationalitySpan()}
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"

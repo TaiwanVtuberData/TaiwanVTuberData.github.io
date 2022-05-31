@@ -22,6 +22,7 @@ import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { GoToPage } from '../../utils/TypeSafeRouting';
 import { YouTubeViewCountGrowthData } from '../../types/Common/YouTube/YouTubeViewCountGrowthData';
 import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransform';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -220,6 +221,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     <Fragment>
       <h1>
         <Text id="header.VTubersViewCount">VTubers View Count Change</Text>
+        {GetCurrentNationalitySpan()}
       </h1>
       <DataTable
         {...DefaultDataTableProps}
