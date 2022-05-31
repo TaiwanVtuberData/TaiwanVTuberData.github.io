@@ -23,7 +23,7 @@ const en: Dictionary = {
     top10: 'Top 10',
     YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
     statisticUpdateTime: 'Statistic update time:',
-    VTuberDataUpdateTime: 'VTuber data update time:',
+    VTuberDataUpdateTime: 'Data update time:',
     showVTubersOfNationality: 'Show VTuber Nationality:',
   },
   table: {

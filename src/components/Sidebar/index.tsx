@@ -186,9 +186,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             {statisticUpdateTime}
           </span>
           <span class={style.sidebarText}>
-            <Text id="header.VTuberDataUpdateTime">
-              VTuber data update time:
-            </Text>
+            <Text id="header.VTuberDataUpdateTime">Data update time:</Text>
             {VTuberDataUpdateTime}
           </span>
           {NationalityDropDown(
