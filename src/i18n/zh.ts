@@ -44,7 +44,6 @@ const zh: Dictionary = {
     searchByGroupMember: '依團體成員搜尋',
     searchByDate: '依日期搜尋',
     searchByTitle: '依標題搜尋',
-    loading: '載入中...',
     popularity: '熱度',
     averageSubscriberCount: '平均訂閱人數',
     totalSubscriberCount: '總訂閱人數',
@@ -84,6 +83,7 @@ const zh: Dictionary = {
     reportUsingGitHub: '使用 GitHub Issue 回報',
     showVideo: '顯示影片',
     link: '連結',
+    loading: '載入中...',
   },
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',

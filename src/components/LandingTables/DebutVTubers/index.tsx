@@ -69,7 +69,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
         )}
         customStyles={CompactTableStyle}
         progressPending={pending}
-        progressComponent={<Text id="table.loading">Loading...</Text>}
+        progressComponent={<Text id="text.loading">Loading...</Text>}
       />
     </Fragment>
   );

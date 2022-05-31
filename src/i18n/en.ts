@@ -44,7 +44,6 @@ const en: Dictionary = {
     searchByGroupMember: 'Search by group member',
     searchByDate: 'Search by date',
     searchByTitle: 'Search by title',
-    loading: 'Loading...',
     popularity: 'Popularity',
     averageSubscriberCount: 'Average Subscribers',
     totalSubscriberCount: 'Total Subscribers',
@@ -84,6 +83,7 @@ const en: Dictionary = {
     reportUsingGitHub: 'Report using GitHub',
     showVideo: 'show video',
     link: 'Link',
+    loading: 'Loading...',
   },
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',

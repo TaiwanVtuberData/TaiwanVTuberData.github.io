@@ -14,13 +14,13 @@ import style from './style.module.css';
 
 export interface VTuberInformationProps {
   dictionary: Dictionary;
-  VTuber?: VTuberDisplayFullData;
+  VTuber: VTuberDisplayFullData;
 }
 
 const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
   props: VTuberInformationProps
 ): h.JSX.Element => {
-  const vtuber: VTuberDisplayFullData | undefined = props.VTuber;
+  const vtuber: VTuberDisplayFullData = props.VTuber;
 
   const CountSpan = (countType: CountType): JSX.Element => {
     return (
@@ -62,18 +62,10 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
   return (
     <div class={style.flexArea}>
       <div>
-        {vtuber && (
-          <div>
-            <ProfileImage
-              VTuberId={vtuber.id}
-              imgUrl={vtuber.imgUrl}
-              size={240}
-            />
-          </div>
-        )}
+        <ProfileImage VTuberId={vtuber.id} imgUrl={vtuber.imgUrl} size={240} />
       </div>
       <ul>
-        {vtuber?.YouTube && (
+        {vtuber.YouTube && (
           <li>
             <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
             <span>: </span>
@@ -83,7 +75,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
             <span>)</span>
           </li>
         )}
-        {vtuber?.Twitch && (
+        {vtuber.Twitch && (
           <li>
             <Text id="table.TwitchFollowerCount">Twitch Followers</Text>
             <span>: {CountSpan(vtuber.Twitch.follower)} (</span>
@@ -122,14 +114,14 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
         <li>
           <Text id="table.popularVideo">PopularVideo</Text>
           <span>: </span>
-          {vtuber?.popularVideo !== undefined ? (
+          {vtuber.popularVideo && (
             <input
               type="button"
               value={props.dictionary.text.showVideo}
               // TypeScript, I'm pretty sure vtuber.popularVideo is defined here
               onClick={(): void => openModal(vtuber.popularVideo as VideoInfo)}
             />
-          ) : null}
+          )}
         </li>
       </ul>
     </div>

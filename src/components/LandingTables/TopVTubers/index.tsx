@@ -56,7 +56,7 @@ const TopVTubersTable: FunctionalComponent = () => {
         data={data}
         conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
-        progressComponent={<Text id="table.loading">Loading...</Text>}
+        progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
       />
     </Fragment>

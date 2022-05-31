@@ -6,6 +6,7 @@ import '../../style/index.css';
 import VTuberInformation from '../../components/VTuberInformation';
 import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
 import { VTuberFullToDisplay } from '../../utils/transform/FullTransform';
+import { Text } from 'preact-i18n';
 
 export interface VTuberPageProps {
   id: string;
@@ -16,6 +17,7 @@ const VTuberPage: FunctionalComponent<VTuberPageProps> = (
   props: VTuberPageProps
 ) => {
   const [data, setData] = useState<VTuberDisplayFullData>();
+
   document.title = `${data?.name ?? ''} | ${props.dictionary.header.title}`;
 
   const getVTuber = async (): Promise<void> => {
@@ -31,9 +33,11 @@ const VTuberPage: FunctionalComponent<VTuberPageProps> = (
   return (
     <>
       <h1>
-        <span> {data?.name ?? ''} </span>
+        <span> {data?.name ?? <Text id="text.loading">Loading...</Text>} </span>
       </h1>
-      <VTuberInformation VTuber={data} dictionary={props.dictionary} />
+      {data !== undefined ? (
+        <VTuberInformation VTuber={data} dictionary={props.dictionary} />
+      ) : null}
     </>
   );
 };

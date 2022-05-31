@@ -44,7 +44,6 @@ export interface Dictionary {
     searchByGroupMember: string;
     searchByDate: string;
     searchByTitle: string;
-    loading: string;
     popularity: string;
     averageSubscriberCount: string;
     totalSubscriberCount: string;
@@ -78,6 +77,7 @@ export interface Dictionary {
     reportUsingGitHub: string;
     showVideo: string;
     link: string;
+    loading: string;
   };
   toolTip: {
     eventCalendar: string;
