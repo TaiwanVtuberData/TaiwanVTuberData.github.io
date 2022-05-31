@@ -24,7 +24,7 @@ const zh: Dictionary = {
     YouTubeSubPlusTwitchFollowers: 'YouTube 訂閱 + Twitch 追隨',
     statisticUpdateTime: '數據更新時間：',
     VTuberDataUpdateTime: 'VTuber 資料更新時間：',
-    chooseVTuberNationality: '選擇 VTuber 國籍顯示：',
+    showVTubersOfNationality: 'VTuber 國籍顯示：',
   },
   table: {
     displayName: '名稱',
