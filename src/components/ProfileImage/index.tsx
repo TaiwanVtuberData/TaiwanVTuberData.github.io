@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from 'preact';
-import { GetRoute } from '../../utils/TypeSafeRouting';
+import { openProfileModal } from '../../global/ProfileModalState';
 import style from './style.module.css';
 
 export interface ProfileImageProps {
@@ -14,7 +14,11 @@ const ProfileImage: FunctionalComponent<ProfileImageProps> = (
   // use empty img src if no URL
   // https://stackoverflow.com/a/53365710/11947017
   return (
-    <a href={GetRoute({ type: 'vtuber', id: props.VTuberId })}>
+    <div
+      onClick={(): void => {
+        openProfileModal(props.VTuberId);
+      }}
+    >
       <img
         class={`${props.size ? style.fixedSize : style.profileImg}`}
         src={
@@ -25,7 +29,7 @@ const ProfileImage: FunctionalComponent<ProfileImageProps> = (
         width={props.size ?? undefined}
         height={props.size ?? undefined}
       />
-    </a>
+    </div>
   );
 };
 
