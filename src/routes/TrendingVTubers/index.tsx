@@ -24,6 +24,7 @@ import { VTuberPopularityToDisplay } from '../../utils/transform/PopularityTrans
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { RankingColumn } from '../../tableTypes/RankingColumn';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -139,6 +140,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination

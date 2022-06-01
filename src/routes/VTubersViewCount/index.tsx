@@ -22,6 +22,7 @@ import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransfo
 import { GoToPage } from '../../utils/TypeSafeRouting';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { SortOrder } from '../../types/ApiTypes';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -217,6 +218,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination
