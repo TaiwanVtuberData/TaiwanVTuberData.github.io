@@ -1,4 +1,4 @@
-import { FunctionalComponent, h } from 'preact';
+import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import * as Api from '../../services/ApiService';
 import {
@@ -9,16 +9,9 @@ import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDispla
 import VTuberInformation from '../VTuberInformation';
 import style from './style.module.css';
 import { VTuberFullToDisplay } from '../../utils/transform/FullTransform';
-import { Dictionary } from '../../i18n/Dictionary';
 import { Text } from 'preact-i18n';
 
-export interface VTuberProfileModalProps {
-  dictionary: Dictionary;
-}
-
-const VTuberProfileModal: FunctionalComponent<VTuberProfileModalProps> = (
-  props: VTuberProfileModalProps
-): JSX.Element => {
+const VTuberProfileModal = (): JSX.Element => {
   const modalState = useProfileModalState();
 
   const [data, setData] = useState<VTuberDisplayFullData>();
@@ -54,9 +47,7 @@ const VTuberProfileModal: FunctionalComponent<VTuberProfileModalProps> = (
       >
         <div class={style.profile}>
           <h1>{data?.name ?? <Text id="text.loading">Loading...</Text>}</h1>
-          {data !== undefined ? (
-            <VTuberInformation VTuber={data} dictionary={props.dictionary} />
-          ) : null}
+          {data !== undefined ? <VTuberInformation VTuber={data} /> : null}
         </div>
       </div>
     </div>

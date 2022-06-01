@@ -1,19 +1,16 @@
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
-import { openModal } from '../../global/modalState';
-import { Dictionary } from '../../i18n/Dictionary';
 import { Activity } from '../../types/Common/Activity';
 import { CountType } from '../../types/Common/CountType';
-import { VideoInfo } from '../../types/Common/VideoInfo';
 import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
 import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import ProfileImage from '../ProfileImage';
 import CountString from '../CountString';
 import style from './style.module.css';
+import ShowVideoButton from '../ShowVideoButton';
 
 export interface VTuberInformationProps {
-  dictionary: Dictionary;
   VTuber: VTuberDisplayFullData;
 }
 
@@ -115,12 +112,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
           <Text id="table.popularVideo">PopularVideo</Text>
           <span>: </span>
           {vtuber.popularVideo && (
-            <input
-              type="button"
-              value={props.dictionary.text.showVideo}
-              // TypeScript, I'm pretty sure vtuber.popularVideo is defined here
-              onClick={(): void => openModal(vtuber.popularVideo as VideoInfo)}
-            />
+            <ShowVideoButton popularVideo={vtuber.popularVideo} />
           )}
         </li>
       </ul>

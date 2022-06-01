@@ -83,7 +83,7 @@ const App: FunctionalComponent = () => {
           setNationality={setDisplayNationality}
         />
         <ScrollToTopBottom />
-        <VTuberProfileModal dictionary={definition} />
+        <VTuberProfileModal />
         <VideoModal />
         <Router>
           <Route
