@@ -218,7 +218,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination

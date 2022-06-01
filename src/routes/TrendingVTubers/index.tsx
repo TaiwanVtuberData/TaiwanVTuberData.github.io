@@ -140,7 +140,6 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination

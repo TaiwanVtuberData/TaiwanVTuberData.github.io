@@ -145,7 +145,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        conditionalRowStyles={ActivityRowStyles}
         fixedHeader
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
