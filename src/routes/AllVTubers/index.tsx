@@ -1,27 +1,25 @@
+import * as Api from '../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
+import DropDownList from '../../components/DropDownList';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
-import * as Api from '../../services/ApiService';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
 import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import '../../style/index.css';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import ActivityRowStyles from '../../style/ActivityRowStyles';
-import DropDownList from '../../components/DropDownList';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
-import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
-import { GroupColumn } from '../../tableTypes/GroupColumn';
-import { NationalityColumn } from '../../tableTypes/NationalityColumn';
-import { VTuberBasicToDisplay } from '../../utils/transform/BasicTransform';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import {
   SortMethod,
   SubscriberCountDescendingSort,
 } from '../../utils/sort/SubscriberCountSort';
-import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { VTuberBasicToDisplay } from '../../utils/transform/BasicTransform';
+import tableStyle from '../../style/DataTableStyle.module.css';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -37,19 +35,9 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     NameColumn(),
     YouTubeTwitchCountColumn(),
-    {
-      ...PopularVideoColumn(),
-      width: '100px',
-    },
-    {
-      ...GroupColumn(),
-      maxWidth: '150px',
-    },
-    {
-      ...NationalityColumn(),
-      minWidth: '25px',
-      maxWidth: '100px',
-    },
+    PopularVideoColumn(),
+    GroupColumn(),
+    NationalityColumn(),
   ];
 
   // search filter
@@ -147,7 +135,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.allVTubers">All VTubers</Text>
         {GetCurrentNationalitySpan()}
@@ -156,7 +144,6 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        conditionalRowStyles={ActivityRowStyles}
         fixedHeader
         pagination
         paginationComponentOptions={props.dictionary.table.paginationOptions}
@@ -165,7 +152,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         subHeader
         subHeaderComponent={searchBarComponent}
       />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,25 +1,25 @@
+import * as Api from '../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, {
   TableColumn,
   TableStyles,
 } from 'react-data-table-component';
-import { Dictionary } from '../../i18n/Dictionary';
-import * as Api from '../../services/ApiService';
-import SearchBar from '../../components/SearchBar';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import '../../style/index.css';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import ProfileImage from '../../components/ProfileImage';
-import { VideoPopularityData } from '../../types/ApiData/VideoPopularityData';
-import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPopularityDisplayData';
-import VideoLink from '../../components/VideoLink';
-import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import DropDownList from '../../components/DropDownList';
-import { GoToPage } from '../../utils/TypeSafeRouting';
+import SearchBar from '../../components/SearchBar';
+import { Dictionary } from '../../i18n/Dictionary';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { VideoColumn } from '../../tableTypes/VideoColumn';
 import { TrendingVideosModifier } from '../../types/ApiTypes';
+import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPopularityDisplayData';
+import { getFormattedDateTime } from '../../utils/DateTimeUtils';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { PopularVideoToDisplayData } from '../../utils/transform/PopularVideoTransform';
+import { GoToPage } from '../../utils/TypeSafeRouting';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import { RankingColumn } from '../../tableTypes/RankingColumn';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
@@ -33,23 +33,13 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
 
   const columns: Array<TableColumn<VideoPopularityDisplayData>> = [
     {
-      name: '#',
-      selector: (row: { ranking: number }): number => row.ranking,
+      ...RankingColumn(),
       sortable: true,
-      wrap: false,
-      width: '70px',
+      width: '40px',
     },
     {
-      name: '',
-      cell: (row: { profileImg: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.profileImg,
-      width: '75px',
-    },
-    {
-      name: <Text id="table.displayName">Name</Text>,
-      selector: (row: { name: string }): string => row.name,
-      wrap: true,
-      maxWidth: '150px',
+      ...NameColumn(),
+      width: '200px',
     },
     {
       name: <Text id="table.title">Title</Text>,
@@ -57,9 +47,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
       wrap: true,
     },
     {
-      name: <Text id="table.video">Video</Text>,
-      cell: (row: { videoLink: h.JSX.Element | null }): h.JSX.Element | null =>
-        row.videoLink,
+      ...VideoColumn(),
       width: '200px',
     },
     {
@@ -157,24 +145,6 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     props.modifier,
     props.dictionary,
   ]);
-
-  const dataToDisplayData = (
-    e: VideoPopularityData,
-    ranking: number
-  ): VideoPopularityDisplayData => ({
-    id: e.id,
-    profileImg: ProfileImage({ VTuberId: e.id, imgUrl: e.imgUrl }),
-    name: e.name,
-    title: e.title,
-    videoLink: VideoLink({
-      thumbnailUrl: e.thumbnailUrl,
-      videoUrl: e.videoUrl,
-    }),
-    viewCount: e.viewCount,
-    uploadTime: new Date(e.uploadTime),
-    ranking: ranking,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVideos = async (): Promise<void> => {
@@ -184,7 +154,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         res.data.videos
           .map((e) => e)
           .sort((a, b) => b.viewCount - a.viewCount)
-          .map((e, index) => dataToDisplayData(e, index + 1))
+          .map((e, index) => PopularVideoToDisplayData(e, index + 1))
       );
       setPending(false);
     });
@@ -220,7 +190,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
   };
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.trendingVideos">Trending Videos</Text>
         {GetCurrentNationalitySpan()}
@@ -238,7 +208,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         subHeader
         subHeaderComponent={searchBarComponent}
       />
-    </Fragment>
+    </>
   );
 };
 

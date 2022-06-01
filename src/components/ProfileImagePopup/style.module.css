@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: 200px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 800px) {
   .container {
-    width: 100%;
+    width: 100px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

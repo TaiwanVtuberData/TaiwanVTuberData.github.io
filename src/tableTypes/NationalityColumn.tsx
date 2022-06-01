@@ -11,6 +11,6 @@ export const NationalityColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.nationality">Nationality</Text>,
-    selector: (row: NationalityColumnRowData): string => row.nationality ?? '',
+    selector: (row: RowData): string => row.nationality ?? '',
   };
 };

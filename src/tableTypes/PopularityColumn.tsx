@@ -19,7 +19,7 @@ export const PopularityColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.popularity">Popularity</Text>,
-    cell: (row: PopularityColumnRowData): h.JSX.Element => (
+    cell: (row: RowData): JSX.Element => (
       <YouTubeTwitchCount
         YouTubeCount={numberToCountType(row.YouTubePopularity)}
         TwitchCount={numberToCountType(row.TwitchPopularity)}

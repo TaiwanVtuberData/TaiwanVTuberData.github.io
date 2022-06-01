@@ -14,7 +14,7 @@ export const NameColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.displayName">Name</Text>,
-    cell: (row: NameColumnRowData): h.JSX.Element => (
+    cell: (row: RowData): JSX.Element => (
       <ProfileImagePopup
         VTuberId={row.id}
         imgUrl={row.imgUrl}

@@ -18,7 +18,7 @@ export const YouTubeTwitchCountColumn = <
         YouTube Subscribers + Twitch Followers
       </Text>
     ),
-    cell: (row: YouTubeTwitchCountColumnRowData): h.JSX.Element => (
+    cell: (row: RowData): JSX.Element => (
       <YouTubeTwitchCount
         YouTubeCount={row.YouTubeSubscriber}
         TwitchCount={row.TwitchFollower}

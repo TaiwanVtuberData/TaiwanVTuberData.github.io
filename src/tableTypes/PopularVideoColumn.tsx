@@ -13,7 +13,7 @@ export const PopularVideoColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.popularVideo">Popular Video</Text>,
-    cell: (row: PopularVideoColumnRowData): h.JSX.Element | null =>
+    cell: (row: RowData): JSX.Element | null =>
       row.popularVideo !== undefined ? (
         <ShowVideoButton popularVideo={row.popularVideo} />
       ) : null,

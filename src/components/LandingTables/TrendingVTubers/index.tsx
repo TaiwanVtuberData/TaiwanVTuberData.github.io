@@ -1,37 +1,30 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { Text } from 'preact-i18n';
-import DataTable, { TableColumn } from 'react-data-table-component';
 import * as Api from '../../../services/ApiService';
-import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
-import '../../../style/index.css';
-import ActivityRowStyles from '../../../style/ActivityRowStyles';
-import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
+import { Fragment, FunctionalComponent, h } from 'preact';
+import { Text } from 'preact-i18n';
+import { useEffect, useState } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
-import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { NameColumn } from '../../../tableTypes/NameColumn';
-import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 import { PopularityColumn } from '../../../tableTypes/PopularityColumn';
-import { VTuberPopularityToDisplay } from '../../../utils/transform/PopularityTransform';
+import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
+import { VTuberPopularityDisplayData } from '../../../types/TableDisplayData/VTuberPopularityDisplayData';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { PopularityCountDescendingSort } from '../../../utils/sort/PopularityCountSort';
+import { VTuberPopularityToDisplay } from '../../../utils/transform/PopularityTransform';
+import QuestionMarkToolTip from '../../QuestionMarkToolTip';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { RankingColumn } from '../../../tableTypes/RankingColumn';
 
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
-      name: '#',
-      selector: (row: { ranking: number }): number => row.ranking,
-      wrap: false,
+      ...RankingColumn(),
       width: '30px',
     },
-    NameColumn<VTuberPopularityDisplayData>(),
-    {
-      ...PopularityColumn(),
-      maxWidth: '250px',
-    },
-    {
-      ...PopularVideoColumn(),
-      width: '100px',
-    },
+    NameColumn(),
+    PopularityColumn(),
+    YouTubeTwitchCountColumn(),
+    PopularVideoColumn(),
   ];
 
   const [data, setData] = useState<Array<VTuberPopularityDisplayData>>([]);
@@ -55,11 +48,11 @@ const TrendingVTubersTable: FunctionalComponent = () => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h3>
         <Text id="header.trendingVTubers">Trending VTubers</Text>
         {/* Yes. Adding a space between two texts require a Fragment */}
-        <Fragment> </Fragment>
+        <> </>
         <Text id="header.top10">Top 10</Text>
         <QuestionMarkToolTip
           width="300px"
@@ -71,12 +64,11 @@ const TrendingVTubersTable: FunctionalComponent = () => {
         {...DefaultDataTableProps}
         columns={columns}
         data={data}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
       />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,12 +1,11 @@
-import { h } from 'preact';
-
 export interface VideoPopularityDisplayData {
   id: string;
   ranking: number;
-  profileImg: h.JSX.Element | null;
   name: string;
+  imgUrl?: string;
   title: string;
-  videoLink: h.JSX.Element | null;
+  thumbnailUrl: string;
+  videoUrl: string;
   viewCount: number;
   uploadTime: Date;
 }
