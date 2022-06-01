@@ -22,7 +22,17 @@
 /* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
 .modalContent .profile {
   width: 80%;
+  max-width: 800px;
   height: fit-content;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+
   background-color: white;
 }
 

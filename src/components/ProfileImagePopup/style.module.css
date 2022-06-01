@@ -8,17 +8,14 @@
 }
 .profileImageFlex {
   flex-grow: 0;
+
+  cursor: pointer;
 }
 
 .nameFlex {
   width: 100%;
   text-align: left;
   margin-left: 3px;
-  margin-right: 3px;
-}
-
-.channelLinksFlex {
-  flex-grow: 0;
 }
 
 @media screen and (max-width: 800px) {
