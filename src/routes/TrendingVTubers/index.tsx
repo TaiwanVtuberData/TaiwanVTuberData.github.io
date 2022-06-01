@@ -1,30 +1,29 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import { Text } from 'preact-i18n';
-import DataTable, { TableColumn } from 'react-data-table-component';
-import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
+import { Fragment, FunctionalComponent, h } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 import SearchBar from '../../components/SearchBar';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import '../../style/index.css';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import { VTuberPopularityDisplayData } from '../../types/TableDisplayData/VTuberPopularityDisplayData';
-import ActivityRowStyles from '../../style/ActivityRowStyles';
-import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { Dictionary } from '../../i18n/Dictionary';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
-import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { PopularityColumn } from '../../tableTypes/PopularityColumn';
-import { VTuberPopularityToDisplay } from '../../utils/transform/PopularityTransform';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
+import { VTuberPopularityDisplayData } from '../../types/TableDisplayData/VTuberPopularityDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import {
   PopularityCountAscendingSort,
   PopularityCountDescendingSort,
 } from '../../utils/sort/PopularityCountSort';
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
-import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { VTuberPopularityToDisplay } from '../../utils/transform/PopularityTransform';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import { RankingColumn } from '../../tableTypes/RankingColumn';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -37,38 +36,24 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
 
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
-      name: '#',
-      selector: (row: { ranking: number }): number => row.ranking,
+      ...RankingColumn(),
       sortable: true,
-      wrap: false,
-      width: '30px',
+      width: '40px',
     },
-    NameColumn<VTuberPopularityDisplayData>(),
+    NameColumn(),
     {
       ...PopularityColumn(),
       sortFunction: PopularityCountAscendingSort,
       sortable: true,
-      width: '150px',
     },
     {
       ...YouTubeTwitchCountColumn(),
       sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
       sortable: true,
-      width: '150px',
     },
-    {
-      ...PopularVideoColumn(),
-      width: '100px',
-    },
-    {
-      ...GroupColumn(),
-      maxWidth: '100px',
-    },
-    {
-      ...NationalityColumn(),
-      minWidth: '25px',
-      maxWidth: '100px',
-    },
+    PopularVideoColumn(),
+    GroupColumn(),
+    NationalityColumn(),
   ];
 
   // search filter
@@ -140,7 +125,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.trendingVTubers">Trending VTubers</Text>
         {GetCurrentNationalitySpan()}
@@ -154,7 +139,6 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination
@@ -164,7 +148,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         subHeader
         subHeaderComponent={searchBarComponent}
       />
-    </Fragment>
+    </>
   );
 };
 

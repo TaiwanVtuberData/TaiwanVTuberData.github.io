@@ -1,23 +1,19 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { Text } from 'preact-i18n';
-import DataTable, { TableColumn } from 'react-data-table-component';
 import * as Api from '../../../services/ApiService';
-import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
-import '../../../style/index.css';
-import ActivityRowStyles from '../../../style/ActivityRowStyles';
-import {
-  GrowthDisplayData,
-  VTuberGrowthDisplayData,
-} from '../../../types/TableDisplayData/VTuberGrowthDisplayData';
-import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
+import { Fragment, FunctionalComponent, h } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 import { Dictionary } from '../../../i18n/Dictionary';
+import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
-import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { NameColumn } from '../../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
-import { HasCountType } from '../../../types/Common/CountType';
+import { YouTubeSubscriberColumn } from '../../../tableTypes/YouTubeSubscriberColumn';
+import { _7DaysGrowthColumn } from '../../../tableTypes/_7DaysGrowthColumn';
+import { VTuberGrowthDisplayData } from '../../../types/TableDisplayData/VTuberGrowthDisplayData';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberGrowthToDisplay } from '../../../utils/transform/GrowthTransform';
+import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -27,23 +23,10 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
   props: GrowingVTubersTableProps
 ) => {
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
-    NameColumn<VTuberGrowthDisplayData>(),
-    {
-      name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
-      selector: (row: { YouTubeSubscriber: HasCountType }): number =>
-        row.YouTubeSubscriber.count,
-      maxWidth: '250px',
-    },
-    {
-      name: <Text id="table._7DaysGrowth">7 Days Growth (Percent)</Text>,
-      cell: (row: { _7DaysGrowth: GrowthDisplayData }): string =>
-        GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
-      maxWidth: '250px',
-    },
-    {
-      ...PopularVideoColumn(),
-      width: '100px',
-    },
+    NameColumn(),
+    YouTubeSubscriberColumn(),
+    _7DaysGrowthColumn(props.dictionary.table),
+    PopularVideoColumn(),
   ];
 
   const [data, setData] = useState<Array<VTuberGrowthDisplayData>>([]);
@@ -66,10 +49,10 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h3>
         <Text id="header.growingVTubers">Growing VTubers</Text>
-        <Fragment> </Fragment>
+        <> </>
         <Text id="header.top10">Top 10</Text>
         <QuestionMarkToolTip
           width="300px"
@@ -81,12 +64,11 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={data}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
       />
-    </Fragment>
+    </>
   );
 };
 

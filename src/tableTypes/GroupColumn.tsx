@@ -13,7 +13,7 @@ export const GroupColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.group">Group</Text>,
-    cell: (row: GroupColumnRowData): h.JSX.Element | null =>
+    cell: (row: RowData): h.JSX.Element | null =>
       row.group !== undefined ? (
         <a
           class={tableStyle.groupLink}

@@ -1,5 +1,4 @@
 import { GrowthRecordType } from '../types/Common/GrowthData';
-import { GrowthDisplayData } from '../types/TableDisplayData/VTuberGrowthDisplayData';
 
 export const PrependSign = (value: number): string => {
   if (value > 0) return `+${value}`;
@@ -25,7 +24,7 @@ export const GrowthDisplayDataToString = (
         )} (${valueToPercentString(e.percentage as number)}%)`;
       case 'full':
         return `${PrependSign(e.diff)} (${valueToPercentString(
-          e.percentage as number
+          e.percentage
         )}%)`;
     }
   }

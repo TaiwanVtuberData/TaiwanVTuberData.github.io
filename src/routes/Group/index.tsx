@@ -8,13 +8,13 @@ import * as Api from '../../services/ApiService';
 import { GroupMemberDisplayData } from '../../types/TableDisplayData/GroupMemberDisplayData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
-import ActivityRowStyles from '../../style/ActivityRowStyles';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { GroupMemberToDisplay } from '../../utils/transform/GroupMemberTransform';
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
 
 export interface GroupPageProps {
   groupName: string;
@@ -28,16 +28,13 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
 
   const columns: Array<TableColumn<GroupMemberDisplayData>> = [
     NameColumn(),
-    YouTubeTwitchCountColumn(),
     {
-      ...PopularVideoColumn(),
-      width: '100px',
+      ...YouTubeTwitchCountColumn(),
+      sortable: true,
+      sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
     },
-    {
-      ...NationalityColumn(),
-      minWidth: '25px',
-      maxWidth: '100px',
-    },
+    PopularVideoColumn(),
+    NationalityColumn(),
   ];
 
   // search filter
@@ -84,7 +81,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.group">Group</Text>
         <span class="highlightText"> {props.groupName} </span>
@@ -95,13 +92,12 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
         columns={columns}
         data={filteredData}
         fixedHeader
-        conditionalRowStyles={ActivityRowStyles}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
         subHeader
         subHeaderComponent={searchBarComponent}
       />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,18 +1,17 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { Text } from 'preact-i18n';
-import DataTable, { TableColumn } from 'react-data-table-component';
 import * as Api from '../../../services/ApiService';
-import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
-import '../../../style/index.css';
+import { Fragment, FunctionalComponent, h } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
 import { VTuberDebutDisplayData } from '../../../types/TableDisplayData/VTuberDebutDisplayData';
 import { getISODateString } from '../../../utils/DateTimeUtils';
-import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
-import { CompactTableStyle } from '../../../style/CompactTableStyle';
-import { NameColumn } from '../../../tableTypes/NameColumn';
-import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
-import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberDebutToDisplay } from '../../../utils/transform/DebutTransform';
 
 const DebutVTubersTable: FunctionalComponent = () => {
@@ -22,15 +21,9 @@ const DebutVTubersTable: FunctionalComponent = () => {
       selector: (row: { debutDate: string }): string => row.debutDate,
       width: '100px',
     },
-    NameColumn<VTuberDebutDisplayData>(),
-    {
-      ...YouTubeTwitchCountColumn(),
-      maxWidth: '250px',
-    },
-    {
-      ...PopularVideoColumn(),
-      width: '100px',
-    },
+    NameColumn(),
+    YouTubeTwitchCountColumn(),
+    PopularVideoColumn(),
   ];
 
   // search filter
@@ -55,7 +48,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h3>
         <Text id="header.debutVTubersIn7Days">VTubers Debut in 7 days</Text>
       </h3>
@@ -71,7 +64,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
         progressPending={pending}
         progressComponent={<Text id="text.loading">Loading...</Text>}
       />
-    </Fragment>
+    </>
   );
 };
 

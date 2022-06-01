@@ -1,25 +1,26 @@
+import * as Api from '../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
-import * as Api from '../../services/ApiService';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import '../../style/index.css';
-import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { getISODateString } from '../../utils/DateTimeUtils';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
-import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
-import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
-import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { GraduateDateColumn } from '../../tableTypes/GraduateDateColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
-import { VTuberGraduateToDisplay } from '../../utils/transform/GraduateTransform';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
+import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
+import { getISODateString } from '../../utils/DateTimeUtils';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
+import { VTuberGraduateToDisplay } from '../../utils/transform/GraduateTransform';
+import tableStyle from '../../style/DataTableStyle.module.css';
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -31,33 +32,19 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   document.title = `${props.dictionary.header.graduateVTubers} | ${props.dictionary.header.title}`;
   const columns: Array<TableColumn<VTuberGraduateDisplayData>> = [
     {
-      name: <Text id="table.graduateDate">Graduation Date</Text>,
-      selector: (row: { graduateDate: string }): string => row.graduateDate,
-      compact: true,
+      ...GraduateDateColumn(),
       sortable: true,
       width: '100px',
     },
     NameColumn(),
     {
       ...YouTubeTwitchCountColumn(),
-      compact: true,
+      sortable: true,
+      sortFunction: YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
     },
-    {
-      ...PopularVideoColumn(),
-      compact: true,
-      width: '100px',
-    },
-    {
-      ...GroupColumn(),
-      compact: true,
-      maxWidth: '150px',
-    },
-    {
-      ...NationalityColumn(),
-      compact: true,
-      minWidth: '25px',
-      maxWidth: '100px',
-    },
+    PopularVideoColumn(),
+    GroupColumn(),
+    NationalityColumn(),
   ];
 
   // search filter
@@ -154,7 +141,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.graduateVTubers">Graduate VTubers</Text>
         {GetCurrentNationalitySpan()}
@@ -180,7 +167,7 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
         subHeader
         subHeaderComponent={searchBarComponent}
       />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,18 +1,8 @@
 import { h } from 'preact';
-import { Text, withText } from 'preact-i18n';
+import { Text } from 'preact-i18n';
 import { TableColumn } from 'react-data-table-component';
-import { openModal } from '../global/modalState';
+import ShowVideoButton from '../components/ShowVideoButton';
 import { VideoInfo } from '../types/Common/VideoInfo';
-
-const ShowVideoElement = withText('text.showVideo')(
-  (props: { showVideo?: string; popularVideo: VideoInfo }) => (
-    <input
-      type="button"
-      value={props.showVideo}
-      onClick={(): void => openModal(props.popularVideo)}
-    />
-  )
-);
 
 export interface PopularVideoColumnRowData {
   popularVideo?: VideoInfo;
@@ -23,9 +13,9 @@ export const PopularVideoColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.popularVideo">Popular Video</Text>,
-    cell: (row: PopularVideoColumnRowData): h.JSX.Element | null =>
+    cell: (row: RowData): JSX.Element | null =>
       row.popularVideo !== undefined ? (
-        <ShowVideoElement popularVideo={row.popularVideo} />
+        <ShowVideoButton popularVideo={row.popularVideo} />
       ) : null,
   };
 };

@@ -1,28 +1,27 @@
+import * as Api from '../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
+import DropDownList from '../../components/DropDownList';
 import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
-import * as Api from '../../services/ApiService';
-import { SortOrder } from '../../types/ApiTypes';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import '../../style/index.css';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import ActivityRowStyles from '../../style/ActivityRowStyles';
-import { GrowthData } from '../../types/Common/GrowthData';
-import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
-import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
-import DropDownList from '../../components/DropDownList';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
-import { GoToPage } from '../../utils/TypeSafeRouting';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { RankingColumn } from '../../tableTypes/RankingColumn';
+import { GrowthData } from '../../types/Common/GrowthData';
 import { YouTubeViewCountGrowthData } from '../../types/Common/YouTube/YouTubeViewCountGrowthData';
-import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransform';
+import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
+import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransform';
+import { GoToPage } from '../../utils/TypeSafeRouting';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import { SortOrder } from '../../types/ApiTypes';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -36,16 +35,13 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
 
   const columns: Array<TableColumn<VTuberViewCountGrowthDisplayData>> = [
     {
-      name: '#',
-      selector: (row: { ranking: number }): number => row.ranking,
-      compact: true,
+      ...RankingColumn(),
       sortable: true,
-      wrap: false,
-      width: '30px',
+      width: '40px',
     },
     {
-      ...NameColumn<VTuberViewCountGrowthDisplayData>(),
-      compact: true,
+      ...NameColumn(),
+      width: '200px',
     },
     {
       name: (
@@ -53,7 +49,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       ),
       selector: (row: { totalViewCount: number }): number => row.totalViewCount,
       compact: true,
-      right: true,
       sortable: true,
     },
     {
@@ -62,8 +57,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         GrowthDisplayDataToString(row._7DaysGrowth, props.dictionary.table),
       compact: true,
       right: true,
-      width: '100px',
-      maxWidth: '200px',
     },
     {
       name: <Text id="table._30DaysViewCountGrowth">30 Days Growth</Text>,
@@ -71,8 +64,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         GrowthDisplayDataToString(row._30DaysGrowth, props.dictionary.table),
       compact: true,
       right: true,
-      width: '100px',
-      maxWidth: '200px',
     },
     {
       ...PopularVideoColumn(),
@@ -80,12 +71,11 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     },
     {
       ...GroupColumn(),
-      maxWidth: '100px',
+      width: '150px',
     },
     {
       ...NationalityColumn(),
-      minWidth: '40px',
-      maxWidth: '100px',
+      width: '125px',
     },
   ];
 
@@ -218,7 +208,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.VTubersViewCount">VTubers View Count Change</Text>
         {GetCurrentNationalitySpan()}
@@ -227,7 +217,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination
@@ -237,7 +226,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
         subHeader
         subHeaderComponent={searchBarComponent}
       />
-    </Fragment>
+    </>
   );
 };
 

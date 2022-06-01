@@ -34,6 +34,7 @@ import {
 import { getCookie, setCookie } from '../utils/CookieUtils';
 import VTuberPage from '../routes/VTuber';
 import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
+import VTuberProfileModal from './VTuberProfileModal';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -82,6 +83,7 @@ const App: FunctionalComponent = () => {
           setNationality={setDisplayNationality}
         />
         <ScrollToTopBottom />
+        <VTuberProfileModal />
         <VideoModal />
         <Router>
           <Route
