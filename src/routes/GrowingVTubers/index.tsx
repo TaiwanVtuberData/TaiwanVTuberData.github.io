@@ -23,6 +23,7 @@ import {
   _30DaysGrowthSort,
   _7DaysGrowthSort,
 } from '../../utils/sort/GrowthSort';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -150,6 +151,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
         fixedHeader
         pagination

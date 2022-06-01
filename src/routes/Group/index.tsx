@@ -15,6 +15,7 @@ import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { GroupMemberToDisplay } from '../../utils/transform/GroupMemberTransform';
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface GroupPageProps {
   groupName: string;
@@ -91,6 +92,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
         {...DefaultDataTableProps}
         columns={columns}
         data={filteredData}
+        conditionalRowStyles={ActivityRowStyles}
         fixedHeader
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}

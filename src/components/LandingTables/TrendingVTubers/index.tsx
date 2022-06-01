@@ -14,6 +14,7 @@ import { VTuberPopularityToDisplay } from '../../../utils/transform/PopularityTr
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 import { RankingColumn } from '../../../tableTypes/RankingColumn';
+import ActivityRowStyles from '../../../style/ActivityRowStyles';
 
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [

@@ -20,6 +20,7 @@ import {
 } from '../../utils/sort/SubscriberCountSort';
 import { VTuberBasicToDisplay } from '../../utils/transform/BasicTransform';
 import tableStyle from '../../style/DataTableStyle.module.css';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
