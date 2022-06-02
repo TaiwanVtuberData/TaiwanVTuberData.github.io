@@ -3,7 +3,7 @@ import { Dictionary } from './Dictionary';
 const en: Dictionary = {
   header: {
     title: 'Taiwan VTuber Data',
-    chooseLanguage: 'Choose language:',
+    chooseLanguage: 'Choose language: ',
     home: 'Home',
     eventCalendar: 'Event Calendar',
     eventCalendarDetail: '(Provided By Discord Server <b>DD Refuge</b>)',
@@ -22,9 +22,9 @@ const en: Dictionary = {
     memberList: 'Members',
     top10: 'Top 10',
     YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
-    statisticUpdateTime: 'Statistic update time:',
-    VTuberDataUpdateTime: 'Data update time:',
-    showVTubersOfNationality: 'Show VTuber Nationality:',
+    statisticUpdateTime: 'Statistic update time: ',
+    VTuberDataUpdateTime: 'Data update time: ',
+    showVTubersOfNationality: 'Show VTuber Nationality: ',
   },
   table: {
     displayName: 'Name',

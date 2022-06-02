@@ -1,19 +1,17 @@
+import * as Api from '../../services/ApiService';
 import { FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
-import { Link } from 'preact-router/match';
-import { StateUpdater, useEffect, useState } from 'preact/hooks';
-import * as Api from '../../services/ApiService';
+import { Link } from 'preact-router';
+import { StateUpdater, useState, useEffect } from 'preact/hooks';
 import {
-  nationalityArray,
   NationalityModifier,
+  nationalityArray,
 } from '../../types/Common/NationalityModifier';
-import {
-  LanguageOption,
-  LanguageOptions,
-  validI18n,
-} from '../../types/LanguageOptions';
+import { validI18n, LanguageOptions } from '../../types/LanguageOptions';
 import { getFormattedDateTime } from '../../utils/DateTimeUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
+import LanguageDropDown from '../LanguageDropDown';
+import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
 
 export interface SidebarProps {
@@ -25,65 +23,11 @@ export interface SidebarProps {
 
 const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const open = (): void => setSidebarOpen(true);
-  const close = (): void => setSidebarOpen(false);
+  const openSidebar = (): void => setSidebarOpen(true);
+  const closeSidebar = (): void => setSidebarOpen(false);
 
   const [statisticUpdateTime, setStatisticUpdateTime] = useState<string>();
   const [VTuberDataUpdateTime, setVTuberDataUpdateTime] = useState<string>();
-
-  const LanguageDropDown = (
-    languageOptions: Array<LanguageOption>,
-    locale: string,
-    setLocale: StateUpdater<validI18n>
-  ): h.JSX.Element => {
-    return (
-      <div class={style.sidebarText}>
-        <Text id="header.chooseLanguage">Choose language:</Text>
-        <select
-          class={style.dropDown}
-          value={locale}
-          onChange={(event: any) => {
-            setLocale(event.target.value);
-            close();
-          }}
-        >
-          {languageOptions.map((e) => (
-            <option key={e.i18n} value={e.i18n}>
-              {e.displayText}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  };
-
-  const NationalityDropDown = (
-    nationalityOptions: ReadonlyArray<NationalityModifier>,
-    nationality: NationalityModifier,
-    setNationality: StateUpdater<NationalityModifier>
-  ): h.JSX.Element => {
-    return (
-      <div class={style.sidebarText}>
-        <Text id="header.showVTubersOfNationality">
-          Show VTuber Nationality:
-        </Text>
-        <select
-          class={style.dropDown}
-          value={nationality}
-          onChange={(event: any) => {
-            setNationality(event.target.value);
-            close();
-          }}
-        >
-          {nationalityOptions.map((e) => (
-            <option key={e} value={e}>
-              <Text id={`nationalityTitle.${e}`}>placeholder</Text>
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  };
 
   const LinkElement = (textID: string, linkTo: string): h.JSX.Element => {
     return (
@@ -112,19 +56,25 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
 
   return (
     <header>
-      <button class={`${style.navButton} ${style.roundButton}`} onClick={open}>
+      <button
+        class={`${style.navButton} ${style.roundButton}`}
+        onClick={openSidebar}
+      >
         <img class={style.navIcon} />
       </button>
       <div
         class={style.sidebarOverlay}
         style={{ display: sidebarOpen ? 'block' : 'none' }}
-        onClick={close}
+        onClick={closeSidebar}
       />
       <div
         class={style.sidebarContent}
         style={{ display: sidebarOpen ? 'block' : 'none' }}
       >
-        <button class={`${style.xButton} ${style.roundButton}`} onClick={close}>
+        <button
+          class={`${style.xButton} ${style.roundButton}`}
+          onClick={closeSidebar}
+        >
           <img class={style.xIcon} />
         </button>
         <nav class={style.navGrid}>
@@ -189,12 +139,26 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             <Text id="header.VTuberDataUpdateTime">Data update time:</Text>
             {VTuberDataUpdateTime}
           </span>
-          {NationalityDropDown(
-            nationalityArray,
-            props.nationality,
-            props.setNationality
-          )}
-          {LanguageDropDown(LanguageOptions, props.locale, props.setLocale)}
+          <div class={style.sidebarText}>
+            <NationalityDropDown
+              nationalityOptions={nationalityArray}
+              nationality={props.nationality}
+              onChange={(newNationality: NationalityModifier): void => {
+                props.setNationality(newNationality);
+                closeSidebar();
+              }}
+            />
+          </div>
+          <div class={style.sidebarText}>
+            <LanguageDropDown
+              languageOptions={LanguageOptions}
+              locale={props.locale}
+              onChange={(newLanguage: validI18n): void => {
+                props.setLocale(newLanguage);
+                closeSidebar();
+              }}
+            />
+          </div>
         </nav>
       </div>
     </header>

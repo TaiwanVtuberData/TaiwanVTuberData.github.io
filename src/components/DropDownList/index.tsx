@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import style from './style.module.css';
+import dropDownStyle from '../../style/DropDownStyle.module.css';
 
 export interface DropDownListProps<ValueType> {
   tipText?: string;
@@ -15,7 +16,7 @@ function DropDownList<ValueType extends string | number>(
     <div>
       <span class={style.tipText}>{props.tipText}</span>
       <select
-        class={style.dropDown}
+        class={dropDownStyle.dropDown}
         value={props.value}
         onChange={props.onChange}
       >
