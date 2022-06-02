@@ -25,6 +25,7 @@ const zh: Dictionary = {
     statisticUpdateTime: '數據更新時間：',
     VTuberDataUpdateTime: '資料更新時間：',
     showVTubersOfNationality: 'VTuber 國籍顯示：',
+    appVersion: '版本：',
   },
   table: {
     displayName: '名稱',

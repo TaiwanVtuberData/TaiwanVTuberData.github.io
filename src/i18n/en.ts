@@ -25,6 +25,7 @@ const en: Dictionary = {
     statisticUpdateTime: 'Statistic update time: ',
     VTuberDataUpdateTime: 'Data update time: ',
     showVTubersOfNationality: 'Show VTuber Nationality: ',
+    appVersion: 'Version: ',
   },
   table: {
     displayName: 'Name',

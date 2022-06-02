@@ -25,6 +25,7 @@ export interface Dictionary {
     statisticUpdateTime: string;
     VTuberDataUpdateTime: string;
     showVTubersOfNationality: string;
+    appVersion: string;
   };
   table: {
     displayName: string;

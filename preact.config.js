@@ -8,10 +8,17 @@ export default {
       && JSON.stringify(`${process.env.GITHUB_PAGES}`);
 
     config.output.publicPath = publicPath;
+
+    const versionEnv = process.env.npm_package_version
+      && JSON.stringify(`${process.env.npm_package_version}`);
+
     const { plugin } = helpers.getPluginsByName(config, 'DefinePlugin')[0];
     Object.assign(
       plugin.definitions,
-      { ['process.env.GITHUB_PAGES']: ghEnv }
+      { 
+        ['process.env.GITHUB_PAGES']: ghEnv, 
+        ['process.env.APP_VERSION']: versionEnv, 
+      }
     );
 
   },
