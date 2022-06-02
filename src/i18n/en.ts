@@ -91,8 +91,9 @@ const en: Dictionary = {
     trendingVTubers:
       'Popularity: Median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days',
     growingVTubers:
-      'Only showing VTubers with YouTube subscribers growth over 100 within 7 days',
-    debutVTubers: 'Only showing VTubers debut/about to debut in 30 days',
+      'Based on Taiwan timezone (UTC+8). Only showing VTubers with YouTube subscribers growth over 100 within 7 days',
+    debutVTubers:
+      'Based on Taiwan timezone (UTC+8). Only showing VTubers debut/about to debut in 30 days',
     graduateVTubers:
       'Only showing VTubers graduated/about to graduate in 30 days',
     groupList:
