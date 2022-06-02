@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { withText } from 'preact-i18n';
-import { openModal } from '../../global/modalState';
+import { openVideoModal } from '../../global/VideoModalState';
 import { VideoInfo } from '../../types/Common/VideoInfo';
 
 const ShowVideoButton = withText('text.showVideo')(
@@ -8,7 +8,7 @@ const ShowVideoButton = withText('text.showVideo')(
     <input
       type="button"
       value={props.showVideo}
-      onClick={(): void => openModal(props.popularVideo)}
+      onClick={(): void => openVideoModal(props.popularVideo)}
     />
   )
 );
