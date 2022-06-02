@@ -1,3 +1,11 @@
 .noWrap {
   white-space: nowrap;
 }
+
+.YouTubeRed {
+  color: rgb(255, 0, 0);
+}
+
+.TwitchPurple {
+  color: rgb(145, 71, 255);
+}

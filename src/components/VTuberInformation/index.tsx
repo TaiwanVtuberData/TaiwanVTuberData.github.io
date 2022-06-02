@@ -6,7 +6,7 @@ import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDispla
 import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import ProfileImage from '../ProfileImage';
-import CountString from '../CountString';
+import CountFragment from '../CountFragment';
 import style from './style.module.css';
 import ShowVideoButton from '../ShowVideoButton';
 
@@ -22,7 +22,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
   const CountSpan = (countType: CountType): JSX.Element => {
     return (
       <span>
-        <CountString countType={countType} />
+        <CountFragment countType={countType} />
       </span>
     );
   };

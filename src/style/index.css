@@ -46,11 +46,3 @@ input[type='button']:hover {
   color: mediumblue;
   font-weight: 700;
 }
-
-.YouTubeRed {
-  color: rgb(255, 0, 0);
-}
-
-.TwitchPurple {
-  color: rgb(145, 71, 255);
-}

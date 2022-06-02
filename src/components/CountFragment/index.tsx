@@ -2,11 +2,11 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { CountType } from '../../types/Common/CountType';
 
-interface CountStringProps {
+interface CountFragmentProps {
   countType: CountType;
 }
-const CountString: FunctionalComponent<CountStringProps> = (
-  props: CountStringProps
+const CountFragment: FunctionalComponent<CountFragmentProps> = (
+  props: CountFragmentProps
 ): JSX.Element => {
   switch (props.countType.tag) {
     case 'has':
@@ -18,4 +18,4 @@ const CountString: FunctionalComponent<CountStringProps> = (
   }
 };
 
-export default CountString;
+export default CountFragment;
