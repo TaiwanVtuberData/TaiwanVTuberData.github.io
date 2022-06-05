@@ -34,7 +34,6 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     {
       ...DebutDateColumn(),
       sortable: true,
-      width: '100px',
     },
     NameColumn(),
     {

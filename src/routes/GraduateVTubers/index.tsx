@@ -34,7 +34,6 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
     {
       ...GraduateDateColumn(),
       sortable: true,
-      width: '100px',
     },
     NameColumn(),
     {

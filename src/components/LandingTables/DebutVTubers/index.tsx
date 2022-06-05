@@ -13,12 +13,12 @@ import { VTuberDebutDisplayData } from '../../../types/TableDisplayData/VTuberDe
 import { getISODateString } from '../../../utils/DateTimeUtils';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberDebutToDisplay } from '../../../utils/transform/DebutTransform';
+import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
 
 const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
-      name: <Text id="table.debutDate">Debut Date</Text>,
-      selector: (row: { debutDate: string }): string => row.debutDate,
+      ...DebutDateColumn(),
       width: '100px',
     },
     NameColumn(),
