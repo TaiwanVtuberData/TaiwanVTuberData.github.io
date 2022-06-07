@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { getNationalityModifierState } from '../global/DisplayNationality';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
+import { LivestreamDataResponse } from '../types/ApiData/LivestreamData';
 import { UpdateTimeResponse } from '../types/ApiData/UpdateTime';
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { VTuberDataResponse } from '../types/ApiData/VTuberData';
@@ -14,6 +15,7 @@ import {
   DebutVTubersModifier,
   GraduateVTubersModifier,
   GrowingVTubersModifier,
+  LivestreamsModifier,
   TrendingVideosModifier,
   TrendingVTubersModifier,
   VTubersModifier,
@@ -140,5 +142,13 @@ export const getTrendingVideos = (
 ): Promise<AxiosResponse<VideoPopularityDataResponse>> => {
   return AxiosGetWrapper<VideoPopularityDataResponse>(
     `trending-videos/${modifier}.json`
+  );
+};
+
+export const getLivestreams = (
+  modifier: LivestreamsModifier
+): Promise<AxiosResponse<LivestreamDataResponse>> => {
+  return AxiosGetWrapper<LivestreamDataResponse>(
+    `livestreams/${modifier}.json`
   );
 };

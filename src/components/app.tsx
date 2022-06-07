@@ -35,6 +35,7 @@ import { getCookie, setCookie } from '../utils/CookieUtils';
 import VTuberPage from '../routes/VTuber';
 import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
 import VTuberProfileModal from './VTuberProfileModal';
+import LivestreamsPage from '../routes/Livestreams';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -90,6 +91,11 @@ const App: FunctionalComponent = () => {
             path={GetRoute({ type: 'home' })}
             dictionary={definition}
             component={HomePage}
+          />
+          <Route
+            path={GetRoute({ type: 'livestreams' })}
+            dictionary={definition}
+            component={LivestreamsPage}
           />
           <Route
             path={GetRoute({ type: 'event-calendar' })}

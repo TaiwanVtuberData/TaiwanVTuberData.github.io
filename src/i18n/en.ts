@@ -26,6 +26,7 @@ const en: Dictionary = {
     VTuberDataUpdateTime: 'Data update time: ',
     showVTubersOfNationality: 'Show VTuber Nationality: ',
     appVersion: 'Version: ',
+    livestreaming: 'Streaming Now',
   },
   table: {
     displayName: 'Name',
@@ -73,6 +74,7 @@ const en: Dictionary = {
       selectAllRowsItem: true,
       selectAllRowsItemText: 'All',
     },
+    startTime: 'Start Time',
   },
   activityText: {
     preparing: 'Preparing',
@@ -128,7 +130,8 @@ const en: Dictionary = {
   technicalDetails: {
     technicalDetails: 'Technical Details',
     bulletPoint1: `Data source: <a href="https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData</a>`,
-    bulletPoint2: 'Data update time: Every day at 05:30, 11:30, 17:30, 18:30, 19:30 UTC+8',
+    bulletPoint2:
+      'Data update time: Every day at 05:30, 11:30, 17:30, 18:30, 19:30 UTC+8',
     bulletPoint3: `Site source code: <a href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
   scroll: {
