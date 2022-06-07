@@ -39,3 +39,11 @@ export const getFormattedDateTime = (date: Date): string => {
     prefixZero(date.getSeconds())
   );
 };
+
+export const findClosestSortedDateIndex = (
+  array: Array<{ startTime: Date }>,
+  targetTime: Date
+): number =>
+  array
+    .map((e) => e.startTime.getTime() - targetTime.getTime())
+    .findIndex((value) => value >= 0);

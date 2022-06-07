@@ -26,6 +26,7 @@ export interface Dictionary {
     VTuberDataUpdateTime: string;
     showVTubersOfNationality: string;
     appVersion: string;
+    livestreaming: string;
   };
   table: {
     displayName: string;
@@ -67,6 +68,7 @@ export interface Dictionary {
     YouTubeTotalViewCount: string;
     activity: string;
     paginationOptions: PaginationOptions;
+    startTime: string;
   };
   activityText: {
     preparing: string;

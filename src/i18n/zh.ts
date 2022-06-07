@@ -26,6 +26,7 @@ const zh: Dictionary = {
     VTuberDataUpdateTime: '資料更新時間：',
     showVTubersOfNationality: 'VTuber 國籍顯示：',
     appVersion: '版本：',
+    livestreaming: '現正實況',
   },
   table: {
     displayName: '名稱',
@@ -73,6 +74,7 @@ const zh: Dictionary = {
       selectAllRowsItem: true,
       selectAllRowsItemText: '所有',
     },
+    startTime: '開始時間',
   },
   activityText: {
     preparing: '準備中',

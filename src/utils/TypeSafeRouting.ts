@@ -9,6 +9,10 @@ interface HomeRoute extends BaseTypeSafeRoute {
   type: 'home';
 }
 
+interface LivestreamsRoute extends BaseTypeSafeRoute {
+  type: 'livestreams';
+}
+
 interface EventCalendarRoute extends BaseTypeSafeRoute {
   type: 'event-calendar';
 }
@@ -98,6 +102,7 @@ type TypeSafeRoute =
   | GraduateVTubersRoute
   | ReportIssueRoute
   | AboutRoute
+  | LivestreamsRoute
   | VTuberRoute
   | GroupRoute
   | TrendingVideosRoute
@@ -123,6 +128,8 @@ const GetBaseRoute = (route: TypeSafeRoute): string => {
   switch (route.type) {
     case 'home':
       return ``;
+    case 'livestreams':
+      return `livestreams`;
     case 'event-calendar':
       return `event-calendar`;
     case 'all-vtubers':

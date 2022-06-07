@@ -85,6 +85,10 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
           {[
             { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
             {
+              textID: 'header.livestreaming',
+              linkTo: GetRoute({ type: 'livestreams' }),
+            },
+            {
               textID: 'header.eventCalendar',
               linkTo: GetRoute({ type: 'event-calendar' }),
             },
