@@ -15,7 +15,7 @@ const LivestreamsTable: FunctionalComponent = () => {
   const [pending, setPending] = useState(true);
 
   const getLivestreams = async (): Promise<void> => {
-    await Api.getLivestreams('all').then((res) => {
+    await Api.getLivestreams('all-no-title').then((res) => {
       const arrayData: Array<LivestreamDisplayData> = res.data.livestreams
         .map((e) => e)
         .map((e, index) => LivestreamToDisplayData(e, index))

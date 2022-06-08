@@ -3,7 +3,7 @@ export interface LivestreamDisplayData {
   VTuberId: string;
   name: string;
   imgUrl?: string;
-  title: string;
+  title?: string;
   videoUrl: string;
   thumbnailUrl: string;
   startTime: Date;

@@ -58,7 +58,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
     },
     {
       name: <Text id="table.title">Title</Text>,
-      selector: (row: { title: string }): string => row.title,
+      selector: (row: { title?: string }): string => row.title ?? '',
       wrap: true,
       hide: Media.SM,
     },

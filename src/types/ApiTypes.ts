@@ -17,4 +17,4 @@ export type GraduateVTubersModifier = 'next-7-days' | 'recent';
 
 export type TrendingVideosModifier = 'all' | 'no-duplicate';
 
-export type LivestreamsModifier = 'all';
+export type LivestreamsModifier = 'all' | 'all-no-title';
