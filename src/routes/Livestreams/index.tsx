@@ -3,6 +3,7 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, {
+  Media,
   TableColumn,
   TableStyles,
 } from 'react-data-table-component';
@@ -43,7 +44,6 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
           name={row.name}
         />
       ),
-      width: '200px',
     },
     {
       ...VideoColumn(),
@@ -54,12 +54,13 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
       selector: (row: { startTime: Date }): string =>
         getFormattedDateTime(row.startTime),
       sortable: true,
-      width: '175px',
+      wrap: true,
     },
     {
       name: <Text id="table.title">Title</Text>,
       selector: (row: { title: string }): string => row.title,
       wrap: true,
+      hide: Media.SM,
     },
   ];
 
@@ -114,10 +115,8 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getLivestreams = async (): Promise<void> => {
-    let arrayData: Array<LivestreamDisplayData>;
-
     await Api.getLivestreams('all').then((res) => {
-      arrayData = res.data.livestreams
+      const arrayData: Array<LivestreamDisplayData> = res.data.livestreams
         .map((e) => e)
         .map((e, index) => LivestreamToDisplayData(e, index))
         // what a great Date API, thanks javascript
