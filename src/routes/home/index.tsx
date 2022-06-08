@@ -2,6 +2,7 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import DebutVTubersTable from '../../components/LandingTables/DebutVTubers';
 import GrowingVTubersTable from '../../components/LandingTables/GrowingVTubers';
+import LivestreamsTable from '../../components/LandingTables/Livestreams';
 import TopVTubersTable from '../../components/LandingTables/TopVTubers';
 import TrendingVTubersTable from '../../components/LandingTables/TrendingVTubers';
 import { Dictionary } from '../../i18n/Dictionary';
@@ -24,6 +25,9 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
         <Text id="header.title">Taiwan VTuber Data</Text>
         {GetCurrentNationalitySpan()}
       </h1>
+      <div class={style.streamingNow}>
+        <LivestreamsTable />
+      </div>
       <div class={style.tableGrid}>
         <div class={style.tableItem}>
           <TrendingVTubersTable />

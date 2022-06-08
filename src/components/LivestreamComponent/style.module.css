@@ -1,0 +1,11 @@
+.verticalFlex {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: fit-content;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-self: center;
+}
