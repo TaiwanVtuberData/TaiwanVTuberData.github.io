@@ -8,6 +8,7 @@ import TrendingVTubersTable from '../../components/LandingTables/TrendingVTubers
 import { Dictionary } from '../../i18n/Dictionary';
 import '../../style/index.css';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { GetRoute } from '../../utils/TypeSafeRouting';
 import style from './style.module.css';
 
 export interface HomePageProps {
@@ -19,15 +20,35 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
     document.title = `${props.dictionary.header.title}`;
   }
 
+  const LivestreamsSection = (): JSX.Element => (
+    <div class={style.streamingSection}>
+      <div>
+        <h3>
+          <a href={GetRoute({ type: 'livestreams' })}>
+            <Text id="header.debutToday">Debut Today</Text>
+          </a>
+        </h3>
+        <LivestreamsTable modifier="debut-no-title" />
+      </div>
+      <div>
+        <h3>
+          <a href={GetRoute({ type: 'livestreams' })}>
+            <Text id="header.livestreaming">Streaming Now</Text>
+          </a>
+        </h3>
+        <LivestreamsTable modifier="all-no-title" />
+      </div>
+    </div>
+  );
+
   return (
     <Fragment>
       <h1>
         <Text id="header.title">Taiwan VTuber Data</Text>
         {GetCurrentNationalitySpan()}
       </h1>
-      <div class={style.streamingNow}>
-        <LivestreamsTable />
-      </div>
+
+      <LivestreamsSection />
       <div class={style.tableGrid}>
         <div class={style.tableItem}>
           <TrendingVTubersTable />

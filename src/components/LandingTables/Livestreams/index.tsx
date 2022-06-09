@@ -1,22 +1,28 @@
 import * as Api from '../../../services/ApiService';
-import { Fragment, FunctionalComponent, h } from 'preact';
+import { FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { useState, useEffect } from 'preact/hooks';
 import { LivestreamDisplayData } from '../../../types/TableDisplayData/LivestreamDisplayData';
 import { findClosestSortedDateIndex } from '../../../utils/DateTimeUtils';
 import { LivestreamToDisplayData } from '../../../utils/transform/LivestreamTransform';
 import HorizontalLivestreamsBox from '../../HorizontalLivestreamsBox';
-import { GetRoute } from '../../../utils/TypeSafeRouting';
+import { LivestreamsModifier } from '../../../types/ApiTypes';
 
-const LivestreamsTable: FunctionalComponent = () => {
+interface LivestreamsTableProps {
+  modifier: LivestreamsModifier;
+}
+
+const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
+  props: LivestreamsTableProps
+) => {
   // search filter
-  const [data, setData] = useState<Array<LivestreamDisplayData>>([]);
+  const [data, setData] = useState<Array<LivestreamDisplayData>>();
   useState<boolean>(false);
 
   const [pending, setPending] = useState(true);
 
   const getLivestreams = async (): Promise<void> => {
-    await Api.getLivestreams('all-no-title').then((res) => {
+    await Api.getLivestreams(props.modifier).then((res) => {
       const arrayData: Array<LivestreamDisplayData> = res.data.livestreams
         .map((e) => e)
         .map((e, index) => LivestreamToDisplayData(e, index))
@@ -48,24 +54,31 @@ const LivestreamsTable: FunctionalComponent = () => {
     getLivestreams();
   }, []);
 
-  return (
-    <>
-      <h3>
-        <a href={GetRoute({ type: 'livestreams' })}>
-          <Text id="header.livestreaming">Streaming Now</Text>
-        </a>
-      </h3>
-      {pending ? (
+  const GetLivestreamsBox = (): JSX.Element => {
+    if (pending) {
+      return (
         <div style={{ textAlign: 'center' }}>
           <span>
             <Text id="text.loading">Loading...</Text>
           </span>
         </div>
-      ) : (
-        <HorizontalLivestreamsBox data={data} />
-      )}
-    </>
-  );
+      );
+    }
+
+    if (data === undefined || data.length === 0) {
+      return (
+        <div style={{ textAlign: 'center' }}>
+          <span>
+            <Text id="text.noData">No Data</Text>
+          </span>
+        </div>
+      );
+    }
+
+    return <HorizontalLivestreamsBox data={data} />;
+  };
+
+  return <GetLivestreamsBox />;
 };
 
 export default LivestreamsTable;

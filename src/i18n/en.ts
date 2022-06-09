@@ -27,6 +27,7 @@ const en: Dictionary = {
     showVTubersOfNationality: 'Show VTuber nationality: ',
     appVersion: 'Version: ',
     livestreaming: 'Streaming Now',
+    debutToday: 'Debut Today',
   },
   table: {
     displayName: 'Name',
@@ -88,6 +89,7 @@ const en: Dictionary = {
     link: 'Link',
     loading: 'Loading...',
     onlyShowing: 'only showing ',
+    noData: 'No Data',
   },
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',

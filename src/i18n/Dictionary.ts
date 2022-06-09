@@ -27,6 +27,7 @@ export interface Dictionary {
     showVTubersOfNationality: string;
     appVersion: string;
     livestreaming: string;
+    debutToday: string;
   };
   table: {
     displayName: string;
@@ -82,6 +83,7 @@ export interface Dictionary {
     link: string;
     loading: string;
     onlyShowing: string;
+    noData: string;
   };
   toolTip: {
     eventCalendar: string;
