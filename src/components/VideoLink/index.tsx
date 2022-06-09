@@ -11,7 +11,15 @@ const VideoLink: FunctionalComponent<VideoLinkProps> = (
 ): h.JSX.Element => {
   return (
     <a href={props.videoUrl} target="_blank" rel="noopener noreferrer">
-      <img class={style.thumbnail} src={props.thumbnailUrl} loading="lazy" />
+      {props.thumbnailUrl === undefined ? (
+        <img
+          class={style.placeholder}
+          src={props.thumbnailUrl}
+          loading="lazy"
+        />
+      ) : (
+        <img class={style.thumbnail} src={props.thumbnailUrl} loading="lazy" />
+      )}
     </a>
   );
 };
