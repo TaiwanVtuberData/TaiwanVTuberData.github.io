@@ -2,7 +2,7 @@ import * as Api from '../../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { useState, useEffect } from 'preact/hooks';
-import DataTable, { TableColumn } from 'react-data-table-component';
+import DataTable, { Media, TableColumn } from 'react-data-table-component';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
@@ -14,16 +14,17 @@ import { getISODateString } from '../../../utils/DateTimeUtils';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberDebutToDisplay } from '../../../utils/transform/DebutTransform';
 import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
 
 const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
-    {
-      ...DebutDateColumn(),
-      width: '100px',
-    },
+    DebutDateColumn(),
     NameColumn(),
     YouTubeTwitchCountColumn(),
-    PopularVideoColumn(),
+    {
+      ...PopularVideoColumn(),
+      hide: Media.SM,
+    },
   ];
 
   // search filter
@@ -50,7 +51,9 @@ const DebutVTubersTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <Text id="header.debutVTubersIn7Days">VTubers Debut in 7 days</Text>
+        <a href={GetRoute({ type: 'debut-vtubers' })}>
+          <Text id="header.debutVTubersIn7Days">VTubers Debut in 7 days</Text>
+        </a>
       </h3>
       <DataTable
         {...DefaultDataTableProps}

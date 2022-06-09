@@ -6,6 +6,7 @@ import { LivestreamDisplayData } from '../../../types/TableDisplayData/Livestrea
 import { findClosestSortedDateIndex } from '../../../utils/DateTimeUtils';
 import { LivestreamToDisplayData } from '../../../utils/transform/LivestreamTransform';
 import HorizontalLivestreamsBox from '../../HorizontalLivestreamsBox';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
 
 const LivestreamsTable: FunctionalComponent = () => {
   // search filter
@@ -50,7 +51,9 @@ const LivestreamsTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <Text id="header.livestreaming">Streaming Now</Text>
+        <a href={GetRoute({ type: 'livestreams' })}>
+          <Text id="header.livestreaming">Streaming Now</Text>
+        </a>
       </h3>
       {pending ? (
         <div style={{ textAlign: 'center' }}>
