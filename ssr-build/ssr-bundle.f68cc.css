@@ -119,6 +119,12 @@ input[type='button']:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+@media screen and (max-width: 800px) {
+  .navTab__ZvaJK {
+    width: 25px;
+  }
+}
+
 .navTab__ZvaJK > div {
   position: fixed;
   top: 50vh;
@@ -145,6 +151,12 @@ input[type='button']:hover {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 15px;
+}
+
+@media screen and (max-width: 800px) {
+  .gridItem__bx73M a {
+    margin-left: 30px;
+  }
 }
 
 .gridItem__bx73M a:hover {
@@ -270,10 +282,13 @@ input[type='button']:hover {
 }
 
 .thumbnail__BdvoG {
-  min-width: 100px;
-  max-width: 100%;
-  min-height: 100px;
-  max-height: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.placeholder__1JmTb {
+  width: 100px;
+  height: 100px;
   border: 1px solid black;
 }
 
@@ -335,6 +350,18 @@ input[type='button']:hover {
   display: grid;
   grid-template-columns: 33% 67%;
   grid-row: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .streamingSection__unwHH {
+    display: grid;
+    grid-template-columns: none;
+    grid-row: none;
+  }
+
+  .streamingSection__unwHH > div {
+    width: 100vw;
+  }
 }
 
 .tipText__4DHD3 {
@@ -653,4 +680,4 @@ input[type='button']:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.d9f69.css.map*/
+/*# sourceMappingURL=ssr-bundle.f68cc.css.map*/
