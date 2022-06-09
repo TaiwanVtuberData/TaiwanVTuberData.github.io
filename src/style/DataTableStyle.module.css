@@ -1,16 +1,3 @@
-.groupLink {
-  background-color: #e6e6e6;
-  text-decoration: none;
-  color: black;
-  padding: 5px;
-  border: 3px solid #636363;
-  border-radius: 5px;
-}
-
-.groupLink:hover {
-  background-color: #979797;
-}
-
 .searchBarGroup > * {
   margin: 1px;
 }

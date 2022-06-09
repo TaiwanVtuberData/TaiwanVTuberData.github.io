@@ -31,12 +31,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     {
       name: <Text id="table.displayName">Name</Text>,
       cell: (row: { name: string }): h.JSX.Element => (
-        <a
-          class={tableStyle.groupLink}
-          href={GetRoute({ type: 'group', name: row.name })}
-        >
-          {row.name}
-        </a>
+        <a href={GetRoute({ type: 'group', name: row.name })}>{row.name}</a>
       ),
       sortFunction: NameSort,
       sortable: true,
