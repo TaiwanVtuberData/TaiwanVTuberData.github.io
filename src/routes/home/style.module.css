@@ -23,3 +23,15 @@
   grid-template-columns: 33% 67%;
   grid-row: auto;
 }
+
+@media screen and (max-width: 800px) {
+  .streamingSection {
+    display: grid;
+    grid-template-columns: none;
+    grid-row: none;
+  }
+
+  .streamingSection > div {
+    width: 100vw;
+  }
+}
