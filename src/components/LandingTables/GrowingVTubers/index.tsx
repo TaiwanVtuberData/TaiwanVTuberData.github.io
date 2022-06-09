@@ -2,7 +2,7 @@ import * as Api from '../../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { useState, useEffect } from 'preact/hooks';
-import DataTable, { TableColumn } from 'react-data-table-component';
+import DataTable, { Media, TableColumn } from 'react-data-table-component';
 import { Dictionary } from '../../../i18n/Dictionary';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
@@ -14,6 +14,7 @@ import { VTuberGrowthDisplayData } from '../../../types/TableDisplayData/VTuberG
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberGrowthToDisplay } from '../../../utils/transform/GrowthTransform';
 import QuestionMarkToolTip from '../../QuestionMarkToolTip';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
 
 export interface GrowingVTubersTableProps {
   dictionary: Dictionary;
@@ -26,7 +27,10 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
     NameColumn(),
     YouTubeSubscriberColumn(),
     _7DaysGrowthColumn(props.dictionary.table),
-    PopularVideoColumn(),
+    {
+      ...PopularVideoColumn(),
+      hide: Media.SM,
+    },
   ];
 
   const [data, setData] = useState<Array<VTuberGrowthDisplayData>>([]);
@@ -51,9 +55,11 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
   return (
     <>
       <h3>
-        <Text id="header.growingVTubers">Growing VTubers</Text>
-        <> </>
-        <Text id="header.top10">Top 10</Text>
+        <a href={GetRoute({ type: 'growing-vtubers' })}>
+          <Text id="header.growingVTubers">Growing VTubers</Text>
+          <> </>
+          <Text id="header.top10">Top 10</Text>
+        </a>
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"

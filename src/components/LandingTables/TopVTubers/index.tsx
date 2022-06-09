@@ -11,6 +11,7 @@ import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCount
 import { VTuberDisplayData } from '../../../types/TableDisplayData/VTuberDisplayData';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberBasicToDisplay } from '../../../utils/transform/BasicTransform';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
 
 const TopVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDisplayData>> = [
@@ -37,11 +38,13 @@ const TopVTubersTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <Text id="header.YouTubeSubPlusTwitchFollowers">
-          YouTube Subscribers + Twitch Followers
-        </Text>
-        <> </>
-        <Text id="header.top10">Top 10</Text>
+        <a href={GetRoute({ type: 'all-vtubers' })}>
+          <Text id="header.YouTubeSubPlusTwitchFollowers">
+            YouTube Subscribers + Twitch Followers
+          </Text>
+          <> </>
+          <Text id="header.top10">Top 10</Text>
+        </a>
       </h3>
       <DataTable
         {...DefaultDataTableProps}

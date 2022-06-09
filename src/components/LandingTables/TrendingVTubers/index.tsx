@@ -2,7 +2,7 @@ import * as Api from '../../../services/ApiService';
 import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { useEffect, useState } from 'preact/hooks';
-import DataTable, { TableColumn } from 'react-data-table-component';
+import DataTable, { Media, TableColumn } from 'react-data-table-component';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
 import { NameColumn } from '../../../tableTypes/NameColumn';
 import { PopularityColumn } from '../../../tableTypes/PopularityColumn';
@@ -15,6 +15,7 @@ import QuestionMarkToolTip from '../../QuestionMarkToolTip';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 import { RankingColumn } from '../../../tableTypes/RankingColumn';
 import ActivityRowStyles from '../../../style/ActivityRowStyles';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
 
 const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
@@ -25,7 +26,10 @@ const TrendingVTubersTable: FunctionalComponent = () => {
     NameColumn(),
     PopularityColumn(),
     YouTubeTwitchCountColumn(),
-    PopularVideoColumn(),
+    {
+      ...PopularVideoColumn(),
+      hide: Media.SM,
+    },
   ];
 
   const [data, setData] = useState<Array<VTuberPopularityDisplayData>>([]);
@@ -51,10 +55,12 @@ const TrendingVTubersTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <Text id="header.trendingVTubers">Trending VTubers</Text>
-        {/* Yes. Adding a space between two texts require a Fragment */}
-        <> </>
-        <Text id="header.top10">Top 10</Text>
+        <a href={GetRoute({ type: 'trending-vtubers' })}>
+          <Text id="header.trendingVTubers">Trending VTubers</Text>
+          {/* Yes. Adding a space between two texts require a Fragment */}
+          <> </>
+          <Text id="header.top10">Top 10</Text>
+        </a>
         <QuestionMarkToolTip
           width="300px"
           fontSize="13px"
