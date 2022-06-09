@@ -27,6 +27,7 @@ const zh: Dictionary = {
     showVTubersOfNationality: 'VTuber 國籍顯示：',
     appVersion: '版本：',
     livestreaming: '現正實況',
+    debutToday: '今日出道',
   },
   table: {
     displayName: '名稱',
@@ -88,6 +89,7 @@ const zh: Dictionary = {
     link: '連結',
     loading: '載入中...',
     onlyShowing: '只顯示',
+    noData: '無資料',
   },
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',
