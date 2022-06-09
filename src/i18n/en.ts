@@ -24,7 +24,7 @@ const en: Dictionary = {
     YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
     statisticUpdateTime: 'Statistic update time: ',
     VTuberDataUpdateTime: 'Data update time: ',
-    showVTubersOfNationality: 'Show VTuber Nationality: ',
+    showVTubersOfNationality: 'Show VTuber nationality: ',
     appVersion: 'Version: ',
     livestreaming: 'Streaming Now',
   },
