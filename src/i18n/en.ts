@@ -140,11 +140,6 @@ const en: Dictionary = {
     top: 'To Top',
     bottom: 'To Bottom',
   },
-  notFound: {
-    title: 'Error',
-    detail: 'This page does not exists.',
-    goHome: 'Go back to home page.',
-  },
   nationalityTitle: {
     all: 'All',
     TW: 'Taiwanese',

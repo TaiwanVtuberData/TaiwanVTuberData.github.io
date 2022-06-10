@@ -134,11 +134,6 @@ const zh: Dictionary = {
     top: '至頁頂',
     bottom: '至頁尾',
   },
-  notFound: {
-    title: '錯誤',
-    detail: '此頁面不存在。',
-    goHome: '返回首頁。',
-  },
   nationalityTitle: {
     all: '所有',
     TW: '臺灣',

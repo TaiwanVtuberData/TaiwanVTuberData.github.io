@@ -13,7 +13,6 @@ import DebutVTubersPage from '../routes/DebutVTubers';
 import GroupPage from '../routes/Group';
 import GroupListPage from '../routes/GroupList';
 import TrendingVTubersPage from '../routes/TrendingVTubers';
-import NotFoundPage from '../routes/notfound';
 import { validI18n, validI18nArray } from '../types/LanguageOptions';
 import GraduateVTubersPage from '../routes/GraduateVTubers';
 import GrowingVTubersPage from '../routes/GrowingVTubers';
@@ -37,6 +36,7 @@ import VTuberPage from '../routes/VTuber';
 import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
 import VTuberProfileModal from './VTuberProfileModal';
 import LivestreamsPage from '../routes/Livestreams';
+import Redirect from '../routes/Redirect';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -180,7 +180,7 @@ const App: FunctionalComponent = () => {
                 dictionary={definition}
                 component={VTubersViewCountPage}
               />
-              <NotFoundPage default />
+              <Redirect default to={GetRoute({ type: 'home' })} />
             </Router>
           </>
         ) : (
