@@ -35,7 +35,9 @@ const VTuberPage: FunctionalComponent<VTuberPageProps> = (
       <h1>
         <span> {data?.name ?? <Text id="text.loading">Loading...</Text>} </span>
       </h1>
-      {data !== undefined ? <VTuberInformation VTuber={data} /> : null}
+      {data !== undefined ? (
+        <VTuberInformation VTuber={data} clickBehavior="noAction" />
+      ) : null}
     </>
   );
 };

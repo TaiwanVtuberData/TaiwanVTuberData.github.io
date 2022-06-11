@@ -47,7 +47,9 @@ const VTuberProfileModal = (): JSX.Element => {
       >
         <div class={style.profile}>
           <h1>{data?.name ?? <Text id="text.loading">Loading...</Text>}</h1>
-          {data !== undefined ? <VTuberInformation VTuber={data} /> : null}
+          {data !== undefined ? (
+            <VTuberInformation VTuber={data} clickBehavior="goToPage" />
+          ) : null}
         </div>
       </div>
     </div>

@@ -13,11 +13,12 @@ const Profile: FunctionalComponent<ProfileProps> = (
 ): h.JSX.Element => {
   return (
     <ToolTip text={props.VTuber.name}>
-      {ProfileImage({
-        VTuberId: props.VTuber.id,
-        imgUrl: props.VTuber.imgUrl,
-        size: props.size,
-      })}
+      <ProfileImage
+        VTuberId={props.VTuber.id}
+        imgUrl={props.VTuber.imgUrl}
+        size={props.size}
+        clickBehavior="goToPage"
+      />
     </ToolTip>
   );
 };

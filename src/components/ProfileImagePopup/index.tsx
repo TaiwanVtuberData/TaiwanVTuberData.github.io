@@ -14,7 +14,11 @@ const ProfileImagePopup: FunctionalComponent<ProfileImagePopupProps> = (
   return (
     <div class={style.container}>
       <div class={style.profileImageFlex}>
-        <ProfileImage VTuberId={props.VTuberId} imgUrl={props.imgUrl} />
+        <ProfileImage
+          VTuberId={props.VTuberId}
+          imgUrl={props.imgUrl}
+          clickBehavior="popup"
+        />
       </div>
       <span class={style.nameFlex}>{props.name}</span>
     </div>

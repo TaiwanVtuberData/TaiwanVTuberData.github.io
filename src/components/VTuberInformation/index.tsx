@@ -5,13 +5,14 @@ import { CountType } from '../../types/Common/CountType';
 import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
 import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
-import ProfileImage from '../ProfileImage';
+import ProfileImage, { ProfileImageClickBehavior } from '../ProfileImage';
 import CountFragment from '../CountFragment';
 import style from './style.module.css';
 import ShowVideoButton from '../ShowVideoButton';
 
 export interface VTuberInformationProps {
   VTuber: VTuberDisplayFullData;
+  clickBehavior: ProfileImageClickBehavior;
 }
 
 const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
@@ -59,7 +60,12 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
   return (
     <div class={style.flexArea}>
       <div>
-        <ProfileImage VTuberId={vtuber.id} imgUrl={vtuber.imgUrl} size={240} />
+        <ProfileImage
+          VTuberId={vtuber.id}
+          imgUrl={vtuber.imgUrl}
+          size={240}
+          clickBehavior={props.clickBehavior}
+        />
       </div>
       <ul>
         {vtuber.YouTube && (

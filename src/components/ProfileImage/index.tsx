@@ -3,10 +3,13 @@ import { openProfileModal } from '../../global/ProfileModalState';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import style from './style.module.css';
 
+export type ProfileImageClickBehavior = 'popup' | 'goToPage' | 'noAction';
+
 export interface ProfileImageProps {
   VTuberId: string;
   imgUrl?: string;
   size?: number;
+  clickBehavior: ProfileImageClickBehavior;
 }
 
 const ProfileImage: FunctionalComponent<ProfileImageProps> = (
@@ -16,13 +19,33 @@ const ProfileImage: FunctionalComponent<ProfileImageProps> = (
   // https://stackoverflow.com/a/53365710/11947017
   return (
     <a
-      href={GetRoute({ type: 'vtuber', id: props.VTuberId })}
-      onClickCapture={(e): void => e.preventDefault()}
+      href={
+        props.clickBehavior === 'noAction'
+          ? undefined
+          : GetRoute({ type: 'vtuber', id: props.VTuberId })
+      }
+      onClickCapture={(e): void => {
+        switch (props.clickBehavior) {
+          case 'popup':
+            e.preventDefault();
+            break;
+          case 'goToPage':
+          case 'noAction':
+            break;
+        }
+      }}
     >
       <div
         onClick={(e): void => {
-          openProfileModal(props.VTuberId);
-          e.stopPropagation();
+          switch (props.clickBehavior) {
+            case 'popup':
+              openProfileModal(props.VTuberId);
+              e.stopPropagation();
+              break;
+            case 'goToPage':
+            case 'noAction':
+              break;
+          }
         }}
       >
         <img
