@@ -1,5 +1,9 @@
 import { FunctionalComponent, h } from 'preact';
-import { getFormattedDateTime } from '../../utils/DateTimeUtils';
+import {
+  getFormattedDateTime,
+  getFormattedTime,
+  getFormattedTimeIfNotToday,
+} from '../../utils/DateTimeUtils';
 import ProfileImagePopUp from '../ProfileImagePopup';
 import VideoLink from '../VideoLink';
 import style from './style.module.css';
@@ -12,6 +16,7 @@ export interface LivestreamComponentProps {
   thumbnailUrl: string;
   videoUrl: string;
   startTime: Date;
+  now: Date;
 }
 
 const LivestreamComponent: FunctionalComponent<LivestreamComponentProps> = (
@@ -26,7 +31,7 @@ const LivestreamComponent: FunctionalComponent<LivestreamComponentProps> = (
       />
       <VideoLink thumbnailUrl={props.thumbnailUrl} videoUrl={props.videoUrl} />
       <div>
-        <span>{getFormattedDateTime(props.startTime)}</span>
+        <span>{getFormattedTimeIfNotToday(props.startTime, props.now)}</span>
       </div>
     </div>
   );

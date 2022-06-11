@@ -10,6 +10,7 @@ import { LivestreamsModifier } from '../../../types/ApiTypes';
 
 interface LivestreamsTableProps {
   modifier: LivestreamsModifier;
+  now: Date;
 }
 
 const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
@@ -75,7 +76,7 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
       );
     }
 
-    return <HorizontalLivestreamsBox data={data} />;
+    return <HorizontalLivestreamsBox data={data} now={props.now} />;
   };
 
   return <GetLivestreamsBox />;

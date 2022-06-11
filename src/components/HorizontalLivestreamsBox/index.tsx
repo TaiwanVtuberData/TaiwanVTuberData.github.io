@@ -5,6 +5,7 @@ import style from './style.module.css';
 
 export interface HorizontalLivestreamsBoxProps {
   data: Array<LivestreamDisplayData>;
+  now: Date;
 }
 
 const HorizontalLivestreamsBox: FunctionalComponent<
@@ -22,6 +23,7 @@ const HorizontalLivestreamsBox: FunctionalComponent<
           thumbnailUrl={e.thumbnailUrl}
           videoUrl={e.videoUrl}
           startTime={e.startTime}
+          now={props.now}
         />
       ))}
     </div>

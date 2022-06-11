@@ -40,6 +40,32 @@ export const getFormattedDateTime = (date: Date): string => {
   );
 };
 
+export const getFormattedTime = (date: Date): string => {
+  return (
+    prefixZero(date.getHours()) +
+    ':' +
+    prefixZero(date.getMinutes()) +
+    ':' +
+    prefixZero(date.getSeconds())
+  );
+};
+
+const isSameDay = (date1: Date, date2: Date): boolean => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};
+
+export const getFormattedTimeIfNotToday = (date: Date, today: Date): string => {
+  if (isSameDay(date, today)) {
+    return getFormattedTime(date);
+  }
+
+  return getFormattedDateTime(date);
+};
+
 export const findClosestSortedDateIndex = (
   array: Array<{ startTime: Date }>,
   targetTime: Date

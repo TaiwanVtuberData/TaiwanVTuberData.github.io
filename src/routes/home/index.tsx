@@ -20,26 +20,30 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
     document.title = `${props.dictionary.header.title}`;
   }
 
-  const LivestreamsSection = (): JSX.Element => (
-    <div class={style.streamingSection}>
-      <div>
-        <h3>
-          <a href={GetRoute({ type: 'livestreams' })}>
-            <Text id="header.debutToday">Debut Today</Text>
-          </a>
-        </h3>
-        <LivestreamsTable modifier="debut-no-title" />
+  const LivestreamsSection = (): JSX.Element => {
+    const now = new Date();
+
+    return (
+      <div class={style.streamingSection}>
+        <div>
+          <h3>
+            <a href={GetRoute({ type: 'livestreams' })}>
+              <Text id="header.debutToday">Debut Today</Text>
+            </a>
+          </h3>
+          <LivestreamsTable modifier="debut-no-title" now={now} />
+        </div>
+        <div>
+          <h3>
+            <a href={GetRoute({ type: 'livestreams' })}>
+              <Text id="header.livestreaming">Streaming Now</Text>
+            </a>
+          </h3>
+          <LivestreamsTable modifier="all-no-title" now={now} />
+        </div>
       </div>
-      <div>
-        <h3>
-          <a href={GetRoute({ type: 'livestreams' })}>
-            <Text id="header.livestreaming">Streaming Now</Text>
-          </a>
-        </h3>
-        <LivestreamsTable modifier="all-no-title" />
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <Fragment>
