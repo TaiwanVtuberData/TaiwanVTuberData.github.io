@@ -17,7 +17,7 @@ const Profile: FunctionalComponent<ProfileProps> = (
         VTuberId={props.VTuber.id}
         imgUrl={props.VTuber.imgUrl}
         size={props.size}
-        clickBehavior="goToPage"
+        clickBehavior="popup"
       />
     </ToolTip>
   );
