@@ -22,7 +22,7 @@ const zh: Dictionary = {
     memberList: '成員列表',
     top10: '前 10',
     YouTubeSubPlusTwitchFollowers: 'YouTube 訂閱 + Twitch 追隨',
-    statisticUpdateTime: '數據更新時間：',
+    videoInformationUpdateTime: '影片資訊更新時間：',
     VTuberDataUpdateTime: '資料更新時間：',
     showVTubersOfNationality: 'VTuber 國籍顯示：',
     appVersion: '版本：',

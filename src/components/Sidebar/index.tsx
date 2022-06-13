@@ -121,7 +121,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
       <div class={style.sidebarTextContainer}>
         <div>
           <span>
-            <Text id="header.statisticUpdateTime">Statistic update time:</Text>
+            <Text id="header.videoInformationUpdateTime">
+              Video information update time:
+            </Text>
             {statisticUpdateTime}
           </span>
         </div>

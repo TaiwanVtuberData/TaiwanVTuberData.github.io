@@ -22,7 +22,7 @@ export interface Dictionary {
     memberList: string;
     top10: string;
     YouTubeSubPlusTwitchFollowers: string;
-    statisticUpdateTime: string;
+    videoInformationUpdateTime: string;
     VTuberDataUpdateTime: string;
     showVTubersOfNationality: string;
     appVersion: string;
