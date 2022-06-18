@@ -69,7 +69,14 @@ export const getFormattedTimeIfNotToday = (date: Date, today: Date): string => {
 export const findClosestSortedDateIndex = (
   array: Array<{ startTime: Date }>,
   targetTime: Date
-): number =>
-  array
+): number => {
+  const closest: number = array
     .map((e) => e.startTime.getTime() - targetTime.getTime())
     .findIndex((value) => value >= 0);
+
+  if (closest < 0) {
+    return array.length - 1;
+  }
+
+  return closest;
+};
