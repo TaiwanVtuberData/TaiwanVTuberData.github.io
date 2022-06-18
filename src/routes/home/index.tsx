@@ -31,7 +31,12 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
               <Text id="header.debutToday">Debut Today</Text>
             </a>
           </h3>
-          <LivestreamsTable modifier="debut-no-title" now={now} />
+          <LivestreamsTable
+            divPrefix="debut"
+            delayMs={200}
+            modifier="debut-no-title"
+            now={now}
+          />
         </div>
         <div>
           <h3>
@@ -39,7 +44,12 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
               <Text id="header.livestreaming">Streaming Now</Text>
             </a>
           </h3>
-          <LivestreamsTable modifier="all-no-title" now={now} />
+          <LivestreamsTable
+            divPrefix="all"
+            delayMs={3000}
+            modifier="all-no-title"
+            now={now}
+          />
         </div>
       </div>
     );

@@ -4,6 +4,7 @@ import LivestreamComponent from '../LivestreamComponent';
 import style from './style.module.css';
 
 export interface HorizontalLivestreamsBoxProps {
+  divPrefix: string;
   data: Array<LivestreamDisplayData>;
   now: Date;
 }
@@ -15,6 +16,7 @@ const HorizontalLivestreamsBox: FunctionalComponent<
     <div class={style.horizontalFlex}>
       {props.data.map((e, index) => (
         <LivestreamComponent
+          divPrefix={props.divPrefix}
           id={index}
           key={index}
           VTuberId={e.VTuberId}

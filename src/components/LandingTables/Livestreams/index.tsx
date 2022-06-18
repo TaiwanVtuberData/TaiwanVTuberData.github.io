@@ -9,6 +9,8 @@ import HorizontalLivestreamsBox from '../../HorizontalLivestreamsBox';
 import { LivestreamsModifier } from '../../../types/ApiTypes';
 
 interface LivestreamsTableProps {
+  divPrefix: string;
+  delayMs: number;
   modifier: LivestreamsModifier;
   now: Date;
 }
@@ -40,14 +42,14 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
 
         document
           .getElementById(
-            `comp-${Math.min(arrayData.length - 1, closestToNow)}`
+            `${props.divPrefix}-${Math.min(arrayData.length - 1, closestToNow)}`
           )
           ?.scrollIntoView({
             behavior: 'smooth',
             block: 'nearest',
             inline: 'start',
           });
-      }, 500);
+      }, props.delayMs);
     });
   };
 
@@ -76,7 +78,13 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
       );
     }
 
-    return <HorizontalLivestreamsBox data={data} now={props.now} />;
+    return (
+      <HorizontalLivestreamsBox
+        divPrefix={props.divPrefix}
+        data={data}
+        now={props.now}
+      />
+    );
   };
 
   return <GetLivestreamsBox />;

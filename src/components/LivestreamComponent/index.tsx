@@ -1,14 +1,11 @@
 import { FunctionalComponent, h } from 'preact';
-import {
-  getFormattedDateTime,
-  getFormattedTime,
-  getFormattedTimeIfNotToday,
-} from '../../utils/DateTimeUtils';
+import { getFormattedTimeIfNotToday } from '../../utils/DateTimeUtils';
 import ProfileImagePopUp from '../ProfileImagePopup';
 import VideoLink from '../VideoLink';
 import style from './style.module.css';
 
 export interface LivestreamComponentProps {
+  divPrefix: string;
   id?: number;
   VTuberId: string;
   imgUrl?: string;
@@ -23,7 +20,7 @@ const LivestreamComponent: FunctionalComponent<LivestreamComponentProps> = (
   props: LivestreamComponentProps
 ): h.JSX.Element => {
   return (
-    <div id={`comp-${props.id}`} class={style.verticalFlex}>
+    <div id={`${props.divPrefix}-${props.id}`} class={style.verticalFlex}>
       <ProfileImagePopUp
         VTuberId={props.VTuberId}
         imgUrl={props.imgUrl}
