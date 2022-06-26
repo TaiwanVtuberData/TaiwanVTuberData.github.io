@@ -312,7 +312,7 @@ input[type='button']:hover {
       align-self: center;
 }
 
-.horizontalFlex__u\+MYR {
+.horizontalFlex__qr4MR {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -321,7 +321,7 @@ input[type='button']:hover {
   overflow-x: scroll;
 }
 
-.horizontalFlex__u\+MYR > div {
+.horizontalFlex__qr4MR > div {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -686,4 +686,4 @@ input[type='button']:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.54eb0.css.map*/
+/*# sourceMappingURL=ssr-bundle.6a68c.css.map*/
