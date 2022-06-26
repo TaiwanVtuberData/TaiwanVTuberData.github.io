@@ -46,7 +46,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
           </h3>
           <LivestreamsTable
             divPrefix="all"
-            delayMs={3000}
+            delayMs={200}
             modifier="all-no-title"
             now={now}
           />

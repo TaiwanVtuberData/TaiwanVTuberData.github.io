@@ -1,7 +1,6 @@
-import { FunctionalComponent, h } from 'preact';
+import { Fragment, FunctionalComponent, h } from 'preact';
 import { LivestreamDisplayData } from '../../types/TableDisplayData/LivestreamDisplayData';
 import LivestreamComponent from '../LivestreamComponent';
-import style from './style.module.css';
 
 export interface HorizontalLivestreamsBoxProps {
   divPrefix: string;
@@ -13,7 +12,7 @@ const HorizontalLivestreamsBox: FunctionalComponent<
   HorizontalLivestreamsBoxProps
 > = (props: HorizontalLivestreamsBoxProps): h.JSX.Element => {
   return (
-    <div class={style.horizontalFlex}>
+    <>
       {props.data.map((e, index) => (
         <LivestreamComponent
           divPrefix={props.divPrefix}
@@ -28,7 +27,7 @@ const HorizontalLivestreamsBox: FunctionalComponent<
           now={props.now}
         />
       ))}
-    </div>
+    </>
   );
 };
 

@@ -1,12 +1,13 @@
 import * as Api from '../../../services/ApiService';
 import { FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import { LivestreamDisplayData } from '../../../types/TableDisplayData/LivestreamDisplayData';
 import { findClosestSortedDateIndex } from '../../../utils/DateTimeUtils';
 import { LivestreamToDisplayData } from '../../../utils/transform/LivestreamTransform';
 import HorizontalLivestreamsBox from '../../HorizontalLivestreamsBox';
 import { LivestreamsModifier } from '../../../types/ApiTypes';
+import style from './style.module.css';
 
 interface LivestreamsTableProps {
   divPrefix: string;
@@ -20,9 +21,8 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
 ) => {
   // search filter
   const [data, setData] = useState<Array<LivestreamDisplayData>>();
-  useState<boolean>(false);
-
   const [pending, setPending] = useState(true);
+  const thisRef = useRef<HTMLDivElement>(null);
 
   const getLivestreams = async (): Promise<void> => {
     await Api.getLivestreams(props.modifier).then((res) => {
@@ -38,19 +38,19 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
       // TODO: this is a hack to find the closest livestream
       setTimeout(() => {
         // Note: document.getElementById('comp-{index}') only work because array data id is set to their index
-        const currentTime = new Date();
+        const currentTime = new Date(props.now);
         currentTime.setHours(currentTime.getHours() - 1);
         const closestToNow = findClosestSortedDateIndex(arrayData, currentTime);
 
-        document
-          .getElementById(
-            `${props.divPrefix}-${Math.min(arrayData.length - 1, closestToNow)}`
-          )
-          ?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'start',
-          });
+        const scrollToElement: HTMLElement | null = document.getElementById(
+          `${props.divPrefix}-${Math.min(arrayData.length - 1, closestToNow)}`
+        );
+
+        // subtract parent div to avoid over scroll
+        const scrollPixel =
+          (scrollToElement?.offsetLeft ?? 0) -
+          (thisRef.current?.offsetLeft ?? 0);
+        thisRef.current?.scrollTo({ left: scrollPixel, behavior: 'smooth' });
       }, props.delayMs);
     });
   };
@@ -89,7 +89,11 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
     );
   };
 
-  return <GetLivestreamsBox />;
+  return (
+    <div ref={thisRef} class={style.horizontalFlex}>
+      <GetLivestreamsBox />
+    </div>
+  );
 };
 
 export default LivestreamsTable;
