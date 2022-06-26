@@ -38,7 +38,9 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
       // TODO: this is a hack to find the closest livestream
       setTimeout(() => {
         // Note: document.getElementById('comp-{index}') only work because array data id is set to their index
-        const closestToNow = findClosestSortedDateIndex(arrayData, new Date());
+        const currentTime = new Date();
+        currentTime.setHours(currentTime.getHours() - 1);
+        const closestToNow = findClosestSortedDateIndex(arrayData, currentTime);
 
         document
           .getElementById(

@@ -128,7 +128,10 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
       // TODO: this is a hack to find the closest livestream
       setTimeout(() => {
         // Note: document.getElementById('row-{index}') only work because array data id is set to their index
-        const closestToNow = findClosestSortedDateIndex(arrayData, new Date());
+        const currentTime = new Date();
+        currentTime.setHours(currentTime.getHours() - 1);
+        const closestToNow = findClosestSortedDateIndex(arrayData, currentTime);
+
         // scroll to best row - 1 because the header will block the full view of best row
         document
           .getElementById(`row-${Math.max(0, closestToNow - 1)}`)
