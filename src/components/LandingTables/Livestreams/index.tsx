@@ -81,19 +81,17 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
     }
 
     return (
-      <HorizontalLivestreamsBox
-        divPrefix={props.divPrefix}
-        data={data}
-        now={props.now}
-      />
+      <div ref={thisRef} class={style.horizontalFlex}>
+        <HorizontalLivestreamsBox
+          divPrefix={props.divPrefix}
+          data={data}
+          now={props.now}
+        />
+      </div>
     );
   };
 
-  return (
-    <div ref={thisRef} class={style.horizontalFlex}>
-      <GetLivestreamsBox />
-    </div>
-  );
+  return <GetLivestreamsBox />;
 };
 
 export default LivestreamsTable;
