@@ -125,10 +125,14 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
           </li>
         </ul>
       </div>
-      <h3>
-        <Text id="header.livestreaming">Streaming Now</Text>
-      </h3>
-      <IndividualLivestreams livestreams={vtuber.livestreams} />
+      {vtuber.livestreams.length > 0 ? (
+        <>
+          <h3>
+            <Text id="header.livestreaming">Streaming Now</Text>
+          </h3>
+          <IndividualLivestreams livestreams={vtuber.livestreams} />
+        </>
+      ) : null}
     </div>
   );
 };
