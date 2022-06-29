@@ -23,4 +23,5 @@ export const MiruMock: VTuberFullData = {
   popularVideo: { type: 'YouTube', id: 'qwK7r3hbZ6k' },
   nationality: 'TW',
   debutDate: '2018-12-26',
+  livestreams: [],
 };

@@ -1,3 +1,8 @@
-import { VTuberFullData } from '../ApiData/VTuberFullData';
+import { VTuberData } from '../ApiData/VTuberData';
+import { VTuberLivestreamDisplayData } from './VTuberLivestreamDisplayData';
 
-export type VTuberDisplayFullData = VTuberFullData;
+export interface VTuberDisplayFullData extends VTuberData {
+  debutDate?: string;
+  graduateDate?: string;
+  livestreams: Array<VTuberLivestreamDisplayData>;
+}
