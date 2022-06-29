@@ -600,13 +600,18 @@ input[type='button']:hover {
   cursor: pointer;
 }
 
+.container__yETCc {
+  margin: auto;
+  width: 80%;
+}
+
 .flexArea__yWrku {
   display: -ms-flexbox;
   display: flex;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 80%;
+  width: 100%;
   max-width: 600px;
   -ms-flex-pack: space-evenly;
       justify-content: space-evenly;
@@ -628,6 +633,44 @@ input[type='button']:hover {
     -ms-flex-direction: column;
         flex-direction: column;
   }
+}
+
+.horizontalFlex__WM6-g {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  width: 100%;
+  overflow-x: scroll;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+.horizontalFlex__WM6-g > div {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.verticalFlex__5NVv6 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1px;
+  margin-right: 1px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -ms-flex-pack: center;
+      justify-content: center;
+  text-align: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 /* The Modal (background) */
@@ -686,4 +729,4 @@ input[type='button']:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.6a68c.css.map*/
+/*# sourceMappingURL=ssr-bundle.134ed.css.map*/
