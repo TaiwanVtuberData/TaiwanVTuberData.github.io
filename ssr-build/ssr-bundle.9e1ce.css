@@ -642,8 +642,6 @@ input[type='button']:hover {
       flex-direction: row;
   width: 100%;
   overflow-x: scroll;
-  -ms-flex-pack: center;
-      justify-content: center;
 }
 
 .horizontalFlex__WM6-g > div {
@@ -729,4 +727,4 @@ input[type='button']:hover {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.134ed.css.map*/
+/*# sourceMappingURL=ssr-bundle.9e1ce.css.map*/
