@@ -20,7 +20,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
       <div class={style.flexArea}>
         <div class={style.flexButton}>
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdPIe3S3UkVmK0LYwWZWJApR1lO09vogktjDUmD8zwUf8U2hQ/viewform?usp=sf_link"
+            href="https://forms.gle/CnNNGPd52zQLyL929"
             target="_blank"
             rel="noopener noreferrer"
           >
