@@ -28,6 +28,7 @@ const en: Dictionary = {
     appVersion: 'Version: ',
     livestreaming: 'Streaming Now',
     debutToday: 'Debut Today',
+    recentLivestream: 'Recent Livestream',
   },
   table: {
     displayName: 'Name',

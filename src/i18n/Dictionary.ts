@@ -28,6 +28,7 @@ export interface Dictionary {
     appVersion: string;
     livestreaming: string;
     debutToday: string;
+    recentLivestream: string;
   };
   table: {
     displayName: string;
