@@ -3,7 +3,6 @@
   flex-direction: row;
   width: 100%;
   overflow-x: scroll;
-  justify-content: center;
 }
 
 .horizontalFlex > div {
