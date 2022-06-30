@@ -134,7 +134,7 @@ const en: Dictionary = {
     technicalDetails: 'Technical Details',
     bulletPoint1: `Data source: <a href="https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData</a>`,
     bulletPoint2:
-      'Data update time: Every day at 05:30, 11:30, 17:30, 18:30, 19:30 UTC+8',
+      'Data update time: Every day at 05:30, 11:30, 17:30, 19:00, 20:30 UTC+8',
     bulletPoint3: `Site source code: <a href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
   scroll: {
