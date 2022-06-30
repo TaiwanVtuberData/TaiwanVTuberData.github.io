@@ -28,6 +28,7 @@ const zh: Dictionary = {
     appVersion: '版本：',
     livestreaming: '現正實況',
     debutToday: '今日出道',
+    recentLivestream: '最近實況',
   },
   table: {
     displayName: '名稱',
