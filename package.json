@@ -2,7 +2,7 @@
   "homepage": "https://taiwanvtuberdata.github.io/",
   "private": true,
   "name": "taiwan-vtuber-data",
-  "version": "2.0.21",
+  "version": "2.0.22",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "preact build",
@@ -48,7 +48,7 @@
     "jest": "^27.5.1",
     "jest-preset-preact": "^4.0.5",
     "preact-cli": "^3.4.0",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "sirv-cli": "^2.0.2",
     "typescript": "^4.7.4"
   },
