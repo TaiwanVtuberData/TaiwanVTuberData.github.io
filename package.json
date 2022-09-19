@@ -24,7 +24,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^0.26.1",
     "miragejs": "^0.1.45",
     "preact": "^10.11.0",
     "preact-i18n": "^2.4.0-preactx",
