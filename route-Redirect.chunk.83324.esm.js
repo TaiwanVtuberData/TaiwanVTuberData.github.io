@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{KQZE:function(t,e,n){"use strict";n.r(e);var c=n("/Mq+"),o=n("QRet");e.default=t=>(Object(o.d)((()=>{Object(c.d)(t.to,!0)}),[]),null)}}]);
-//# sourceMappingURL=route-Redirect.chunk.83324.esm.js.map
