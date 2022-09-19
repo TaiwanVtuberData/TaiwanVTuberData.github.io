@@ -30,7 +30,7 @@
     "preact-i18n": "^2.4.0-preactx",
     "preact-render-to-string": "^5.2.4",
     "preact-router": "^4.1.0",
-    "react-data-table-component": "^7.5.2",
+    "react-data-table-component": "^7.5.3",
     "react-hstore": "0.0.6",
     "styled-components": "^5.3.5"
   },
