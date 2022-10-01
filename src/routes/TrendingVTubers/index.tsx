@@ -3,7 +3,6 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { Text } from 'preact-i18n';
 import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import { CompactTableStyle } from '../../style/CompactTableStyle';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
@@ -25,6 +24,9 @@ import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { RankingColumn } from '../../tableTypes/RankingColumn';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
+import FilterWindow from '../../components/FilterWindow';
+import { VTuberPopularityDisplayDataFilterModel } from '../../types/TableDisplayData/VTuberPopularityDisplayDataFilterModel';
+import { filterFunction } from '../../utils/FilterModelHelper';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -59,53 +61,29 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<VTuberPopularityDisplayData>>([]);
-  const [filterName, setFilterName] = useState<string>('');
-  const [filterGroup, setFilterGroup] = useState<string>('');
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    useState<boolean>(false);
-  const filteredData = data
-    .filter(
-      (item) =>
-        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
-    )
-    .filter((item) => {
-      if (filterGroup === '') return true;
-      if (item.group === undefined) return false;
-      return item.group.toLowerCase().includes(filterGroup.toLowerCase());
+  const [filterModel, setFilterModel] =
+    useState<VTuberPopularityDisplayDataFilterModel>({
+      name: null,
+      YouTubeId: null,
+      TwitchId: null,
+      group: null,
+      nationality: null,
     });
+  const filteredData = data.filter((e) => filterFunction(e, filterModel));
 
   const searchBarComponent = useMemo(() => {
-    const handleClearName = (): void => {
-      if (filterName) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName('');
-      }
-    };
-
-    const handleClearGroup = (): void => {
-      if (filterGroup) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterGroup('');
-      }
+    const handleFilterWindow = (
+      filterModel: VTuberPopularityDisplayDataFilterModel
+    ): void => {
+      setFilterModel(filterModel);
     };
 
     return (
       <div class={tableStyle.searchBarGroup}>
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByDisplayName}
-          onFilter={(e: any): void => setFilterName(e.target.value)}
-          onClear={handleClearName}
-          filterText={filterName}
-        />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByGroup}
-          onFilter={(e: any): void => setFilterGroup(e.target.value)}
-          onClear={handleClearGroup}
-          filterText={filterGroup}
-        />
+        <FilterWindow filterModel={filterModel} onChange={handleFilterWindow} />
       </div>
     );
-  }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
+  }, [filterModel, props.dictionary]);
 
   const [pending, setPending] = useState(true);
 

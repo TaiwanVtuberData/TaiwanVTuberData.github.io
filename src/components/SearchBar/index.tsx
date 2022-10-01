@@ -3,7 +3,7 @@ import style from './style.module.css';
 
 export interface SearchBarProps {
   placeholderText?: string;
-  filterText: string;
+  filterText: string | null;
   onFilter: (e: unknown) => unknown;
   onClear: () => unknown;
 }
@@ -16,7 +16,7 @@ const SearchBar: FunctionalComponent<SearchBarProps> = (
       type="text"
       class={style.textField}
       placeholder={props.placeholderText}
-      value={props.filterText}
+      value={props.filterText ?? ''}
       onChange={props.onFilter}
     />
 
