@@ -18,7 +18,7 @@ export function filterFunction<
       return false;
     }
 
-    return filter.includes(target);
+    return target.toLowerCase().includes(filter.toLowerCase());
   });
 
   const someFilterNotMatch = result.some((e) => e === false);

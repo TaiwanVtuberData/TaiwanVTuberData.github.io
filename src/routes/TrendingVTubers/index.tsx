@@ -25,8 +25,8 @@ import tableStyle from '../../style/DataTableStyle.module.css';
 import { RankingColumn } from '../../tableTypes/RankingColumn';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import FilterWindow from '../../components/FilterWindow';
-import { VTuberPopularityDisplayDataFilterModel } from '../../types/TableDisplayData/VTuberPopularityDisplayDataFilterModel';
 import { filterFunction } from '../../utils/FilterModelHelper';
+import { VTuberPopularityDisplayDataFilterModel } from '../../types/FilterType/VTuberPopularityDisplayDataFilterModel';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
