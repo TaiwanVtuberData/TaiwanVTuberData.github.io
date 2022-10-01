@@ -7,7 +7,6 @@ import DataTable, {
   TableStyles,
 } from 'react-data-table-component';
 import DropDownList from '../../components/DropDownList';
-import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import { NameColumn } from '../../tableTypes/NameColumn';
 import { VideoColumn } from '../../tableTypes/VideoColumn';
@@ -20,6 +19,9 @@ import { PopularVideoToDisplayData } from '../../utils/transform/PopularVideoTra
 import { GoToPage } from '../../utils/TypeSafeRouting';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { RankingColumn } from '../../tableTypes/RankingColumn';
+import FilterWindow from '../../components/FilterWindow';
+import { VideoPopularityDisplayDataFilterModel } from '../../types/FilterType/VideoPopularityDisplayDataFilterModel';
+import { filterFunction } from '../../utils/FilterModelHelper';
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
@@ -68,35 +70,14 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<VideoPopularityDisplayData>>([]);
-  const [filterName, setFilterName] = useState<string>('');
-  const [filterTitle, setFilterTitle] = useState<string>('');
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    useState<boolean>(false);
-  const filteredData = data
-    .filter(
-      (item) =>
-        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
-    )
-    .filter((item) => {
-      if (item.title === undefined) return true;
-      return item.title.toLowerCase().includes(filterTitle.toLowerCase());
+  const [filterModel, setFilterModel] =
+    useState<VideoPopularityDisplayDataFilterModel>({
+      name: null,
+      title: null,
     });
+  const filteredData = data.filter((e) => filterFunction(e, filterModel));
 
   const searchBarComponent = useMemo(() => {
-    const handleClearName = (): void => {
-      if (filterName) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName('');
-      }
-    };
-
-    const handleClearTitle = (): void => {
-      if (filterTitle) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterTitle('');
-      }
-    };
-
     const optionValue: Array<{
       option: h.JSX.Element;
       value: TrendingVideosModifier;
@@ -111,6 +92,20 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
       },
     ];
 
+    const handleFilterWindow = (
+      filterModel: VideoPopularityDisplayDataFilterModel
+    ): void => {
+      setFilterModel(filterModel);
+    };
+
+    const fieldPlaceHolderMappings: Map<string, string> = new Map<
+      string,
+      string
+    >([
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['title', props.dictionary.table.searchByTitle],
+    ]);
+
     return (
       <div class={tableStyle.searchBarGroup}>
         <DropDownList
@@ -124,27 +119,16 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
             })
           }
         />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByDisplayName}
-          onFilter={(e: any): void => setFilterName(e.target.value)}
-          onClear={handleClearName}
-          filterText={filterName}
-        />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByTitle}
-          onFilter={(e: any): void => setFilterTitle(e.target.value)}
-          onClear={handleClearTitle}
-          filterText={filterTitle}
+        <FilterWindow
+          filterModel={filterModel}
+          fieldPlaceHolderMappings={fieldPlaceHolderMappings}
+          openSearchText={props.dictionary.text.openSearch}
+          closeSearchText={props.dictionary.text.closeSearch}
+          onChange={handleFilterWindow}
         />
       </div>
     );
-  }, [
-    filterName,
-    filterTitle,
-    resetPaginationToggle,
-    props.modifier,
-    props.dictionary,
-  ]);
+  }, [filterModel, props.modifier, props.dictionary]);
   const [pending, setPending] = useState(true);
 
   const getVideos = async (): Promise<void> => {
