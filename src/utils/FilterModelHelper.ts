@@ -21,11 +21,7 @@ export function filterFunction<
     return filter.includes(target);
   });
 
-  console.log(result);
-
   const someFilterNotMatch = result.some((e) => e === false);
-
-  console.log(someFilterNotMatch);
 
   return !someFilterNotMatch;
 }

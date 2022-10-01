@@ -1,0 +1,16 @@
+.floating {
+  width: 100px;
+  height: 100%;
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  z-index: 999;
+}
+
+.floatingHidden {
+  visibility: hidden;
+}
+
+.floatingShowing {
+  visibility: visible;
+}

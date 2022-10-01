@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { trimOrNullOnEmpty } from '../../utils/StringUtils';
 import SearchBar from '../SearchBar';
+import style from './style.module.css';
 
 export interface FilterWindowProps<FilterModel extends object> {
   filterModel: FilterModel;
@@ -60,10 +61,17 @@ function FilterWindow<FilterModel extends object>(
     />
   );
 
+  const toggleFloatingClass = (): string => {
+    if (isOpened) return `${style.floating} ${style.floatingShowing}`;
+    else return `${style.floating} ${style.floatingHidden}`;
+  };
+
   return (
     <div>
       <ToggleButton />
-      {isOpened === true ? <div>{fields}</div> : null}
+      {isOpened === true ? (
+        <div class={toggleFloatingClass()}>{fields}</div>
+      ) : null}
     </div>
   );
 }
