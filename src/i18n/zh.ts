@@ -94,6 +94,8 @@ const zh: Dictionary = {
     loading: '載入中...',
     onlyShowing: '只顯示',
     noData: '無資料',
+    openSearch: '新增搜尋',
+    closeSearch: '關閉',
   },
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',

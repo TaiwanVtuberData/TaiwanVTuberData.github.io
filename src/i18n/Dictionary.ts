@@ -88,6 +88,8 @@ export interface Dictionary {
     loading: string;
     onlyShowing: string;
     noData: string;
+    openSearch: string;
+    closeSearch: string;
   };
   toolTip: {
     eventCalendar: string;

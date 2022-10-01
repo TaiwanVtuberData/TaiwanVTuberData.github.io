@@ -94,6 +94,8 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         <FilterWindow
           filterModel={filterModel}
           fieldPlaceHolderMappings={fieldPlaceHolderMappings}
+          openSearchText={props.dictionary.text.openSearch}
+          closeSearchText={props.dictionary.text.closeSearch}
           onChange={handleFilterWindow}
         />
       </div>

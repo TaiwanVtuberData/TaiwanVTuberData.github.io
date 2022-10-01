@@ -6,12 +6,15 @@ import SearchBar from '../SearchBar';
 export interface FilterWindowProps<FilterModel extends object> {
   filterModel: FilterModel;
   fieldPlaceHolderMappings: Map<string, string>;
+  openSearchText: string;
+  closeSearchText: string;
   onChange?: (e: FilterModel) => void;
 }
 
 function FilterWindow<FilterModel extends object>(
   props: FilterWindowProps<FilterModel>
 ): JSX.Element {
+  const [isOpened, setIsOpened] = useState<boolean>(false);
   const [filter, setFilter] = useState<FilterModel>(props.filterModel);
 
   function handleOnChange(e: FilterModel): void {
@@ -49,7 +52,20 @@ function FilterWindow<FilterModel extends object>(
     createSearchBar(key)
   );
 
-  return <div>{fields}</div>;
+  const ToggleButton = (): JSX.Element => (
+    <input
+      type="button"
+      value={isOpened === true ? props.closeSearchText : props.openSearchText}
+      onClick={(): void => setIsOpened(!isOpened)}
+    />
+  );
+
+  return (
+    <div>
+      <ToggleButton />
+      {isOpened === true ? <div>{fields}</div> : null}
+    </div>
+  );
 }
 
 export default FilterWindow;

@@ -94,6 +94,8 @@ const en: Dictionary = {
     loading: 'Loading...',
     onlyShowing: 'only showing ',
     noData: 'No Data',
+    openSearch: 'Add filter',
+    closeSearch: 'Close',
   },
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',
