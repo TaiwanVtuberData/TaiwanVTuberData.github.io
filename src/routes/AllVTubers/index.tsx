@@ -4,7 +4,6 @@ import { Text } from 'preact-i18n';
 import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import DropDownList from '../../components/DropDownList';
-import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import { GroupColumn } from '../../tableTypes/GroupColumn';
 import { NameColumn } from '../../tableTypes/NameColumn';
@@ -21,6 +20,9 @@ import {
 import { VTuberBasicToDisplay } from '../../utils/transform/BasicTransform';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
+import FilterWindow from '../../components/FilterWindow';
+import { filterFunction } from '../../utils/FilterModelHelper';
+import { VTuberDisplayDataFilterModel } from '../../types/FilterType/VTuberDisplayDataFilterModel';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -43,37 +45,18 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<VTuberDisplayData>>([]);
-  const [filterName, setFilterName] = useState<string>('');
-  const [filterGroup, setFilterGroup] = useState<string>('');
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    useState<boolean>(false);
+  const [filterModel, setFilterModel] = useState<VTuberDisplayDataFilterModel>({
+    name: null,
+    YouTubeId: null,
+    TwitchId: null,
+    group: null,
+    nationality: null,
+  });
   const filteredData = data
-    .filter(
-      (item) =>
-        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
-    )
-    .filter((item) => {
-      if (filterGroup === '') return true;
-      if (item.group === undefined) return false;
-      return item.group.toLowerCase().includes(filterGroup.toLowerCase());
-    })
+    .filter((e) => filterFunction(e, filterModel))
     .sort(SubscriberCountDescendingSort(sortMethod));
 
   const searchBarComponent = useMemo(() => {
-    const handleClearName = (): void => {
-      if (filterName) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName('');
-      }
-    };
-
-    const handleClearGroup = (): void => {
-      if (filterGroup) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterGroup('');
-      }
-    };
-
     const optionValue: Array<{
       option: h.JSX.Element;
       value: SortMethod;
@@ -98,6 +81,23 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       },
     ];
 
+    const handleFilterWindow = (
+      filterModel: VTuberDisplayDataFilterModel
+    ): void => {
+      setFilterModel(filterModel);
+    };
+
+    const fieldPlaceHolderMappings: Map<string, string> = new Map<
+      string,
+      string
+    >([
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
+    ]);
+
     return (
       <div class={tableStyle.searchBarGroup}>
         <DropDownList
@@ -106,21 +106,16 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
           optionValue={optionValue}
           onChange={(e: any) => setSortMethod(e.target.value)}
         />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByDisplayName}
-          onFilter={(e: any): void => setFilterName(e.target.value)}
-          onClear={handleClearName}
-          filterText={filterName}
-        />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByGroup}
-          onFilter={(e: any): void => setFilterGroup(e.target.value)}
-          onClear={handleClearGroup}
-          filterText={filterGroup}
+        <FilterWindow
+          filterModel={filterModel}
+          fieldPlaceHolderMappings={fieldPlaceHolderMappings}
+          openSearchText={props.dictionary.text.openSearch}
+          closeSearchText={props.dictionary.text.closeSearch}
+          onChange={handleFilterWindow}
         />
       </div>
     );
-  }, [filterName, filterGroup, resetPaginationToggle, props.dictionary]);
+  }, [filterModel, props.dictionary]);
 
   const [pending, setPending] = useState(true);
 

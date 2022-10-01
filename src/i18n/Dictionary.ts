@@ -44,7 +44,10 @@ export interface Dictionary {
     hiddenCount: string;
     noDataCount: string;
     searchByDisplayName: string;
+    searchByYouTubeId: string;
+    searchByTwitchId: string;
     searchByGroup: string;
+    searchByNationality: string;
     searchByGroupMember: string;
     searchByDate: string;
     searchByTitle: string;
@@ -85,6 +88,8 @@ export interface Dictionary {
     loading: string;
     onlyShowing: string;
     noData: string;
+    openSearch: string;
+    closeSearch: string;
   };
   toolTip: {
     eventCalendar: string;

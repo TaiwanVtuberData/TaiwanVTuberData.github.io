@@ -4,7 +4,6 @@ import { Text } from 'preact-i18n';
 import { useState, useMemo, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
-import SearchBar from '../../components/SearchBar';
 import { Dictionary } from '../../i18n/Dictionary';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import IsTodayRowStyle from '../../style/IsTodayRowStyles';
@@ -21,6 +20,9 @@ import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../.
 import { VTuberDebutToDisplay } from '../../utils/transform/DebutTransform';
 import tableStyle from '../../style/DataTableStyle.module.css';
 import { DebutDateColumn } from '../../tableTypes/DebutDateColumn';
+import { VTuberDebutDisplayDataFilterModel } from '../../types/FilterType/VTuberDebutDisplayDataFilterModel';
+import { filterFunction } from '../../utils/FilterModelHelper';
+import FilterWindow from '../../components/FilterWindow';
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -48,78 +50,48 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<VTuberDebutDisplayData>>([]);
-  const [filterDate, setFilterDate] = useState<string>('');
-  const [filterName, setFilterName] = useState<string>('');
-  const [filterGroup, setFilterGroup] = useState<string>('');
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    useState<boolean>(false);
-  const filteredData = data
-    .filter(
-      (item) =>
-        item.debutDate &&
-        item.debutDate.toLowerCase().includes(filterDate.toLowerCase())
-    )
-    .filter(
-      (item) =>
-        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
-    )
-    .filter((item) => {
-      if (filterGroup === '') return true;
-      if (item.group === undefined) return false;
-      return item.group.toLowerCase().includes(filterGroup.toLowerCase());
+  const [filterModel, setFilterModel] =
+    useState<VTuberDebutDisplayDataFilterModel>({
+      name: null,
+      YouTubeId: null,
+      TwitchId: null,
+      group: null,
+      nationality: null,
+      debutDate: null,
     });
+  const filteredData = data.filter((e) => filterFunction(e, filterModel));
 
   const searchBarComponent = useMemo(() => {
-    const handleClearDate = (): void => {
-      if (filterDate) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterDate('');
-      }
+    const handleFilterWindow = (
+      filterModel: VTuberDebutDisplayDataFilterModel
+    ): void => {
+      setFilterModel(filterModel);
     };
 
-    const handleClearName = (): void => {
-      if (filterName) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName('');
-      }
-    };
-
-    const handleClearGroup = (): void => {
-      if (filterGroup) {
-        setResetPaginationToggle(!resetPaginationToggle);
-        setFilterGroup('');
-      }
-    };
+    const fieldPlaceHolderMappings: Map<string, string> = new Map<
+      string,
+      string
+    >([
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
+      ['debutDate', props.dictionary.table.searchByDate],
+    ]);
 
     return (
       <div class={tableStyle.searchBarGroup}>
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByDate}
-          onFilter={(e: any): void => setFilterDate(e.target.value)}
-          onClear={handleClearDate}
-          filterText={filterDate}
-        />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByDisplayName}
-          onFilter={(e: any): void => setFilterName(e.target.value)}
-          onClear={handleClearName}
-          filterText={filterName}
-        />
-        <SearchBar
-          placeholderText={props.dictionary.table.searchByGroup}
-          onFilter={(e: any): void => setFilterGroup(e.target.value)}
-          onClear={handleClearGroup}
-          filterText={filterGroup}
+        <FilterWindow
+          filterModel={filterModel}
+          fieldPlaceHolderMappings={fieldPlaceHolderMappings}
+          openSearchText={props.dictionary.text.openSearch}
+          closeSearchText={props.dictionary.text.closeSearch}
+          onChange={handleFilterWindow}
         />
       </div>
     );
-  }, [
-    filterDate,
-    filterName,
-    filterGroup,
-    resetPaginationToggle,
-    props.dictionary,
-  ]);
+  }, [filterModel, props.dictionary]);
 
   const [pending, setPending] = useState(true);
 
