@@ -78,9 +78,24 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
       setFilterModel(filterModel);
     };
 
+    const fieldPlaceHolderMappings: Map<string, string> = new Map<
+      string,
+      string
+    >([
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
+    ]);
+
     return (
       <div class={tableStyle.searchBarGroup}>
-        <FilterWindow filterModel={filterModel} onChange={handleFilterWindow} />
+        <FilterWindow
+          filterModel={filterModel}
+          fieldPlaceHolderMappings={fieldPlaceHolderMappings}
+          onChange={handleFilterWindow}
+        />
       </div>
     );
   }, [filterModel, props.dictionary]);

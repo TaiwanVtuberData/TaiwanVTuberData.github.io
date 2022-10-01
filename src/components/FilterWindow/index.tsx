@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar';
 
 export interface FilterWindowProps<FilterModel extends object> {
   filterModel: FilterModel;
+  fieldPlaceHolderMappings: Map<string, string>;
   onChange?: (e: FilterModel) => void;
 }
 
@@ -33,7 +34,9 @@ function FilterWindow<FilterModel extends object>(
       return (
         <SearchBar
           key={key}
-          placeholderText={key}
+          placeholderText={props.fieldPlaceHolderMappings.get(
+            keyTyped as string
+          )}
           filterText={filter[keyTyped] as string | null}
           onFilter={(e: any): void => handleOnFilterChange(e.target.value)}
           onClear={(): void => handleOnFilterChange(null)}
