@@ -28,7 +28,7 @@
     "miragejs": "^0.1.45",
     "preact": "^10.11.3",
     "preact-i18n": "^2.4.0-preactx",
-    "preact-render-to-string": "^5.2.4",
+    "preact-render-to-string": "^5.2.6",
     "preact-router": "^4.1.0",
     "react-data-table-component": "^7.5.3",
     "react-hstore": "0.0.6",
