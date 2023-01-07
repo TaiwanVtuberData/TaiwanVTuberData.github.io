@@ -1,4 +1,4 @@
-import routePrefix from '../routePrefix';
+import { ROUTE_PREFIX } from '../Config';
 import { SortOrder, TrendingVideosModifier } from '../types/ApiTypes';
 
 interface BaseTypeSafeRoute {
@@ -163,11 +163,11 @@ export const GetPlaceholderRoute = (
   route: PlaceholderRoute,
   placerHolderText: string
 ): string => {
-  return `${routePrefix}/${GetPlaceholderBaseRoute(route, placerHolderText)}`;
+  return `${ROUTE_PREFIX}/${GetPlaceholderBaseRoute(route, placerHolderText)}`;
 };
 
 export const GetRoute = (route: TypeSafeRoute): string => {
-  return `${routePrefix}/${GetBaseRoute(route)}`;
+  return `${ROUTE_PREFIX}/${GetBaseRoute(route)}`;
 };
 
 export const GoToPage = (route: TypeSafeRoute): void => {

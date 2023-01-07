@@ -2,6 +2,7 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { Dictionary } from '../../i18n/Dictionary';
 import { Text } from 'preact-i18n';
 import style from './style.module.css';
+import { GITHUB_ISSUE_URL, GOOGLE_FORM_URL } from '../../Config';
 
 export interface ReportIssuePageProps {
   dictionary: Dictionary;
@@ -19,11 +20,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
       </h1>
       <div class={style.flexArea}>
         <div class={style.flexButton}>
-          <a
-            href="https://forms.gle/CnNNGPd52zQLyL929"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
             <img class={style.GoogleFormIcon} />
             <Text id="text.reportUsingGoogleForm">
               Report using Google Form
@@ -31,11 +28,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
           </a>
         </div>
         <div class={style.flexButton}>
-          <a
-            href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={GITHUB_ISSUE_URL} target="_blank" rel="noopener noreferrer">
             <img class={style.GitHubIcon} />
             <Text id="text.reportUsingGitHub">Report using GitHub</Text>
           </a>

@@ -13,7 +13,7 @@ import { GetRoute } from '../../utils/TypeSafeRouting';
 import LanguageDropDown from '../LanguageDropDown';
 import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
-import AppVersion from '../../AppVersion';
+import { APP_VERSION } from '../../Config';
 
 export interface SidebarProps {
   locale: validI18n;
@@ -156,7 +156,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         <div>
           <span>
             <Text id="header.appVersion">Version: </Text>
-            {AppVersion}
+            {APP_VERSION}
           </span>
         </div>
       </div>

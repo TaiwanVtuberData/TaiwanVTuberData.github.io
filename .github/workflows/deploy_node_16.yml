@@ -18,6 +18,10 @@ jobs:
       matrix:
         node-version: [16.x] # We will deploy with only one version of node  
 
+    env:
+      GOOGLE_FORM_URL: ${{ secrets.GOOGLE_FORM_URL }}
+      _P_GITHUB_ISSUE_URL: ${{ secrets._P_GITHUB_ISSUE_URL }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it

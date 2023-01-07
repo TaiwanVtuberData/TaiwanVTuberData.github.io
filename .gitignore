@@ -4,3 +4,4 @@ node_modules
 /gh-pages
 /gh-pages.pub
 size-plugin.json
+.env
