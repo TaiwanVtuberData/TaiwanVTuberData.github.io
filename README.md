@@ -9,7 +9,7 @@
 
 ## VTuber 資料登載/更新/錯誤回報方式
 * 使用本 repository 的 [Issues 頁面](https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io/issues) 發 issue
-* 使用 [Google 表單](https://forms.gle/CnNNGPd52zQLyL929) ，可於 [回報記錄](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/discussions/65) 查看回報結果
+* 使用 [Google 表單](https://forms.gle/SuVmu9W8zpjKBqtD9) ，可於 [回報記錄](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/discussions/74) 查看回報結果
 
 ## CLI Commands
 
