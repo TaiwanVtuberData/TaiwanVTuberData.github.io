@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { getCurrentApiSourceState } from '../global/CurrentApiSource';
 import { getNationalityModifierState } from '../global/DisplayNationality';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
 import { LivestreamDataResponse } from '../types/ApiData/LivestreamData';
@@ -46,7 +47,15 @@ const setCommitDetail = async (): Promise<void> => {
       };
     });
 
-  axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
+  switch (getCurrentApiSourceState()) {
+    case 'github':
+      axios.defaults.baseURL = `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
+      break;
+    case 'statically':
+    default:
+      axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
+      break;
+  }
 };
 
 export const bootstrapApi = async (): Promise<boolean> => {

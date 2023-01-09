@@ -37,6 +37,11 @@ import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
 import VTuberProfileModal from './VTuberProfileModal';
 import LivestreamsPage from '../routes/Livestreams';
 import Redirect from '../routes/Redirect';
+import { apiSourceArray, ApiSourceModifier } from '../types/Common/ApiSource';
+import {
+  getCurrentApiSourceState,
+  setCurrentApiSource,
+} from '../global/CurrentApiSource';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -49,6 +54,10 @@ const App: FunctionalComponent = () => {
       getCookie('nationality', nationalityArray, 'all')
     );
 
+  const [apiSource, setApiSource] = useState<ApiSourceModifier>(
+    getCookie('api-source', apiSourceArray, 'statically')
+  );
+
   const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
 
   const startApi = async (): Promise<void> => {
@@ -59,6 +68,7 @@ const App: FunctionalComponent = () => {
 
   useEffect(() => {
     setNationalityModifier(displayNationality);
+    setCurrentApiSource(apiSource);
     startApi();
   }, []);
 
@@ -75,14 +85,21 @@ const App: FunctionalComponent = () => {
   useEffect(() => {
     const prevNationalityModifier: NationalityModifier =
       getNationalityModifierState();
+    const prevApiSource: ApiSourceModifier = getCurrentApiSourceState();
 
     // only reload page on value changed
-    if (displayNationality !== prevNationalityModifier) {
+    if (
+      displayNationality !== prevNationalityModifier ||
+      apiSource !== prevApiSource
+    ) {
       setNationalityModifier(displayNationality);
       setCookie('nationality', nationalityArray, displayNationality);
+
+      setCurrentApiSource(apiSource);
+      setCookie('api-source', apiSourceArray, apiSource);
       window.location.reload();
     }
-  }, [displayNationality]);
+  }, [displayNationality, apiSource]);
 
   return (
     <div id="preact_root">
@@ -94,6 +111,8 @@ const App: FunctionalComponent = () => {
               setLocale={setLocale}
               nationality={displayNationality}
               setNationality={setDisplayNationality}
+              apiSource={apiSource}
+              setApiSource={setApiSource}
             />
             <ScrollToTopBottom />
             <VTuberProfileModal />

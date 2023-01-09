@@ -14,12 +14,17 @@ import LanguageDropDown from '../LanguageDropDown';
 import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
 import { APP_VERSION } from '../../Config';
+import { ApiSourceModifier } from '../../types/Common/ApiSource';
+import ApiSourceDropDown from '../ApiSourceDropDown';
+import { ApiSourceOptions } from '../../types/ApiSourceOptions';
 
 export interface SidebarProps {
   locale: validI18n;
   setLocale: StateUpdater<validI18n>;
   nationality: NationalityModifier;
   setNationality: StateUpdater<NationalityModifier>;
+  apiSource: ApiSourceModifier;
+  setApiSource: StateUpdater<ApiSourceModifier>;
 }
 
 const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
@@ -149,6 +154,16 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
             locale={props.locale}
             onChange={(newLanguage: validI18n): void => {
               props.setLocale(newLanguage);
+              closeSidebar();
+            }}
+          />
+        </div>
+        <div>
+          <ApiSourceDropDown
+            apiSourceOptions={ApiSourceOptions}
+            apiSource={props.apiSource}
+            onChange={(newApiSource: ApiSourceModifier): void => {
+              props.setApiSource(newApiSource);
               closeSidebar();
             }}
           />
