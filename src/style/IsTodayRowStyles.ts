@@ -1,6 +1,9 @@
+import { DebutInfo } from '../types/DebutInfo';
+
 const IsTodayRowStyle = [
   {
-    when: (row: { isToday: boolean }): boolean => row.isToday,
+    when: (row: { debutInfo: DebutInfo }): boolean =>
+      row.debutInfo.hasDebutInfo === true && row.debutInfo.isToday,
     style: {
       color: 'mediumblue',
     },

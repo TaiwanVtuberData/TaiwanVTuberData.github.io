@@ -10,9 +10,7 @@ const getDateAfterTimezoneAdjustment = (
 ): Date => {
   const hourOffsetFromUTC =
     hourOffsetFromDateAPI(time.getTimezoneOffset()) + timezoneHourDiff;
-    time.setTime(
-      time.getTime() + hourOffsetFromUTC * 60 * 60 * 1000
-  );
+  time.setTime(time.getTime() + hourOffsetFromUTC * 60 * 60 * 1000);
 
   return time;
 };

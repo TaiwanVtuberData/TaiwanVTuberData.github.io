@@ -1,5 +1,6 @@
 import { VTuberData } from '../../types/ApiData/VTuberData';
 import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
+import { maybeDebutStringToDebutInfo } from './DebutStringToDebutInfo';
 
 export const VTuberBasicToDisplay = (e: VTuberData): VTuberDisplayData => ({
   id: e.id,
@@ -13,4 +14,5 @@ export const VTuberBasicToDisplay = (e: VTuberData): VTuberDisplayData => ({
   popularVideo: e.popularVideo,
   group: e.group,
   nationality: e.nationality,
+  debutInfo: maybeDebutStringToDebutInfo(e.debutDate),
 });
