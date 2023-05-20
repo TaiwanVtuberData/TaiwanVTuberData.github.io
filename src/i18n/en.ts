@@ -29,6 +29,7 @@ const en: Dictionary = {
     livestreaming: 'Streaming Now',
     debutToday: 'Debut Today',
     recentLivestream: 'Recent Livestream',
+    apiSourceSelection: 'API Source(Select GitHub if the page is not loading):',
   },
   table: {
     displayName: 'Name',
@@ -151,6 +152,10 @@ const en: Dictionary = {
     TW: 'Taiwanese',
     HK: 'Hong Kongers',
     MY: 'Malaysian',
+  },
+  apiSourceTitle: {
+    statically: 'Statically',
+    github: 'GitHub',
   },
 } as const;
 

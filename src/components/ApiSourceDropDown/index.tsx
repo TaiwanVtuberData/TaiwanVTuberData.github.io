@@ -1,4 +1,5 @@
 import { Fragment, h } from 'preact';
+import { Text } from 'preact-i18n';
 import dropDownStyle from '../../style/DropDownStyle.module.css';
 import { ApiSourceModifier } from '../../types/Common/ApiSource';
 
@@ -11,7 +12,9 @@ interface ApiSourceDropDownProps {
 const ApiSourceDropDown = (props: ApiSourceDropDownProps): JSX.Element => {
   return (
     <>
-      {'選擇 API 來源(如果無法載入請選擇 github)：'}
+      <Text id="header.apiSourceSelection">
+        API Source(Select GitHub if the page is not loading):
+      </Text>
       <select
         class={dropDownStyle.dropDown}
         value={props.apiSource}
@@ -21,7 +24,7 @@ const ApiSourceDropDown = (props: ApiSourceDropDownProps): JSX.Element => {
       >
         {props.apiSourceOptions.map((e) => (
           <option key={e} value={e}>
-            {e}
+            <Text id={`apiSourceTitle.${e}`}>placeholder</Text>
           </option>
         ))}
       </select>

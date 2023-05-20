@@ -29,6 +29,7 @@ const zh: Dictionary = {
     livestreaming: '現正實況',
     debutToday: '今日出道',
     recentLivestream: '最近實況',
+    apiSourceSelection: 'API 來源(若頁面無法載入請選擇 GitHub)：',
   },
   table: {
     displayName: '名稱',
@@ -145,6 +146,10 @@ const zh: Dictionary = {
     TW: '臺灣',
     HK: '香港',
     MY: '馬來西亞',
+  },
+  apiSourceTitle: {
+    statically: 'Statically',
+    github: 'GitHub',
   },
 } as const;
 
