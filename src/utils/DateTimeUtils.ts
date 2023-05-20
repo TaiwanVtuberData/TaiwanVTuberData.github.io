@@ -4,7 +4,7 @@ const hourOffsetFromDateAPI = (minutes: number): number => minutes / 60;
 
 const prefixZero = (num: number): string => num.toString().padStart(2, '0');
 
-const getDateAfterTimezoneAdjustment = (
+export const getDateAfterTimezoneAdjustment = (
   time: Date,
   timezoneHourDiff: number
 ): Date => {
@@ -12,7 +12,9 @@ const getDateAfterTimezoneAdjustment = (
     hourOffsetFromDateAPI(time.getTimezoneOffset()) + timezoneHourDiff;
   time.setTime(time.getTime() + hourOffsetFromUTC * 60 * 60 * 1000);
 
-  return time;
+  const date = new Date(time.getFullYear(), time.getMonth(), time.getDate());
+
+  return date;
 };
 
 export const getISODateString = (

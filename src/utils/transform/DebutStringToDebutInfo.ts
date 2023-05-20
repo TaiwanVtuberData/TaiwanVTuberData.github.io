@@ -12,16 +12,7 @@ export const maybeDebutStringToDebutInfo = (
   if (debutString === null || debutString === undefined)
     return { hasDebutInfo: false };
 
-  return {
-    hasDebutInfo: true,
-    debutDate: debutString,
-    isToday: debutString === TODAY_DATE_STRING,
-    isRecentlyDebut:
-      dateDiffInDays(
-        TODAY_DATE,
-        dateStringToDate(debutString, TIMEZONE_DIFF_IN_HOUR)
-      ) < 30,
-  };
+  return debutStringToDebutInfo(debutString);
 };
 
 export const debutStringToDebutInfo = (debutString: string): HasDebutInfo => {
@@ -31,8 +22,8 @@ export const debutStringToDebutInfo = (debutString: string): HasDebutInfo => {
     isToday: debutString === TODAY_DATE_STRING,
     isRecentlyDebut:
       dateDiffInDays(
-        TODAY_DATE,
-        dateStringToDate(debutString, TIMEZONE_DIFF_IN_HOUR)
+        dateStringToDate(debutString, TIMEZONE_DIFF_IN_HOUR),
+        TODAY_DATE
       ) < 30,
   };
 };
