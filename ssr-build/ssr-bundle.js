@@ -1207,7 +1207,7 @@ var getEnvOrEmpty = function getEnvOrEmpty(env) {
   return defaultValue;
 };
 
-var APP_VERSION = getEnvOrEmpty("2.1.1");
+var APP_VERSION = getEnvOrEmpty("2.1.2");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/SuVmu9W8zpjKBqtD9");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
@@ -1274,13 +1274,17 @@ var ShowVideoButton = Object(preact_i18n__WEBPACK_IMPORTED_MODULE_1__[/* withTex
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Fragment) {/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("HteQ");
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_DropDownStyle_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("otXJ");
+/* harmony import */ var preact_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("OhSV");
+/* harmony import */ var _style_DropDownStyle_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("otXJ");
+
 
 
 
 var ApiSourceDropDown = function ApiSourceDropDown(props) {
-  return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Fragment, null, '選擇 API 來源(如果無法載入請選擇 github)：', Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("select", {
-    class: _style_DropDownStyle_module_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].dropDown,
+  return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_1__[/* Text */ "c"], {
+    id: "header.apiSourceSelection"
+  }, "API Source(Select GitHub if the page is not loading):"), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("select", {
+    class: _style_DropDownStyle_module_css__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].dropDown,
     value: props.apiSource,
     onChange: function onChange(event) {
       props.onChange(event.target.value);
@@ -1289,7 +1293,9 @@ var ApiSourceDropDown = function ApiSourceDropDown(props) {
     return Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("option", {
       key: e,
       value: e
-    }, e);
+    }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_1__[/* Text */ "c"], {
+      id: "apiSourceTitle.".concat(e)
+    }, "placeholder"));
   })));
 };
 
@@ -10245,7 +10251,8 @@ var zh = {
     appVersion: '版本：',
     livestreaming: '現正實況',
     debutToday: '今日出道',
-    recentLivestream: '最近實況'
+    recentLivestream: '最近實況',
+    apiSourceSelection: 'API 來源(若頁面無法載入請選擇 GitHub)：'
   },
   table: {
     displayName: '名稱',
@@ -10360,6 +10367,10 @@ var zh = {
     TW: '臺灣',
     HK: '香港',
     MY: '馬來西亞'
+  },
+  apiSourceTitle: {
+    statically: 'Statically',
+    github: 'GitHub'
   }
 };
 /* harmony default export */ __webpack_exports__["a"] = (zh);
@@ -31341,7 +31352,8 @@ var en = {
     appVersion: 'Version: ',
     livestreaming: 'Streaming Now',
     debutToday: 'Debut Today',
-    recentLivestream: 'Recent Livestream'
+    recentLivestream: 'Recent Livestream',
+    apiSourceSelection: 'API Source(Select GitHub if the page is not loading):'
   },
   table: {
     displayName: 'Name',
@@ -31456,6 +31468,10 @@ var en = {
     TW: 'Taiwanese',
     HK: 'Hong Kongers',
     MY: 'Malaysian'
+  },
+  apiSourceTitle: {
+    statically: 'Statically',
+    github: 'GitHub'
   }
 };
 /* harmony default export */ __webpack_exports__["a"] = (en);
