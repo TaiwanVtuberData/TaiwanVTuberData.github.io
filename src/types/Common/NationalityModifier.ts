@@ -4,4 +4,4 @@ export const nationalityArray: ReadonlyArray<string> = [
   'HK',
   'MY',
 ] as const;
-export type NationalityModifier = typeof nationalityArray[number];
+export type NationalityModifier = (typeof nationalityArray)[number];
