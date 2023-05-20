@@ -14,7 +14,6 @@ import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
 import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
-import { getISODateString } from '../../utils/DateTimeUtils';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
@@ -96,12 +95,11 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    const todayDate: string = getISODateString(new Date(), 8);
     await Api.getGraduateVTubers('recent').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.graduateDate.localeCompare(a.graduateDate))
-          .map((e) => VTuberGraduateToDisplay(e, todayDate))
+          .map((e) => VTuberGraduateToDisplay(e))
       );
       setPending(false);
     });

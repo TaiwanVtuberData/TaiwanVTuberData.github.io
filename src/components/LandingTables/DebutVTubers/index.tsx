@@ -10,7 +10,6 @@ import { NameColumn } from '../../../tableTypes/NameColumn';
 import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
 import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
 import { VTuberDebutDisplayData } from '../../../types/TableDisplayData/VTuberDebutDisplayData';
-import { getISODateString } from '../../../utils/DateTimeUtils';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
 import { VTuberDebutToDisplay } from '../../../utils/transform/DebutTransform';
 import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
@@ -33,12 +32,11 @@ const DebutVTubersTable: FunctionalComponent = () => {
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    const todayDate: string = getISODateString(new Date(), 8);
     await Api.getDebutVTubers('next-7-days').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => a.debutDate.localeCompare(b.debutDate))
-          .map((e) => VTuberDebutToDisplay(e, todayDate))
+          .map((e) => VTuberDebutToDisplay(e))
       );
       setPending(false);
     });
