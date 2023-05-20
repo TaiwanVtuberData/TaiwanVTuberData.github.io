@@ -5,10 +5,10 @@
   "version": "2.1.0",
   "license": "BSD-3-Clause",
   "scripts": {
-    "build": "preact build",
-    "build:gh": "preact build && cp src/404.html build/404.html",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build",
+    "build:gh": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build && cp src/404.html build/404.html",
     "serve": "sirv build --port 8080 --cors --single",
-    "dev": "preact watch",
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --config prettier.config.js src/**/*.{js,jsx,ts,tsx,css,json} --write",
     "test": "jest ./src/tests"
@@ -41,6 +41,7 @@
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
+    "cross-env": "^7.0.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^4.1.0",
     "eslint": "^8.41.0",
