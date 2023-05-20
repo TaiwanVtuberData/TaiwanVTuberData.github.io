@@ -1,6 +1,7 @@
 import { VideoInfo } from '../Common/VideoInfo';
 import { Activity } from '../Common/Activity';
 import { CountType } from '../Common/CountType';
+import { DebutInfo } from '../DebutInfo';
 
 export interface VTuberDisplayData {
   id: string;
@@ -14,4 +15,5 @@ export interface VTuberDisplayData {
   popularVideo?: VideoInfo;
   group?: string;
   nationality?: string;
+  debutInfo: DebutInfo;
 }

@@ -1,12 +1,11 @@
 import { VTuberDebutData } from '../../types/ApiData/VTuberDebutData';
 import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
 import { VTuberBasicToDisplay } from './BasicTransform';
+import { debutStringToDebutInfo } from './DebutStringToDebutInfo';
 
 export const VTuberDebutToDisplay = (
-  e: VTuberDebutData,
-  todayDate: string
+  e: VTuberDebutData
 ): VTuberDebutDisplayData => ({
   ...VTuberBasicToDisplay(e),
-  debutDate: e.debutDate,
-  isToday: e.debutDate === todayDate,
+  debutInfo: debutStringToDebutInfo(e.debutDate),
 });

@@ -4,13 +4,24 @@ const hourOffsetFromDateAPI = (minutes: number): number => minutes / 60;
 
 const prefixZero = (num: number): string => num.toString().padStart(2, '0');
 
+export const getDateAfterTimezoneAdjustment = (
+  time: Date,
+  timezoneHourDiff: number
+): Date => {
+  const hourOffsetFromUTC =
+    hourOffsetFromDateAPI(time.getTimezoneOffset()) + timezoneHourDiff;
+  time.setTime(time.getTime() + hourOffsetFromUTC * 60 * 60 * 1000);
+
+  const date = new Date(time.getFullYear(), time.getMonth(), time.getDate());
+
+  return date;
+};
+
 export const getISODateString = (
-  date: Date,
+  time: Date,
   timezoneHourDiff: number
 ): string => {
-  const hourOffsetFromUTC =
-    hourOffsetFromDateAPI(date.getTimezoneOffset()) + timezoneHourDiff;
-  date.setTime(date.getTime() + hourOffsetFromUTC * 60 * 60 * 1000);
+  const date = getDateAfterTimezoneAdjustment(time, timezoneHourDiff);
   // ECMAScript defines month as 0 to 11
   return (
     // eslint(prefer-template) suggests
@@ -79,4 +90,23 @@ export const findClosestSortedDateIndex = (
   }
 
   return closest;
+};
+
+// https://stackoverflow.com/a/15289883
+export const dateDiffInDays = (a: Date, b: Date): number => {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  // Discard the time and time-zone information.
+  const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+  return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+};
+
+export const dateStringToDate = (
+  dateString: string,
+  timezoneHourDiff: number
+): Date => {
+  const currentDate = new Date(dateString);
+
+  return getDateAfterTimezoneAdjustment(currentDate, timezoneHourDiff);
 };
