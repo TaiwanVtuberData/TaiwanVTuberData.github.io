@@ -20,6 +20,9 @@ export default {
     const gitHubIssueEnv = process.env._P_GITHUB_ISSUE_URL
         && JSON.stringify(`${process.env._P_GITHUB_ISSUE_URL}`);
 
+    const timezoneDiffInHour = process.env.TIMEZONE_DIFF_IN_HOUR
+    && JSON.stringify(`${process.env.TIMEZONE_DIFF_IN_HOUR}`);
+
     const { plugin } = helpers.getPluginsByName(config, 'DefinePlugin')[0];
     Object.assign(
       plugin.definitions,
@@ -28,6 +31,7 @@ export default {
         'process.env.APP_VERSION': versionEnv, 
         'process.env.GOOGLE_FORM_URL': googleFormEnv, 
         'process.env.GITHUB_ISSUE_URL': gitHubIssueEnv, 
+        'process.env.TIMEZONE_DIFF_IN_HOUR': timezoneDiffInHour, 
       }
     );
 

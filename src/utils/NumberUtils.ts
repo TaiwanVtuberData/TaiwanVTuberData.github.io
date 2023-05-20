@@ -38,3 +38,17 @@ export const GrowthDisplayDataToString = (
       return `${PrependSign(e.diff)}`;
   }
 };
+
+export const tryParseInteger = (
+  str: string | undefined,
+  defaultValue: number
+): number => {
+  if (str !== undefined) {
+    const parsedVal = parseInt(str, 10);
+    if (isNaN(parsedVal) === false) {
+      return parsedVal;
+    }
+  }
+
+  return defaultValue;
+};
