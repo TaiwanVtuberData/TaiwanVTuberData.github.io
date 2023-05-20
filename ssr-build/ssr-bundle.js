@@ -1207,7 +1207,7 @@ var getEnvOrEmpty = function getEnvOrEmpty(env) {
   return defaultValue;
 };
 
-var APP_VERSION = getEnvOrEmpty("2.1.2");
+var APP_VERSION = getEnvOrEmpty("2.1.3");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/SuVmu9W8zpjKBqtD9");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
@@ -1501,6 +1501,33 @@ var NationalityDropDown = function NationalityDropDown(props) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return apiSourceArray; });
 var apiSourceArray = ['statically', 'github'];
+
+/***/ }),
+
+/***/ "49Dv":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return maybeDebutStringToDebutInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return debutStringToDebutInfo; });
+/* harmony import */ var _global_TodayDate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5Sdp");
+/* harmony import */ var _DateTimeUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("8r9F");
+
+
+var maybeDebutStringToDebutInfo = function maybeDebutStringToDebutInfo(debutString) {
+  if (debutString === null || debutString === undefined) return {
+    hasDebutInfo: false
+  };
+  return debutStringToDebutInfo(debutString);
+};
+var debutStringToDebutInfo = function debutStringToDebutInfo(debutString) {
+  return {
+    hasDebutInfo: true,
+    debutDate: debutString,
+    isToday: debutString === _global_TodayDate__WEBPACK_IMPORTED_MODULE_0__[/* TODAY_DATE_STRING */ "c"],
+    isRecentlyDebut: Object(_DateTimeUtils__WEBPACK_IMPORTED_MODULE_1__[/* dateDiffInDays */ "a"])(Object(_DateTimeUtils__WEBPACK_IMPORTED_MODULE_1__[/* dateStringToDate */ "b"])(debutString, _global_TodayDate__WEBPACK_IMPORTED_MODULE_0__[/* TIMEZONE_DIFF_IN_HOUR */ "a"]), _global_TodayDate__WEBPACK_IMPORTED_MODULE_0__[/* TODAY_DATE */ "b"]) < 30
+  };
+};
 
 /***/ }),
 
@@ -4396,6 +4423,24 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
+/***/ "5Sdp":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TIMEZONE_DIFF_IN_HOUR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return TODAY_DATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return TODAY_DATE_STRING; });
+/* harmony import */ var _utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8r9F");
+/* harmony import */ var _utils_NumberUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("Dy4S");
+
+
+var DEFAULT_TIMEZONE_DIFF_IN_HOUR = 8;
+var TIMEZONE_DIFF_IN_HOUR = Object(_utils_NumberUtils__WEBPACK_IMPORTED_MODULE_1__[/* tryParseInteger */ "b"])(undefined, DEFAULT_TIMEZONE_DIFF_IN_HOUR);
+var TODAY_DATE = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_0__[/* getDateAfterTimezoneAdjustment */ "d"])(new Date(), TIMEZONE_DIFF_IN_HOUR);
+var TODAY_DATE_STRING = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_0__[/* getISODateString */ "g"])(TODAY_DATE, TIMEZONE_DIFF_IN_HOUR);
+
+/***/ }),
+
 /***/ "69ZN":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4741,14 +4786,13 @@ var YouTubeTwitchCount_YouTubeTwitchCount = function YouTubeTwitchCount(props) {
 /* harmony import */ var _tableTypes_NationalityColumn__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("JY+X");
 /* harmony import */ var _tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("sKFU");
 /* harmony import */ var _tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("HSXE");
-/* harmony import */ var _utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("8r9F");
-/* harmony import */ var _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("LftB");
-/* harmony import */ var _utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("MJ1U");
-/* harmony import */ var _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("4RMJ");
-/* harmony import */ var _utils_transform_GraduateTransform__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("8et+");
-/* harmony import */ var _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("uZiY");
-/* harmony import */ var _utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("L4T+");
-/* harmony import */ var _components_FilterWindow__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("Wfbs");
+/* harmony import */ var _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("LftB");
+/* harmony import */ var _utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("MJ1U");
+/* harmony import */ var _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("4RMJ");
+/* harmony import */ var _utils_transform_GraduateTransform__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("8et+");
+/* harmony import */ var _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("uZiY");
+/* harmony import */ var _utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("L4T+");
+/* harmony import */ var _components_FilterWindow__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("Wfbs");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4795,14 +4839,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var GraduateVTubersPage = function GraduateVTubersPage(props) {
   document.title = "".concat(props.dictionary.header.graduateVTubers, " | ").concat(props.dictionary.header.title);
   var columns = [_objectSpread(_objectSpread({}, Object(_tableTypes_GraduateDateColumn__WEBPACK_IMPORTED_MODULE_8__[/* GraduateDateColumn */ "a"])()), {}, {
     sortable: true
   }), Object(_tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_10__[/* NameColumn */ "a"])(), _objectSpread(_objectSpread({}, Object(_tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_13__[/* YouTubeTwitchCountColumn */ "a"])()), {}, {
     sortable: true,
-    sortFunction: _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_17__[/* YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort */ "b"]
+    sortFunction: _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_16__[/* YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort */ "b"]
   }), Object(_tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_12__[/* PopularVideoColumn */ "a"])(), Object(_tableTypes_GroupColumn__WEBPACK_IMPORTED_MODULE_9__[/* GroupColumn */ "a"])(), Object(_tableTypes_NationalityColumn__WEBPACK_IMPORTED_MODULE_11__[/* NationalityColumn */ "a"])()]; // search filter
 
   var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_3__[/* useState */ "l"])([]),
@@ -4823,7 +4866,7 @@ var GraduateVTubersPage = function GraduateVTubersPage(props) {
       setFilterModel = _useState4[1];
 
   var filteredData = data.filter(function (e) {
-    return Object(_utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_20__[/* filterFunction */ "a"])(e, filterModel);
+    return Object(_utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_19__[/* filterFunction */ "a"])(e, filterModel);
   });
   var searchBarComponent = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_3__[/* useMemo */ "i"])(function () {
     var handleFilterWindow = function handleFilterWindow(filterModel) {
@@ -4832,8 +4875,8 @@ var GraduateVTubersPage = function GraduateVTubersPage(props) {
 
     var fieldPlaceHolderMappings = new Map([['name', props.dictionary.table.searchByDisplayName], ['YouTubeId', props.dictionary.table.searchByYouTubeId], ['TwitchId', props.dictionary.table.searchByTwitchId], ['group', props.dictionary.table.searchByGroup], ['nationality', props.dictionary.table.searchByNationality], ['graduateDate', props.dictionary.table.searchByDate]]);
     return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("div", {
-      class: _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_19__[/* default */ "a"].searchBarGroup
-    }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_FilterWindow__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"], {
+      class: _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_18__[/* default */ "a"].searchBarGroup
+    }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_FilterWindow__WEBPACK_IMPORTED_MODULE_20__[/* default */ "a"], {
       filterModel: filterModel,
       fieldPlaceHolderMappings: fieldPlaceHolderMappings,
       openSearchText: props.dictionary.text.openSearch,
@@ -4849,14 +4892,13 @@ var GraduateVTubersPage = function GraduateVTubersPage(props) {
 
   var getVTubers = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(function* () {
-      var todayDate = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_14__[/* getISODateString */ "d"])(new Date(), 8);
       yield _services_ApiService__WEBPACK_IMPORTED_MODULE_0__[/* getGraduateVTubers */ "c"]('recent').then(function (res) {
         setData(res.data.VTubers.map(function (e) {
           return e;
         }).sort(function (a, b) {
           return b.graduateDate.localeCompare(a.graduateDate);
         }).map(function (e) {
-          return Object(_utils_transform_GraduateTransform__WEBPACK_IMPORTED_MODULE_18__[/* VTuberGraduateToDisplay */ "a"])(e, todayDate);
+          return Object(_utils_transform_GraduateTransform__WEBPACK_IMPORTED_MODULE_17__[/* VTuberGraduateToDisplay */ "a"])(e);
         }));
         setPending(false);
       });
@@ -4872,13 +4914,13 @@ var GraduateVTubersPage = function GraduateVTubersPage(props) {
   }, []);
   return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("h1", null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_2__[/* Text */ "c"], {
     id: "header.graduateVTubers"
-  }, "Graduate VTubers"), Object(_utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_16__[/* GetCurrentNationalitySpan */ "a"])(), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_QuestionMarkToolTip__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
+  }, "Graduate VTubers"), Object(_utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_15__[/* GetCurrentNationalitySpan */ "a"])(), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_QuestionMarkToolTip__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
     width: "300px",
     fontSize: "13px",
     text: Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_2__[/* Text */ "c"], {
       id: "toolTip.graduateVTubers"
     }, "tooltip text")
-  })), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"], _extends({}, _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"], {
+  })), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"], _extends({}, _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"], {
     columns: columns,
     data: filteredData // Typescript does not accept concat two array of different types
     ,
@@ -4912,7 +4954,8 @@ module.exports = require("https");
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VTuberGraduateToDisplay; });
-/* harmony import */ var _BasicTransform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("sPVG");
+/* harmony import */ var _global_TodayDate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5Sdp");
+/* harmony import */ var _BasicTransform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("sPVG");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -4920,10 +4963,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var VTuberGraduateToDisplay = function VTuberGraduateToDisplay(e, todayDate) {
-  return _objectSpread(_objectSpread({}, Object(_BasicTransform__WEBPACK_IMPORTED_MODULE_0__[/* VTuberBasicToDisplay */ "a"])(e)), {}, {
+
+var VTuberGraduateToDisplay = function VTuberGraduateToDisplay(e) {
+  return _objectSpread(_objectSpread({}, Object(_BasicTransform__WEBPACK_IMPORTED_MODULE_1__[/* VTuberBasicToDisplay */ "a"])(e)), {}, {
     graduateDate: e.graduateDate,
-    isToday: e.graduateDate === todayDate
+    isToday: e.graduateDate === _global_TodayDate__WEBPACK_IMPORTED_MODULE_0__[/* TODAY_DATE_STRING */ "c"]
   });
 };
 
@@ -4933,11 +4977,14 @@ var VTuberGraduateToDisplay = function VTuberGraduateToDisplay(e, todayDate) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getISODateString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getFormattedDateTime; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getDateAfterTimezoneAdjustment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getISODateString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getFormattedDateTime; });
 /* unused harmony export getFormattedTime */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFormattedTimeIfNotToday; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return findClosestSortedDateIndex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getFormattedTimeIfNotToday; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return findClosestSortedDateIndex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dateDiffInDays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return dateStringToDate; });
 // Date.prototype.getTimezoneOffset() returns offset in minutes
 // in UTC+8 the value will be -480
 var hourOffsetFromDateAPI = function hourOffsetFromDateAPI(minutes) {
@@ -4948,9 +4995,14 @@ var prefixZero = function prefixZero(num) {
   return num.toString().padStart(2, '0');
 };
 
-var getISODateString = function getISODateString(date, timezoneHourDiff) {
-  var hourOffsetFromUTC = hourOffsetFromDateAPI(date.getTimezoneOffset()) + timezoneHourDiff;
-  date.setTime(date.getTime() + hourOffsetFromUTC * 60 * 60 * 1000); // ECMAScript defines month as 0 to 11
+var getDateAfterTimezoneAdjustment = function getDateAfterTimezoneAdjustment(time, timezoneHourDiff) {
+  var hourOffsetFromUTC = hourOffsetFromDateAPI(time.getTimezoneOffset()) + timezoneHourDiff;
+  time.setTime(time.getTime() + hourOffsetFromUTC * 60 * 60 * 1000);
+  var date = new Date(time.getFullYear(), time.getMonth(), time.getDate());
+  return date;
+};
+var getISODateString = function getISODateString(time, timezoneHourDiff) {
+  var date = getDateAfterTimezoneAdjustment(time, timezoneHourDiff); // ECMAScript defines month as 0 to 11
 
   return (// eslint(prefer-template) suggests
     // `${date.getFullYear()  }-${  prefixZero(date.getMonth() + 1)  }-${  prefixZero(date.getDate())}`
@@ -4988,6 +5040,19 @@ var findClosestSortedDateIndex = function findClosestSortedDateIndex(array, targ
   }
 
   return closest;
+}; // https://stackoverflow.com/a/15289883
+
+var dateDiffInDays = function dateDiffInDays(a, b) {
+  var _MS_PER_DAY = 1000 * 60 * 60 * 24; // Discard the time and time-zone information.
+
+
+  var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+};
+var dateStringToDate = function dateStringToDate(dateString, timezoneHourDiff) {
+  var currentDate = new Date(dateString);
+  return getDateAfterTimezoneAdjustment(currentDate, timezoneHourDiff);
 };
 
 /***/ }),
@@ -10211,7 +10276,7 @@ var IndividualLivestreams_IndividualLivestreams = function IndividualLivestreams
     }, Object(external_preact_["h"])(VideoLink["a" /* default */], {
       thumbnailUrl: e.thumbnailUrl,
       videoUrl: e.videoUrl
-    }), Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("span", null, Object(DateTimeUtils["c" /* getFormattedTimeIfNotToday */])(e.startTime, now))));
+    }), Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("span", null, Object(DateTimeUtils["f" /* getFormattedTimeIfNotToday */])(e.startTime, now))));
   }));
 };
 
@@ -10393,6 +10458,7 @@ if (typeof global !== "undefined" && global.__pretenderNodePolyfill) {
 "use strict";
 /* unused harmony export PrependSign */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GrowthDisplayDataToString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return tryParseInteger; });
 var PrependSign = function PrependSign(value) {
   if (value > 0) return "+".concat(value);
   if (value < 0) return "".concat(value);
@@ -10427,6 +10493,17 @@ var GrowthDisplayDataToString = function GrowthDisplayDataToString(e, tableTrans
     case 'full':
       return "".concat(PrependSign(e.diff));
   }
+};
+var tryParseInteger = function tryParseInteger(str, defaultValue) {
+  if (str !== undefined) {
+    var parsedVal = parseInt(str, 10);
+
+    if (isNaN(parsedVal) === false) {
+      return parsedVal;
+    }
+  }
+
+  return defaultValue;
 };
 
 /***/ }),
@@ -18456,8 +18533,8 @@ var Sidebar_Sidebar = function Sidebar(props) {
   var getUpdateTime = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(function* () {
       yield ApiService["j" /* getUpdateTime */]().then(function (res) {
-        setStatisticUpdateTime(Object(DateTimeUtils["b" /* getFormattedDateTime */])(new Date(res.data.time.statisticUpdateTime)));
-        setVTuberDataUpdateTime(Object(DateTimeUtils["b" /* getFormattedDateTime */])(new Date(res.data.time.VTuberDataUpdateTime)));
+        setStatisticUpdateTime(Object(DateTimeUtils["e" /* getFormattedDateTime */])(new Date(res.data.time.statisticUpdateTime)));
+        setVTuberDataUpdateTime(Object(DateTimeUtils["e" /* getFormattedDateTime */])(new Date(res.data.time.VTuberDataUpdateTime)));
       });
     });
 
@@ -18715,7 +18792,7 @@ var Livestreams_LivestreamsTable = function LivestreamsTable(props) {
           // Note: document.getElementById('comp-{index}') only work because array data id is set to their index
           var currentTime = new Date(props.now);
           currentTime.setHours(currentTime.getHours() - 1);
-          var closestToNow = Object(DateTimeUtils["a" /* findClosestSortedDateIndex */])(arrayData, currentTime);
+          var closestToNow = Object(DateTimeUtils["c" /* findClosestSortedDateIndex */])(arrayData, currentTime);
           var scrollToElement = document.getElementById("".concat(props.divPrefix, "-").concat(Math.min(arrayData.length - 1, closestToNow))); // subtract parent div to avoid over scroll
 
           var scrollPixel = ((_scrollToElement$offs = scrollToElement === null || scrollToElement === void 0 ? void 0 : scrollToElement.offsetLeft) !== null && _scrollToElement$offs !== void 0 ? _scrollToElement$offs : 0) - ((_thisRef$current$offs = (_thisRef$current = thisRef.current) === null || _thisRef$current === void 0 ? void 0 : _thisRef$current.offsetLeft) !== null && _thisRef$current$offs !== void 0 ? _thisRef$current$offs : 0);
@@ -19082,6 +19159,16 @@ var ActivityRowStyles = [{
   },
   style: {
     backgroundColor: 'rgba(141, 209, 157, 0.9)',
+    '&:hover': {
+      cursor: 'pointer'
+    }
+  }
+}, {
+  when: function when(row) {
+    return row.activity === 'active' && row.debutInfo !== undefined && row.debutInfo.hasDebutInfo === true && row.debutInfo.isRecentlyDebut === true;
+  },
+  style: {
+    backgroundColor: 'rgba(156, 205, 196, 0.5)',
     '&:hover': {
       cursor: 'pointer'
     }
@@ -20959,7 +21046,7 @@ var _createStore = react_hstore__WEBPACK_IMPORTED_MODULE_0___default()(defaultAp
 "use strict";
 var IsTodayRowStyle = [{
   when: function when(row) {
-    return row.isToday;
+    return row.debutInfo.hasDebutInfo === true && row.debutInfo.isToday;
   },
   style: {
     color: 'mediumblue'
@@ -21861,15 +21948,14 @@ var AllVTubersPage = function AllVTubersPage(props) {
 /* harmony import */ var _tableTypes_NationalityColumn__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("JY+X");
 /* harmony import */ var _tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("sKFU");
 /* harmony import */ var _tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("HSXE");
-/* harmony import */ var _utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("8r9F");
-/* harmony import */ var _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("LftB");
-/* harmony import */ var _utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("MJ1U");
-/* harmony import */ var _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("4RMJ");
-/* harmony import */ var _utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("qM+f");
-/* harmony import */ var _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("uZiY");
-/* harmony import */ var _tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("YRVu");
-/* harmony import */ var _utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("L4T+");
-/* harmony import */ var _components_FilterWindow__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("Wfbs");
+/* harmony import */ var _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("LftB");
+/* harmony import */ var _utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("MJ1U");
+/* harmony import */ var _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("4RMJ");
+/* harmony import */ var _utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("qM+f");
+/* harmony import */ var _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("uZiY");
+/* harmony import */ var _tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("YRVu");
+/* harmony import */ var _utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("L4T+");
+/* harmony import */ var _components_FilterWindow__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("Wfbs");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -21916,14 +22002,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var DebutVTubersPage = function DebutVTubersPage(props) {
   document.title = "".concat(props.dictionary.header.debutVTubers, " | ").concat(props.dictionary.header.title);
-  var columns = [_objectSpread(_objectSpread({}, Object(_tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_19__[/* DebutDateColumn */ "a"])()), {}, {
+  var columns = [_objectSpread(_objectSpread({}, Object(_tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_18__[/* DebutDateColumn */ "a"])()), {}, {
     sortable: true
   }), Object(_tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_9__[/* NameColumn */ "a"])(), _objectSpread(_objectSpread({}, Object(_tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_12__[/* YouTubeTwitchCountColumn */ "a"])()), {}, {
     sortable: true,
-    sortFunction: _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_16__[/* YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort */ "b"]
+    sortFunction: _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_15__[/* YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort */ "b"]
   }), Object(_tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_11__[/* PopularVideoColumn */ "a"])(), Object(_tableTypes_GroupColumn__WEBPACK_IMPORTED_MODULE_8__[/* GroupColumn */ "a"])(), Object(_tableTypes_NationalityColumn__WEBPACK_IMPORTED_MODULE_10__[/* NationalityColumn */ "a"])()]; // search filter
 
   var _useState = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_3__[/* useState */ "l"])([]),
@@ -21944,7 +22029,7 @@ var DebutVTubersPage = function DebutVTubersPage(props) {
       setFilterModel = _useState4[1];
 
   var filteredData = data.filter(function (e) {
-    return Object(_utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_20__[/* filterFunction */ "a"])(e, filterModel);
+    return Object(_utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_19__[/* filterFunction */ "a"])(e, filterModel);
   });
   var searchBarComponent = Object(preact_hooks__WEBPACK_IMPORTED_MODULE_3__[/* useMemo */ "i"])(function () {
     var handleFilterWindow = function handleFilterWindow(filterModel) {
@@ -21953,8 +22038,8 @@ var DebutVTubersPage = function DebutVTubersPage(props) {
 
     var fieldPlaceHolderMappings = new Map([['name', props.dictionary.table.searchByDisplayName], ['YouTubeId', props.dictionary.table.searchByYouTubeId], ['TwitchId', props.dictionary.table.searchByTwitchId], ['group', props.dictionary.table.searchByGroup], ['nationality', props.dictionary.table.searchByNationality], ['debutDate', props.dictionary.table.searchByDate]]);
     return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("div", {
-      class: _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_18__[/* default */ "a"].searchBarGroup
-    }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_FilterWindow__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"], {
+      class: _style_DataTableStyle_module_css__WEBPACK_IMPORTED_MODULE_17__[/* default */ "a"].searchBarGroup
+    }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_FilterWindow__WEBPACK_IMPORTED_MODULE_20__[/* default */ "a"], {
       filterModel: filterModel,
       fieldPlaceHolderMappings: fieldPlaceHolderMappings,
       openSearchText: props.dictionary.text.openSearch,
@@ -21970,14 +22055,13 @@ var DebutVTubersPage = function DebutVTubersPage(props) {
 
   var getVTubers = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(function* () {
-      var todayDate = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_13__[/* getISODateString */ "d"])(new Date(), 8);
       yield _services_ApiService__WEBPACK_IMPORTED_MODULE_0__[/* getDebutVTubers */ "b"]('recent').then(function (res) {
         setData(res.data.VTubers.map(function (e) {
           return e;
         }).sort(function (a, b) {
           return b.debutDate.localeCompare(a.debutDate);
         }).map(function (e) {
-          return Object(_utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_17__[/* VTuberDebutToDisplay */ "a"])(e, todayDate);
+          return Object(_utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_16__[/* VTuberDebutToDisplay */ "a"])(e);
         }));
         setPending(false);
       });
@@ -21993,13 +22077,13 @@ var DebutVTubersPage = function DebutVTubersPage(props) {
   }, []);
   return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("h1", null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_2__[/* Text */ "c"], {
     id: "header.debutVTubers"
-  }, "Debut VTubers"), Object(_utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_15__[/* GetCurrentNationalitySpan */ "a"])(), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_QuestionMarkToolTip__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
+  }, "Debut VTubers"), Object(_utils_NationalityUtils__WEBPACK_IMPORTED_MODULE_14__[/* GetCurrentNationalitySpan */ "a"])(), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_components_QuestionMarkToolTip__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
     width: "300px",
     fontSize: "13px",
     text: Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_2__[/* Text */ "c"], {
       id: "toolTip.debutVTubers"
     }, "tooltip text")
-  })), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"], _extends({}, _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"], {
+  })), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"], _extends({}, _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"], {
     columns: columns,
     data: filteredData // Typescript does not accept concat two array of different types
     ,
@@ -26229,7 +26313,7 @@ var DebutDateColumn = function DebutDateColumn() {
       id: "table.debutDate"
     }, "Debut Date"),
     selector: function selector(row) {
-      return row.debutDate;
+      return row.debutInfo.debutDate;
     }
   };
 };
@@ -35278,7 +35362,7 @@ var LivestreamComponent_LivestreamComponent = function LivestreamComponent(props
   }), Object(external_preact_["h"])(VideoLink["a" /* default */], {
     thumbnailUrl: props.thumbnailUrl,
     videoUrl: props.videoUrl
-  }), Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("span", null, Object(DateTimeUtils["c" /* getFormattedTimeIfNotToday */])(props.startTime, props.now))));
+  }), Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("span", null, Object(DateTimeUtils["f" /* getFormattedTimeIfNotToday */])(props.startTime, props.now))));
 };
 
 /* harmony default export */ var components_LivestreamComponent = __webpack_exports__["a"] = (LivestreamComponent_LivestreamComponent);
@@ -35746,11 +35830,10 @@ var ReportIssue_ReportIssuePage = function ReportIssuePage(props) {
 /* harmony import */ var _tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("69ZN");
 /* harmony import */ var _tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("sKFU");
 /* harmony import */ var _tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("HSXE");
-/* harmony import */ var _utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("8r9F");
-/* harmony import */ var _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("LftB");
-/* harmony import */ var _utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("qM+f");
-/* harmony import */ var _tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("YRVu");
-/* harmony import */ var _utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("Wcfx");
+/* harmony import */ var _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("LftB");
+/* harmony import */ var _utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("qM+f");
+/* harmony import */ var _tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("YRVu");
+/* harmony import */ var _utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("Wcfx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -35791,9 +35874,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var DebutVTubersTable = function DebutVTubersTable() {
-  var columns = [Object(_tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_14__[/* DebutDateColumn */ "a"])(), Object(_tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_8__[/* NameColumn */ "a"])(), Object(_tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_10__[/* YouTubeTwitchCountColumn */ "a"])(), _objectSpread(_objectSpread({}, Object(_tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_9__[/* PopularVideoColumn */ "a"])()), {}, {
+  var columns = [Object(_tableTypes_DebutDateColumn__WEBPACK_IMPORTED_MODULE_13__[/* DebutDateColumn */ "a"])(), Object(_tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_8__[/* NameColumn */ "a"])(), Object(_tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_10__[/* YouTubeTwitchCountColumn */ "a"])(), _objectSpread(_objectSpread({}, Object(_tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_9__[/* PopularVideoColumn */ "a"])()), {}, {
     hide: react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* Media */ "a"].SM
   })]; // search filter
 
@@ -35809,14 +35891,13 @@ var DebutVTubersTable = function DebutVTubersTable() {
 
   var getVTubers = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(function* () {
-      var todayDate = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_11__[/* getISODateString */ "d"])(new Date(), 8);
       yield _services_ApiService__WEBPACK_IMPORTED_MODULE_0__[/* getDebutVTubers */ "b"]('next-7-days').then(function (res) {
         setData(res.data.VTubers.map(function (e) {
           return e;
         }).sort(function (a, b) {
           return a.debutDate.localeCompare(b.debutDate);
         }).map(function (e) {
-          return Object(_utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_13__[/* VTuberDebutToDisplay */ "a"])(e, todayDate);
+          return Object(_utils_transform_DebutTransform__WEBPACK_IMPORTED_MODULE_12__[/* VTuberDebutToDisplay */ "a"])(e);
         }));
         setPending(false);
       });
@@ -35831,12 +35912,12 @@ var DebutVTubersTable = function DebutVTubersTable() {
     getVTubers();
   }, []);
   return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("h3", null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("a", {
-    href: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_15__[/* GetRoute */ "b"])({
+    href: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_14__[/* GetRoute */ "b"])({
       type: 'debut-vtubers'
     })
   }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_2__[/* Text */ "c"], {
     id: "header.debutVTubersIn7Days"
-  }, "VTubers Debut in 7 days"))), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"], _extends({}, _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"], {
+  }, "VTubers Debut in 7 days"))), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(react_data_table_component__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"], _extends({}, _utils_DefaultDataTableProps__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"], {
     columns: columns,
     data: data // Typescript does not accept concat two array of different types
     ,
@@ -35877,6 +35958,7 @@ var RankingColumn = function RankingColumn() {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VTuberDebutToDisplay; });
 /* harmony import */ var _BasicTransform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("sPVG");
+/* harmony import */ var _DebutStringToDebutInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("49Dv");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -35884,10 +35966,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var VTuberDebutToDisplay = function VTuberDebutToDisplay(e, todayDate) {
+
+var VTuberDebutToDisplay = function VTuberDebutToDisplay(e) {
   return _objectSpread(_objectSpread({}, Object(_BasicTransform__WEBPACK_IMPORTED_MODULE_0__[/* VTuberBasicToDisplay */ "a"])(e)), {}, {
-    debutDate: e.debutDate,
-    isToday: e.debutDate === todayDate
+    debutInfo: Object(_DebutStringToDebutInfo__WEBPACK_IMPORTED_MODULE_1__[/* debutStringToDebutInfo */ "a"])(e.debutDate)
   });
 };
 
@@ -50940,6 +51022,8 @@ var PopularVideoColumn = function PopularVideoColumn() {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VTuberBasicToDisplay; });
+/* harmony import */ var _DebutStringToDebutInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("49Dv");
+
 var VTuberBasicToDisplay = function VTuberBasicToDisplay(e) {
   var _e$YouTube, _e$YouTube2, _e$Twitch, _e$Twitch2;
 
@@ -50954,7 +51038,8 @@ var VTuberBasicToDisplay = function VTuberBasicToDisplay(e) {
     TwitchFollower: (_e$Twitch2 = e.Twitch) === null || _e$Twitch2 === void 0 ? void 0 : _e$Twitch2.follower,
     popularVideo: e.popularVideo,
     group: e.group,
-    nationality: e.nationality
+    nationality: e.nationality,
+    debutInfo: Object(_DebutStringToDebutInfo__WEBPACK_IMPORTED_MODULE_0__[/* maybeDebutStringToDebutInfo */ "b"])(e.debutDate)
   };
 };
 
@@ -51036,7 +51121,7 @@ var LivestreamsPage = function LivestreamsPage(props) {
       id: "table.startTime"
     }, "Start Time"),
     selector: function selector(row) {
-      return Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_8__[/* getFormattedDateTime */ "b"])(row.startTime);
+      return Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_8__[/* getFormattedDateTime */ "e"])(row.startTime);
     },
     sortable: true,
     wrap: true
@@ -51139,7 +51224,7 @@ var LivestreamsPage = function LivestreamsPage(props) {
           // Note: document.getElementById('row-{index}') only work because array data id is set to their index
           var currentTime = new Date();
           currentTime.setHours(currentTime.getHours() - 1);
-          var closestToNow = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_8__[/* findClosestSortedDateIndex */ "a"])(arrayData, currentTime); // scroll to best row - 1 because the header will block the full view of best row
+          var closestToNow = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_8__[/* findClosestSortedDateIndex */ "c"])(arrayData, currentTime); // scroll to best row - 1 because the header will block the full view of best row
 
           (_document$getElementB = document.getElementById("row-".concat(Math.max(0, closestToNow - 1)))) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.scrollIntoView({
             behavior: 'smooth'
@@ -52629,7 +52714,7 @@ var TrendingVideosPage = function TrendingVideosPage(props) {
       id: "table.uploadTime"
     }, "Upload Time"),
     selector: function selector(row) {
-      return Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_8__[/* getFormattedDateTime */ "b"])(row.uploadTime);
+      return Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_8__[/* getFormattedDateTime */ "e"])(row.uploadTime);
     },
     sortable: true,
     width: '175px'
