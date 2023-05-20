@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import { CountType } from '../types/Common/CountType';
 
 export const GetCount = (countType?: CountType): number | null => {
@@ -26,7 +27,6 @@ export const CountTypeCompare = (a: CountType, b: CountType): number => {
             return 1;
         }
       }
-      break;
 
     case 'hidden':
       {
@@ -39,7 +39,6 @@ export const CountTypeCompare = (a: CountType, b: CountType): number => {
             return 1;
         }
       }
-      break;
 
     case 'no':
       {
@@ -52,6 +51,5 @@ export const CountTypeCompare = (a: CountType, b: CountType): number => {
             return 0;
         }
       }
-      break;
   }
 };
