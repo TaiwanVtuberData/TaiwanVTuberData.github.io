@@ -29,6 +29,7 @@ export interface Dictionary {
     livestreaming: string;
     debutToday: string;
     recentLivestream: string;
+    apiSourceSelection: string;
   };
   table: {
     displayName: string;
@@ -137,5 +138,9 @@ export interface Dictionary {
     TW: string;
     HK: string;
     MY: string;
+  };
+  apiSourceTitle: {
+    statically: string;
+    github: string;
   };
 }
