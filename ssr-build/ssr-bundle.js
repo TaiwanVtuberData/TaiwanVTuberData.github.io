@@ -1209,7 +1209,7 @@ var getEnvOrEmpty = function getEnvOrEmpty(env) {
 
 var APP_VERSION = getEnvOrEmpty("2.1.3");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
-var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/SuVmu9W8zpjKBqtD9");
+var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/a3H5ThJxHV3fLuWp6");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
 
 /***/ }),
