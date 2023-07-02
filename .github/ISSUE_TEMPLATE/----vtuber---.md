@@ -20,7 +20,7 @@ assignees: nh60211as
  * 首次直播/影片連結：
  * YouTube 頻道連結：
  * Twitch 頻道連結：
- * 團體：
+ * 所屬團體：
  * 國家：
 
 **VTuber 目前活動狀態**
