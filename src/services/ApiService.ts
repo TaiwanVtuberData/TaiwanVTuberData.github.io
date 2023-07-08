@@ -112,7 +112,7 @@ export const getTrendingVTubers = (
   modifier: TrendingVTubersModifier
 ): Promise<AxiosResponse<VTuberPopularityDataResponse>> => {
   return AxiosGetWrapper<VTuberPopularityDataResponse>(
-    `trending-vtubers/${modifier}.json`
+    `trending-vtubers/${modifier.sortBy}/${modifier.count}.json`
   );
 };
 

@@ -115,7 +115,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
           onChange={(e: any) =>
             GoToPage({
               type: 'trending-videos',
-              viewCountSortOrder: e.target.value,
+              sortOrder: e.target.value,
             })
           }
         />

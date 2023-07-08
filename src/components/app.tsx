@@ -101,6 +101,13 @@ const App: FunctionalComponent = () => {
     }
   }, [displayNationality, apiSource]);
 
+  console.log(
+    GetRoute({
+      type: 'trending-vtubers',
+      sortOrder: 'livestream',
+    })
+  );
+
   return (
     <div id="preact_root">
       <IntlProvider definition={definition}>
@@ -144,7 +151,10 @@ const App: FunctionalComponent = () => {
                 component={GroupListPage}
               />
               <Route
-                path={GetRoute({ type: 'trending-vtubers' })}
+                path={GetPlaceholderRoute(
+                  { type: 'trending-vtubers', sortOrder: 'livestream' },
+                  ':modifier'
+                )}
                 dictionary={definition}
                 component={TrendingVTubersPage}
               />

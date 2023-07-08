@@ -2,7 +2,7 @@
   "homepage": "https://taiwanvtuberdata.github.io/",
   "private": true,
   "name": "taiwan-vtuber-data",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build",
@@ -48,7 +48,7 @@
     "eslint-config-preact": "^1.3.0",
     "jest": "^27.5.1",
     "jest-preset-preact": "^4.0.5",
-    "preact-cli": "^3.4.5",
+    "preact-cli": "^3.4.6",
     "prettier": "^2.8.8",
     "sirv-cli": "^2.0.2",
     "typescript": "^5.0.4"

@@ -1,13 +1,18 @@
 export type VTubersModifier = '10' | 'all';
 
-export type TrendingVTubersModifier = '10' | '100';
+export type TrendingVTuberSortOrder = 'livestream' | 'video' | 'combined';
+
+export interface TrendingVTubersModifier {
+  sortBy: TrendingVTuberSortOrder;
+  count: '10' | '100';
+}
 
 export type GrowingVTubersModifier = '10' | '100' | 'all';
 
-export type SortOrder = '7-days' | '30-days';
+export type DayRangeSortOrder = '7-days' | '30-days';
 
 export interface VTubersViewCountChangeModifier {
-  sortBy: SortOrder;
+  sortBy: DayRangeSortOrder;
   count: '10' | '100' | 'all';
 }
 

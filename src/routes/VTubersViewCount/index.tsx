@@ -20,7 +20,7 @@ import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
 import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransform';
 import { GoToPage } from '../../utils/TypeSafeRouting';
 import tableStyle from '../../style/DataTableStyle.module.css';
-import { SortOrder } from '../../types/ApiTypes';
+import { DayRangeSortOrder } from '../../types/ApiTypes';
 import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberViewCountGrowthDisplayDataFilterModel } from '../../types/FilterType/VTuberViewCountGrowthDisplayDataFilterModel';
 import FilterWindow from '../../components/FilterWindow';
@@ -28,7 +28,7 @@ import { filterFunction } from '../../utils/FilterModelHelper';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
-  modifier: SortOrder;
+  modifier: DayRangeSortOrder;
 }
 
 const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
@@ -97,7 +97,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   const searchBarComponent = useMemo(() => {
     const optionValue: Array<{
       option: h.JSX.Element;
-      value: SortOrder;
+      value: DayRangeSortOrder;
     }> = [
       {
         option: <Text id="table._7DaysViewCountGrowth">7 Days Growth</Text>,
@@ -135,7 +135,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
           onChange={(e: any) =>
             GoToPage({
               type: 'vtubers-view-count',
-              viewCountSortOrder: e.target.value,
+              sortOrder: e.target.value,
             })
           }
         />
@@ -149,6 +149,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       </div>
     );
   }, [filterModel, props.modifier, props.dictionary]);
+
   const [pending, setPending] = useState(true);
 
   const _7DaysDescendingSort = <
@@ -169,7 +170,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     return rowB.YouTube._30DaysGrowth.diff - rowA.YouTube._30DaysGrowth.diff;
   };
 
-  const GetSortingMethod = (sortBy: SortOrder) => {
+  const GetSortingMethod = (sortBy: DayRangeSortOrder) => {
     switch (sortBy) {
       case '7-days':
         return _7DaysDescendingSort;

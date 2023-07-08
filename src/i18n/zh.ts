@@ -81,6 +81,8 @@ const zh: Dictionary = {
       selectAllRowsItemText: '所有',
     },
     startTime: '開始時間',
+    livestream: '直播',
+    combined: '合併',
   },
   activityText: {
     preparing: '準備中',
@@ -101,12 +103,12 @@ const zh: Dictionary = {
   toolTip: {
     eventCalendar: '月曆非由本站維護者維護',
     trendingVTubers:
-      '熱度計算方式：近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去實況的觀看中位數',
+      '熱度計算方式：近 30 日 YouTube 直播/影片觀看中位數 + 近 30 日 Twitch 過去直播觀看中位數',
     growingVTubers: '只會顯示近 7 日人數成長至少 100 人的頻道',
     debutVTubers: '以臺灣時區為準，只會顯示近 30 日出道/即將出道的 VTuber',
     graduateVTubers: '以臺灣時區為準，只會顯示近 30 日畢業/即將畢業的 VTuber',
     groupList:
-      '熱度計算方式：所有頻道近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去實況的觀看中位數',
+      '熱度計算方式：所有頻道近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去直播觀看中位數',
   },
   termsOfService: {
     termsOfService: '使用條款',
@@ -133,8 +135,8 @@ const zh: Dictionary = {
   },
   technicalDetails: {
     technicalDetails: '技術細節',
-    bulletPoint1: `資料來源：<a href="https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberTrackingData</a>`,
-    bulletPoint2: '資料更新時間：每日 05:30、11:30、17:30、19:00、20:30 UTC+8',
+    bulletPoint1: `資料來源：<a href="https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson</a>`,
+    bulletPoint2: '資料更新時間：每日 05:10、11:10、15:40、17:10、18:40、20:10 UTC+8',
     bulletPoint3: `本站原始碼：<a href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
   scroll: {

@@ -75,6 +75,8 @@ export interface Dictionary {
     activity: string;
     paginationOptions: PaginationOptions;
     startTime: string;
+    livestream: string;
+    combined: string;
   };
   activityText: {
     preparing: string;

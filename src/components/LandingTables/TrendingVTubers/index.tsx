@@ -37,15 +37,17 @@ const TrendingVTubersTable: FunctionalComponent = () => {
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getTrendingVTubers('10').then((res) => {
-      setData(
-        res.data.VTubers.map((e) => e)
-          .map((e, index) => VTuberPopularityToDisplay(e, index + 1))
-          .sort(PopularityCountDescendingSort)
-          .map((e, index) => ({ ...e, ranking: index + 1 }))
-      );
-      setPending(false);
-    });
+    await Api.getTrendingVTubers({ sortBy: 'livestream', count: '10' }).then(
+      (res) => {
+        setData(
+          res.data.VTubers.map((e) => e)
+            .map((e, index) => VTuberPopularityToDisplay(e, index + 1))
+            .sort(PopularityCountDescendingSort)
+            .map((e, index) => ({ ...e, ranking: index + 1 }))
+        );
+        setPending(false);
+      }
+    );
   };
 
   useEffect(() => {
@@ -55,7 +57,9 @@ const TrendingVTubersTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <a href={GetRoute({ type: 'trending-vtubers' })}>
+        <a
+          href={GetRoute({ type: 'trending-vtubers', sortOrder: 'livestream' })}
+        >
           <Text id="header.trendingVTubers">Trending VTubers</Text>
           {/* Yes. Adding a space between two texts require a Fragment */}
           <> </>

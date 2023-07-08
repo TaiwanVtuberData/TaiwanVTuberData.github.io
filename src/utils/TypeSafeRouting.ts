@@ -1,5 +1,9 @@
 import { ROUTE_PREFIX } from '../Config';
-import { SortOrder, TrendingVideosModifier } from '../types/ApiTypes';
+import {
+  DayRangeSortOrder,
+  TrendingVTuberSortOrder,
+  TrendingVideosModifier,
+} from '../types/ApiTypes';
 
 interface BaseTypeSafeRoute {
   type: string;
@@ -27,6 +31,7 @@ interface GroupListRoute extends BaseTypeSafeRoute {
 
 interface TrendingVTubersRoute extends BaseTypeSafeRoute {
   type: 'trending-vtubers';
+  sortOrder: TrendingVTuberSortOrder;
 }
 
 interface GrowingVTubersRoute extends BaseTypeSafeRoute {
@@ -73,7 +78,7 @@ interface TrendingVideosPlaceholderRoute extends BaseTypeSafeRoute {
 
 interface TrendingVideosRoute extends BaseTypeSafeRoute {
   type: 'trending-videos';
-  viewCountSortOrder: TrendingVideosModifier;
+  sortOrder: TrendingVideosModifier;
 }
 
 interface VTubersViewCountPlaceholderRoute extends BaseTypeSafeRoute {
@@ -82,13 +87,14 @@ interface VTubersViewCountPlaceholderRoute extends BaseTypeSafeRoute {
 
 interface VTubersViewCountRoute extends BaseTypeSafeRoute {
   type: 'vtubers-view-count';
-  viewCountSortOrder: SortOrder;
+  sortOrder: DayRangeSortOrder;
 }
 
 type PlaceholderRoute =
   | VTuberPlaceholderRoute
   | GroupPlaceholderRoute
   | TrendingVideosPlaceholderRoute
+  | TrendingVTubersRoute
   | VTubersViewCountPlaceholderRoute;
 
 type TypeSafeRoute =
@@ -119,6 +125,8 @@ const GetPlaceholderBaseRoute = (
       return `group/${placerHolderText}`;
     case 'trending-videos':
       return `trending-videos/${placerHolderText}`;
+    case 'trending-vtubers':
+      return `trending-vtubers/${placerHolderText}`;
     case 'vtubers-view-count':
       return `vtubers-view-count/${placerHolderText}`;
   }
@@ -137,7 +145,7 @@ const GetBaseRoute = (route: TypeSafeRoute): string => {
     case 'group-list':
       return `group-list`;
     case 'trending-vtubers':
-      return `trending-vtubers`;
+      return `trending-vtubers/${route.sortOrder}`;
     case 'growing-vtubers':
       return `growing-vtubers`;
     case 'debut-vtubers':
@@ -153,9 +161,9 @@ const GetBaseRoute = (route: TypeSafeRoute): string => {
     case 'group':
       return `group/${route.name}`;
     case 'trending-videos':
-      return `trending-videos/${route.viewCountSortOrder}`;
+      return `trending-videos/${route.sortOrder}`;
     case 'vtubers-view-count':
-      return `vtubers-view-count/${route.viewCountSortOrder}`;
+      return `vtubers-view-count/${route.sortOrder}`;
   }
 };
 

@@ -27,9 +27,13 @@ import ActivityRowStyles from '../../style/ActivityRowStyles';
 import FilterWindow from '../../components/FilterWindow';
 import { filterFunction } from '../../utils/FilterModelHelper';
 import { VTuberPopularityDisplayDataFilterModel } from '../../types/FilterType/VTuberPopularityDisplayDataFilterModel';
+import DropDownList from '../../components/DropDownList';
+import { TrendingVTuberSortOrder } from '../../types/ApiTypes';
+import { GoToPage } from '../../utils/TypeSafeRouting';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
+  modifier: TrendingVTuberSortOrder;
 }
 
 const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
@@ -72,6 +76,24 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
   const filteredData = data.filter((e) => filterFunction(e, filterModel));
 
   const searchBarComponent = useMemo(() => {
+    const optionValue: Array<{
+      option: h.JSX.Element;
+      value: TrendingVTuberSortOrder;
+    }> = [
+      {
+        option: <Text id="table.livestream">Livestream</Text>,
+        value: 'livestream',
+      },
+      {
+        option: <Text id="table.video">Video</Text>,
+        value: 'video',
+      },
+      {
+        option: <Text id="table.combined">Combined</Text>,
+        value: 'combined',
+      },
+    ];
+
     const handleFilterWindow = (
       filterModel: VTuberPopularityDisplayDataFilterModel
     ): void => {
@@ -91,6 +113,17 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
 
     return (
       <div class={tableStyle.searchBarGroup}>
+        <DropDownList
+          tipText={props.dictionary.table.sortingMethod}
+          value={props.modifier}
+          optionValue={optionValue}
+          onChange={(e: any) =>
+            GoToPage({
+              type: 'trending-vtubers',
+              sortOrder: e.target.value,
+            })
+          }
+        />
         <FilterWindow
           filterModel={filterModel}
           fieldPlaceHolderMappings={fieldPlaceHolderMappings}
@@ -100,12 +133,15 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
         />
       </div>
     );
-  }, [filterModel, props.dictionary]);
+  }, [filterModel, props.modifier, props.dictionary]);
 
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getTrendingVTubers('100').then((res) => {
+    await Api.getTrendingVTubers({
+      sortBy: props.modifier,
+      count: '100',
+    }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .map((e, index) => VTuberPopularityToDisplay(e, index + 1))
