@@ -83,20 +83,23 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
           },
           {
             textID: 'header.trendingVTubers',
-            linkTo: GetRoute({ type: 'trending-vtubers' }),
+            linkTo: GetRoute({
+              type: 'trending-vtubers',
+              sortOrder: 'livestream',
+            }),
           },
           {
             textID: 'header.trendingVideos',
             linkTo: GetRoute({
               type: 'trending-videos',
-              viewCountSortOrder: 'no-duplicate',
+              sortOrder: 'no-duplicate',
             }),
           },
           {
             textID: 'header.VTubersViewCount',
             linkTo: GetRoute({
               type: 'vtubers-view-count',
-              viewCountSortOrder: '7-days',
+              sortOrder: '7-days',
             }),
           },
           {
