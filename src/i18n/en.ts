@@ -103,7 +103,7 @@ const en: Dictionary = {
   toolTip: {
     eventCalendar: 'The calendar is not maintained by the site owner',
     trendingVTubers:
-      'Popularity: Median views of YouTube uploads within 30 days + Median views of Twitch streams within 30 days',
+      'Popularity: Median views of YouTube streams/videos within 30 days + Median views of Twitch streams within 30 days',
     growingVTubers:
       'Based on Taiwan timezone (UTC+8). Only showing VTubers with YouTube subscribers growth over 100 within 7 days',
     debutVTubers:
