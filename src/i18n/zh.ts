@@ -81,6 +81,8 @@ const zh: Dictionary = {
       selectAllRowsItemText: '所有',
     },
     startTime: '開始時間',
+    livestream: '直播',
+    combined: '合併',
   },
   activityText: {
     preparing: '準備中',

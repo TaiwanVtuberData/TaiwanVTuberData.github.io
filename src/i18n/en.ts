@@ -81,6 +81,8 @@ const en: Dictionary = {
       selectAllRowsItemText: 'All',
     },
     startTime: 'Start Time',
+    livestream: 'Livestream',
+    combined: 'Combined',
   },
   activityText: {
     preparing: 'Preparing',
