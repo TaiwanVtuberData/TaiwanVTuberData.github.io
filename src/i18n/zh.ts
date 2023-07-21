@@ -136,7 +136,8 @@ const zh: Dictionary = {
   technicalDetails: {
     technicalDetails: '技術細節',
     bulletPoint1: `資料來源：<a href="https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson</a>`,
-    bulletPoint2: '資料更新時間：每日 05:10、11:10、15:40、17:10、18:40、20:10 UTC+8',
+    bulletPoint2:
+      '資料更新時間：每日 05:10、11:10、15:40、17:10、18:40、20:10 UTC+8',
     bulletPoint3: `本站原始碼：<a href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
   scroll: {

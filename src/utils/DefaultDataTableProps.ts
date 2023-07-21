@@ -4,7 +4,7 @@ import { Activity } from '../types/Common/Activity';
 
 // columns and data are empty, user should fill them when using DefaultDataTableProps
 const DefaultDataTableProps = <
-  T extends { activity: Activity }
+  T extends { activity: Activity },
 >(): TableProps<T> => ({
   columns: [],
   data: [],

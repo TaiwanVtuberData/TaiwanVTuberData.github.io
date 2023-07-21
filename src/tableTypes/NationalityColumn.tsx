@@ -7,7 +7,7 @@ export interface NationalityColumnRowData {
 }
 
 export const NationalityColumn = <
-  RowData extends NationalityColumnRowData
+  RowData extends NationalityColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.nationality">Nationality</Text>,

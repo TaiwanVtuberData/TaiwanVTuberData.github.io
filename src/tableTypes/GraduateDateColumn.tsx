@@ -7,7 +7,7 @@ export interface GraduateDateColumnRowData {
 }
 
 export const GraduateDateColumn = <
-  RowData extends GraduateDateColumnRowData
+  RowData extends GraduateDateColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.graduateDate">Graduation Date</Text>,

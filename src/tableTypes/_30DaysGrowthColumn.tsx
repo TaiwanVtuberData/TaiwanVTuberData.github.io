@@ -9,7 +9,7 @@ export interface Days30GrowthColumnRowData {
 }
 
 export const _30DaysGrowthColumn = <
-  RowData extends Days30GrowthColumnRowData
+  RowData extends Days30GrowthColumnRowData,
 >(tableTranslation: {
   noRecord: string;
   atLeast: string;

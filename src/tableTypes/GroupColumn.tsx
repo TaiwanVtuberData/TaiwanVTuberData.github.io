@@ -8,7 +8,7 @@ export interface GroupColumnRowData {
 }
 
 export const GroupColumn = <
-  RowData extends GroupColumnRowData
+  RowData extends GroupColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.group">Group</Text>,

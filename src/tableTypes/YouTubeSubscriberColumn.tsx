@@ -8,7 +8,7 @@ export interface YouTubeSubscriberColumnRowData {
 }
 
 export const YouTubeSubscriberColumn = <
-  RowData extends YouTubeSubscriberColumnRowData
+  RowData extends YouTubeSubscriberColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>,
