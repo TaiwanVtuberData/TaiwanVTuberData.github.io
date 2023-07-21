@@ -1,5 +1,5 @@
 export const PopularityCountAscendingSort = <
-  T extends { YouTubePopularity?: number; TwitchPopularity?: number }
+  T extends { YouTubePopularity?: number; TwitchPopularity?: number },
 >(
   rowA: T,
   rowB: T
@@ -15,7 +15,7 @@ export const PopularityCountAscendingSort = <
 };
 
 export const PopularityCountDescendingSort = <
-  T extends { YouTubePopularity?: number; TwitchPopularity?: number }
+  T extends { YouTubePopularity?: number; TwitchPopularity?: number },
 >(
   rowA: T,
   rowB: T

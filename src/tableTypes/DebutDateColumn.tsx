@@ -8,7 +8,7 @@ export interface DebutDateColumnRowData {
 }
 
 export const DebutDateColumn = <
-  RowData extends DebutDateColumnRowData
+  RowData extends DebutDateColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.debutDate">Debut Date</Text>,

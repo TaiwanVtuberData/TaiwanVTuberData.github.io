@@ -1,6 +1,6 @@
 export function filterFunction<
   TargetType extends object,
-  FilterModel extends object
+  FilterModel extends object,
 >(targetModel: TargetType, filterModel: FilterModel): boolean {
   const result = Object.entries(filterModel).map((entry) => {
     const keyTyped = entry[0] as keyof typeof targetModel;

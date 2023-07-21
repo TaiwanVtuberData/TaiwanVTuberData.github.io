@@ -10,7 +10,7 @@ export interface YouTubeTwitchCountColumnRowData {
 }
 
 export const YouTubeTwitchCountColumn = <
-  RowData extends YouTubeTwitchCountColumnRowData
+  RowData extends YouTubeTwitchCountColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: (

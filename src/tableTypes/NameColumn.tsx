@@ -10,7 +10,7 @@ export interface NameColumnRowData {
 }
 
 export const NameColumn = <
-  RowData extends NameColumnRowData
+  RowData extends NameColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.displayName">Name</Text>,

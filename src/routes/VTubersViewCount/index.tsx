@@ -153,7 +153,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   const [pending, setPending] = useState(true);
 
   const _7DaysDescendingSort = <
-    T extends { YouTube: YouTubeViewCountGrowthData }
+    T extends { YouTube: YouTubeViewCountGrowthData },
   >(
     rowA: T,
     rowB: T
@@ -162,7 +162,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   };
 
   const _30DaysDescendingSort = <
-    T extends { YouTube: YouTubeViewCountGrowthData }
+    T extends { YouTube: YouTubeViewCountGrowthData },
   >(
     rowA: T,
     rowB: T

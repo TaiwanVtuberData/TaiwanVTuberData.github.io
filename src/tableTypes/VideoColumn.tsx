@@ -9,7 +9,7 @@ export interface VideoColumnRowData {
 }
 
 export const VideoColumn = <
-  RowData extends VideoColumnRowData
+  RowData extends VideoColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.video">Video</Text>,

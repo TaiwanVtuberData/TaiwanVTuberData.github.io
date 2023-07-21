@@ -5,7 +5,7 @@ export interface RankingColumnRowData {
 }
 
 export const RankingColumn = <
-  RowData extends RankingColumnRowData
+  RowData extends RankingColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: '#',

@@ -4,7 +4,7 @@ import { CountTypeCompare, GetCount } from '../CountTypeUtils';
 export type SortMethod = 'YouTube+Twitch' | 'YouTube' | 'Twitch';
 
 const YouTubeSubscriberCountDescendingSort = <
-  T extends { YouTubeSubscriber?: CountType }
+  T extends { YouTubeSubscriber?: CountType },
 >(
   rowA: T,
   rowB: T
@@ -26,7 +26,7 @@ const YouTubeSubscriberCountDescendingSort = <
 };
 
 const TwitchFollowerCountDescendingSort = <
-  T extends { TwitchFollower?: CountType }
+  T extends { TwitchFollower?: CountType },
 >(
   rowA: T,
   rowB: T
@@ -48,7 +48,7 @@ const TwitchFollowerCountDescendingSort = <
 };
 
 export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
-  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType }
+  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType },
 >(
   rowA: T,
   rowB: T
@@ -69,7 +69,7 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
 
 // TODO: Merge the logic of descending and ascending functions
 export const YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort = <
-  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType }
+  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType },
 >(
   rowA: T,
   rowB: T

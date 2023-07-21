@@ -15,7 +15,7 @@ export interface PopularityColumnRowData {
 }
 
 export const PopularityColumn = <
-  RowData extends PopularityColumnRowData
+  RowData extends PopularityColumnRowData,
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.popularity">Popularity</Text>,
