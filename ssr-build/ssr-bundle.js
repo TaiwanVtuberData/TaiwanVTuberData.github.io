@@ -1091,9 +1091,10 @@ var VideoColumn = function VideoColumn() {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_VERSION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ROUTE_PREFIX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return GOOGLE_FORM_URL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GITHUB_ISSUE_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return ROUTE_PREFIX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return GOOGLE_FORM_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return GITHUB_ISSUE_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CONTACT_EMAIL; });
 var getEnvOrEmpty = function getEnvOrEmpty(env) {
   var defaultValue = '';
   if (env) {
@@ -1105,6 +1106,7 @@ var APP_VERSION = getEnvOrEmpty("2.1.6");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/a3H5ThJxHV3fLuWp6");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
+var CONTACT_EMAIL = getEnvOrEmpty(undefined);
 
 /***/ }),
 
@@ -9416,6 +9418,10 @@ var zh = {
     bulletPoint2: "\u672C\u7AD9\u53EA\u6703\u4EE5 Cookie \u5132\u5B58\u4F7F\u7528\u8005\u7684\u8A9E\u8A00\u8A2D\u5B9A\uFF0C\u4E26\u4E14\u4E0D\u4F7F\u7528\u4EFB\u4F55\u5176\u4ED6 Cookie \u6216\u662F\u5176\u4ED6\u8FFD\u8E64\u6280\u8853\u8FFD\u8E64\u4F7F\u7528\u8005\u4F7F\u7528\u8A18\u9304\uFF0C\u4F46\u662F\u7121\u6CD5\u4FDD\u8B49\u6240\u63D0\u4F9B\u4E4B\u5167\u5D4C Google \u65E5\u66C6\u3001YouTube \u5F71\u7247\u3001\u6216 Twitch \u5F71\u7247\u4E0D\u6703\u8FFD\u8E64\u4F7F\u7528\u8005\u8CC7\u6599\u3002",
     referToGoogle: "\u95DC\u65BC Google \u96B1\u79C1\u6B0A\u653F\u7B56\u8ACB\u898B\u9023\u7D50\uFF1A<a href=\"http://www.google.com/policies/privacy\" text-decoration=\"none\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.google.com/policies/privacy</a>\u3002",
     bulletPoint3: "\u672C\u7AD9\u7121\u6CD5\u4FDD\u8B49\u6240\u63D0\u4F9B\u4E4B\u5176\u4ED6\u7DB2\u7AD9\u9023\u7D50\u4E0D\u6703\u8490\u96C6\u4F7F\u7528\u8005\u8CC7\u6599\u3002"
+  },
+  contactInformation: {
+    contactInformation: '聯絡資訊',
+    email: '電子郵件： '
   },
   technicalDetails: {
     technicalDetails: '技術細節',
@@ -23659,10 +23665,10 @@ var GetBaseRoute = function GetBaseRoute(route) {
   }
 };
 var GetPlaceholderRoute = function GetPlaceholderRoute(route, placerHolderText) {
-  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "d"], "/").concat(GetPlaceholderBaseRoute(route, placerHolderText));
+  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "e"], "/").concat(GetPlaceholderBaseRoute(route, placerHolderText));
 };
 var GetRoute = function GetRoute(route) {
-  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "d"], "/").concat(GetBaseRoute(route));
+  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "e"], "/").concat(GetBaseRoute(route));
 };
 var GoToPage = function GoToPage(route) {
   window.location.href = GetRoute(route);
@@ -29086,6 +29092,10 @@ var en = {
     referToGoogle: "Refer to Google Privacy Policy: <a href=\"http://www.google.com/policies/privacy\" text-decoration=\"none\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.google.com/policies/privacy</a>.",
     bulletPoint3: "The site could not guarantee that the external sites it linked to do not collect user's personal data."
   },
+  contactInformation: {
+    contactInformation: 'Contact Information',
+    email: 'Email: '
+  },
   technicalDetails: {
     technicalDetails: 'Technical Details',
     bulletPoint1: "Data source: <a href=\"https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson\" target=\"_blank\" rel=\"noopener noreferrer\">https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson</a>",
@@ -32924,7 +32934,7 @@ var ReportIssue_ReportIssuePage = function ReportIssuePage(props) {
   }, Object(external_preact_["h"])("div", {
     class: style_module.flexButton
   }, Object(external_preact_["h"])("a", {
-    href: Config["c" /* GOOGLE_FORM_URL */],
+    href: Config["d" /* GOOGLE_FORM_URL */],
     target: "_blank",
     rel: "noopener noreferrer"
   }, Object(external_preact_["h"])("img", {
@@ -32934,7 +32944,7 @@ var ReportIssue_ReportIssuePage = function ReportIssuePage(props) {
   }, "Report using Google Form"))), Object(external_preact_["h"])("div", {
     class: style_module.flexButton
   }, Object(external_preact_["h"])("a", {
-    href: Config["b" /* GITHUB_ISSUE_URL */],
+    href: Config["c" /* GITHUB_ISSUE_URL */],
     target: "_blank",
     rel: "noopener noreferrer"
   }, Object(external_preact_["h"])("img", {
@@ -48198,6 +48208,8 @@ var TrendingVideosPage = function TrendingVideosPage(props) {
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var preact_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("OhSV");
 /* harmony import */ var _style_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("GFNa");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("0Khb");
+
 
 
 
@@ -48254,6 +48266,16 @@ var AboutPage = function AboutPage(props) {
   }, "placeholder"))), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("li", null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("p", null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_1__[/* Text */ "c"], {
     id: "privacyPolicy.bulletPoint3"
   }, "placeholder")))), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
+    style: {
+      marginTop: '5px'
+    }
+  }, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_1__[/* Text */ "c"], {
+    id: "contactInformation.contactInformation"
+  }, "Contact Information")), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("p", null, Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_1__[/* Text */ "c"], {
+    id: "contactInformation.email"
+  }, "Email: "), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("a", {
+    href: "mailto:".concat(_Config__WEBPACK_IMPORTED_MODULE_3__[/* CONTACT_EMAIL */ "b"])
+  }, _Config__WEBPACK_IMPORTED_MODULE_3__[/* CONTACT_EMAIL */ "b"])), Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
     style: {
       marginTop: '5px'
     }
