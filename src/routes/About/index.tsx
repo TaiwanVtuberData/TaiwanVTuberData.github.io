@@ -2,6 +2,7 @@ import { Fragment, FunctionalComponent, h } from 'preact';
 import { MarkupText, Text } from 'preact-i18n';
 import { Dictionary } from '../../i18n/Dictionary';
 import '../../style/index.css';
+import { CONTACT_EMAIL } from '../../Config';
 
 export interface HomeProps {
   dictionary: Dictionary;
@@ -89,7 +90,15 @@ const AboutPage: FunctionalComponent<HomeProps> = (props: HomeProps) => {
           </p>
         </li>
       </ol>
-
+      <h2 style={{ marginTop: '5px' }}>
+        <Text id="contactInformation.contactInformation">
+          Contact Information
+        </Text>
+      </h2>
+      <p>
+        <Text id="contactInformation.email">Email: </Text>
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </p>
       <h2 style={{ marginTop: '5px' }}>
         <Text id="technicalDetails.technicalDetails">Technical Details</Text>
       </h2>

@@ -133,6 +133,10 @@ const zh: Dictionary = {
     referToGoogle: `關於 Google 隱私權政策請見連結：<a href="http://www.google.com/policies/privacy" text-decoration="none" target="_blank" rel="noopener noreferrer">http://www.google.com/policies/privacy</a>。`,
     bulletPoint3: `本站無法保證所提供之其他網站連結不會蒐集使用者資料。`,
   },
+  contactInformation: {
+    contactInformation: '聯絡資訊',
+    email: '電子郵件： ',
+  },
   technicalDetails: {
     technicalDetails: '技術細節',
     bulletPoint1: `資料來源：<a href="https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson</a>`,
