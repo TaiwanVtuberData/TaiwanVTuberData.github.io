@@ -138,6 +138,10 @@ const en: Dictionary = {
     referToGoogle: `Refer to Google Privacy Policy: <a href="http://www.google.com/policies/privacy" text-decoration="none" target="_blank" rel="noopener noreferrer">http://www.google.com/policies/privacy</a>.`,
     bulletPoint3: `The site could not guarantee that the external sites it linked to do not collect user's personal data.`,
   },
+  contactInformation: {
+    contactInformation: 'Contact Information',
+    email: 'Email: ',
+  },
   technicalDetails: {
     technicalDetails: 'Technical Details',
     bulletPoint1: `Data source: <a href="https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson</a>`,

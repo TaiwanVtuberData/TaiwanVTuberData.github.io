@@ -23,6 +23,9 @@ export default {
     const timezoneDiffInHour = process.env.TIMEZONE_DIFF_IN_HOUR
     && JSON.stringify(`${process.env.TIMEZONE_DIFF_IN_HOUR}`);
 
+    const contactEmail = process.env.CONTACT_EMAIL
+    && JSON.stringify(`${process.env.CONTACT_EMAIL}`);
+
     const { plugin } = helpers.getPluginsByName(config, 'DefinePlugin')[0];
     Object.assign(
       plugin.definitions,
@@ -32,6 +35,7 @@ export default {
         'process.env.GOOGLE_FORM_URL': googleFormEnv, 
         'process.env.GITHUB_ISSUE_URL': gitHubIssueEnv, 
         'process.env.TIMEZONE_DIFF_IN_HOUR': timezoneDiffInHour, 
+        'process.env.CONTACT_EMAIL': contactEmail, 
       }
     );
 

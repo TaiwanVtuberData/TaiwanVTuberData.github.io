@@ -125,6 +125,10 @@ export interface Dictionary {
     referToGoogle: string;
     bulletPoint3: string;
   };
+  contactInformation: {
+    contactInformation: string;
+    email: string;
+  };
   technicalDetails: {
     technicalDetails: string;
     bulletPoint1: string;
