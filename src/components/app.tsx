@@ -101,13 +101,6 @@ const App: FunctionalComponent = () => {
     }
   }, [displayNationality, apiSource]);
 
-  console.log(
-    GetRoute({
-      type: 'trending-vtubers',
-      sortOrder: 'livestream',
-    })
-  );
-
   return (
     <div id="preact_root">
       <IntlProvider definition={definition}>
