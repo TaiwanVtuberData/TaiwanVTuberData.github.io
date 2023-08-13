@@ -1106,7 +1106,7 @@ var APP_VERSION = getEnvOrEmpty("2.1.6");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/a3H5ThJxHV3fLuWp6");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
-var CONTACT_EMAIL = getEnvOrEmpty(undefined);
+var CONTACT_EMAIL = getEnvOrEmpty("taiwanvtuberdata@gmail.com");
 
 /***/ }),
 
@@ -4060,7 +4060,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 var DEFAULT_TIMEZONE_DIFF_IN_HOUR = 8;
-var TIMEZONE_DIFF_IN_HOUR = Object(_utils_NumberUtils__WEBPACK_IMPORTED_MODULE_1__[/* tryParseInteger */ "b"])(undefined, DEFAULT_TIMEZONE_DIFF_IN_HOUR);
+var TIMEZONE_DIFF_IN_HOUR = Object(_utils_NumberUtils__WEBPACK_IMPORTED_MODULE_1__[/* tryParseInteger */ "b"])("8", DEFAULT_TIMEZONE_DIFF_IN_HOUR);
 var TODAY_DATE = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_0__[/* getDateAfterTimezoneAdjustment */ "d"])(new Date(), TIMEZONE_DIFF_IN_HOUR);
 var TODAY_DATE_STRING = Object(_utils_DateTimeUtils__WEBPACK_IMPORTED_MODULE_0__[/* getISODateString */ "g"])(TODAY_DATE, TIMEZONE_DIFF_IN_HOUR);
 
@@ -9340,22 +9340,22 @@ var zh = {
     searchByGroupMember: '依團體成員搜尋',
     searchByDate: '依日期搜尋',
     searchByTitle: '依標題搜尋',
-    popularity: '熱度',
+    popularity: '近 30 日 YouTube 直播/影片觀看中位數 + Twitch 過去直播觀看中位數',
     averageSubscriberCount: '平均訂閱人數',
     totalSubscriberCount: '總訂閱人數',
     memberCount: '成員人數',
     memberList: '成員',
     debutDate: '出道日期',
     graduateDate: '畢業日期',
-    _7DaysGrowth: '7 日成長 (幅度)',
-    _30DaysGrowth: '30 日成長 (幅度)',
-    _7DaysViewCountGrowth: '7 日成長',
-    _30DaysViewCountGrowth: '30 日成長',
+    _7DaysGrowth: '7 日內訂閱人數差距 (幅度)',
+    _30DaysGrowth: '30 日內訂閱人數差距 (幅度)',
+    _7DaysViewCountGrowth: '7 日內訂閱人數差距',
+    _30DaysViewCountGrowth: '30 日內訂閱人數差距',
     atLeast: '至少',
     noRecord: '無紀錄',
     noDuplicate: '同一 VTuber 一影片',
     allVideos: '所有影片',
-    popularVideo: '熱門影片',
+    popularVideo: '30 日內最多觀看影片',
     options: '選項:',
     YouTubeTwitchCount: 'YouTube 訂閱人數 + Twitch 追隨人數',
     sortingMethod: '排序方式：',
@@ -25451,10 +25451,6 @@ var App = function App() {
       window.location.reload();
     }
   }, [displayNationality, apiSource]);
-  console.log(Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-    type: 'trending-vtubers',
-    sortOrder: 'livestream'
-  }));
   return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("div", {
     id: "preact_root"
   }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_3__[/* IntlProvider */ "a"], {
@@ -29013,23 +29009,23 @@ var en = {
     searchByGroupMember: 'Search by group member',
     searchByDate: 'Search by date',
     searchByTitle: 'Search by title',
-    popularity: 'Popularity',
+    popularity: 'Median Views Of YouTube Videos Within 30 Days + Median Views Of Twitch Streams Within 30 Days',
     averageSubscriberCount: 'Average Subscribers',
     totalSubscriberCount: 'Total Subscribers',
     memberCount: 'Member Count',
     memberList: 'Members',
     debutDate: 'Debut Date',
     graduateDate: 'Graduation Date',
-    _7DaysGrowth: '7 Days Growth (Percent)',
-    _30DaysGrowth: '30 Days Growth (Percent)',
-    _7DaysViewCountGrowth: '7 Days Growth',
-    _30DaysViewCountGrowth: '30 Days Growth',
+    _7DaysGrowth: 'Subscribers Difference Within 7 Days (Percent)',
+    _30DaysGrowth: 'Subscribers Difference Within 30 Days (Percent)',
+    _7DaysViewCountGrowth: 'Subscribers Difference Within 7 Days',
+    _30DaysViewCountGrowth: 'Subscribers Difference Within 30 Days',
     atLeast: 'at least',
     noRecord: 'no record',
     noDuplicate: 'One video per VTuber',
     allVideos: 'All videos',
     options: 'Options:',
-    popularVideo: 'Popular Video',
+    popularVideo: 'Most Viewed Video Within 30 Days',
     YouTubeTwitchCount: 'YouTube Subscribers + Twitch Followers',
     sortingMethod: 'Sort by:',
     YouTubeTotalViewCount: 'YouTube Total View Count',
