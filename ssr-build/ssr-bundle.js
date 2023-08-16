@@ -4274,6 +4274,8 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var preact_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("OhSV");
 /* harmony import */ var _utils_NumberUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("Dy4S");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("0Khb");
+
 
 
 
@@ -4284,7 +4286,8 @@ var _7DaysGrowthColumn = function _7DaysGrowthColumn(tableTranslation) {
     }, "7 Days Growth (Percent)"),
     cell: function cell(row) {
       return Object(_utils_NumberUtils__WEBPACK_IMPORTED_MODULE_2__[/* GrowthDisplayDataToString */ "a"])(row._7DaysGrowth, tableTranslation);
-    }
+    },
+    omit: _Config__WEBPACK_IMPORTED_MODULE_3__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
   };
 };
 
@@ -13971,6 +13974,8 @@ exports.default = isFn;
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var preact_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("OhSV");
 /* harmony import */ var _components_YouTubeTwitchCount__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("7DLW");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("0Khb");
+
 
 
 
@@ -13991,7 +13996,8 @@ var PopularityColumn = function PopularityColumn() {
         YouTubeCount: numberToCountType(row.YouTubePopularity),
         TwitchCount: numberToCountType(row.TwitchPopularity)
       });
-    }
+    },
+    omit: _Config__WEBPACK_IMPORTED_MODULE_3__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
   };
 };
 
@@ -17354,11 +17360,6 @@ var Sidebar_Sidebar = function Sidebar(props) {
         type: 'about'
       })
     }];
-    if (Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */]) {
-      links = links.filter(function (e) {
-        return e.textID !== 'header.trendingVTubers' && e.textID !== 'header.growingVTubers';
-      });
-    }
     return Object(external_preact_["h"])("div", {
       class: style_module.navGrid
     }, links.map(function (e) {
@@ -17577,11 +17578,7 @@ var TypeSafeRouting = __webpack_require__("Wcfx");
 // CONCATENATED MODULE: ./routes/home/style.module.css
 // extracted by mini-css-extract-plugin
 /* harmony default export */ var home_style_module = ({"tableGrid":"tableGrid__Ju0u9","tableItem":"tableItem__iikA+","streamingSection":"streamingSection__unwHH"});
-// EXTERNAL MODULE: ./Config.ts
-var Config = __webpack_require__("0Khb");
-
 // CONCATENATED MODULE: ./routes/home/index.tsx
-
 
 
 
@@ -17629,11 +17626,11 @@ var home_HomePage = function HomePage(props) {
     id: "header.title"
   }, "Taiwan VTuber Data"), Object(NationalityUtils["a" /* GetCurrentNationalitySpan */])()), Object(external_preact_["h"])(LivestreamsSection, null), Object(external_preact_["h"])("div", {
     class: home_style_module.tableGrid
-  }, Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */] ? Object(external_preact_["h"])(external_preact_["Fragment"], null) : Object(external_preact_["h"])("div", {
+  }, Object(external_preact_["h"])("div", {
     class: home_style_module.tableItem
   }, Object(external_preact_["h"])(TrendingVTubers["a" /* default */], null)), Object(external_preact_["h"])("div", {
     class: home_style_module.tableItem
-  }, Object(external_preact_["h"])(DebutVTubers["a" /* default */], null)), Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */] ? Object(external_preact_["h"])(external_preact_["Fragment"], null) : Object(external_preact_["h"])("div", {
+  }, Object(external_preact_["h"])(DebutVTubers["a" /* default */], null)), Object(external_preact_["h"])("div", {
     class: home_style_module.tableItem
   }, Object(external_preact_["h"])(GrowingVTubers["a" /* default */], {
     dictionary: props.dictionary
@@ -17827,6 +17824,7 @@ var DefaultDataTableProps = function DefaultDataTableProps() {
 /* harmony import */ var _utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("L4T+");
 /* harmony import */ var _components_DropDownList__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("HP4b");
 /* harmony import */ var _utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("Wcfx");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("0Khb");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -17867,6 +17865,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
+
 var TrendingVTubersPage = function TrendingVTubersPage(props) {
   document.title = "".concat(props.dictionary.header.trendingVTubers, " | ").concat(props.dictionary.header.title);
   var columns = [_objectSpread(_objectSpread({}, Object(_tableTypes_RankingColumn__WEBPACK_IMPORTED_MODULE_19__[/* RankingColumn */ "a"])()), {}, {
@@ -17874,7 +17873,8 @@ var TrendingVTubersPage = function TrendingVTubersPage(props) {
     width: '40px'
   }), Object(_tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_7__[/* NameColumn */ "a"])(), _objectSpread(_objectSpread({}, Object(_tableTypes_PopularityColumn__WEBPACK_IMPORTED_MODULE_9__[/* PopularityColumn */ "a"])()), {}, {
     sortFunction: _utils_sort_PopularityCountSort__WEBPACK_IMPORTED_MODULE_14__[/* PopularityCountAscendingSort */ "a"],
-    sortable: true
+    sortable: true,
+    omit: _Config__WEBPACK_IMPORTED_MODULE_25__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
   }), _objectSpread(_objectSpread({}, Object(_tableTypes_YouTubeTwitchCountColumn__WEBPACK_IMPORTED_MODULE_11__[/* YouTubeTwitchCountColumn */ "a"])()), {}, {
     sortFunction: _utils_sort_SubscriberCountSort__WEBPACK_IMPORTED_MODULE_15__[/* YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort */ "b"],
     sortable: true
@@ -25368,7 +25368,6 @@ module.exports = __webpack_require__("TDIH");
 /* harmony import */ var _routes_Redirect__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("w0Cs");
 /* harmony import */ var _types_Common_ApiSource__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__("3NHA");
 /* harmony import */ var _global_CurrentApiSource__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__("TS1g");
-/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__("0Khb");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -25377,7 +25376,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -25469,7 +25467,7 @@ var App = function App() {
       window.location.reload();
     }
   }, [displayNationality, apiSource]);
-  var ValidRouter = function ValidRouter(props) {
+  var ValidRouter = function ValidRouter() {
     return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Router */ "c"], null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
       path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
         type: 'home'
@@ -25494,6 +25492,19 @@ var App = function App() {
       }),
       dictionary: definition,
       component: _routes_AllVTubers__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
+        type: 'trending-vtubers',
+        sortOrder: 'livestream'
+      }, ':modifier'),
+      dictionary: definition,
+      component: _routes_TrendingVTubers__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'growing-vtubers'
+      }),
+      dictionary: definition,
+      component: _routes_GrowingVTubers__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"]
     }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
       path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
         type: 'group-list'
@@ -25548,30 +25559,12 @@ var App = function App() {
       }, ':modifier'),
       dictionary: definition,
       component: _routes_VTubersViewCount__WEBPACK_IMPORTED_MODULE_23__[/* default */ "a"]
-    }), props.enforceYouTubeCompliance == true ? Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_routes_Redirect__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"], {
-      default: true,
-      to: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-        type: 'home'
-      })
-    }) : Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
-        type: 'trending-vtubers',
-        sortOrder: 'livestream'
-      }, ':modifier'),
-      dictionary: definition,
-      component: _routes_TrendingVTubers__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]
-    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-        type: 'growing-vtubers'
-      }),
-      dictionary: definition,
-      component: _routes_GrowingVTubers__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"]
     }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_routes_Redirect__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"], {
       default: true,
       to: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
         type: 'home'
       })
-    })));
+    }));
   };
   return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("div", {
     id: "preact_root"
@@ -25584,9 +25577,7 @@ var App = function App() {
     setNationality: setDisplayNationality,
     apiSource: apiSource,
     setApiSource: setApiSource
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_ScrollToTopBottom__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VTuberProfileModal__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VideoModal__WEBPACK_IMPORTED_MODULE_22__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(ValidRouter, {
-    enforceYouTubeCompliance: _Config__WEBPACK_IMPORTED_MODULE_34__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
-  })) : Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("span", null, "Loading...")));
+  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_ScrollToTopBottom__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VTuberProfileModal__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VideoModal__WEBPACK_IMPORTED_MODULE_22__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(ValidRouter, null)) : Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("span", null, "Loading...")));
 };
 /* harmony default export */ __webpack_exports__["a"] = (App);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["Fragment"]))
@@ -45637,6 +45628,7 @@ module.exports.wrap = wrap;
 /* harmony import */ var _style_ActivityRowStyles__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("L9y4");
 /* harmony import */ var _utils_FilterModelHelper__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("L4T+");
 /* harmony import */ var _components_FilterWindow__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("Wfbs");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("0Khb");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -45674,6 +45666,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
+
 var GrowingVTubersPage = function GrowingVTubersPage(props) {
   document.title = "".concat(props.dictionary.header.growingVTubers, " | ").concat(props.dictionary.header.title);
   var columns = [_objectSpread(_objectSpread({}, Object(_tableTypes_NameColumn__WEBPACK_IMPORTED_MODULE_8__[/* NameColumn */ "a"])()), {}, {
@@ -45683,11 +45676,13 @@ var GrowingVTubersPage = function GrowingVTubersPage(props) {
   }), _objectSpread(_objectSpread({}, Object(_tableTypes_7DaysGrowthColumn__WEBPACK_IMPORTED_MODULE_13__[/* _7DaysGrowthColumn */ "a"])(props.dictionary.table)), {}, {
     right: true,
     sortable: true,
-    sortFunction: _utils_sort_GrowthSort__WEBPACK_IMPORTED_MODULE_18__[/* _7DaysGrowthSort */ "b"]
+    sortFunction: _utils_sort_GrowthSort__WEBPACK_IMPORTED_MODULE_18__[/* _7DaysGrowthSort */ "b"],
+    omit: _Config__WEBPACK_IMPORTED_MODULE_22__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
   }), _objectSpread(_objectSpread({}, Object(_tableTypes_30DaysGrowthColumn__WEBPACK_IMPORTED_MODULE_12__[/* _30DaysGrowthColumn */ "a"])(props.dictionary.table)), {}, {
     right: true,
     sortable: true,
-    sortFunction: _utils_sort_GrowthSort__WEBPACK_IMPORTED_MODULE_18__[/* _30DaysGrowthSort */ "a"]
+    sortFunction: _utils_sort_GrowthSort__WEBPACK_IMPORTED_MODULE_18__[/* _30DaysGrowthSort */ "a"],
+    omit: _Config__WEBPACK_IMPORTED_MODULE_22__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
   }), _objectSpread(_objectSpread({}, Object(_tableTypes_PopularVideoColumn__WEBPACK_IMPORTED_MODULE_10__[/* PopularVideoColumn */ "a"])()), {}, {
     width: '100px'
   }), _objectSpread(_objectSpread({}, Object(_tableTypes_GroupColumn__WEBPACK_IMPORTED_MODULE_7__[/* GroupColumn */ "a"])()), {}, {
