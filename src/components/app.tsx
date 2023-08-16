@@ -42,7 +42,6 @@ import {
   getCurrentApiSourceState,
   setCurrentApiSource,
 } from '../global/CurrentApiSource';
-import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -102,7 +101,7 @@ const App: FunctionalComponent = () => {
     }
   }, [displayNationality, apiSource]);
 
-  const ValidRouter = (props: { enforceYouTubeCompliance: boolean }) => (
+  const ValidRouter = () => (
     <Router>
       <Route
         path={GetRoute({ type: 'home' })}
@@ -123,6 +122,20 @@ const App: FunctionalComponent = () => {
         path={GetRoute({ type: 'all-vtubers' })}
         dictionary={definition}
         component={AllVTubersPage}
+      />
+
+      <Route
+        path={GetPlaceholderRoute(
+          { type: 'trending-vtubers', sortOrder: 'livestream' },
+          ':modifier'
+        )}
+        dictionary={definition}
+        component={TrendingVTubersPage}
+      />
+      <Route
+        path={GetRoute({ type: 'growing-vtubers' })}
+        dictionary={definition}
+        component={GrowingVTubersPage}
       />
       <Route
         path={GetRoute({ type: 'group-list' })}
@@ -169,26 +182,7 @@ const App: FunctionalComponent = () => {
         dictionary={definition}
         component={VTubersViewCountPage}
       />
-      {props.enforceYouTubeCompliance == true ? (
-        <Redirect default to={GetRoute({ type: 'home' })} />
-      ) : (
-        <>
-          <Route
-            path={GetPlaceholderRoute(
-              { type: 'trending-vtubers', sortOrder: 'livestream' },
-              ':modifier'
-            )}
-            dictionary={definition}
-            component={TrendingVTubersPage}
-          />
-          <Route
-            path={GetRoute({ type: 'growing-vtubers' })}
-            dictionary={definition}
-            component={GrowingVTubersPage}
-          />
-          <Redirect default to={GetRoute({ type: 'home' })} />
-        </>
-      )}
+      <Redirect default to={GetRoute({ type: 'home' })} />
     </Router>
   );
 
@@ -208,9 +202,7 @@ const App: FunctionalComponent = () => {
             <ScrollToTopBottom />
             <VTuberProfileModal />
             <VideoModal />
-            <ValidRouter
-              enforceYouTubeCompliance={ENFORCE_YOUTUBE_COMPLIANCE}
-            />
+            <ValidRouter />
           </>
         ) : (
           <span>Loading...</span>
