@@ -46957,6 +46957,9 @@ var CountTypeUtils = __webpack_require__("qjhZ");
 // EXTERNAL MODULE: ./utils/NationalityUtils.tsx
 var NationalityUtils = __webpack_require__("MJ1U");
 
+// EXTERNAL MODULE: ./Config.ts
+var Config = __webpack_require__("0Khb");
+
 // CONCATENATED MODULE: ./routes/GroupList/index.tsx
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -46967,6 +46970,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -47011,7 +47015,8 @@ var GroupList_GroupListPage = function GroupListPage(props) {
     right: true,
     sortable: true,
     minWidth: '50px',
-    maxWidth: '125px'
+    maxWidth: '125px',
+    omit: Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */]
   }, {
     name: Object(external_preact_["h"])(preact_i18n_esm["c" /* Text */], {
       id: "table.averageSubscriberCount"
@@ -47022,7 +47027,8 @@ var GroupList_GroupListPage = function GroupListPage(props) {
     right: true,
     sortable: true,
     minWidth: '50px',
-    maxWidth: '125px'
+    maxWidth: '125px',
+    omit: Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */]
   }, {
     name: Object(external_preact_["h"])(preact_i18n_esm["c" /* Text */], {
       id: "table.totalSubscriberCount"
@@ -47033,7 +47039,8 @@ var GroupList_GroupListPage = function GroupListPage(props) {
     right: true,
     sortable: true,
     minWidth: '50px',
-    maxWidth: '125px'
+    maxWidth: '125px',
+    omit: Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */]
   }, {
     name: Object(external_preact_["h"])(preact_i18n_esm["c" /* Text */], {
       id: "table.memberCount"
