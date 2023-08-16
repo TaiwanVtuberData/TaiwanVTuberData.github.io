@@ -18,6 +18,7 @@ import { GetRoute } from '../../utils/TypeSafeRouting';
 import { NameSort } from '../../utils/sort/NameSort';
 import { GetCount } from '../../utils/CountTypeUtils';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -45,6 +46,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       sortable: true,
       minWidth: '50px',
       maxWidth: '125px',
+      omit: ENFORCE_YOUTUBE_COMPLIANCE
     },
     {
       name: <Text id="table.averageSubscriberCount">Average Subscribers</Text>,
@@ -54,6 +56,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       sortable: true,
       minWidth: '50px',
       maxWidth: '125px',
+      omit: ENFORCE_YOUTUBE_COMPLIANCE
     },
     {
       name: <Text id="table.totalSubscriberCount">Total Subscribers</Text>,
@@ -63,6 +66,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       sortable: true,
       minWidth: '50px',
       maxWidth: '125px',
+      omit: ENFORCE_YOUTUBE_COMPLIANCE
     },
     {
       name: <Text id="table.memberCount">Member Count</Text>,
