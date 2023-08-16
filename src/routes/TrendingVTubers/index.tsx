@@ -30,6 +30,7 @@ import { VTuberPopularityDisplayDataFilterModel } from '../../types/FilterType/V
 import DropDownList from '../../components/DropDownList';
 import { TrendingVTuberSortOrder } from '../../types/ApiTypes';
 import { GoToPage } from '../../utils/TypeSafeRouting';
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
 
 export interface TrendingVTubersPageProps {
   dictionary: Dictionary;
@@ -52,6 +53,7 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
       ...PopularityColumn(),
       sortFunction: PopularityCountAscendingSort,
       sortable: true,
+      omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
       ...YouTubeTwitchCountColumn(),

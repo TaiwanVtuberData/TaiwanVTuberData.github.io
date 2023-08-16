@@ -26,6 +26,7 @@ import ActivityRowStyles from '../../style/ActivityRowStyles';
 import { VTuberGrowthDisplayDataFilterModel } from '../../types/FilterType/VTuberGrowthDisplayDataFilterModel';
 import { filterFunction } from '../../utils/FilterModelHelper';
 import FilterWindow from '../../components/FilterWindow';
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -50,12 +51,14 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       right: true,
       sortable: true,
       sortFunction: _7DaysGrowthSort,
+      omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
       ..._30DaysGrowthColumn(props.dictionary.table),
       right: true,
       sortable: true,
       sortFunction: _30DaysGrowthSort,
+      omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
       ...PopularVideoColumn(),

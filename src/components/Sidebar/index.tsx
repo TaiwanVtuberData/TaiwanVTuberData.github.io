@@ -13,7 +13,7 @@ import { GetRoute } from '../../utils/TypeSafeRouting';
 import LanguageDropDown from '../LanguageDropDown';
 import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
-import { APP_VERSION, ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
+import { APP_VERSION } from '../../Config';
 import { ApiSourceModifier } from '../../types/Common/ApiSource';
 import ApiSourceDropDown from '../ApiSourceDropDown';
 import { ApiSourceOptions } from '../../types/ApiSourceOptions';
@@ -61,7 +61,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   };
 
   const NavigationLinks = (): JSX.Element => {
-    let links = [
+    const links = [
       { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
       {
         textID: 'header.livestreaming',
@@ -118,14 +118,6 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
       },
       { textID: 'header.about', linkTo: GetRoute({ type: 'about' }) },
     ];
-
-    if (ENFORCE_YOUTUBE_COMPLIANCE) {
-      links = links.filter(
-        (e) =>
-          e.textID !== 'header.trendingVTubers' &&
-          e.textID !== 'header.growingVTubers'
-      );
-    }
 
     return (
       <div class={style.navGrid}>
