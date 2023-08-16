@@ -1091,10 +1091,11 @@ var VideoColumn = function VideoColumn() {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_VERSION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return ROUTE_PREFIX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return GOOGLE_FORM_URL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return GITHUB_ISSUE_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return ROUTE_PREFIX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return GOOGLE_FORM_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return GITHUB_ISSUE_URL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CONTACT_EMAIL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ENFORCE_YOUTUBE_COMPLIANCE; });
 var getEnvOrEmpty = function getEnvOrEmpty(env) {
   var defaultValue = '';
   if (env) {
@@ -1102,11 +1103,16 @@ var getEnvOrEmpty = function getEnvOrEmpty(env) {
   }
   return defaultValue;
 };
+var getEnvAsBooleanOrFalse = function getEnvAsBooleanOrFalse(env) {
+  var envValue = getEnvOrEmpty(env);
+  return envValue === 'true';
+};
 var APP_VERSION = getEnvOrEmpty("2.1.6");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/a3H5ThJxHV3fLuWp6");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
 var CONTACT_EMAIL = getEnvOrEmpty("taiwanvtuberdata@gmail.com");
+var ENFORCE_YOUTUBE_COMPLIANCE = getEnvAsBooleanOrFalse("true");
 
 /***/ }),
 
@@ -9347,15 +9353,15 @@ var zh = {
     memberList: '成員',
     debutDate: '出道日期',
     graduateDate: '畢業日期',
-    _7DaysGrowth: '7 日內訂閱人數差距 (幅度)',
-    _30DaysGrowth: '30 日內訂閱人數差距 (幅度)',
-    _7DaysViewCountGrowth: '7 日內訂閱人數差距',
-    _30DaysViewCountGrowth: '30 日內訂閱人數差距',
+    _7DaysGrowth: '7 日成長 (幅度)',
+    _30DaysGrowth: '30 日成長 (幅度)',
+    _7DaysViewCountGrowth: '7 日成長',
+    _30DaysViewCountGrowth: '30 日成長',
     atLeast: '至少',
     noRecord: '無紀錄',
     noDuplicate: '同一 VTuber 一影片',
     allVideos: '所有影片',
-    popularVideo: '30 日內最多觀看影片',
+    popularVideo: '熱門影片',
     options: '選項:',
     YouTubeTwitchCount: 'YouTube 訂閱人數 + Twitch 追隨人數',
     sortingMethod: '排序方式：',
@@ -17279,9 +17285,7 @@ var Sidebar_Sidebar = function Sidebar(props) {
     }, "empty")));
   };
   var NavigationLinks = function NavigationLinks() {
-    return Object(external_preact_["h"])("div", {
-      class: style_module.navGrid
-    }, [{
+    var links = [{
       textID: 'header.home',
       linkTo: Object(TypeSafeRouting["b" /* GetRoute */])({
         type: 'home'
@@ -17349,7 +17353,15 @@ var Sidebar_Sidebar = function Sidebar(props) {
       linkTo: Object(TypeSafeRouting["b" /* GetRoute */])({
         type: 'about'
       })
-    }].map(function (e) {
+    }];
+    if (Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */]) {
+      links = links.filter(function (e) {
+        return e.textID !== 'header.trendingVTubers' && e.textID !== 'header.growingVTubers';
+      });
+    }
+    return Object(external_preact_["h"])("div", {
+      class: style_module.navGrid
+    }, links.map(function (e) {
       return LinkElement(e.textID, e.linkTo);
     }));
   };
@@ -17565,7 +17577,11 @@ var TypeSafeRouting = __webpack_require__("Wcfx");
 // CONCATENATED MODULE: ./routes/home/style.module.css
 // extracted by mini-css-extract-plugin
 /* harmony default export */ var home_style_module = ({"tableGrid":"tableGrid__Ju0u9","tableItem":"tableItem__iikA+","streamingSection":"streamingSection__unwHH"});
+// EXTERNAL MODULE: ./Config.ts
+var Config = __webpack_require__("0Khb");
+
 // CONCATENATED MODULE: ./routes/home/index.tsx
+
 
 
 
@@ -17613,11 +17629,11 @@ var home_HomePage = function HomePage(props) {
     id: "header.title"
   }, "Taiwan VTuber Data"), Object(NationalityUtils["a" /* GetCurrentNationalitySpan */])()), Object(external_preact_["h"])(LivestreamsSection, null), Object(external_preact_["h"])("div", {
     class: home_style_module.tableGrid
-  }, Object(external_preact_["h"])("div", {
+  }, Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */] ? Object(external_preact_["h"])(external_preact_["Fragment"], null) : Object(external_preact_["h"])("div", {
     class: home_style_module.tableItem
   }, Object(external_preact_["h"])(TrendingVTubers["a" /* default */], null)), Object(external_preact_["h"])("div", {
     class: home_style_module.tableItem
-  }, Object(external_preact_["h"])(DebutVTubers["a" /* default */], null)), Object(external_preact_["h"])("div", {
+  }, Object(external_preact_["h"])(DebutVTubers["a" /* default */], null)), Config["c" /* ENFORCE_YOUTUBE_COMPLIANCE */] ? Object(external_preact_["h"])(external_preact_["Fragment"], null) : Object(external_preact_["h"])("div", {
     class: home_style_module.tableItem
   }, Object(external_preact_["h"])(GrowingVTubers["a" /* default */], {
     dictionary: props.dictionary
@@ -23665,10 +23681,10 @@ var GetBaseRoute = function GetBaseRoute(route) {
   }
 };
 var GetPlaceholderRoute = function GetPlaceholderRoute(route, placerHolderText) {
-  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "e"], "/").concat(GetPlaceholderBaseRoute(route, placerHolderText));
+  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "f"], "/").concat(GetPlaceholderBaseRoute(route, placerHolderText));
 };
 var GetRoute = function GetRoute(route) {
-  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "e"], "/").concat(GetBaseRoute(route));
+  return "".concat(_Config__WEBPACK_IMPORTED_MODULE_0__[/* ROUTE_PREFIX */ "f"], "/").concat(GetBaseRoute(route));
 };
 var GoToPage = function GoToPage(route) {
   window.location.href = GetRoute(route);
@@ -25352,6 +25368,7 @@ module.exports = __webpack_require__("TDIH");
 /* harmony import */ var _routes_Redirect__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("w0Cs");
 /* harmony import */ var _types_Common_ApiSource__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__("3NHA");
 /* harmony import */ var _global_CurrentApiSource__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__("TS1g");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__("0Khb");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -25360,6 +25377,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -25451,6 +25469,110 @@ var App = function App() {
       window.location.reload();
     }
   }, [displayNationality, apiSource]);
+  var ValidRouter = function ValidRouter(props) {
+    return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Router */ "c"], null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'home'
+      }),
+      dictionary: definition,
+      component: _routes_home__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'livestreams'
+      }),
+      dictionary: definition,
+      component: _routes_Livestreams__WEBPACK_IMPORTED_MODULE_30__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'event-calendar'
+      }),
+      dictionary: definition,
+      component: _routes_EventCalendar__WEBPACK_IMPORTED_MODULE_19__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'all-vtubers'
+      }),
+      dictionary: definition,
+      component: _routes_AllVTubers__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'group-list'
+      }),
+      dictionary: definition,
+      component: _routes_GroupList__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'debut-vtubers'
+      }),
+      dictionary: definition,
+      component: _routes_DebutVTubers__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'graduate-vtubers'
+      }),
+      dictionary: definition,
+      component: _routes_GraduateVTubers__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'report-issue'
+      }),
+      dictionary: definition,
+      component: _routes_ReportIssue__WEBPACK_IMPORTED_MODULE_20__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'about'
+      }),
+      dictionary: definition,
+      component: _routes_About__WEBPACK_IMPORTED_MODULE_18__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
+        type: 'vtuber'
+      }, ':id'),
+      dictionary: definition,
+      component: _routes_VTuber__WEBPACK_IMPORTED_MODULE_27__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
+        type: 'group'
+      }, ':groupName'),
+      dictionary: definition,
+      component: _routes_Group__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
+        type: 'trending-videos'
+      }, ':modifier'),
+      dictionary: definition,
+      component: _routes_TrendingVideos__WEBPACK_IMPORTED_MODULE_17__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
+        type: 'vtubers-view-count'
+      }, ':modifier'),
+      dictionary: definition,
+      component: _routes_VTubersViewCount__WEBPACK_IMPORTED_MODULE_23__[/* default */ "a"]
+    }), props.enforceYouTubeCompliance == true ? Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_routes_Redirect__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"], {
+      default: true,
+      to: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'home'
+      })
+    }) : Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(Fragment, null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
+        type: 'trending-vtubers',
+        sortOrder: 'livestream'
+      }, ':modifier'),
+      dictionary: definition,
+      component: _routes_TrendingVTubers__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
+      path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'growing-vtubers'
+      }),
+      dictionary: definition,
+      component: _routes_GrowingVTubers__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"]
+    }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_routes_Redirect__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"], {
+      default: true,
+      to: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
+        type: 'home'
+      })
+    })));
+  };
   return Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("div", {
     id: "preact_root"
   }, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_i18n__WEBPACK_IMPORTED_MODULE_3__[/* IntlProvider */ "a"], {
@@ -25462,103 +25584,9 @@ var App = function App() {
     setNationality: setDisplayNationality,
     apiSource: apiSource,
     setApiSource: setApiSource
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_ScrollToTopBottom__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VTuberProfileModal__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VideoModal__WEBPACK_IMPORTED_MODULE_22__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Router */ "c"], null, Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'home'
-    }),
-    dictionary: definition,
-    component: _routes_home__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'livestreams'
-    }),
-    dictionary: definition,
-    component: _routes_Livestreams__WEBPACK_IMPORTED_MODULE_30__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'event-calendar'
-    }),
-    dictionary: definition,
-    component: _routes_EventCalendar__WEBPACK_IMPORTED_MODULE_19__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'all-vtubers'
-    }),
-    dictionary: definition,
-    component: _routes_AllVTubers__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'group-list'
-    }),
-    dictionary: definition,
-    component: _routes_GroupList__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
-      type: 'trending-vtubers',
-      sortOrder: 'livestream'
-    }, ':modifier'),
-    dictionary: definition,
-    component: _routes_TrendingVTubers__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'growing-vtubers'
-    }),
-    dictionary: definition,
-    component: _routes_GrowingVTubers__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'debut-vtubers'
-    }),
-    dictionary: definition,
-    component: _routes_DebutVTubers__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'graduate-vtubers'
-    }),
-    dictionary: definition,
-    component: _routes_GraduateVTubers__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'report-issue'
-    }),
-    dictionary: definition,
-    component: _routes_ReportIssue__WEBPACK_IMPORTED_MODULE_20__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'about'
-    }),
-    dictionary: definition,
-    component: _routes_About__WEBPACK_IMPORTED_MODULE_18__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
-      type: 'vtuber'
-    }, ':id'),
-    dictionary: definition,
-    component: _routes_VTuber__WEBPACK_IMPORTED_MODULE_27__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
-      type: 'group'
-    }, ':groupName'),
-    dictionary: definition,
-    component: _routes_Group__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
-      type: 'trending-videos'
-    }, ':modifier'),
-    dictionary: definition,
-    component: _routes_TrendingVideos__WEBPACK_IMPORTED_MODULE_17__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(preact_router__WEBPACK_IMPORTED_MODULE_4__[/* Route */ "b"], {
-    path: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetPlaceholderRoute */ "a"])({
-      type: 'vtubers-view-count'
-    }, ':modifier'),
-    dictionary: definition,
-    component: _routes_VTubersViewCount__WEBPACK_IMPORTED_MODULE_23__[/* default */ "a"]
-  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_routes_Redirect__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"], {
-    default: true,
-    to: Object(_utils_TypeSafeRouting__WEBPACK_IMPORTED_MODULE_28__[/* GetRoute */ "b"])({
-      type: 'home'
-    })
-  }))) : Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("span", null, "Loading...")));
+  }), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_ScrollToTopBottom__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VTuberProfileModal__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(_VideoModal__WEBPACK_IMPORTED_MODULE_22__[/* default */ "a"], null), Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])(ValidRouter, {
+    enforceYouTubeCompliance: _Config__WEBPACK_IMPORTED_MODULE_34__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
+  })) : Object(preact__WEBPACK_IMPORTED_MODULE_1__["h"])("span", null, "Loading...")));
 };
 /* harmony default export */ __webpack_exports__["a"] = (App);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["Fragment"]))
@@ -29009,23 +29037,23 @@ var en = {
     searchByGroupMember: 'Search by group member',
     searchByDate: 'Search by date',
     searchByTitle: 'Search by title',
-    popularity: 'Median Views Of YouTube Videos Within 30 Days + Median Views Of Twitch Streams Within 30 Days',
+    popularity: 'Popularity',
     averageSubscriberCount: 'Average Subscribers',
     totalSubscriberCount: 'Total Subscribers',
     memberCount: 'Member Count',
     memberList: 'Members',
     debutDate: 'Debut Date',
     graduateDate: 'Graduation Date',
-    _7DaysGrowth: 'Subscribers Difference Within 7 Days (Percent)',
-    _30DaysGrowth: 'Subscribers Difference Within 30 Days (Percent)',
-    _7DaysViewCountGrowth: 'Subscribers Difference Within 7 Days',
-    _30DaysViewCountGrowth: 'Subscribers Difference Within 30 Days',
+    _7DaysGrowth: '7 Days Growth (Percent)',
+    _30DaysGrowth: '30 Days Growth (Percent)',
+    _7DaysViewCountGrowth: '7 Days Growth',
+    _30DaysViewCountGrowth: '30 Days Growth',
     atLeast: 'at least',
     noRecord: 'no record',
     noDuplicate: 'One video per VTuber',
     allVideos: 'All videos',
     options: 'Options:',
-    popularVideo: 'Most Viewed Video Within 30 Days',
+    popularVideo: 'Popular Video',
     YouTubeTwitchCount: 'YouTube Subscribers + Twitch Followers',
     sortingMethod: 'Sort by:',
     YouTubeTotalViewCount: 'YouTube Total View Count',
@@ -32930,7 +32958,7 @@ var ReportIssue_ReportIssuePage = function ReportIssuePage(props) {
   }, Object(external_preact_["h"])("div", {
     class: style_module.flexButton
   }, Object(external_preact_["h"])("a", {
-    href: Config["d" /* GOOGLE_FORM_URL */],
+    href: Config["e" /* GOOGLE_FORM_URL */],
     target: "_blank",
     rel: "noopener noreferrer"
   }, Object(external_preact_["h"])("img", {
@@ -32940,7 +32968,7 @@ var ReportIssue_ReportIssuePage = function ReportIssuePage(props) {
   }, "Report using Google Form"))), Object(external_preact_["h"])("div", {
     class: style_module.flexButton
   }, Object(external_preact_["h"])("a", {
-    href: Config["c" /* GITHUB_ISSUE_URL */],
+    href: Config["d" /* GITHUB_ISSUE_URL */],
     target: "_blank",
     rel: "noopener noreferrer"
   }, Object(external_preact_["h"])("img", {
@@ -46499,6 +46527,8 @@ var setCookie = function setCookie(key, validValues, value) {
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var preact_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("OhSV");
 /* harmony import */ var _components_ShowVideoButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("0yJK");
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("0Khb");
+
 
 
 
@@ -46511,7 +46541,8 @@ var PopularVideoColumn = function PopularVideoColumn() {
       return row.popularVideo !== undefined ? Object(preact__WEBPACK_IMPORTED_MODULE_0__["h"])(_components_ShowVideoButton__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"], {
         popularVideo: row.popularVideo
       }) : null;
-    }
+    },
+    omit: _Config__WEBPACK_IMPORTED_MODULE_3__[/* ENFORCE_YOUTUBE_COMPLIANCE */ "c"]
   };
 };
 
