@@ -26,6 +26,9 @@ export default {
     const contactEmail = process.env.CONTACT_EMAIL
     && JSON.stringify(`${process.env.CONTACT_EMAIL}`);
 
+    const enforceYouTubeCompliance = process.env.ENFORCE_YOUTUBE_COMPLIANCE
+    && JSON.stringify(`${process.env.ENFORCE_YOUTUBE_COMPLIANCE}`)
+
     const { plugin } = helpers.getPluginsByName(config, 'DefinePlugin')[0];
     Object.assign(
       plugin.definitions,
@@ -36,6 +39,7 @@ export default {
         'process.env.GITHUB_ISSUE_URL': gitHubIssueEnv, 
         'process.env.TIMEZONE_DIFF_IN_HOUR': timezoneDiffInHour, 
         'process.env.CONTACT_EMAIL': contactEmail, 
+        'process.env.ENFORCE_YOUTUBE_COMPLIANCE': enforceYouTubeCompliance, 
       }
     );
 

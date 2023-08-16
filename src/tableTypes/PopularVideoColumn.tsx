@@ -3,6 +3,7 @@ import { Text } from 'preact-i18n';
 import { TableColumn } from 'react-data-table-component';
 import ShowVideoButton from '../components/ShowVideoButton';
 import { VideoInfo } from '../types/Common/VideoInfo';
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
 
 export interface PopularVideoColumnRowData {
   popularVideo?: VideoInfo;
@@ -17,5 +18,6 @@ export const PopularVideoColumn = <
       row.popularVideo !== undefined ? (
         <ShowVideoButton popularVideo={row.popularVideo} />
       ) : null,
+    omit: ENFORCE_YOUTUBE_COMPLIANCE,
   };
 };

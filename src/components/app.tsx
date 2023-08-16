@@ -42,6 +42,7 @@ import {
   getCurrentApiSourceState,
   setCurrentApiSource,
 } from '../global/CurrentApiSource';
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
 
 const App: FunctionalComponent = () => {
   const [locale, setLocale] = useState<validI18n>(
@@ -101,6 +102,96 @@ const App: FunctionalComponent = () => {
     }
   }, [displayNationality, apiSource]);
 
+  const ValidRouter = (props: { enforceYouTubeCompliance: boolean }) => (
+    <Router>
+      <Route
+        path={GetRoute({ type: 'home' })}
+        dictionary={definition}
+        component={HomePage}
+      />
+      <Route
+        path={GetRoute({ type: 'livestreams' })}
+        dictionary={definition}
+        component={LivestreamsPage}
+      />
+      <Route
+        path={GetRoute({ type: 'event-calendar' })}
+        dictionary={definition}
+        component={EventCalendarPage}
+      />
+      <Route
+        path={GetRoute({ type: 'all-vtubers' })}
+        dictionary={definition}
+        component={AllVTubersPage}
+      />
+      <Route
+        path={GetRoute({ type: 'group-list' })}
+        dictionary={definition}
+        component={GroupListPage}
+      />
+      <Route
+        path={GetRoute({ type: 'debut-vtubers' })}
+        dictionary={definition}
+        component={DebutVTubersPage}
+      />
+      <Route
+        path={GetRoute({ type: 'graduate-vtubers' })}
+        dictionary={definition}
+        component={GraduateVTubersPage}
+      />
+      <Route
+        path={GetRoute({ type: 'report-issue' })}
+        dictionary={definition}
+        component={ReportIssuePage}
+      />
+      <Route
+        path={GetRoute({ type: 'about' })}
+        dictionary={definition}
+        component={AboutPage}
+      />
+      <Route
+        path={GetPlaceholderRoute({ type: 'vtuber' }, ':id')}
+        dictionary={definition}
+        component={VTuberPage}
+      />
+      <Route
+        path={GetPlaceholderRoute({ type: 'group' }, ':groupName')}
+        dictionary={definition}
+        component={GroupPage}
+      />
+      <Route
+        path={GetPlaceholderRoute({ type: 'trending-videos' }, ':modifier')}
+        dictionary={definition}
+        component={TrendingVideosPage}
+      />
+      <Route
+        path={GetPlaceholderRoute({ type: 'vtubers-view-count' }, ':modifier')}
+        dictionary={definition}
+        component={VTubersViewCountPage}
+      />
+      {props.enforceYouTubeCompliance == true ? (
+        <Redirect default to={GetRoute({ type: 'home' })} />
+      ) : (
+        <>
+          <Route
+            path={GetPlaceholderRoute(
+              { type: 'trending-vtubers', sortOrder: 'livestream' },
+              ':modifier'
+            )}
+            dictionary={definition}
+            component={TrendingVTubersPage}
+          />
+          <Route
+            path={GetRoute({ type: 'growing-vtubers' })}
+            dictionary={definition}
+            component={GrowingVTubersPage}
+          />
+          <Redirect default to={GetRoute({ type: 'home' })} />
+        </>
+      )}
+    </Router>
+  );
+
   return (
     <div id="preact_root">
       <IntlProvider definition={definition}>
@@ -117,93 +208,9 @@ const App: FunctionalComponent = () => {
             <ScrollToTopBottom />
             <VTuberProfileModal />
             <VideoModal />
-            <Router>
-              <Route
-                path={GetRoute({ type: 'home' })}
-                dictionary={definition}
-                component={HomePage}
-              />
-              <Route
-                path={GetRoute({ type: 'livestreams' })}
-                dictionary={definition}
-                component={LivestreamsPage}
-              />
-              <Route
-                path={GetRoute({ type: 'event-calendar' })}
-                dictionary={definition}
-                component={EventCalendarPage}
-              />
-              <Route
-                path={GetRoute({ type: 'all-vtubers' })}
-                dictionary={definition}
-                component={AllVTubersPage}
-              />
-              <Route
-                path={GetRoute({ type: 'group-list' })}
-                dictionary={definition}
-                component={GroupListPage}
-              />
-              <Route
-                path={GetPlaceholderRoute(
-                  { type: 'trending-vtubers', sortOrder: 'livestream' },
-                  ':modifier'
-                )}
-                dictionary={definition}
-                component={TrendingVTubersPage}
-              />
-              <Route
-                path={GetRoute({ type: 'growing-vtubers' })}
-                dictionary={definition}
-                component={GrowingVTubersPage}
-              />
-              <Route
-                path={GetRoute({ type: 'debut-vtubers' })}
-                dictionary={definition}
-                component={DebutVTubersPage}
-              />
-              <Route
-                path={GetRoute({ type: 'graduate-vtubers' })}
-                dictionary={definition}
-                component={GraduateVTubersPage}
-              />
-              <Route
-                path={GetRoute({ type: 'report-issue' })}
-                dictionary={definition}
-                component={ReportIssuePage}
-              />
-              <Route
-                path={GetRoute({ type: 'about' })}
-                dictionary={definition}
-                component={AboutPage}
-              />
-              <Route
-                path={GetPlaceholderRoute({ type: 'vtuber' }, ':id')}
-                dictionary={definition}
-                component={VTuberPage}
-              />
-              <Route
-                path={GetPlaceholderRoute({ type: 'group' }, ':groupName')}
-                dictionary={definition}
-                component={GroupPage}
-              />
-              <Route
-                path={GetPlaceholderRoute(
-                  { type: 'trending-videos' },
-                  ':modifier'
-                )}
-                dictionary={definition}
-                component={TrendingVideosPage}
-              />
-              <Route
-                path={GetPlaceholderRoute(
-                  { type: 'vtubers-view-count' },
-                  ':modifier'
-                )}
-                dictionary={definition}
-                component={VTubersViewCountPage}
-              />
-              <Redirect default to={GetRoute({ type: 'home' })} />
-            </Router>
+            <ValidRouter
+              enforceYouTubeCompliance={ENFORCE_YOUTUBE_COMPLIANCE}
+            />
           </>
         ) : (
           <span>Loading...</span>

@@ -10,6 +10,7 @@ import '../../style/index.css';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import style from './style.module.css';
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
 
 export interface HomePageProps {
   dictionary: Dictionary;
@@ -61,18 +62,25 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
         <Text id="header.title">Taiwan VTuber Data</Text>
         {GetCurrentNationalitySpan()}
       </h1>
-
       <LivestreamsSection />
       <div class={style.tableGrid}>
-        <div class={style.tableItem}>
-          <TrendingVTubersTable />
-        </div>
+        {ENFORCE_YOUTUBE_COMPLIANCE ? (
+          <></>
+        ) : (
+          <div class={style.tableItem}>
+            <TrendingVTubersTable />
+          </div>
+        )}
         <div class={style.tableItem}>
           <DebutVTubersTable />
         </div>
-        <div class={style.tableItem}>
-          <GrowingVTubersTable dictionary={props.dictionary} />
-        </div>
+        {ENFORCE_YOUTUBE_COMPLIANCE ? (
+          <></>
+        ) : (
+          <div class={style.tableItem}>
+            <GrowingVTubersTable dictionary={props.dictionary} />
+          </div>
+        )}
         <div class={style.tableItem}>
           <TopVTubersTable />
         </div>

@@ -13,7 +13,7 @@ import { GetRoute } from '../../utils/TypeSafeRouting';
 import LanguageDropDown from '../LanguageDropDown';
 import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
-import { APP_VERSION } from '../../Config';
+import { APP_VERSION, ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
 import { ApiSourceModifier } from '../../types/Common/ApiSource';
 import ApiSourceDropDown from '../ApiSourceDropDown';
 import { ApiSourceOptions } from '../../types/ApiSourceOptions';
@@ -61,65 +61,75 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   };
 
   const NavigationLinks = (): JSX.Element => {
+    let links = [
+      { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
+      {
+        textID: 'header.livestreaming',
+        linkTo: GetRoute({ type: 'livestreams' }),
+      },
+      {
+        textID: 'header.eventCalendar',
+        linkTo: GetRoute({ type: 'event-calendar' }),
+      },
+      {
+        textID: 'header.allVTubers',
+        linkTo: GetRoute({ type: 'all-vtubers' }),
+      },
+      {
+        textID: 'header.groupList',
+        linkTo: GetRoute({ type: 'group-list' }),
+      },
+      {
+        textID: 'header.trendingVTubers',
+        linkTo: GetRoute({
+          type: 'trending-vtubers',
+          sortOrder: 'livestream',
+        }),
+      },
+      {
+        textID: 'header.trendingVideos',
+        linkTo: GetRoute({
+          type: 'trending-videos',
+          sortOrder: 'no-duplicate',
+        }),
+      },
+      {
+        textID: 'header.VTubersViewCount',
+        linkTo: GetRoute({
+          type: 'vtubers-view-count',
+          sortOrder: '7-days',
+        }),
+      },
+      {
+        textID: 'header.growingVTubers',
+        linkTo: GetRoute({ type: 'growing-vtubers' }),
+      },
+      {
+        textID: 'header.debutVTubers',
+        linkTo: GetRoute({ type: 'debut-vtubers' }),
+      },
+      {
+        textID: 'header.graduateVTubers',
+        linkTo: GetRoute({ type: 'graduate-vtubers' }),
+      },
+      {
+        textID: 'header.reportIssue',
+        linkTo: GetRoute({ type: 'report-issue' }),
+      },
+      { textID: 'header.about', linkTo: GetRoute({ type: 'about' }) },
+    ];
+
+    if (ENFORCE_YOUTUBE_COMPLIANCE) {
+      links = links.filter(
+        (e) =>
+          e.textID !== 'header.trendingVTubers' &&
+          e.textID !== 'header.growingVTubers'
+      );
+    }
+
     return (
       <div class={style.navGrid}>
-        {[
-          { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
-          {
-            textID: 'header.livestreaming',
-            linkTo: GetRoute({ type: 'livestreams' }),
-          },
-          {
-            textID: 'header.eventCalendar',
-            linkTo: GetRoute({ type: 'event-calendar' }),
-          },
-          {
-            textID: 'header.allVTubers',
-            linkTo: GetRoute({ type: 'all-vtubers' }),
-          },
-          {
-            textID: 'header.groupList',
-            linkTo: GetRoute({ type: 'group-list' }),
-          },
-          {
-            textID: 'header.trendingVTubers',
-            linkTo: GetRoute({
-              type: 'trending-vtubers',
-              sortOrder: 'livestream',
-            }),
-          },
-          {
-            textID: 'header.trendingVideos',
-            linkTo: GetRoute({
-              type: 'trending-videos',
-              sortOrder: 'no-duplicate',
-            }),
-          },
-          {
-            textID: 'header.VTubersViewCount',
-            linkTo: GetRoute({
-              type: 'vtubers-view-count',
-              sortOrder: '7-days',
-            }),
-          },
-          {
-            textID: 'header.growingVTubers',
-            linkTo: GetRoute({ type: 'growing-vtubers' }),
-          },
-          {
-            textID: 'header.debutVTubers',
-            linkTo: GetRoute({ type: 'debut-vtubers' }),
-          },
-          {
-            textID: 'header.graduateVTubers',
-            linkTo: GetRoute({ type: 'graduate-vtubers' }),
-          },
-          {
-            textID: 'header.reportIssue',
-            linkTo: GetRoute({ type: 'report-issue' }),
-          },
-          { textID: 'header.about', linkTo: GetRoute({ type: 'about' }) },
-        ].map((e) => LinkElement(e.textID, e.linkTo))}
+        {links.map((e) => LinkElement(e.textID, e.linkTo))}
       </div>
     );
   };
