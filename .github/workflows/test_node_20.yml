@@ -25,6 +25,7 @@ jobs:
       _P_GITHUB_ISSUE_URL: ${{ secrets._P_GITHUB_ISSUE_URL }}
       TIMEZONE_DIFF_IN_HOUR: ${{ secrets.TIMEZONE_DIFF_IN_HOUR }}
       CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+      ENFORCE_YOUTUBE_COMPLIANCE: ${{ secrets.ENFORCE_YOUTUBE_COMPLIANCE }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
