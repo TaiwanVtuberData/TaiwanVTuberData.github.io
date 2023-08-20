@@ -1107,7 +1107,7 @@ var getEnvAsBooleanOrFalse = function getEnvAsBooleanOrFalse(env) {
   var envValue = getEnvOrEmpty(env);
   return envValue === 'true';
 };
-var APP_VERSION = getEnvOrEmpty("2.1.6");
+var APP_VERSION = getEnvOrEmpty("2.1.7");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/a3H5ThJxHV3fLuWp6");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
