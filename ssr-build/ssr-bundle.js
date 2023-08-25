@@ -1107,7 +1107,7 @@ var getEnvAsBooleanOrFalse = function getEnvAsBooleanOrFalse(env) {
   var envValue = getEnvOrEmpty(env);
   return envValue === 'true';
 };
-var APP_VERSION = getEnvOrEmpty("2.1.7");
+var APP_VERSION = getEnvOrEmpty("2.1.8");
 var ROUTE_PREFIX = getEnvOrEmpty(undefined);
 var GOOGLE_FORM_URL = getEnvOrEmpty("https://forms.gle/a3H5ThJxHV3fLuWp6");
 var GITHUB_ISSUE_URL = getEnvOrEmpty("https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/issues/new/choose");
@@ -9349,7 +9349,7 @@ var zh = {
     searchByGroupMember: '依團體成員搜尋',
     searchByDate: '依日期搜尋',
     searchByTitle: '依標題搜尋',
-    popularity: '近 30 日 YouTube 直播/影片觀看中位數 + Twitch 過去直播觀看中位數',
+    popularity: '熱度',
     averageSubscriberCount: '平均訂閱人數',
     totalSubscriberCount: '總訂閱人數',
     memberCount: '成員人數',
@@ -33114,7 +33114,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 var VTuberDebutToDisplay = function VTuberDebutToDisplay(e) {
   return _objectSpread(_objectSpread({}, Object(_BasicTransform__WEBPACK_IMPORTED_MODULE_0__[/* VTuberBasicToDisplay */ "a"])(e)), {}, {
-    debutInfo: Object(_DebutStringToDebutInfo__WEBPACK_IMPORTED_MODULE_1__[/* debutStringToDebutInfo */ "a"])(e.debutDate)
+    debutInfo: Object(_DebutStringToDebutInfo__WEBPACK_IMPORTED_MODULE_1__[/* debutStringToDebutInfo */ "a"])(e.debutDate),
+    debutDate: e.debutDate
   });
 };
 
@@ -44667,11 +44668,15 @@ var GroupMock = [{
   id: '1',
   name: '雲際線工作室',
   popularity: 28416,
+  livestreamPopularity: 10000,
+  videoPopularity: 10000,
   members: CloudHorizonMock
 }, {
   id: '2',
   name: '子午計劃',
   popularity: 9832,
+  livestreamPopularity: 5000,
+  videoPopularity: 12000,
   members: MeridianProjectMock
 }];
 // CONCATENATED MODULE: ./services/MockData/GrowingVTubersMock.ts
@@ -46946,15 +46951,34 @@ var TypeSafeRouting = __webpack_require__("Wcfx");
 var NameSort = function NameSort(rowA, rowB) {
   return rowA.name.localeCompare(rowB.name);
 };
-// EXTERNAL MODULE: ./utils/CountTypeUtils.ts
-var CountTypeUtils = __webpack_require__("qjhZ");
-
 // EXTERNAL MODULE: ./utils/NationalityUtils.tsx
 var NationalityUtils = __webpack_require__("MJ1U");
 
 // EXTERNAL MODULE: ./Config.ts
 var Config = __webpack_require__("0Khb");
 
+// EXTERNAL MODULE: ./utils/CountTypeUtils.ts
+var CountTypeUtils = __webpack_require__("qjhZ");
+
+// CONCATENATED MODULE: ./utils/transform/GroupTransform.ts
+
+var GroupTransform_accumulator = function accumulator(prev, current) {
+  var _GetCount, _current$YouTube, _GetCount2, _current$Twitch;
+  return prev + ((_GetCount = Object(CountTypeUtils["b" /* GetCount */])((_current$YouTube = current.YouTube) === null || _current$YouTube === void 0 ? void 0 : _current$YouTube.subscriber)) !== null && _GetCount !== void 0 ? _GetCount : 0) + ((_GetCount2 = Object(CountTypeUtils["b" /* GetCount */])((_current$Twitch = current.Twitch) === null || _current$Twitch === void 0 ? void 0 : _current$Twitch.follower)) !== null && _GetCount2 !== void 0 ? _GetCount2 : 0);
+};
+var groupToDisplay = function groupToDisplay(e) {
+  return {
+    id: e.id,
+    name: e.name,
+    popularity: e.popularity,
+    livestreamPopularity: e.livestreamPopularity,
+    videoPopularity: e.videoPopularity,
+    averageSubscriberCount: e.members.length !== 0 ? Math.round(e.members.reduce(GroupTransform_accumulator, 0) / e.members.length) : 0,
+    totalSubscriberCount: e.members.reduce(GroupTransform_accumulator, 0),
+    memberCount: e.members.length,
+    memberList: e.members
+  };
+};
 // CONCATENATED MODULE: ./routes/GroupList/index.tsx
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -47005,7 +47029,7 @@ var GroupList_GroupListPage = function GroupListPage(props) {
       id: "table.popularity"
     }, "Popularity"),
     selector: function selector(row) {
-      return row.popularity;
+      return row.livestreamPopularity;
     },
     right: true,
     sortable: true,
@@ -47120,21 +47144,6 @@ var GroupList_GroupListPage = function GroupListPage(props) {
       filterText: filterGroupMember
     }));
   }, [filterGroup, filterGroupMember, resetPaginationToggle, props.dictionary]);
-  var accumulator = function accumulator(prev, current) {
-    var _GetCount, _current$YouTube, _GetCount2, _current$Twitch;
-    return prev + ((_GetCount = Object(CountTypeUtils["b" /* GetCount */])((_current$YouTube = current.YouTube) === null || _current$YouTube === void 0 ? void 0 : _current$YouTube.subscriber)) !== null && _GetCount !== void 0 ? _GetCount : 0) + ((_GetCount2 = Object(CountTypeUtils["b" /* GetCount */])((_current$Twitch = current.Twitch) === null || _current$Twitch === void 0 ? void 0 : _current$Twitch.follower)) !== null && _GetCount2 !== void 0 ? _GetCount2 : 0);
-  };
-  var dataToDisplayData = function dataToDisplayData(e) {
-    return {
-      id: e.id,
-      name: e.name,
-      popularity: e.popularity,
-      averageSubscriberCount: e.members.length !== 0 ? Math.round(e.members.reduce(accumulator, 0) / e.members.length) : 0,
-      totalSubscriberCount: e.members.reduce(accumulator, 0),
-      memberCount: e.members.length,
-      memberList: e.members
-    };
-  };
   var _useState9 = Object(hooks_module["l" /* useState */])(true),
     _useState10 = _slicedToArray(_useState9, 2),
     pending = _useState10[0],
@@ -47143,9 +47152,9 @@ var GroupList_GroupListPage = function GroupListPage(props) {
     var _ref = _asyncToGenerator(function* () {
       yield ApiService["e" /* getGroups */]().then(function (res) {
         setData(res.data.groups.map(function (e) {
-          return dataToDisplayData(e);
+          return groupToDisplay(e);
         }).sort(function (a, b) {
-          return b.popularity - a.popularity;
+          return b.livestreamPopularity - a.livestreamPopularity;
         }) // sort in descending order
         );
 
