@@ -4,6 +4,8 @@ export interface GroupData {
   readonly id: string;
   readonly name: string;
   readonly popularity: number;
+  readonly livestreamPopularity: number;
+  readonly videoPopularity: number;
   readonly members: ReadonlyArray<VTuberData>;
 }
 

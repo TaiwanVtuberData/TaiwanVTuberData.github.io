@@ -63,15 +63,15 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
       </h1>
       <LivestreamsSection />
       <div class={style.tableGrid}>
-      <div class={style.tableItem}>
-            <TrendingVTubersTable />
-          </div>
+        <div class={style.tableItem}>
+          <TrendingVTubersTable />
+        </div>
         <div class={style.tableItem}>
           <DebutVTubersTable />
         </div>
         <div class={style.tableItem}>
-            <GrowingVTubersTable dictionary={props.dictionary} />
-          </div>
+          <GrowingVTubersTable dictionary={props.dictionary} />
+        </div>
         <div class={style.tableItem}>
           <TopVTubersTable />
         </div>

@@ -8,4 +8,5 @@ export const VTuberDebutToDisplay = (
 ): VTuberDebutDisplayData => ({
   ...VTuberBasicToDisplay(e),
   debutInfo: debutStringToDebutInfo(e.debutDate),
+  debutDate: e.debutDate,
 });

@@ -6,7 +6,6 @@ import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData';
 import SearchBar from '../../components/SearchBar';
-import { GroupData } from '../../types/ApiData/GroupData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import style from './style.module.css';
@@ -16,9 +15,9 @@ import Profile from '../../components/Profile';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
 import { GetRoute } from '../../utils/TypeSafeRouting';
 import { NameSort } from '../../utils/sort/NameSort';
-import { GetCount } from '../../utils/CountTypeUtils';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
+import { groupToDisplay } from '../../utils/transform/GroupTransform';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -41,7 +40,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
-      selector: (row: { popularity: number }): number => row.popularity,
+      selector: (row: { livestreamPopularity: number }): number =>
+        row.livestreamPopularity,
       right: true,
       sortable: true,
       minWidth: '50px',
@@ -143,32 +143,14 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     );
   }, [filterGroup, filterGroupMember, resetPaginationToggle, props.dictionary]);
 
-  const accumulator = (prev: number, current: VTuberData): number =>
-    prev +
-    (GetCount(current.YouTube?.subscriber) ?? 0) +
-    (GetCount(current.Twitch?.follower) ?? 0);
-
-  const dataToDisplayData = (e: GroupData): GroupDisplayData => ({
-    id: e.id,
-    name: e.name,
-    popularity: e.popularity,
-    averageSubscriberCount:
-      e.members.length !== 0
-        ? Math.round(e.members.reduce(accumulator, 0) / e.members.length)
-        : 0,
-    totalSubscriberCount: e.members.reduce(accumulator, 0),
-    memberCount: e.members.length,
-    memberList: e.members,
-  });
-
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
     await Api.getGroups().then((res) => {
       setData(
         res.data.groups
-          .map((e) => dataToDisplayData(e))
-          .sort((a, b) => b.popularity - a.popularity) // sort in descending order
+          .map((e) => groupToDisplay(e))
+          .sort((a, b) => b.livestreamPopularity - a.livestreamPopularity) // sort in descending order
       );
       setPending(false);
     });
