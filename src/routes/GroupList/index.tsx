@@ -6,7 +6,6 @@ import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData';
 import SearchBar from '../../components/SearchBar';
-import { GroupData } from '../../types/ApiData/GroupData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import '../../style/index.css';
 import style from './style.module.css';
