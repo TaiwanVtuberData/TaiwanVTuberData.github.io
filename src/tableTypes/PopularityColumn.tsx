@@ -26,6 +26,6 @@ export const PopularityColumn = <
         TwitchCount={numberToCountType(row.TwitchPopularity)}
       />
     ),
-    omit: ENFORCE_YOUTUBE_COMPLIANCE
+    omit: ENFORCE_YOUTUBE_COMPLIANCE,
   };
 };

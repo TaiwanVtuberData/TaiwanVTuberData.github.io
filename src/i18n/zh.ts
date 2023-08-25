@@ -52,8 +52,7 @@ const zh: Dictionary = {
     searchByGroupMember: '依團體成員搜尋',
     searchByDate: '依日期搜尋',
     searchByTitle: '依標題搜尋',
-    popularity:
-      '近 30 日 YouTube 直播/影片觀看中位數 + Twitch 過去直播觀看中位數',
+    popularity: '熱度',
     averageSubscriberCount: '平均訂閱人數',
     totalSubscriberCount: '總訂閱人數',
     memberCount: '成員人數',
