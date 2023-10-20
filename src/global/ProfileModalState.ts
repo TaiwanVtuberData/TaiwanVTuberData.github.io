@@ -1,6 +1,11 @@
-import createStore from 'react-hstore';
+import createStore from 'react-superstore';
 
-const defaultModalState = {
+interface ProfileModal {
+  isOpen: boolean,
+  VTuberId: string | null
+}
+
+const defaultModalState: ProfileModal = {
   isOpen: false,
   VTuberId: null,
 };
@@ -9,7 +14,7 @@ export const [
   useProfileModalState,
   setProfileModalState,
   getProfileModalState,
-] = createStore(defaultModalState);
+] = createStore<ProfileModal>(defaultModalState);
 
 export const openProfileModal = (VTuberId: string): void =>
   setProfileModalState({ isOpen: true, VTuberId: VTuberId });
