@@ -19,7 +19,7 @@ const VideoModal: FunctionalComponent = (): h.JSX.Element => {
           &times;
         </span>
         <iframe
-          src={modalState.frameSrc}
+          src={modalState.frameSrc ?? ''}
           width={640}
           height={360}
           allowFullScreen={true}

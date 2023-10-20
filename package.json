@@ -5,7 +5,7 @@
   "version": "2.1.9",
   "license": "BSD-3-Clause",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build && cp src/404.html build/404.html",
     "build:gh": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build && cp src/404.html build/404.html",
     "serve": "http-server ./build --port 8080",
     "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact watch",
@@ -31,7 +31,7 @@
     "preact-render-to-string": "^5.2.6",
     "preact-router": "^4.1.2",
     "react-data-table-component": "^7.5.4",
-    "react-hstore": "0.0.6",
+    "react-superstore": "0.1.4",
     "styled-components": "^6.0.7"
   },
   "devDependencies": {

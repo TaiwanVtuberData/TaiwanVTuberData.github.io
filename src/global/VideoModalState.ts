@@ -1,14 +1,19 @@
-import createStore from 'react-hstore';
+import createStore from 'react-superstore';
 import { VideoInfo } from '../types/Common/VideoInfo';
 import { VideoInfoToFrameSrc } from '../utils/VideoInfoToFrameSrc';
 
-const defaultModalState = {
+interface VideoModal {
+  isOpen: boolean,
+  frameSrc: string | null
+}
+
+const defaultModalState: VideoModal = {
   isOpen: false,
   frameSrc: null,
 };
 
 export const [useVideoModalState, setVideoModalState, getVideoModalState] =
-  createStore(defaultModalState);
+  createStore<VideoModal>(defaultModalState);
 
 export const openVideoModal = (videoInfo: VideoInfo): void =>
   setVideoModalState({
