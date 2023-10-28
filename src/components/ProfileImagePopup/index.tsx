@@ -1,6 +1,6 @@
-import { FunctionalComponent, h } from 'preact';
-import ProfileImage from '../ProfileImage';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import ProfileImage from "../ProfileImage";
+import style from "./style.module.css";
 
 export interface ProfileImagePopupProps {
   VTuberId: string;
@@ -9,8 +9,8 @@ export interface ProfileImagePopupProps {
 }
 
 const ProfileImagePopup: FunctionalComponent<ProfileImagePopupProps> = (
-  props: ProfileImagePopupProps
-): h.JSX.Element => {
+  props: ProfileImagePopupProps,
+): JSX.Element => {
   return (
     <div class={style.container}>
       <div class={style.profileImageFlex}>

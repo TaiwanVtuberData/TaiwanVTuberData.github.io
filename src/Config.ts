@@ -1,5 +1,7 @@
+import { tryParseInteger } from "./utils/NumberUtils";
+
 const getEnvOrEmpty = (env: string | undefined): string => {
-  let defaultValue = '';
+  let defaultValue = "";
   if (env) {
     defaultValue = env;
   }
@@ -10,14 +12,20 @@ const getEnvOrEmpty = (env: string | undefined): string => {
 const getEnvAsBooleanOrFalse = (env: string | undefined): boolean => {
   const envValue = getEnvOrEmpty(env);
 
-  return envValue === 'true';
+  return envValue === "true";
 };
 
-export const APP_VERSION = getEnvOrEmpty(process.env.APP_VERSION);
-export const ROUTE_PREFIX = getEnvOrEmpty(process.env.GITHUB_PAGES);
-export const GOOGLE_FORM_URL = getEnvOrEmpty(process.env.GOOGLE_FORM_URL);
-export const GITHUB_ISSUE_URL = getEnvOrEmpty(process.env.GITHUB_ISSUE_URL);
-export const CONTACT_EMAIL = getEnvOrEmpty(process.env.CONTACT_EMAIL);
+const DEFAULT_TIMEZONE_DIFF_IN_HOUR = 8;
+
+export const APP_VERSION = getEnvOrEmpty(import.meta.env.APP_VERSION);
+export const CONTACT_EMAIL = getEnvOrEmpty(import.meta.env.CONTACT_EMAIL);
 export const ENFORCE_YOUTUBE_COMPLIANCE = getEnvAsBooleanOrFalse(
-  process.env.ENFORCE_YOUTUBE_COMPLIANCE
+  import.meta.env.ENFORCE_YOUTUBE_COMPLIANCE,
+);
+export const GITHUB_ISSUE_URL = getEnvOrEmpty(import.meta.env.GITHUB_ISSUE_URL);
+export const GOOGLE_FORM_URL = getEnvOrEmpty(import.meta.env.GOOGLE_FORM_URL);
+export const ROUTE_PREFIX = getEnvOrEmpty(import.meta.env.ROUTE_PREFIX);
+export const TIMEZONE_DIFF_IN_HOUR: number = tryParseInteger(
+  import.meta.env.TIMEZONE_DIFF_IN_HOUR,
+  DEFAULT_TIMEZONE_DIFF_IN_HOUR,
 );

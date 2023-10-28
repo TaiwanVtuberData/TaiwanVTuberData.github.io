@@ -1,22 +1,22 @@
-import * as Api from '../../services/ApiService';
-import { FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
-import { Link } from 'preact-router';
-import { StateUpdater, useState, useEffect } from 'preact/hooks';
+import * as Api from "../../services/ApiService";
+import { FunctionalComponent, JSX } from "preact";
+import { Text } from "preact-i18n";
+import { Link } from "preact-router";
+import { StateUpdater, useState, useEffect } from "preact/hooks";
 import {
   NationalityModifier,
   nationalityArray,
-} from '../../types/Common/NationalityModifier';
-import { validI18n, LanguageOptions } from '../../types/LanguageOptions';
-import { getFormattedDateTime } from '../../utils/DateTimeUtils';
-import { GetRoute } from '../../utils/TypeSafeRouting';
-import LanguageDropDown from '../LanguageDropDown';
-import NationalityDropDown from '../NationalityDropDown';
-import style from './style.module.css';
-import { APP_VERSION } from '../../Config';
-import { ApiSourceModifier } from '../../types/Common/ApiSource';
-import ApiSourceDropDown from '../ApiSourceDropDown';
-import { ApiSourceOptions } from '../../types/ApiSourceOptions';
+} from "../../types/Common/NationalityModifier";
+import { validI18n, LanguageOptions } from "../../types/LanguageOptions";
+import { getFormattedDateTime } from "../../utils/DateTimeUtils";
+import { GetRoute } from "../../utils/TypeSafeRouting";
+import LanguageDropDown from "../LanguageDropDown";
+import NationalityDropDown from "../NationalityDropDown";
+import style from "./style.module.css";
+import { APP_VERSION } from "../../Config";
+import { ApiSourceModifier } from "../../types/Common/ApiSource";
+import ApiSourceDropDown from "../ApiSourceDropDown";
+import { ApiSourceOptions } from "../../types/ApiSourceOptions";
 
 export interface SidebarProps {
   locale: validI18n;
@@ -38,10 +38,10 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const getUpdateTime = async (): Promise<void> => {
     await Api.getUpdateTime().then((res) => {
       setStatisticUpdateTime(
-        getFormattedDateTime(new Date(res.data.time.statisticUpdateTime))
+        getFormattedDateTime(new Date(res.data.time.statisticUpdateTime)),
       );
       setVTuberDataUpdateTime(
-        getFormattedDateTime(new Date(res.data.time.VTuberDataUpdateTime))
+        getFormattedDateTime(new Date(res.data.time.VTuberDataUpdateTime)),
       );
     });
   };
@@ -62,61 +62,61 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
 
   const NavigationLinks = (): JSX.Element => {
     const links = [
-      { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
+      { textID: "header.home", linkTo: GetRoute({ type: "home" }) },
       {
-        textID: 'header.livestreaming',
-        linkTo: GetRoute({ type: 'livestreams' }),
+        textID: "header.livestreaming",
+        linkTo: GetRoute({ type: "livestreams" }),
       },
       {
-        textID: 'header.eventCalendar',
-        linkTo: GetRoute({ type: 'event-calendar' }),
+        textID: "header.eventCalendar",
+        linkTo: GetRoute({ type: "event-calendar" }),
       },
       {
-        textID: 'header.allVTubers',
-        linkTo: GetRoute({ type: 'all-vtubers' }),
+        textID: "header.allVTubers",
+        linkTo: GetRoute({ type: "all-vtubers" }),
       },
       {
-        textID: 'header.groupList',
-        linkTo: GetRoute({ type: 'group-list' }),
+        textID: "header.groupList",
+        linkTo: GetRoute({ type: "group-list" }),
       },
       {
-        textID: 'header.trendingVTubers',
+        textID: "header.trendingVTubers",
         linkTo: GetRoute({
-          type: 'trending-vtubers',
-          sortOrder: 'livestream',
+          type: "trending-vtubers",
+          sortOrder: "livestream",
         }),
       },
       {
-        textID: 'header.trendingVideos',
+        textID: "header.trendingVideos",
         linkTo: GetRoute({
-          type: 'trending-videos',
-          sortOrder: 'no-duplicate',
+          type: "trending-videos",
+          sortOrder: "no-duplicate",
         }),
       },
       {
-        textID: 'header.VTubersViewCount',
+        textID: "header.VTubersViewCount",
         linkTo: GetRoute({
-          type: 'vtubers-view-count',
-          sortOrder: '7-days',
+          type: "vtubers-view-count",
+          sortOrder: "7-days",
         }),
       },
       {
-        textID: 'header.growingVTubers',
-        linkTo: GetRoute({ type: 'growing-vtubers' }),
+        textID: "header.growingVTubers",
+        linkTo: GetRoute({ type: "growing-vtubers" }),
       },
       {
-        textID: 'header.debutVTubers',
-        linkTo: GetRoute({ type: 'debut-vtubers' }),
+        textID: "header.debutVTubers",
+        linkTo: GetRoute({ type: "debut-vtubers" }),
       },
       {
-        textID: 'header.graduateVTubers',
-        linkTo: GetRoute({ type: 'graduate-vtubers' }),
+        textID: "header.graduateVTubers",
+        linkTo: GetRoute({ type: "graduate-vtubers" }),
       },
       {
-        textID: 'header.reportIssue',
-        linkTo: GetRoute({ type: 'report-issue' }),
+        textID: "header.reportIssue",
+        linkTo: GetRoute({ type: "report-issue" }),
       },
-      { textID: 'header.about', linkTo: GetRoute({ type: 'about' }) },
+      { textID: "header.about", linkTo: GetRoute({ type: "about" }) },
     ];
 
     return (
@@ -186,9 +186,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   return (
     <div>
       <div class={style.navTab} onMouseOver={openSidebar}>
-        <div>{'>'}</div>
+        <div>{">"}</div>
       </div>
-      <div style={{ display: sidebarOpen ? 'block' : 'none' }}>
+      <div style={{ display: sidebarOpen ? "block" : "none" }}>
         <div class={style.sidebarOverlay} onMouseOver={closeSidebar} />
         <div class={style.sidebarContent}>
           <h1>

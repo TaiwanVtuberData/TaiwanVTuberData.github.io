@@ -1,23 +1,21 @@
-module.exports = {
-  arrowParens: "always",
-  bracketSameLine: false,
-  bracketSpacing: true,
-  embeddedLanguageFormatting: "auto",
-  endOfLine: "lf",
-  htmlWhitespaceSensitivity: "css",
-  insertPragma: false,
-  jsxSingleQuote: false,
-  proseWrap: "preserve",
-  quoteProps: "as-needed",
-  requirePragma: false,
-  semi: true,
-  singleAttributePerLine: false,
-  singleQuote: true,
-  trailingComma: "es5",
-  useTabs: false,
-  vueIndentScriptAndStyle: false,
-  printWidth: 80,
-  tabWidth: 2,
-  rangeStart: 0,
-  rangeEnd: Infinity
-};
+export const arrowParens = "always";
+export const bracketSameLine = false;
+export const bracketSpacing = true;
+export const embeddedLanguageFormatting = "auto";
+export const endOfLine = "lf";
+export const htmlWhitespaceSensitivity = "css";
+export const insertPragma = false;
+export const jsxSingleQuote = false;
+export const proseWrap = "preserve";
+export const quoteProps = "as-needed";
+export const requirePragma = false;
+export const semi = true;
+export const singleAttributePerLine = false;
+export const singleQuote = true;
+export const trailingComma = "es5";
+export const useTabs = false;
+export const vueIndentScriptAndStyle = false;
+export const printWidth = 80;
+export const tabWidth = 2;
+export const rangeStart = 0;
+export const rangeEnd = Infinity;

@@ -1,13 +1,13 @@
-import * as Api from '../../../services/ApiService';
-import { FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
-import { useState, useEffect, useRef } from 'preact/hooks';
-import { LivestreamDisplayData } from '../../../types/TableDisplayData/LivestreamDisplayData';
-import { findClosestSortedDateIndex } from '../../../utils/DateTimeUtils';
-import { LivestreamToDisplayData } from '../../../utils/transform/LivestreamTransform';
-import HorizontalLivestreamsBox from '../../HorizontalLivestreamsBox';
-import { LivestreamsModifier } from '../../../types/ApiTypes';
-import style from './style.module.css';
+import * as Api from "../../../services/ApiService";
+import { FunctionalComponent, JSX } from "preact";
+import { Text } from "preact-i18n";
+import { useState, useEffect, useRef } from "preact/hooks";
+import { LivestreamDisplayData } from "../../../types/TableDisplayData/LivestreamDisplayData";
+import { findClosestSortedDateIndex } from "../../../utils/DateTimeUtils";
+import { LivestreamToDisplayData } from "../../../utils/transform/LivestreamTransform";
+import HorizontalLivestreamsBox from "../../HorizontalLivestreamsBox";
+import { LivestreamsModifier } from "../../../types/ApiTypes";
+import style from "./style.module.css";
 
 interface LivestreamsTableProps {
   divPrefix: string;
@@ -17,7 +17,7 @@ interface LivestreamsTableProps {
 }
 
 const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
-  props: LivestreamsTableProps
+  props: LivestreamsTableProps,
 ) => {
   // search filter
   const [data, setData] = useState<Array<LivestreamDisplayData>>();
@@ -43,14 +43,14 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
         const closestToNow = findClosestSortedDateIndex(arrayData, currentTime);
 
         const scrollToElement: HTMLElement | null = document.getElementById(
-          `${props.divPrefix}-${Math.min(arrayData.length - 1, closestToNow)}`
+          `${props.divPrefix}-${Math.min(arrayData.length - 1, closestToNow)}`,
         );
 
         // subtract parent div to avoid over scroll
         const scrollPixel =
           (scrollToElement?.offsetLeft ?? 0) -
           (thisRef.current?.offsetLeft ?? 0);
-        thisRef.current?.scrollTo({ left: scrollPixel, behavior: 'smooth' });
+        thisRef.current?.scrollTo({ left: scrollPixel, behavior: "smooth" });
       }, props.delayMs);
     });
   };
@@ -62,7 +62,7 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
   const GetLivestreamsBox = (): JSX.Element => {
     if (pending) {
       return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: "center" }}>
           <span>
             <Text id="text.loading">Loading...</Text>
           </span>
@@ -72,7 +72,7 @@ const LivestreamsTable: FunctionalComponent<LivestreamsTableProps> = (
 
     if (data === undefined || data.length === 0) {
       return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: "center" }}>
           <span>
             <Text id="text.noData">No Data</Text>
           </span>

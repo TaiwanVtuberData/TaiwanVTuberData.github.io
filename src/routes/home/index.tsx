@@ -1,22 +1,22 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
-import DebutVTubersTable from '../../components/LandingTables/DebutVTubers';
-import GrowingVTubersTable from '../../components/LandingTables/GrowingVTubers';
-import LivestreamsTable from '../../components/LandingTables/Livestreams';
-import TopVTubersTable from '../../components/LandingTables/TopVTubers';
-import TrendingVTubersTable from '../../components/LandingTables/TrendingVTubers';
-import { Dictionary } from '../../i18n/Dictionary';
-import '../../style/index.css';
-import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
-import { GetRoute } from '../../utils/TypeSafeRouting';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import { Text } from "preact-i18n";
+import DebutVTubersTable from "../../components/LandingTables/DebutVTubers";
+import GrowingVTubersTable from "../../components/LandingTables/GrowingVTubers";
+import LivestreamsTable from "../../components/LandingTables/Livestreams";
+import TopVTubersTable from "../../components/LandingTables/TopVTubers";
+import TrendingVTubersTable from "../../components/LandingTables/TrendingVTubers";
+import { Dictionary } from "../../i18n/Dictionary";
+import "../../style/index.css";
+import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
+import { GetRoute } from "../../utils/TypeSafeRouting";
+import style from "./style.module.css";
 
 export interface HomePageProps {
   dictionary: Dictionary;
 }
 
 const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     document.title = `${props.dictionary.header.title}`;
   }
 
@@ -27,7 +27,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
       <div class={style.streamingSection}>
         <div>
           <h3>
-            <a href={GetRoute({ type: 'livestreams' })}>
+            <a href={GetRoute({ type: "livestreams" })}>
               <Text id="header.debutToday">Debut Today</Text>
             </a>
           </h3>
@@ -40,7 +40,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
         </div>
         <div>
           <h3>
-            <a href={GetRoute({ type: 'livestreams' })}>
+            <a href={GetRoute({ type: "livestreams" })}>
               <Text id="header.livestreaming">Streaming Now</Text>
             </a>
           </h3>
@@ -56,7 +56,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
   };
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.title">Taiwan VTuber Data</Text>
         {GetCurrentNationalitySpan()}
@@ -76,7 +76,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
           <TopVTubersTable />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

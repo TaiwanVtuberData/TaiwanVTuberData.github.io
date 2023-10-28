@@ -1,7 +1,6 @@
-import { h } from 'preact';
-import { Text } from 'preact-i18n';
-import { TableColumn } from 'react-data-table-component';
-import { HasDebutInfo } from '../types/DebutInfo';
+import { Text } from "preact-i18n";
+import { TableColumn } from "react-data-table-component";
+import { HasDebutInfo } from "../types/DebutInfo";
 
 export interface DebutDateColumnRowData {
   debutInfo: HasDebutInfo;

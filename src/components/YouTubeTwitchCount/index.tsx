@@ -1,7 +1,7 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { CountType } from '../../types/Common/CountType';
-import CountFragment from '../CountFragment';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import { CountType } from "../../types/Common/CountType";
+import CountFragment from "../CountFragment";
+import style from "./style.module.css";
 
 export interface YouTubeTwitchCountProps {
   YouTubeCount?: CountType;
@@ -9,9 +9,9 @@ export interface YouTubeTwitchCountProps {
 }
 
 const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
-  props: YouTubeTwitchCountProps
-): h.JSX.Element => {
-  const YouTubeSpan = (YouTubeCount: CountType): h.JSX.Element => {
+  props: YouTubeTwitchCountProps,
+): JSX.Element => {
+  const YouTubeSpan = (YouTubeCount: CountType): JSX.Element => {
     return (
       <span class={`${style.noWrap} ${style.YouTubeRed}`}>
         <CountFragment countType={YouTubeCount} />
@@ -19,7 +19,7 @@ const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
     );
   };
 
-  const TwitchSpan = (TwitchCount: CountType): h.JSX.Element => {
+  const TwitchSpan = (TwitchCount: CountType): JSX.Element => {
     return (
       <span class={`${style.noWrap} ${style.TwitchPurple}`}>
         <CountFragment countType={TwitchCount} />
@@ -27,7 +27,7 @@ const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
     );
   };
 
-  const CountSpan = (props: YouTubeTwitchCountProps): h.JSX.Element | null => {
+  const CountSpan = (props: YouTubeTwitchCountProps): JSX.Element | null => {
     if (props.YouTubeCount && props.TwitchCount) {
       return (
         <>
@@ -51,9 +51,9 @@ const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (
   };
 
   return (
-    <Fragment>
+    <>
       <CountSpan {...props} />
-    </Fragment>
+    </>
   );
 };
 

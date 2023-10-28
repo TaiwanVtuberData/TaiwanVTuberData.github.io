@@ -1,20 +1,20 @@
-export type CountTag = 'has' | 'hidden' | 'no';
+export type CountTag = "has" | "hidden" | "no";
 
 interface BaseCountType {
   readonly tag: CountTag;
 }
 
 export interface HasCountType extends BaseCountType {
-  readonly tag: 'has';
+  readonly tag: "has";
   readonly count: number;
 }
 
 interface HiddenCountType extends BaseCountType {
-  readonly tag: 'hidden';
+  readonly tag: "hidden";
 }
 
 interface NoCountType extends BaseCountType {
-  readonly tag: 'no';
+  readonly tag: "no";
 }
 
 export type CountType = HasCountType | HiddenCountType | NoCountType;

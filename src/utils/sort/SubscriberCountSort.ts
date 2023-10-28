@@ -1,13 +1,13 @@
-import { CountType } from '../../types/Common/CountType';
-import { CountTypeCompare, GetCount } from '../CountTypeUtils';
+import { CountType } from "../../types/Common/CountType";
+import { CountTypeCompare, GetCount } from "../CountTypeUtils";
 
-export type SortMethod = 'YouTube+Twitch' | 'YouTube' | 'Twitch';
+export type SortMethod = "YouTube+Twitch" | "YouTube" | "Twitch";
 
 const YouTubeSubscriberCountDescendingSort = <
   T extends { YouTubeSubscriber?: CountType },
 >(
   rowA: T,
-  rowB: T
+  rowB: T,
 ): number => {
   const aExist: boolean = rowA.YouTubeSubscriber !== undefined;
   const bExist: boolean = rowB.YouTubeSubscriber !== undefined;
@@ -29,7 +29,7 @@ const TwitchFollowerCountDescendingSort = <
   T extends { TwitchFollower?: CountType },
 >(
   rowA: T,
-  rowB: T
+  rowB: T,
 ): number => {
   const aExist: boolean = rowA.TwitchFollower !== undefined;
   const bExist: boolean = rowB.TwitchFollower !== undefined;
@@ -51,7 +51,7 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
   T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType },
 >(
   rowA: T,
-  rowB: T
+  rowB: T,
 ): number => {
   const aCount =
     (GetCount(rowA.YouTubeSubscriber) ?? 0) +
@@ -72,17 +72,17 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort = <
   T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType },
 >(
   rowA: T,
-  rowB: T
+  rowB: T,
 ): number =>
   YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort(rowA, rowB) * -1;
 
 export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
   switch (sortMethod) {
-    case 'YouTube+Twitch':
+    case "YouTube+Twitch":
       return YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort;
-    case 'YouTube':
+    case "YouTube":
       return YouTubeSubscriberCountDescendingSort;
-    case 'Twitch':
+    case "Twitch":
       return TwitchFollowerCountDescendingSort;
   }
 };

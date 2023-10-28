@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
+	"compilerOptions": {
         // Type Checking
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
@@ -27,8 +27,8 @@
         "allowUmdGlobalAccess": false,
         // "baseUrl": "./",
         "customConditions": [],
-        "module": "node16",
-        "moduleResolution": "node16",
+        "module": "esnext",
+        "moduleResolution": "bundler",
         // "moduleSuffixes": [],
         "noResolve": false,
         // "paths": {},
@@ -63,10 +63,10 @@
         // Language and Environment
         "emitDecoratorMetadata": false,
         "experimentalDecorators": false,
-        "jsx": "react",
-        "jsxFactory": "h",
-        "jsxFragmentFactory": "Fragment",
-        // "jsxImportSource": "react",
+		"jsx": "react-jsx",
+        // "jsxFactory": "h",
+        // "jsxFragmentFactory": "Fragment",
+		"jsxImportSource": "preact",
         // "lib": [],
         "moduleDetection": "auto",
         // "noLib": false,
@@ -102,7 +102,13 @@
 
         // Watch Options
         "assumeChangesOnlyAffectDirectDependencies": false,
-    },
+
+		/* Preact Config */
+		"paths": {
+			"react": ["./node_modules/preact/compat/"],
+			"react-dom": ["./node_modules/preact/compat/"]
+		}
+	},
     "watchOptions": {
         "watchFile": "useFsEvents",
         "watchDirectory": "useFsEvents",
@@ -111,5 +117,5 @@
         "excludeDirectories": ["**/node_modules", "**/build"],
         "excludeFiles": []
     },
-    "include": ["src/**/*"]
+	"include": ["node_modules/vite/client.d.ts", "**/*"]
 }

@@ -1,6 +1,6 @@
-import { Activity } from '../Common/Activity';
-import { GrowthData } from '../Common/GrowthData';
-import { VideoInfo } from '../Common/VideoInfo';
+import { Activity } from "../Common/Activity";
+import { GrowthData } from "../Common/GrowthData";
+import { VideoInfo } from "../Common/VideoInfo";
 
 export interface VTuberViewCountGrowthDisplayData {
   id: string;

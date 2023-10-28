@@ -14,7 +14,7 @@ export function filterFunction<
     }
 
     // if target doesn't exist
-    if (target === null || target === undefined || target === '') {
+    if (target === null || target === undefined || target === "") {
       return false;
     }
 

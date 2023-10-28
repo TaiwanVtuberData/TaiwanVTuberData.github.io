@@ -1,13 +1,10 @@
-import {
-  TIMEZONE_DIFF_IN_HOUR,
-  TODAY_DATE,
-  TODAY_DATE_STRING,
-} from '../../global/TodayDate';
-import { DebutInfo, HasDebutInfo } from '../../types/DebutInfo';
-import { dateDiffInDays, dateStringToDate } from '../DateTimeUtils';
+import { TIMEZONE_DIFF_IN_HOUR } from "../../Config";
+import { TODAY_DATE, TODAY_DATE_STRING } from "../../global/TodayDate";
+import { DebutInfo, HasDebutInfo } from "../../types/DebutInfo";
+import { dateDiffInDays, dateStringToDate } from "../DateTimeUtils";
 
 export const maybeDebutStringToDebutInfo = (
-  debutString?: string
+  debutString?: string,
 ): DebutInfo => {
   if (debutString === null || debutString === undefined)
     return { hasDebutInfo: false };
@@ -23,7 +20,7 @@ export const debutStringToDebutInfo = (debutString: string): HasDebutInfo => {
     isRecentlyDebut:
       dateDiffInDays(
         dateStringToDate(debutString, TIMEZONE_DIFF_IN_HOUR),
-        TODAY_DATE
+        TODAY_DATE,
       ) < 30,
   };
 };

@@ -1,21 +1,21 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
-import { Text } from 'preact-i18n';
-import DataTable, { TableColumn } from 'react-data-table-component';
-import SearchBar from '../../components/SearchBar';
-import { Dictionary } from '../../i18n/Dictionary';
-import * as Api from '../../services/ApiService';
-import { GroupMemberDisplayData } from '../../types/TableDisplayData/GroupMemberDisplayData';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import '../../style/index.css';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
-import { NationalityColumn } from '../../tableTypes/NationalityColumn';
-import { GroupMemberToDisplay } from '../../utils/transform/GroupMemberTransform';
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
-import ActivityRowStyles from '../../style/ActivityRowStyles';
+import { FunctionalComponent } from "preact";
+import { useEffect, useMemo, useState } from "preact/hooks";
+import { Text } from "preact-i18n";
+import DataTable, { TableColumn } from "react-data-table-component";
+import SearchBar from "../../components/SearchBar";
+import { Dictionary } from "../../i18n/Dictionary";
+import * as Api from "../../services/ApiService";
+import { GroupMemberDisplayData } from "../../types/TableDisplayData/GroupMemberDisplayData";
+import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
+import "../../style/index.css";
+import tableStyle from "../../style/DataTableStyle.module.css";
+import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountColumn";
+import { NameColumn } from "../../tableTypes/NameColumn";
+import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
+import { NationalityColumn } from "../../tableTypes/NationalityColumn";
+import { GroupMemberToDisplay } from "../../utils/transform/GroupMemberTransform";
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
+import ActivityRowStyles from "../../style/ActivityRowStyles";
 
 export interface GroupPageProps {
   groupName: string;
@@ -23,7 +23,7 @@ export interface GroupPageProps {
 }
 
 const GroupPage: FunctionalComponent<GroupPageProps> = (
-  props: GroupPageProps
+  props: GroupPageProps,
 ) => {
   document.title = `${props.groupName} | ${props.dictionary.header.title}`;
 
@@ -40,19 +40,19 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<GroupMemberDisplayData>>([]);
-  const [filterName, setFilterName] = useState<string>('');
+  const [filterName, setFilterName] = useState<string>("");
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
   const filteredData = data.filter(
     (item) =>
-      item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
+      item.name && item.name.toLowerCase().includes(filterName.toLowerCase()),
   );
 
   const searchBarComponent = useMemo(() => {
     const handleClearName = (): void => {
       if (filterName) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName('');
+        setFilterName("");
       }
     };
 

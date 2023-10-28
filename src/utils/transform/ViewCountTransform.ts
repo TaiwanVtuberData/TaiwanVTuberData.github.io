@@ -1,9 +1,9 @@
-import { VTuberViewCountGrowthData } from '../../types/ApiData/VTuberViewCountChangeData';
-import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
+import { VTuberViewCountGrowthData } from "../../types/ApiData/VTuberViewCountChangeData";
+import { VTuberViewCountGrowthDisplayData } from "../../types/TableDisplayData/VTuberViewCountGrowthDisplayData";
 
 export const VTuberViewCountToDisplay = (
   e: VTuberViewCountGrowthData,
-  ranking: number
+  ranking: number,
 ): VTuberViewCountGrowthDisplayData => ({
   id: e.id,
   name: e.name,

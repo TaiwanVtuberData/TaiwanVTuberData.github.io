@@ -1,25 +1,25 @@
-import { FunctionalComponent, h } from 'preact';
+import { FunctionalComponent, JSX } from "preact";
 import {
   useVideoModalState,
   closeVideoModal,
-} from '../../global/VideoModalState';
-import style from './style.module.css';
+} from "../../global/VideoModalState";
+import style from "./style.module.css";
 
-const VideoModal: FunctionalComponent = (): h.JSX.Element => {
+const VideoModal: FunctionalComponent = (): JSX.Element => {
   const modalState = useVideoModalState();
 
   return (
     <div
       class={style.modal}
       onClick={(): void => closeVideoModal()}
-      style={{ display: modalState.isOpen ? 'block' : 'none' }}
+      style={{ display: modalState.isOpen ? "block" : "none" }}
     >
       <div class={style.modalContent}>
         <span class={style.closeButton} onClick={(): void => closeVideoModal()}>
           &times;
         </span>
         <iframe
-          src={modalState.frameSrc ?? ''}
+          src={modalState.frameSrc ?? ""}
           width={640}
           height={360}
           allowFullScreen={true}

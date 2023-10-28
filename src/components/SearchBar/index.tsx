@@ -1,5 +1,5 @@
-import { FunctionalComponent, h } from 'preact';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import style from "./style.module.css";
 
 export interface SearchBarProps {
   placeholderText?: string;
@@ -9,14 +9,14 @@ export interface SearchBarProps {
 }
 
 const SearchBar: FunctionalComponent<SearchBarProps> = (
-  props: SearchBarProps
-): h.JSX.Element => (
+  props: SearchBarProps,
+): JSX.Element => (
   <div class={style.container}>
     <input
       type="text"
       class={style.textField}
       placeholder={props.placeholderText}
-      value={props.filterText ?? ''}
+      value={props.filterText ?? ""}
       onChange={props.onFilter}
     />
 

@@ -1,34 +1,34 @@
-import * as Api from '../../services/ApiService';
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
-import { useState, useMemo, useEffect } from 'preact/hooks';
-import DataTable, { TableColumn } from 'react-data-table-component';
-import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
-import { Dictionary } from '../../i18n/Dictionary';
-import ActivityRowStyles from '../../style/ActivityRowStyles';
-import IsTodayRowStyle from '../../style/IsTodayRowStyles';
-import { GroupColumn } from '../../tableTypes/GroupColumn';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { NationalityColumn } from '../../tableTypes/NationalityColumn';
-import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
-import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
-import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/SubscriberCountSort';
-import { VTuberDebutToDisplay } from '../../utils/transform/DebutTransform';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import { DebutDateColumn } from '../../tableTypes/DebutDateColumn';
-import { VTuberDebutDisplayDataFilterModel } from '../../types/FilterType/VTuberDebutDisplayDataFilterModel';
-import { filterFunction } from '../../utils/FilterModelHelper';
-import FilterWindow from '../../components/FilterWindow';
+import * as Api from "../../services/ApiService";
+import { FunctionalComponent } from "preact";
+import { Text } from "preact-i18n";
+import { useState, useMemo, useEffect } from "preact/hooks";
+import DataTable, { TableColumn } from "react-data-table-component";
+import QuestionMarkToolTip from "../../components/QuestionMarkToolTip";
+import { Dictionary } from "../../i18n/Dictionary";
+import ActivityRowStyles from "../../style/ActivityRowStyles";
+import IsTodayRowStyle from "../../style/IsTodayRowStyles";
+import { GroupColumn } from "../../tableTypes/GroupColumn";
+import { NameColumn } from "../../tableTypes/NameColumn";
+import { NationalityColumn } from "../../tableTypes/NationalityColumn";
+import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
+import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountColumn";
+import { VTuberDebutDisplayData } from "../../types/TableDisplayData/VTuberDebutDisplayData";
+import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
+import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
+import { VTuberDebutToDisplay } from "../../utils/transform/DebutTransform";
+import tableStyle from "../../style/DataTableStyle.module.css";
+import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
+import { VTuberDebutDisplayDataFilterModel } from "../../types/FilterType/VTuberDebutDisplayDataFilterModel";
+import { filterFunction } from "../../utils/FilterModelHelper";
+import FilterWindow from "../../components/FilterWindow";
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
 }
 
 const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
-  props: DebutVTubersPageProps
+  props: DebutVTubersPageProps,
 ) => {
   document.title = `${props.dictionary.header.debutVTubers} | ${props.dictionary.header.title}`;
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
@@ -62,7 +62,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
 
   const searchBarComponent = useMemo(() => {
     const handleFilterWindow = (
-      filterModel: VTuberDebutDisplayDataFilterModel
+      filterModel: VTuberDebutDisplayDataFilterModel,
     ): void => {
       setFilterModel(filterModel);
     };
@@ -71,12 +71,12 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
       string,
       string
     >([
-      ['name', props.dictionary.table.searchByDisplayName],
-      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
-      ['TwitchId', props.dictionary.table.searchByTwitchId],
-      ['group', props.dictionary.table.searchByGroup],
-      ['nationality', props.dictionary.table.searchByNationality],
-      ['debutDate', props.dictionary.table.searchByDate],
+      ["name", props.dictionary.table.searchByDisplayName],
+      ["YouTubeId", props.dictionary.table.searchByYouTubeId],
+      ["TwitchId", props.dictionary.table.searchByTwitchId],
+      ["group", props.dictionary.table.searchByGroup],
+      ["nationality", props.dictionary.table.searchByNationality],
+      ["debutDate", props.dictionary.table.searchByDate],
     ]);
 
     return (
@@ -95,11 +95,11 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getDebutVTubers('recent').then((res) => {
+    await Api.getDebutVTubers("recent").then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => b.debutDate.localeCompare(a.debutDate))
-          .map((e) => VTuberDebutToDisplay(e))
+          .map((e) => VTuberDebutToDisplay(e)),
       );
       setPending(false);
     });
@@ -126,7 +126,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
         data={filteredData}
         // Typescript does not accept concat two array of different types
         conditionalRowStyles={ActivityRowStyles.concat(
-          IsTodayRowStyle as Array<any>
+          IsTodayRowStyle as Array<any>,
         )}
         fixedHeader
         pagination

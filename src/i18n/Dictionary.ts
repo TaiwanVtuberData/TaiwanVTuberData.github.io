@@ -1,4 +1,4 @@
-import { PaginationOptions } from 'react-data-table-component';
+import { PaginationOptions } from "react-data-table-component";
 
 export interface Dictionary {
   header: {

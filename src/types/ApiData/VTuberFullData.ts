@@ -1,5 +1,5 @@
-import { VTuberData } from './VTuberData';
-import { VTuberLivestreamData } from './VTuberLivestreamData';
+import { VTuberData } from "./VTuberData";
+import { VTuberLivestreamData } from "./VTuberLivestreamData";
 
 export interface VTuberFullData extends VTuberData {
   readonly debutDate?: string;

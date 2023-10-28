@@ -1,27 +1,27 @@
-import * as Api from '../../services/ApiService';
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
-import { useState, useMemo, useEffect } from 'preact/hooks';
+import * as Api from "../../services/ApiService";
+import { FunctionalComponent, JSX } from "preact";
+import { Text } from "preact-i18n";
+import { useState, useMemo, useEffect } from "preact/hooks";
 import DataTable, {
   TableColumn,
   TableStyles,
-} from 'react-data-table-component';
-import DropDownList from '../../components/DropDownList';
-import { Dictionary } from '../../i18n/Dictionary';
-import { NameColumn } from '../../tableTypes/NameColumn';
-import { VideoColumn } from '../../tableTypes/VideoColumn';
-import { TrendingVideosModifier } from '../../types/ApiTypes';
-import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPopularityDisplayData';
-import { getFormattedDateTime } from '../../utils/DateTimeUtils';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
-import { PopularVideoToDisplayData } from '../../utils/transform/PopularVideoTransform';
-import { GoToPage } from '../../utils/TypeSafeRouting';
-import tableStyle from '../../style/DataTableStyle.module.css';
-import { RankingColumn } from '../../tableTypes/RankingColumn';
-import FilterWindow from '../../components/FilterWindow';
-import { VideoPopularityDisplayDataFilterModel } from '../../types/FilterType/VideoPopularityDisplayDataFilterModel';
-import { filterFunction } from '../../utils/FilterModelHelper';
+} from "react-data-table-component";
+import DropDownList from "../../components/DropDownList";
+import { Dictionary } from "../../i18n/Dictionary";
+import { NameColumn } from "../../tableTypes/NameColumn";
+import { VideoColumn } from "../../tableTypes/VideoColumn";
+import { TrendingVideosModifier } from "../../types/ApiTypes";
+import { VideoPopularityDisplayData } from "../../types/TableDisplayData/VideoPopularityDisplayData";
+import { getFormattedDateTime } from "../../utils/DateTimeUtils";
+import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
+import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
+import { PopularVideoToDisplayData } from "../../utils/transform/PopularVideoTransform";
+import { GoToPage } from "../../utils/TypeSafeRouting";
+import tableStyle from "../../style/DataTableStyle.module.css";
+import { RankingColumn } from "../../tableTypes/RankingColumn";
+import FilterWindow from "../../components/FilterWindow";
+import { VideoPopularityDisplayDataFilterModel } from "../../types/FilterType/VideoPopularityDisplayDataFilterModel";
+import { filterFunction } from "../../utils/FilterModelHelper";
 
 export interface TrendingVideosPageProps {
   dictionary: Dictionary;
@@ -29,7 +29,7 @@ export interface TrendingVideosPageProps {
 }
 
 const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
-  props: TrendingVideosPageProps
+  props: TrendingVideosPageProps,
 ) => {
   document.title = `${props.dictionary.header.trendingVideos} | ${props.dictionary.header.title}`;
 
@@ -37,11 +37,11 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     {
       ...RankingColumn(),
       sortable: true,
-      width: '40px',
+      width: "40px",
     },
     {
       ...NameColumn(),
-      width: '200px',
+      width: "200px",
     },
     {
       name: <Text id="table.title">Title</Text>,
@@ -50,21 +50,21 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     },
     {
       ...VideoColumn(),
-      width: '200px',
+      width: "200px",
     },
     {
       name: <Text id="table.viewCount">View Count</Text>,
       selector: (row: { viewCount: number }): number => row.viewCount,
       right: true,
       sortable: true,
-      width: '80px',
+      width: "80px",
     },
     {
       name: <Text id="table.uploadTime">Upload Time</Text>,
       selector: (row: { uploadTime: Date }): string =>
         getFormattedDateTime(row.uploadTime),
       sortable: true,
-      width: '175px',
+      width: "175px",
     },
   ];
 
@@ -79,21 +79,21 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
 
   const searchBarComponent = useMemo(() => {
     const optionValue: Array<{
-      option: h.JSX.Element;
+      option: JSX.Element;
       value: TrendingVideosModifier;
     }> = [
       {
         option: <Text id="table.noDuplicate">One video per VTuber</Text>,
-        value: 'no-duplicate',
+        value: "no-duplicate",
       },
       {
         option: <Text id="table.allVideos">All videos</Text>,
-        value: 'all',
+        value: "all",
       },
     ];
 
     const handleFilterWindow = (
-      filterModel: VideoPopularityDisplayDataFilterModel
+      filterModel: VideoPopularityDisplayDataFilterModel,
     ): void => {
       setFilterModel(filterModel);
     };
@@ -102,8 +102,8 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
       string,
       string
     >([
-      ['name', props.dictionary.table.searchByDisplayName],
-      ['title', props.dictionary.table.searchByTitle],
+      ["name", props.dictionary.table.searchByDisplayName],
+      ["title", props.dictionary.table.searchByTitle],
     ]);
 
     return (
@@ -114,7 +114,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
           optionValue={optionValue}
           onChange={(e: any) =>
             GoToPage({
-              type: 'trending-videos',
+              type: "trending-videos",
               sortOrder: e.target.value,
             })
           }
@@ -138,7 +138,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         res.data.videos
           .map((e) => e)
           .sort((a, b) => b.viewCount - a.viewCount)
-          .map((e, index) => PopularVideoToDisplayData(e, index + 1))
+          .map((e, index) => PopularVideoToDisplayData(e, index + 1)),
       );
       setPending(false);
     });
@@ -151,24 +151,24 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
   const customStyles: TableStyles = {
     table: {
       style: {
-        maxHeight: '80vh',
+        maxHeight: "80vh",
       },
     },
     rows: {
       style: {
-        minHeight: '36px', // override the row height
+        minHeight: "36px", // override the row height
       },
     },
     headCells: {
       style: {
-        paddingLeft: '5px', // override the cell padding for head cells
-        paddingRight: '5px',
+        paddingLeft: "5px", // override the cell padding for head cells
+        paddingRight: "5px",
       },
     },
     cells: {
       style: {
-        paddingLeft: '5px', // override the cell padding for data cells
-        paddingRight: '5px',
+        paddingLeft: "5px", // override the cell padding for data cells
+        paddingRight: "5px",
       },
     },
   };

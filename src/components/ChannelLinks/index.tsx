@@ -1,5 +1,5 @@
-import { FunctionalComponent, h } from 'preact';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import style from "./style.module.css";
 
 export interface ChannelLinksProps {
   YouTubeId?: string;
@@ -7,13 +7,13 @@ export interface ChannelLinksProps {
 }
 
 const ChannelLinks: FunctionalComponent<ChannelLinksProps> = (
-  props: ChannelLinksProps
-): h.JSX.Element => {
+  props: ChannelLinksProps,
+): JSX.Element => {
   const IconLink = (
     imgClass: string,
     prefix: string,
-    id?: string
-  ): h.JSX.Element | null => {
+    id?: string,
+  ): JSX.Element | null => {
     return id === undefined ? null : (
       <a href={prefix + id} target="_blank" rel="noopener noreferrer">
         <img class={imgClass} />
@@ -25,10 +25,10 @@ const ChannelLinks: FunctionalComponent<ChannelLinksProps> = (
     <div class={style.container}>
       {IconLink(
         style.YouTubeImg,
-        'https://www.youtube.com/channel/',
-        props.YouTubeId
+        "https://www.youtube.com/channel/",
+        props.YouTubeId,
       )}
-      {IconLink(style.TwitchImg, 'https://www.twitch.tv/', props.TwitchId)}
+      {IconLink(style.TwitchImg, "https://www.twitch.tv/", props.TwitchId)}
     </div>
   );
 };

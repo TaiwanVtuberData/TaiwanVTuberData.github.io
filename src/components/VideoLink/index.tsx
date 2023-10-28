@@ -1,5 +1,5 @@
-import { FunctionalComponent, h } from 'preact';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import style from "./style.module.css";
 
 export interface VideoLinkProps {
   thumbnailUrl: string;
@@ -7,8 +7,8 @@ export interface VideoLinkProps {
 }
 
 const VideoLink: FunctionalComponent<VideoLinkProps> = (
-  props: VideoLinkProps
-): h.JSX.Element => {
+  props: VideoLinkProps,
+): JSX.Element => {
   return (
     <a href={props.videoUrl} target="_blank" rel="noopener noreferrer">
       {props.thumbnailUrl === undefined ? (

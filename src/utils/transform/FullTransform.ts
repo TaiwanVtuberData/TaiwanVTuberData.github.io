@@ -1,8 +1,8 @@
-import { VTuberFullData } from '../../types/ApiData/VTuberFullData';
-import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
+import { VTuberFullData } from "../../types/ApiData/VTuberFullData";
+import { VTuberDisplayFullData } from "../../types/TableDisplayData/VTuberDisplayFullData";
 
 export const VTuberFullToDisplay = (
-  e: VTuberFullData
+  e: VTuberFullData,
 ): VTuberDisplayFullData => ({
   id: e.id,
   activity: e.activity,

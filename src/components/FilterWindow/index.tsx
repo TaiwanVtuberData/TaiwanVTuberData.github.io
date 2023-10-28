@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { trimOrNullOnEmpty } from '../../utils/StringUtils';
-import SearchBar from '../SearchBar';
-import style from './style.module.css';
+import { useState } from "preact/hooks";
+import { trimOrNullOnEmpty } from "../../utils/StringUtils";
+import SearchBar from "../SearchBar";
+import style from "./style.module.css";
+import { JSX } from "preact/jsx-runtime";
 
 export interface FilterWindowProps<FilterModel extends object> {
   filterModel: FilterModel;
@@ -13,7 +13,7 @@ export interface FilterWindowProps<FilterModel extends object> {
 }
 
 function FilterWindow<FilterModel extends object>(
-  props: FilterWindowProps<FilterModel>
+  props: FilterWindowProps<FilterModel>,
 ): JSX.Element {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [filter, setFilter] = useState<FilterModel>(props.filterModel);
@@ -39,7 +39,7 @@ function FilterWindow<FilterModel extends object>(
         <SearchBar
           key={key}
           placeholderText={props.fieldPlaceHolderMappings.get(
-            keyTyped as string
+            keyTyped as string,
           )}
           filterText={filter[keyTyped] as string | null}
           onFilter={(e: any): void => handleOnFilterChange(e.target.value)}
@@ -50,7 +50,7 @@ function FilterWindow<FilterModel extends object>(
   };
 
   const fields: Array<JSX.Element> = Object.keys(props.filterModel).map((key) =>
-    createSearchBar(key)
+    createSearchBar(key),
   );
 
   const ToggleButton = (): JSX.Element => (

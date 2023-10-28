@@ -1,8 +1,8 @@
-import createStore from 'react-superstore';
+import createStore from "react-superstore";
 
 interface ProfileModal {
-  isOpen: boolean,
-  VTuberId: string | null
+  isOpen: boolean;
+  VTuberId: string | null;
 }
 
 const defaultModalState: ProfileModal = {
