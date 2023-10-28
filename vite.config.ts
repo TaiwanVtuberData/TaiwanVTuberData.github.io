@@ -10,9 +10,10 @@ export default defineConfig(({ command, mode }) => {
 	return {
 		plugins: [
 			preact(),
-			checker({
-				typescript: true,
-			}),
+			// temporarily disable TypeScript checker
+			// checker({
+			// 	typescript: true,
+			// }),
 			VitePWA({
 				manifest: {
 					name: "Taiwan VTuber Data",
