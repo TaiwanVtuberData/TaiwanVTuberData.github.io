@@ -1,16 +1,17 @@
+import { describe, expect, test } from 'vitest'
 import {
   PopularityCountAscendingSort,
   PopularityCountDescendingSort,
-} from '../utils/sort/PopularityCountSort';
+} from "../src/utils/sort/PopularityCountSort";
 
-describe('PopularityCountSort Test', () => {
+describe("PopularityCountSort Test", () => {
   interface Row {
     id: number;
     YouTubePopularity?: number;
     TwitchPopularity?: number;
   }
 
-  test('Expected no nullable values to be sorted properly', () => {
+  test("Expected no nullable values to be sorted properly", () => {
     const unsortedData: Array<Row> = [
       { id: 0, YouTubePopularity: 100, TwitchPopularity: 100 },
       { id: 1, YouTubePopularity: 200, TwitchPopularity: 100 },
@@ -18,21 +19,21 @@ describe('PopularityCountSort Test', () => {
     ];
 
     const ascendingSortedData = [...unsortedData].sort(
-      PopularityCountAscendingSort
+      PopularityCountAscendingSort,
     );
     const ascendingSortedId = ascendingSortedData.map((e) => e.id);
 
     expect(ascendingSortedId).toStrictEqual([2, 0, 1]);
 
     const descendingSortedData = [...unsortedData].sort(
-      PopularityCountDescendingSort
+      PopularityCountDescendingSort,
     );
     const descendingSortedId = descendingSortedData.map((e) => e.id);
 
     expect(descendingSortedId).toStrictEqual([1, 0, 2]);
   });
 
-  test('Expected nullable values to be sorted properly', () => {
+  test("Expected nullable values to be sorted properly", () => {
     const unsortedData: Array<Row> = [
       { id: 0, YouTubePopularity: 100 },
       { id: 1, TwitchPopularity: 300 },
@@ -41,14 +42,14 @@ describe('PopularityCountSort Test', () => {
     ];
 
     const ascendingSortedData = [...unsortedData].sort(
-      PopularityCountAscendingSort
+      PopularityCountAscendingSort,
     );
     const ascendingSortedId = ascendingSortedData.map((e) => e.id);
 
     expect(ascendingSortedId).toStrictEqual([2, 0, 1, 3]);
 
     const descendingSortedData = [...unsortedData].sort(
-      PopularityCountDescendingSort
+      PopularityCountDescendingSort,
     );
     const descendingSortedId = descendingSortedData.map((e) => e.id);
 

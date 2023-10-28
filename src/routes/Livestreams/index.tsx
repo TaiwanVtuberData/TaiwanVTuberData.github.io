@@ -1,32 +1,32 @@
-import * as Api from '../../services/ApiService';
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { Text } from 'preact-i18n';
-import { useState, useMemo, useEffect } from 'preact/hooks';
+import * as Api from "../../services/ApiService";
+import { FunctionalComponent, JSX } from "preact";
+import { Text } from "preact-i18n";
+import { useState, useMemo, useEffect } from "preact/hooks";
 import DataTable, {
   Media,
   TableColumn,
   TableStyles,
-} from 'react-data-table-component';
-import ProfileImagePopup from '../../components/ProfileImagePopup';
-import SearchBar from '../../components/SearchBar';
-import { Dictionary } from '../../i18n/Dictionary';
-import { VideoColumn } from '../../tableTypes/VideoColumn';
-import { LivestreamDisplayData } from '../../types/TableDisplayData/LivestreamDisplayData';
+} from "react-data-table-component";
+import ProfileImagePopup from "../../components/ProfileImagePopup";
+import SearchBar from "../../components/SearchBar";
+import { Dictionary } from "../../i18n/Dictionary";
+import { VideoColumn } from "../../tableTypes/VideoColumn";
+import { LivestreamDisplayData } from "../../types/TableDisplayData/LivestreamDisplayData";
 import {
   findClosestSortedDateIndex,
   getFormattedDateTime,
-} from '../../utils/DateTimeUtils';
-import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
-import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
-import { LivestreamToDisplayData } from '../../utils/transform/LivestreamTransform';
-import tableStyle from '../../style/DataTableStyle.module.css';
+} from "../../utils/DateTimeUtils";
+import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
+import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
+import { LivestreamToDisplayData } from "../../utils/transform/LivestreamTransform";
+import tableStyle from "../../style/DataTableStyle.module.css";
 
 export interface LivestreamsPageProps {
   dictionary: Dictionary;
 }
 
 const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
-  props: LivestreamsPageProps
+  props: LivestreamsPageProps,
 ) => {
   document.title = `${props.dictionary.header.livestreaming} | ${props.dictionary.header.title}`;
 
@@ -47,7 +47,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
     },
     {
       ...VideoColumn(),
-      width: '200px',
+      width: "200px",
     },
     {
       name: <Text id="table.startTime">Start Time</Text>,
@@ -58,7 +58,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
     },
     {
       name: <Text id="table.title">Title</Text>,
-      selector: (row: { title?: string }): string => row.title ?? '',
+      selector: (row: { title?: string }): string => row.title ?? "",
       wrap: true,
       hide: Media.SM,
     },
@@ -66,14 +66,14 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<LivestreamDisplayData>>([]);
-  const [filterName, setFilterName] = useState<string>('');
-  const [filterTitle, setFilterTitle] = useState<string>('');
+  const [filterName, setFilterName] = useState<string>("");
+  const [filterTitle, setFilterTitle] = useState<string>("");
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
   const filteredData = data
     .filter(
       (item) =>
-        item.name && item.name.toLowerCase().includes(filterName.toLowerCase())
+        item.name && item.name.toLowerCase().includes(filterName.toLowerCase()),
     )
     .filter((item) => {
       if (item.title === undefined) return true;
@@ -84,14 +84,14 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
     const handleClearName = (): void => {
       if (filterName) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName('');
+        setFilterName("");
       }
     };
 
     const handleClearTitle = (): void => {
       if (filterTitle) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterTitle('');
+        setFilterTitle("");
       }
     };
 
@@ -115,7 +115,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getLivestreams = async (): Promise<void> => {
-    await Api.getLivestreams('all').then((res) => {
+    await Api.getLivestreams("all").then((res) => {
       const arrayData: Array<LivestreamDisplayData> = res.data.livestreams
         .map((e) => e)
         .map((e, index) => LivestreamToDisplayData(e, index))
@@ -135,7 +135,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
         // scroll to best row - 1 because the header will block the full view of best row
         document
           .getElementById(`row-${Math.max(0, closestToNow - 1)}`)
-          ?.scrollIntoView({ behavior: 'smooth' });
+          ?.scrollIntoView({ behavior: "smooth" });
       }, 500);
     });
   };
@@ -147,19 +147,19 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
   const customStyles: TableStyles = {
     rows: {
       style: {
-        height: '120px', // fix row height so scrolling won't be affected by image not rendered
+        height: "120px", // fix row height so scrolling won't be affected by image not rendered
       },
     },
     headCells: {
       style: {
-        paddingLeft: '5px', // override the cell padding for head cells
-        paddingRight: '5px',
+        paddingLeft: "5px", // override the cell padding for head cells
+        paddingRight: "5px",
       },
     },
     cells: {
       style: {
-        paddingLeft: '5px', // override the cell padding for data cells
-        paddingRight: '5px',
+        paddingLeft: "5px", // override the cell padding for data cells
+        paddingRight: "5px",
       },
     },
   };

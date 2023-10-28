@@ -1,4 +1,4 @@
-export type VideoType = 'YouTube' | 'Twitch';
+export type VideoType = "YouTube" | "Twitch";
 
 export interface VideoInfo {
   type: VideoType;

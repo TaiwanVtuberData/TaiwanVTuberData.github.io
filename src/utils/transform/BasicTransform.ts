@@ -1,6 +1,6 @@
-import { VTuberData } from '../../types/ApiData/VTuberData';
-import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
-import { maybeDebutStringToDebutInfo } from './DebutStringToDebutInfo';
+import { VTuberData } from "../../types/ApiData/VTuberData";
+import { VTuberDisplayData } from "../../types/TableDisplayData/VTuberDisplayData";
+import { maybeDebutStringToDebutInfo } from "./DebutStringToDebutInfo";
 
 export const VTuberBasicToDisplay = (e: VTuberData): VTuberDisplayData => ({
   id: e.id,

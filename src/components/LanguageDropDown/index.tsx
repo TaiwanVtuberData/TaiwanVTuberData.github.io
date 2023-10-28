@@ -1,7 +1,7 @@
-import { Fragment, h } from 'preact';
-import { Text } from 'preact-i18n';
-import { LanguageOption, validI18n } from '../../types/LanguageOptions';
-import dropDownStyle from '../../style/DropDownStyle.module.css';
+import { JSX } from "preact";
+import { Text } from "preact-i18n";
+import { LanguageOption, validI18n } from "../../types/LanguageOptions";
+import dropDownStyle from "../../style/DropDownStyle.module.css";
 
 interface LanguageDropDownProps {
   languageOptions: Array<LanguageOption>;

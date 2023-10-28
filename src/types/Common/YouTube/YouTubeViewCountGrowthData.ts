@@ -1,5 +1,5 @@
-import { GrowthData } from '../GrowthData';
-import { BaseYouTubeData } from './BaseYouTubeData';
+import { GrowthData } from "../GrowthData";
+import { BaseYouTubeData } from "./BaseYouTubeData";
 
 export interface YouTubeViewCountGrowthData extends BaseYouTubeData {
   readonly totalViewCount: number;

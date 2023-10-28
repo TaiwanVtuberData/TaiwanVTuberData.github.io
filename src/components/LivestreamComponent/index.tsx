@@ -1,8 +1,8 @@
-import { FunctionalComponent, h } from 'preact';
-import { getFormattedTimeIfNotToday } from '../../utils/DateTimeUtils';
-import ProfileImagePopUp from '../ProfileImagePopup';
-import VideoLink from '../VideoLink';
-import style from './style.module.css';
+import { FunctionalComponent, JSX } from "preact";
+import { getFormattedTimeIfNotToday } from "../../utils/DateTimeUtils";
+import ProfileImagePopUp from "../ProfileImagePopup";
+import VideoLink from "../VideoLink";
+import style from "./style.module.css";
 
 export interface LivestreamComponentProps {
   divPrefix: string;
@@ -17,8 +17,8 @@ export interface LivestreamComponentProps {
 }
 
 const LivestreamComponent: FunctionalComponent<LivestreamComponentProps> = (
-  props: LivestreamComponentProps
-): h.JSX.Element => {
+  props: LivestreamComponentProps,
+): JSX.Element => {
   return (
     <div id={`${props.divPrefix}-${props.id}`} class={style.verticalFlex}>
       <ProfileImagePopUp

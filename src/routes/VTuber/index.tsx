@@ -1,12 +1,12 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { Dictionary } from '../../i18n/Dictionary';
-import * as Api from '../../services/ApiService';
-import '../../style/index.css';
-import VTuberInformation from '../../components/VTuberInformation';
-import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
-import { VTuberFullToDisplay } from '../../utils/transform/FullTransform';
-import { Text } from 'preact-i18n';
+import { FunctionalComponent } from "preact";
+import { useEffect, useState } from "preact/hooks";
+import { Dictionary } from "../../i18n/Dictionary";
+import * as Api from "../../services/ApiService";
+import "../../style/index.css";
+import VTuberInformation from "../../components/VTuberInformation";
+import { VTuberDisplayFullData } from "../../types/TableDisplayData/VTuberDisplayFullData";
+import { VTuberFullToDisplay } from "../../utils/transform/FullTransform";
+import { Text } from "preact-i18n";
 
 export interface VTuberPageProps {
   id: string;
@@ -14,11 +14,11 @@ export interface VTuberPageProps {
 }
 
 const VTuberPage: FunctionalComponent<VTuberPageProps> = (
-  props: VTuberPageProps
+  props: VTuberPageProps,
 ) => {
   const [data, setData] = useState<VTuberDisplayFullData>();
 
-  document.title = `${data?.name ?? ''} | ${props.dictionary.header.title}`;
+  document.title = `${data?.name ?? ""} | ${props.dictionary.header.title}`;
 
   const getVTuber = async (): Promise<void> => {
     await Api.getVTuber(props.id).then((res) => {

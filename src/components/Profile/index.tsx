@@ -1,7 +1,7 @@
-import { FunctionalComponent, h } from 'preact';
-import { VTuberData } from '../../types/ApiData/VTuberData';
-import ProfileImage from '../ProfileImage';
-import ToolTip from '../ToolTip';
+import { FunctionalComponent, JSX } from "preact";
+import { VTuberData } from "../../types/ApiData/VTuberData";
+import ProfileImage from "../ProfileImage";
+import ToolTip from "../ToolTip";
 
 export interface ProfileProps {
   VTuber: VTuberData;
@@ -9,8 +9,8 @@ export interface ProfileProps {
 }
 
 const Profile: FunctionalComponent<ProfileProps> = (
-  props: ProfileProps
-): h.JSX.Element => {
+  props: ProfileProps,
+): JSX.Element => {
   return (
     <ToolTip text={props.VTuber.name}>
       <ProfileImage

@@ -1,6 +1,5 @@
-import { h } from 'preact';
-import { Text } from 'preact-i18n';
-import { TableColumn } from 'react-data-table-component';
+import { Text } from "preact-i18n";
+import { TableColumn } from "react-data-table-component";
 
 export interface GraduateDateColumnRowData {
   graduateDate: string;

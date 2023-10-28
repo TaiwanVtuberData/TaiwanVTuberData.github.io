@@ -1,7 +1,7 @@
-import { Activity } from '../Common/Activity';
-import { BaseTwitchData } from '../Common/Twitch/BaseTwitchData';
-import { VideoInfo } from '../Common/VideoInfo';
-import { BaseYouTubeData } from '../Common/YouTube/BaseYouTubeData';
+import { Activity } from "../Common/Activity";
+import { BaseTwitchData } from "../Common/Twitch/BaseTwitchData";
+import { VideoInfo } from "../Common/VideoInfo";
+import { BaseYouTubeData } from "../Common/YouTube/BaseYouTubeData";
 
 export interface BaseVTuberData {
   readonly id: string;

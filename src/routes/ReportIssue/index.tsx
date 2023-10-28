@@ -1,20 +1,20 @@
-import { Fragment, FunctionalComponent, h } from 'preact';
-import { Dictionary } from '../../i18n/Dictionary';
-import { Text } from 'preact-i18n';
-import style from './style.module.css';
-import { GITHUB_ISSUE_URL, GOOGLE_FORM_URL } from '../../Config';
+import { FunctionalComponent } from "preact";
+import { Dictionary } from "../../i18n/Dictionary";
+import { Text } from "preact-i18n";
+import style from "./style.module.css";
+import { GITHUB_ISSUE_URL, GOOGLE_FORM_URL } from "../../Config";
 
 export interface ReportIssuePageProps {
   dictionary: Dictionary;
 }
 
 const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
-  props: ReportIssuePageProps
+  props: ReportIssuePageProps,
 ) => {
   document.title = `${props.dictionary.header.reportIssue} | ${props.dictionary.header.title}`;
 
   return (
-    <Fragment>
+    <>
       <h1>
         <Text id="header.reportIssue">Data Posting/Report Issue</Text>
       </h1>
@@ -34,7 +34,7 @@ const ReportIssuePage: FunctionalComponent<ReportIssuePageProps> = (
           </a>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

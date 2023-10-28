@@ -1,4 +1,4 @@
-import { VTuberDisplayData } from './VTuberDisplayData';
+import { VTuberDisplayData } from "./VTuberDisplayData";
 
 export interface VTuberPopularityDisplayData extends VTuberDisplayData {
   ranking: number;

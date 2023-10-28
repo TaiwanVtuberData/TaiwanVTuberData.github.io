@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import style from './style.module.css';
-import dropDownStyle from '../../style/DropDownStyle.module.css';
+import { JSX } from "preact";
+import style from "./style.module.css";
+import dropDownStyle from "../../style/DropDownStyle.module.css";
 
 export interface DropDownListProps<ValueType> {
   tipText?: string;
@@ -10,8 +10,8 @@ export interface DropDownListProps<ValueType> {
 }
 
 function DropDownList<ValueType extends string | number>(
-  props: DropDownListProps<ValueType>
-): h.JSX.Element {
+  props: DropDownListProps<ValueType>,
+): JSX.Element {
   return (
     <div>
       <span class={style.tipText}>{props.tipText}</span>

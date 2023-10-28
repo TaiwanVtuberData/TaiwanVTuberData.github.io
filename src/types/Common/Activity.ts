@@ -1,1 +1,1 @@
-export type Activity = 'preparing' | 'active' | 'graduate';
+export type Activity = "preparing" | "active" | "graduate";
