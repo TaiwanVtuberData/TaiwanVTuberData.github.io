@@ -1,4 +1,4 @@
-import { ColumnSortFunction } from "react-data-table-component/dist/src/DataTable/types";
+import { ColumnSortFunction } from "react-data-table-component/dist/DataTable/types";
 import { GrowthDisplayData } from "../../types/TableDisplayData/VTuberGrowthDisplayData";
 
 // TODO: how do I inject field name _7DaysGrowth using template?

@@ -117,5 +117,5 @@
         "excludeDirectories": ["**/node_modules", "**/build"],
         "excludeFiles": []
     },
-	"include": ["node_modules/vite/client.d.ts", "**/*"]
+	"include": ["node_modules/vite/client.d.ts", "src/**/*"]
 }
