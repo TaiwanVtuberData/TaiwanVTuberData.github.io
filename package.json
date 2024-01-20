@@ -16,7 +16,7 @@
 	"dependencies": {
 		"axios": "^0.26.1",
 		"miragejs": "^0.1.48",
-		"preact": "^10.18.1",
+		"preact": "^10.19.3",
 		"preact-i18n": "^2.4.0-preactx",
 		"preact-iso": "^2.3.2",
 		"preact-render-to-string": "^6.2.2",
