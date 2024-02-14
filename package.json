@@ -2,7 +2,7 @@
 	"homepage": "https://taiwanvtuberdata.github.io/",
 	"private": true,
 	"name": "taiwan-vtuber-data",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"license": "BSD-3-Clause",
 	"type": "module",
 	"scripts": {
@@ -33,7 +33,7 @@
 		"prettier": "^3.2.4",
 		"typescript": "^5.3.3",
 		"vite": "^5.0.12",
-		"vite-plugin-checker": "^0.6.2",
+		"vite-plugin-checker": "^0.6.4",
 		"vite-plugin-pwa": "^0.17.4",
 		"vitest": "^1.2.1"
 	}
