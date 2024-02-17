@@ -42,6 +42,10 @@ interface DebutVTubersRoute extends BaseTypeSafeRoute {
   type: "debut-vtubers";
 }
 
+interface AnniversaryVTubersRoute extends BaseTypeSafeRoute {
+  type: "anniversary-vtubers";
+}
+
 interface GraduateVTubersRoute extends BaseTypeSafeRoute {
   type: "graduate-vtubers";
 }
@@ -105,6 +109,7 @@ type TypeSafeRoute =
   | TrendingVTubersRoute
   | GrowingVTubersRoute
   | DebutVTubersRoute
+  | AnniversaryVTubersRoute
   | GraduateVTubersRoute
   | ReportIssueRoute
   | AboutRoute
@@ -150,6 +155,8 @@ const GetBaseRoute = (route: TypeSafeRoute): string => {
       return `growing-vtubers`;
     case "debut-vtubers":
       return `debut-vtubers`;
+    case "anniversary-vtubers":
+      return `anniversary-vtubers`;
     case "graduate-vtubers":
       return `graduate-vtubers`;
     case "report-issue":

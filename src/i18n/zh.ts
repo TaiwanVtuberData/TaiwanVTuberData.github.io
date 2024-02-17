@@ -15,6 +15,7 @@ const zh: Dictionary = {
     growingVTubers: "成長中 VTuber",
     debutVTubers: "近期出道",
     debutVTubersIn7Days: "近 7 日出道 VTuber",
+    anniversaryVTubers: "近期週年",
     graduateVTubers: "近期畢業",
     reportIssue: "資料登載/錯誤回報",
     about: "關於本站",
@@ -83,6 +84,7 @@ const zh: Dictionary = {
     startTime: "開始時間",
     livestream: "直播",
     combined: "合併",
+    anniversaryYearCount: "週年數",
   },
   activityText: {
     preparing: "準備中",
@@ -106,6 +108,8 @@ const zh: Dictionary = {
       "熱度計算方式：近 30 日 YouTube 直播/影片觀看中位數 + 近 30 日 Twitch 過去直播觀看中位數",
     growingVTubers: "只會顯示近 7 日人數成長至少 100 人的頻道",
     debutVTubers: "以臺灣時區為準，只會顯示近 30 日出道/即將出道的 VTuber",
+    anniversaryVTubers:
+      "以臺灣時區為準，只會顯示近 30 日週年/即將週年的 VTuber",
     graduateVTubers: "以臺灣時區為準，只會顯示近 30 日畢業/即將畢業的 VTuber",
     groupList:
       "熱度計算方式：所有頻道近 30 日 YouTube 上傳影片的觀看中位數 + 近 30 日 Twitch 過去直播觀看中位數",

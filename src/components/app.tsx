@@ -41,6 +41,7 @@ import {
   getCurrentApiSourceState,
   setCurrentApiSource,
 } from "../global/CurrentApiSource";
+import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
 
 export function App() {
   const [locale, setLocale] = useState<validI18n>(
@@ -145,6 +146,11 @@ export function App() {
         path={GetRoute({ type: "debut-vtubers" })}
         dictionary={definition}
         component={DebutVTubersPage}
+      />
+      <Route
+        path={GetRoute({ type: "anniversary-vtubers" })}
+        dictionary={definition}
+        component={AnniversaryVTubersPage}
       />
       <Route
         path={GetRoute({ type: "graduate-vtubers" })}

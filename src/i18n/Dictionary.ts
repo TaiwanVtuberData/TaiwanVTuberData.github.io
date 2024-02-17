@@ -15,6 +15,7 @@ export interface Dictionary {
     growingVTubers: string;
     debutVTubers: string;
     debutVTubersIn7Days: string;
+    anniversaryVTubers: string;
     graduateVTubers: string;
     reportIssue: string;
     about: string;
@@ -77,6 +78,7 @@ export interface Dictionary {
     startTime: string;
     livestream: string;
     combined: string;
+    anniversaryYearCount: string;
   };
   activityText: {
     preparing: string;
@@ -99,6 +101,7 @@ export interface Dictionary {
     trendingVTubers: string;
     growingVTubers: string;
     debutVTubers: string;
+    anniversaryVTubers: string;
     graduateVTubers: string;
     groupList: string;
   };
