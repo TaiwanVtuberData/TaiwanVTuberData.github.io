@@ -109,6 +109,10 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         linkTo: GetRoute({ type: "debut-vtubers" }),
       },
       {
+        textID: "header.anniversaryVTubers",
+        linkTo: GetRoute({ type: "anniversary-vtubers" }),
+      },
+      {
         textID: "header.graduateVTubers",
         linkTo: GetRoute({ type: "graduate-vtubers" }),
       },

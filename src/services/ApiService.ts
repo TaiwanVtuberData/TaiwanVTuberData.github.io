@@ -13,6 +13,7 @@ import { VTuberGrowthDataResponse } from "../types/ApiData/VTuberGrowthData";
 import { VTuberPopularityDataResponse } from "../types/ApiData/VTuberPopularityData";
 import { VTuberViewCountChangeDataResponse } from "../types/ApiData/VTuberViewCountChangeData";
 import {
+  AnniversaryVTubersModifier,
   DebutVTubersModifier,
   GraduateVTubersModifier,
   GrowingVTubersModifier,
@@ -22,6 +23,7 @@ import {
   VTubersModifier,
   VTubersViewCountChangeModifier,
 } from "../types/ApiTypes";
+import { VTuberAnniversaryDataResponse } from "../types/ApiData/VTuberAnniversaryData";
 
 interface CommitDetail {
   sha: string;
@@ -137,6 +139,14 @@ export const getDebutVTubers = (
 ): Promise<AxiosResponse<VTuberDebutDataResponse>> => {
   return AxiosGetWrapper<VTuberDebutDataResponse>(
     `debut-vtubers/${modifier}.json`,
+  );
+};
+
+export const getAnniversaryVTubers = (
+  modifier: AnniversaryVTubersModifier,
+): Promise<AxiosResponse<VTuberAnniversaryDataResponse>> => {
+  return AxiosGetWrapper<VTuberAnniversaryDataResponse>(
+    `anniversary-vtubers/${modifier}.json`,
   );
 };
 

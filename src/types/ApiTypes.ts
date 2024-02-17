@@ -18,6 +18,8 @@ export interface VTubersViewCountChangeModifier {
 
 export type DebutVTubersModifier = "next-7-days" | "recent";
 
+export type AnniversaryVTubersModifier = "next-7-days" | "recent";
+
 export type GraduateVTubersModifier = "next-7-days" | "recent";
 
 export type TrendingVideosModifier = "all" | "no-duplicate";

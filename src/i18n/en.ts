@@ -15,6 +15,7 @@ const en: Dictionary = {
     growingVTubers: "Growing VTubers",
     debutVTubers: "Debut VTubers",
     debutVTubersIn7Days: "VTubers Debut in 7 days",
+    anniversaryVTubers: "Anniversary VTubers",
     graduateVTubers: "Graduate VTubers",
     reportIssue: "Data Posting/Report Issue",
     about: "About The Site",
@@ -83,6 +84,7 @@ const en: Dictionary = {
     startTime: "Start Time",
     livestream: "Livestream",
     combined: "Combined",
+    anniversaryYearCount: "Anni. Year Count",
   },
   activityText: {
     preparing: "Preparing",
@@ -108,6 +110,8 @@ const en: Dictionary = {
       "Based on Taiwan timezone (UTC+8). Only showing VTubers with YouTube subscribers growth over 100 within 7 days",
     debutVTubers:
       "Based on Taiwan timezone (UTC+8). Only showing VTubers debut/about to debut in 30 days",
+    anniversaryVTubers:
+      "Based on Taiwan timezone (UTC+8). Only showing VTubers anniversary occurred/anniversary approaching in 30 days",
     graduateVTubers:
       "Only showing VTubers graduated/about to graduate in 30 days",
     groupList:
