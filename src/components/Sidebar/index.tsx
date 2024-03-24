@@ -2,7 +2,7 @@ import * as Api from "../../services/ApiService";
 import { FunctionalComponent, JSX } from "preact";
 import { Text } from "preact-i18n";
 import { Link } from "preact-router";
-import { StateUpdater, useState, useEffect } from "preact/hooks";
+import { StateUpdater, useState, useEffect, Dispatch } from "preact/hooks";
 import {
   NationalityModifier,
   nationalityArray,
@@ -20,11 +20,11 @@ import { ApiSourceOptions } from "../../types/ApiSourceOptions";
 
 export interface SidebarProps {
   locale: validI18n;
-  setLocale: StateUpdater<validI18n>;
+  setLocale: Dispatch<StateUpdater<validI18n>>;
   nationality: NationalityModifier;
-  setNationality: StateUpdater<NationalityModifier>;
+  setNationality: Dispatch<StateUpdater<NationalityModifier>>;
   apiSource: ApiSourceModifier;
-  setApiSource: StateUpdater<ApiSourceModifier>;
+  setApiSource: Dispatch<StateUpdater<ApiSourceModifier>>;
 }
 
 const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
