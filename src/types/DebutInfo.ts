@@ -13,4 +13,11 @@ export interface HasDebutInfo extends BaseDebutInfo {
   isRecentlyDebut: boolean;
 }
 
-export type DebutInfo = NoDebutInfo | HasDebutInfo;
+export interface AnniversaryDebutInfo {
+  hasDebutInfo: true;
+  debutDateOfTheYear: string;
+  isToday: boolean;
+  isRecentlyDebut: boolean;
+}
+
+export type DebutInfo = NoDebutInfo | HasDebutInfo | AnniversaryDebutInfo;

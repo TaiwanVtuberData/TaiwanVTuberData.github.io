@@ -16,13 +16,14 @@ import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
 import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
 import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
 import tableStyle from "../../style/DataTableStyle.module.css";
-import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import FilterWindow from "../../components/FilterWindow";
 import { VTuberAnniversaryDisplayData } from "../../types/TableDisplayData/VTuberAnniversaryDisplayData";
 import { VTuberAnniversaryToDisplay } from "../../utils/transform/AnniversaryTransform";
 import { VTuberAnniversaryDisplayDataFilterModel } from "../../types/FilterType/VTuberAnniversaryDisplayDataFilterModel";
 import { AnniversaryCountColumn } from "../../tableTypes/AnniversaryCountColumn";
+import { DebutDateOfTheYearColumn } from "../../tableTypes/DebutDateOfTheYearColumn";
+import { DebutDateOfTheYearDescendingCompare } from "../../utils/sort/DebutDateOfTheYearSort";
 
 export interface AnniversaryVTubersPageProps {
   dictionary: Dictionary;
@@ -34,7 +35,7 @@ const AnniversaryVTubersPage: FunctionalComponent<
   document.title = `${props.dictionary.header.anniversaryVTubers} | ${props.dictionary.header.title}`;
   const columns: Array<TableColumn<VTuberAnniversaryDisplayData>> = [
     {
-      ...DebutDateColumn(),
+      ...DebutDateOfTheYearColumn(),
       sortable: true,
       width: "100px",
     },
@@ -105,7 +106,7 @@ const AnniversaryVTubersPage: FunctionalComponent<
     await Api.getAnniversaryVTubers("recent").then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
-          .sort((a, b) => b.debutDate.localeCompare(a.debutDate))
+          .sort(DebutDateOfTheYearDescendingCompare)
           .map((e) => VTuberAnniversaryToDisplay(e)),
       );
       setPending(false);
