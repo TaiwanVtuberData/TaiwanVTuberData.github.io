@@ -2,6 +2,7 @@ import { VTuberData } from "./VTuberData";
 
 export interface VTuberAnniversaryData extends VTuberData {
   readonly debutDate: string;
+  readonly debutDateOfTheYear: string;
   readonly anniversaryYearCount: number;
 }
 
