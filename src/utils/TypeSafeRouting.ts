@@ -166,7 +166,7 @@ const GetBaseRoute = (route: TypeSafeRoute): string => {
     case "vtuber":
       return `vtuber/${route.id}`;
     case "group":
-      return `group/${route.name}`;
+      return `group/${encodeURIComponent(route.name)}`;
     case "trending-videos":
       return `trending-videos/${route.sortOrder}`;
     case "vtubers-view-count":
