@@ -14,7 +14,7 @@ import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
 import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountColumn";
 import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
 import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/VTuberSort";
 import tableStyle from "../../style/DataTableStyle.module.css";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import FilterWindow from "../../components/FilterWindow";

@@ -18,7 +18,7 @@ import {
   PopularityCountAscendingSort,
   PopularityCountDescendingSort,
 } from "../../utils/sort/PopularityCountSort";
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/VTuberSort";
 import { VTuberPopularityToDisplay } from "../../utils/transform/PopularityTransform";
 import QuestionMarkToolTip from "../../components/QuestionMarkToolTip";
 import tableStyle from "../../style/DataTableStyle.module.css";

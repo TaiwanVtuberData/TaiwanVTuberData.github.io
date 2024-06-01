@@ -16,13 +16,16 @@ import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
 import {
   SortMethod,
   SubscriberCountDescendingSort,
-} from "../../utils/sort/SubscriberCountSort";
+} from "../../utils/sort/VTuberSort";
 import { VTuberBasicToDisplay } from "../../utils/transform/BasicTransform";
 import tableStyle from "../../style/DataTableStyle.module.css";
 import ActivityRowStyles from "../../style/ActivityRowStyles";
 import FilterWindow from "../../components/FilterWindow";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import { VTuberDisplayDataFilterModel } from "../../types/FilterType/VTuberDisplayDataFilterModel";
+import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
+import { debutDateExist } from "../../utils/DebutInfoUtils";
+import { getValueByCondition } from "../../utils/GenericMethod";
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -36,6 +39,12 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   const [sortMethod, setSortMethod] = useState<SortMethod>("YouTube+Twitch");
 
   const columns: Array<TableColumn<VTuberDisplayData>> = [
+    // only show debut date column when sort by debut date
+    {
+      ...DebutDateColumn(),
+      sortable: true,
+      omit: sortMethod !== "debutDate",
+    },
     NameColumn(),
     YouTubeTwitchCountColumn(),
     PopularVideoColumn(),
@@ -51,9 +60,18 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     TwitchId: null,
     group: null,
     nationality: null,
+    debutDate: null,
   });
   const filteredData = data
     .filter((e) => filterFunction(e, filterModel))
+    // only filter by by debutDateExist if sort method is debut date
+    .filter((e) =>
+      getValueByCondition<boolean>(
+        sortMethod === "debutDate",
+        () => debutDateExist(e.debutInfo),
+        () => true,
+      ),
+    )
     .sort(SubscriberCountDescendingSort(sortMethod));
 
   const searchBarComponent = useMemo(() => {
@@ -79,6 +97,10 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         option: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
         value: "Twitch",
       },
+      {
+        option: <Text id="table.debutDate">Debut Date</Text>,
+        value: "debutDate",
+      },
     ];
 
     const handleFilterWindow = (
@@ -96,6 +118,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       ["TwitchId", props.dictionary.table.searchByTwitchId],
       ["group", props.dictionary.table.searchByGroup],
       ["nationality", props.dictionary.table.searchByNationality],
+      ["debutDate", props.dictionary.table.searchByDate],
     ]);
 
     return (

@@ -35,6 +35,7 @@ export const debutOfTheYearStringToAnniversaryDebutInfo = (
 ): AnniversaryDebutInfo => {
   return {
     hasDebutInfo: true,
+    debutDate: debutString,
     debutDateOfTheYear: debutOfTheYearString,
     isToday: debutString === TODAY_DATE_STRING,
     isRecentlyDebut:

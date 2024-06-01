@@ -4,7 +4,7 @@ import {
   SubscriberCountDescendingSort,
   YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort,
   YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort,
-} from "../src/utils/sort/SubscriberCountSort";
+} from "../src/utils/sort/VTuberSort";
 
 describe("SubscriberCountSort Test", () => {
   interface Row {

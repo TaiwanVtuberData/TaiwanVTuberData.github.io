@@ -14,7 +14,7 @@ import { NameColumn } from "../../tableTypes/NameColumn";
 import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
 import { NationalityColumn } from "../../tableTypes/NationalityColumn";
 import { GroupMemberToDisplay } from "../../utils/transform/GroupMemberTransform";
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/VTuberSort";
 import ActivityRowStyles from "../../style/ActivityRowStyles";
 
 export interface GroupPageProps {
