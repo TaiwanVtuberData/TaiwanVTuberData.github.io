@@ -1,5 +1,7 @@
 import { CountType } from "../../types/Common/CountType";
+import { DebutInfo } from "../../types/DebutInfo";
 import { CountTypeCompare, GetCount } from "../CountTypeUtils";
+import { getDebutDate } from "../DebutInfoUtils";
 
 export type SortMethod = "YouTube+Twitch" | "YouTube" | "Twitch" | "debutDate";
 
@@ -76,6 +78,31 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort = <
 ): number =>
   YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort(rowA, rowB) * -1;
 
+export const debutDateAscendingSort = <T extends { debutInfo: DebutInfo }>(
+  rowA: T,
+  rowB: T,
+): number => {
+  const aDebutDate = getDebutDate(rowA.debutInfo);
+  const bDebutDate = getDebutDate(rowB.debutInfo);
+
+  if (aDebutDate === null && bDebutDate === null) return 0;
+
+  if (aDebutDate === null) return -1;
+
+  if (bDebutDate === null) return 1;
+
+  if (aDebutDate > bDebutDate) return 1;
+
+  if (bDebutDate > aDebutDate) return -1;
+
+  return 0;
+};
+
+export const debutDateDescendingSort = <T extends { debutInfo: DebutInfo }>(
+  rowA: T,
+  rowB: T,
+): number => debutDateAscendingSort(rowA, rowB) * -1;
+
 export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
   switch (sortMethod) {
     case "YouTube+Twitch":
@@ -85,7 +112,6 @@ export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
     case "Twitch":
       return TwitchFollowerCountDescendingSort;
     case "debutDate":
-      // TODO: implement sort by debutDate
-      return TwitchFollowerCountDescendingSort;
+      return debutDateDescendingSort;
   }
 };
