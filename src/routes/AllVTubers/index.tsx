@@ -23,6 +23,7 @@ import ActivityRowStyles from "../../style/ActivityRowStyles";
 import FilterWindow from "../../components/FilterWindow";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import { VTuberDisplayDataFilterModel } from "../../types/FilterType/VTuberDisplayDataFilterModel";
+import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -36,6 +37,10 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   const [sortMethod, setSortMethod] = useState<SortMethod>("YouTube+Twitch");
 
   const columns: Array<TableColumn<VTuberDisplayData>> = [
+    {
+      ...DebutDateColumn(),
+      sortable: true,
+    },
     NameColumn(),
     YouTubeTwitchCountColumn(),
     PopularVideoColumn(),
