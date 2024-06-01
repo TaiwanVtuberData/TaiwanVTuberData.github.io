@@ -16,7 +16,7 @@ import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
 import {
   SortMethod,
   SubscriberCountDescendingSort,
-} from "../../utils/sort/SubscriberCountSort";
+} from "../../utils/sort/VTuberSort";
 import { VTuberBasicToDisplay } from "../../utils/transform/BasicTransform";
 import tableStyle from "../../style/DataTableStyle.module.css";
 import ActivityRowStyles from "../../style/ActivityRowStyles";

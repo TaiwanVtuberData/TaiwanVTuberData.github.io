@@ -15,7 +15,7 @@ import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountCol
 import { VTuberDebutDisplayData } from "../../types/TableDisplayData/VTuberDebutDisplayData";
 import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
 import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/SubscriberCountSort";
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/VTuberSort";
 import { VTuberDebutToDisplay } from "../../utils/transform/DebutTransform";
 import tableStyle from "../../style/DataTableStyle.module.css";
 import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
