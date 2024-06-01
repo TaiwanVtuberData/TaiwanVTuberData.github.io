@@ -79,6 +79,10 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
         option: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
         value: "Twitch",
       },
+      {
+        option: <Text id="table.debutDate">Debut Date</Text>,
+        value: "debutDate",
+      },
     ];
 
     const handleFilterWindow = (

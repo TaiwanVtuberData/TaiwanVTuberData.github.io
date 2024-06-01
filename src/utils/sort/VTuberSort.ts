@@ -1,7 +1,7 @@
 import { CountType } from "../../types/Common/CountType";
 import { CountTypeCompare, GetCount } from "../CountTypeUtils";
 
-export type SortMethod = "YouTube+Twitch" | "YouTube" | "Twitch";
+export type SortMethod = "YouTube+Twitch" | "YouTube" | "Twitch" | "debutDate";
 
 const YouTubeSubscriberCountDescendingSort = <
   T extends { YouTubeSubscriber?: CountType },
@@ -83,6 +83,9 @@ export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
     case "YouTube":
       return YouTubeSubscriberCountDescendingSort;
     case "Twitch":
+      return TwitchFollowerCountDescendingSort;
+    case "debutDate":
+      // TODO: implement sort by debutDate
       return TwitchFollowerCountDescendingSort;
   }
 };
