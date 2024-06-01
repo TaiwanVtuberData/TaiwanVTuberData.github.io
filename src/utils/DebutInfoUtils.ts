@@ -7,3 +7,6 @@ export const getDebutDate = (debutInfo: DebutInfo): string | null => {
     return null;
   }
 };
+
+export const debutDateExist = (debutInfo: DebutInfo): boolean =>
+  debutInfo.hasDebutInfo;

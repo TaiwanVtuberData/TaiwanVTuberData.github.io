@@ -24,6 +24,8 @@ import FilterWindow from "../../components/FilterWindow";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import { VTuberDisplayDataFilterModel } from "../../types/FilterType/VTuberDisplayDataFilterModel";
 import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
+import { debutDateExist } from "../../utils/DebutInfoUtils";
+import { getValueByCondition } from "../../utils/GenericMethod";
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -37,9 +39,11 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   const [sortMethod, setSortMethod] = useState<SortMethod>("YouTube+Twitch");
 
   const columns: Array<TableColumn<VTuberDisplayData>> = [
+    // only show debut date column when sort by debut date
     {
       ...DebutDateColumn(),
       sortable: true,
+      omit: sortMethod !== "debutDate",
     },
     NameColumn(),
     YouTubeTwitchCountColumn(),
@@ -59,6 +63,14 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   });
   const filteredData = data
     .filter((e) => filterFunction(e, filterModel))
+    // only filter by by debutDateExist if sort method is debut date
+    .filter((e) =>
+      getValueByCondition<boolean>(
+        sortMethod === "debutDate",
+        () => debutDateExist(e.debutInfo),
+        () => true,
+      ),
+    )
     .sort(SubscriberCountDescendingSort(sortMethod));
 
   const searchBarComponent = useMemo(() => {
