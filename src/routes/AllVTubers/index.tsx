@@ -60,6 +60,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     TwitchId: null,
     group: null,
     nationality: null,
+    debutDate: null,
   });
   const filteredData = data
     .filter((e) => filterFunction(e, filterModel))
@@ -117,6 +118,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       ["TwitchId", props.dictionary.table.searchByTwitchId],
       ["group", props.dictionary.table.searchByGroup],
       ["nationality", props.dictionary.table.searchByNationality],
+      ["debutDate", props.dictionary.table.searchByDate],
     ]);
 
     return (

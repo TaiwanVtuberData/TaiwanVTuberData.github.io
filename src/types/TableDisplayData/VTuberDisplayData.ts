@@ -16,4 +16,5 @@ export interface VTuberDisplayData {
   group?: string;
   nationality?: string;
   debutInfo: DebutInfo;
+  debutDate: string | null;
 }
