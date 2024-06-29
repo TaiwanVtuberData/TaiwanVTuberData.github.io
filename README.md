@@ -1,7 +1,7 @@
 # 臺灣 VTuber 列表 Vite + Preact 實作網站原始碼
 
 ## 最新版本部署結果
-![master branch build result](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/actions/workflows/deploy_node_20.yml/badge.svg?branch=master)
+[![pages-build-deployment](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/actions/workflows/pages/pages-build-deployment)
 
 ## VTuber 資料說明
 
