@@ -18,7 +18,7 @@
 		"preact": "^10.22.0",
 		"preact-i18n": "^2.4.0-preactx",
 		"preact-iso": "^2.6.3",
-		"preact-render-to-string": "^6.3.1",
+		"preact-render-to-string": "^6.5.5",
 		"preact-router": "^4.1.2",
 		"react-data-table-component": "^7.6.2",
 		"react-superstore": "0.1.4"
