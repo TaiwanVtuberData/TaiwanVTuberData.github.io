@@ -24,7 +24,7 @@
 		"react-superstore": "0.1.4"
 	},
 	"devDependencies": {
-		"@preact/preset-vite": "^2.8.2",
+		"@preact/preset-vite": "^2.8.3",
 		"@types/preact-i18n": "^2.3.3",
 		"@vitest/coverage-v8": "^1.5.0",
 		"eslint": "^8.56.0",
