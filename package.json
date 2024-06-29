@@ -31,7 +31,7 @@
 		"eslint-config-preact": "^1.4.0",
 		"http-server": "^14.1.1",
 		"prettier": "^3.3.2",
-		"typescript": "^5.3.3",
+		"typescript": "^5.5.2",
 		"vite": "^5.2.8",
 		"vite-plugin-checker": "^0.6.4",
 		"vite-plugin-pwa": "^0.19.8",
