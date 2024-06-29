@@ -17,7 +17,7 @@
 		"axios": "^1.7.2",
 		"preact": "^10.22.0",
 		"preact-i18n": "^2.4.0-preactx",
-		"preact-iso": "^2.3.2",
+		"preact-iso": "^2.6.3",
 		"preact-render-to-string": "^6.3.1",
 		"preact-router": "^4.1.2",
 		"react-data-table-component": "^7.6.2",
