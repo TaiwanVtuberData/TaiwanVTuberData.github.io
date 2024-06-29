@@ -27,7 +27,7 @@
 		"@preact/preset-vite": "^2.8.3",
 		"@types/preact-i18n": "^2.3.3",
 		"@vitest/coverage-v8": "^1.6.0",
-		"eslint": "^8.56.0",
+		"eslint": "^9.6.0",
 		"eslint-config-preact": "^1.4.0",
 		"http-server": "^14.1.1",
 		"prettier": "^3.3.2",
