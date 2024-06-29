@@ -1,5 +1,8 @@
 # 臺灣 VTuber 列表 Vite + Preact 實作網站原始碼
 
+## 最新版本部署結果
+[![pages-build-deployment](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/actions/workflows/pages/pages-build-deployment)
+
 ## VTuber 資料說明
 
 * 資料來源: <https://github.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson> 
@@ -31,3 +34,11 @@
 *   `npm run format`: Use Prettier to format the code
 
 *   `npm run test`: Run test
+
+## 授權條款
+
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io/blob/master/LICENSE)
+
+## 聯絡資訊
+
+電子郵件：taiwanvtuberdata@gmail.com
