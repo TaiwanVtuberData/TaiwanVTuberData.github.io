@@ -189,12 +189,19 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
 
   return (
     <div>
-      <div class={style.navTab} onMouseOver={openSidebar}>
-        <div>{">"}</div>
-      </div>
+      <button class={style.navButton} onClick={openSidebar}>
+        <img class={style.navIcon} />
+      </button>
+      <div
+        class={style.sidebarOverlay}
+        style={{ display: sidebarOpen ? "block" : "none" }}
+        onClick={closeSidebar}
+      />
       <div style={{ display: sidebarOpen ? "block" : "none" }}>
-        <div class={style.sidebarOverlay} onMouseOver={closeSidebar} />
         <div class={style.sidebarContent}>
+          <button class={style.xButton} onClick={closeSidebar}>
+            <img class={style.xIcon} />
+          </button>
           <h1>
             <Text id="header.title">Taiwan VTuber Data</Text>
           </h1>
