@@ -25,29 +25,77 @@
   }
 }
 
-.navTab {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 100%;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.4);
+button {
+  background-color: transparent;
+  border: transparent;
+  border-radius: 50%;
 }
 
-@media screen and (max-width: 800px) {
-  .navTab {
-    width: 25px;
+button:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.navButton {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: 64px;
+  height: 64px;
+  padding: 8px;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.navIcon {
+  content: url(../../assets/icons/hamburger.svg);
+  width: 48px;
+  height: 48px;
+}
+
+.xButton {
+  position: relative;
+  top: 8px;
+  left: 8px;
+  width: 64px;
+  height: 64px;
+  padding: 8px;
+  z-index: 999;
+}
+
+.xIcon {
+  content: url(../../assets/icons/cross-mark.svg);
+  width: 48px;
+  height: 48px;
+}
+
+@media screen and (max-width: 480px) {
+  .navButton {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+  }
+
+  .navIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .xButton {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+  }
+
+  .xIcon {
+    width: 24px;
+    height: 24px;
   }
 }
 
-.navTab > div {
-  position: fixed;
-  top: 50vh;
-  bottom: 50vh;
-}
-
 .navGrid {
+  margin-top: 20px;
+  width: auto;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-row: auto;
