@@ -170,7 +170,7 @@ const en: Dictionary = {
   dropDown: {
     viewStyle: "View Style:",
     table: "Table",
-    calendar: "Calendar",
+    calendar: "Calendar (Experimental)",
   },
 } as const;
 
