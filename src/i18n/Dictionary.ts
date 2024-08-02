@@ -152,4 +152,9 @@ export interface Dictionary {
     statically: string;
     github: string;
   };
+  dropDown: {
+    viewStyle: string;
+    table: string;
+    calendar: string;
+  };
 }

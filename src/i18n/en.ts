@@ -167,6 +167,11 @@ const en: Dictionary = {
     statically: "Statically",
     github: "GitHub",
   },
+  dropDown: {
+    viewStyle: "View Style:",
+    table: "Table",
+    calendar: "Calendar (Experimental)",
+  },
 } as const;
 
 export default en;

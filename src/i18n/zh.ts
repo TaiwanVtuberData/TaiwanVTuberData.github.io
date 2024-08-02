@@ -162,6 +162,11 @@ const zh: Dictionary = {
     statically: "Statically",
     github: "GitHub",
   },
+  dropDown: {
+    viewStyle: "檢視方式：",
+    table: "表格",
+    calendar: "日曆(實驗性功能)",
+  },
 } as const;
 
 export default zh;
