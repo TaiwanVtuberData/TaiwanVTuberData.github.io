@@ -1,5 +1,5 @@
 import * as Api from "../../services/ApiService";
-import { FunctionalComponent } from "preact";
+import { FunctionalComponent, JSX } from "preact";
 import { Text } from "preact-i18n";
 import { useState, useMemo, useEffect } from "preact/hooks";
 import DataTable, { TableColumn } from "react-data-table-component";
@@ -22,15 +22,38 @@ import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
 import { VTuberDebutDisplayDataFilterModel } from "../../types/FilterType/VTuberDebutDisplayDataFilterModel";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import FilterWindow from "../../components/FilterWindow";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import DropDownList from "../../components/DropDownList";
+import style from "./style.module.css";
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
 }
 
+type ViewStyle = "table" | "calendar";
+
 const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
   props: DebutVTubersPageProps,
 ) => {
   document.title = `${props.dictionary.header.debutVTubers} | ${props.dictionary.header.title}`;
+  const [viewStyle, setViewStyle] = useState<ViewStyle>("table");
+
+  const optionValue: Array<{
+    option: JSX.Element;
+    value: ViewStyle;
+  }> = [
+    {
+      option: <Text id="dropDown.table">Table</Text>,
+      value: "table",
+    },
+    {
+      option: <Text id="dropDown.calendar">Calendar</Text>,
+      value: "calendar",
+    },
+  ];
+
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
     {
       ...DebutDateColumn(),
@@ -109,6 +132,18 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     getVTubers();
   }, []);
 
+  const debutEvents = data.map((d) => ({ title: d.name, date: d.debutDate }));
+
+  const Calendar = () => (
+    <FullCalendar
+      plugins={[dayGridPlugin, interactionPlugin]}
+      initialView="dayGridMonth"
+      weekends={true}
+      events={debutEvents}
+      height={"85vh"}
+    />
+  );
+
   return (
     <>
       <h1>
@@ -120,22 +155,35 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
           text={<Text id="toolTip.debutVTubers">tooltip text</Text>}
         />
       </h1>
-      <DataTable
-        {...DefaultDataTableProps}
-        columns={columns}
-        data={filteredData}
-        // Typescript does not accept concat two array of different types
-        conditionalRowStyles={ActivityRowStyles.concat(
-          IsTodayRowStyle as Array<any>,
-        )}
-        fixedHeader
-        pagination
-        paginationComponentOptions={props.dictionary.table.paginationOptions}
-        progressComponent={<Text id="text.loading">Loading...</Text>}
-        progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
-      />
+      <div class={style.dropDown}>
+        <DropDownList
+          tipText={props.dictionary.dropDown.viewStyle}
+          value={viewStyle}
+          optionValue={optionValue}
+          onChange={(e: any) => setViewStyle(e.target.value)}
+        />
+      </div>
+      <div class={viewStyle === "calendar" ? "" : style.hidden}>
+        <Calendar />
+      </div>
+      <div class={viewStyle === "table" ? "" : style.hidden}>
+        <DataTable
+          {...DefaultDataTableProps}
+          columns={columns}
+          data={filteredData}
+          // Typescript does not accept concat two array of different types
+          conditionalRowStyles={ActivityRowStyles.concat(
+            IsTodayRowStyle as Array<any>,
+          )}
+          fixedHeader
+          pagination
+          paginationComponentOptions={props.dictionary.table.paginationOptions}
+          progressComponent={<Text id="text.loading">Loading...</Text>}
+          progressPending={pending}
+          subHeader
+          subHeaderComponent={searchBarComponent}
+        />
+      </div>
     </>
   );
 };
