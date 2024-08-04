@@ -24,12 +24,12 @@ import { filterFunction } from "../../utils/FilterModelHelper";
 import FilterWindow from "../../components/FilterWindow";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import DropDownList from "../../components/DropDownList";
 import { EventContentArg, EventInput } from "@fullcalendar/core";
 import ProfileImagePopup from "../../components/ProfileImagePopup";
 import style from "./style.module.css";
+import { useCurrentLocale } from "../../global/Locale";
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -162,18 +162,15 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
 
   const Calendar = () => (
     <FullCalendar
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      headerToolbar={{
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridDay'
-      }}
+      plugins={[dayGridPlugin, interactionPlugin]}
       initialView="dayGridMonth"
       weekends={true}
       events={debutEvents}
       eventContent={renderEventContent}
       dayMaxEventRows={2}
-      moreLinkClick={"day"}
+      locale={useCurrentLocale() === "zh" ? "zh-tw" : "en"}
+      buttonText={props.dictionary.calendarButtonText}
+      moreLinkText={props.dictionary.calendarButtonText.more}
       height={"85vh"}
     />
   );
