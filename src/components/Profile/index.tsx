@@ -5,7 +5,6 @@ import ToolTip from "../ToolTip";
 
 export interface ProfileProps {
   VTuber: VTuberData;
-  size?: number;
 }
 
 const Profile: FunctionalComponent<ProfileProps> = (
@@ -16,7 +15,6 @@ const Profile: FunctionalComponent<ProfileProps> = (
       <ProfileImage
         VTuberId={props.VTuber.id}
         imgUrl={props.VTuber.imgUrl}
-        size={props.size}
         clickBehavior="popup"
       />
     </ToolTip>

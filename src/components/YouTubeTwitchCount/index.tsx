@@ -4,8 +4,8 @@ import CountFragment from "../CountFragment";
 import style from "./style.module.css";
 
 export interface YouTubeTwitchCountProps {
-  YouTubeCount?: CountType;
-  TwitchCount?: CountType;
+  YouTubeCount: CountType | null;
+  TwitchCount: CountType | null;
 }
 
 const YouTubeTwitchCount: FunctionalComponent<YouTubeTwitchCountProps> = (

@@ -157,4 +157,10 @@ export interface Dictionary {
     table: string;
     calendar: string;
   };
+  calendarButtonText: {
+    today: string,
+    month: string,
+    day: string,
+    more: string,
+  }
 }

@@ -5,14 +5,14 @@ import { CountType } from "../types/Common/CountType";
 import { ENFORCE_YOUTUBE_COMPLIANCE } from "../Config";
 import { JSX } from "preact/jsx-runtime";
 
-const numberToCountType = (popularity?: number): CountType | undefined => {
+const numberToCountType = (popularity: number | null): CountType | null => {
   if (popularity) return { tag: "has", count: popularity };
-  return undefined;
+  return null;
 };
 
 export interface PopularityColumnRowData {
-  YouTubePopularity?: number;
-  TwitchPopularity?: number;
+  YouTubePopularity: number | null;
+  TwitchPopularity: number | null;
 }
 
 export const PopularityColumn = <

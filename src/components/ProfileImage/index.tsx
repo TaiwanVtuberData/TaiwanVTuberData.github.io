@@ -4,12 +4,13 @@ import { GetRoute } from "../../utils/TypeSafeRouting";
 import style from "./style.module.css";
 
 export type ProfileImageClickBehavior = "popup" | "goToPage" | "noAction";
+export type ProfileImageSize = 30 | 240;
 
 export interface ProfileImageProps {
   VTuberId: string;
-  imgUrl?: string;
-  size?: number;
+  imgUrl: string | null;
   clickBehavior: ProfileImageClickBehavior;
+  size?: ProfileImageSize;
 }
 
 const ProfileImage: FunctionalComponent<ProfileImageProps> = (

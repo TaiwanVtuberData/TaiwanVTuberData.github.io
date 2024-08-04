@@ -5,8 +5,8 @@ import { GetCount } from "../CountTypeUtils";
 
 const accumulator = (prev: number, current: VTuberData): number =>
   prev +
-  (GetCount(current.YouTube?.subscriber) ?? 0) +
-  (GetCount(current.Twitch?.follower) ?? 0);
+  (GetCount(current.YouTube?.subscriber || null) ?? 0) +
+  (GetCount(current.Twitch?.follower || null) ?? 0);
 
 export const groupToDisplay = (e: GroupData): GroupDisplayData => ({
   id: e.id,

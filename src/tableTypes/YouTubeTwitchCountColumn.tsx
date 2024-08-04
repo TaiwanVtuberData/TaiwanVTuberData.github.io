@@ -5,8 +5,8 @@ import { CountType } from "../types/Common/CountType";
 import { JSX } from "preact/jsx-runtime";
 
 export interface YouTubeTwitchCountColumnRowData {
-  YouTubeSubscriber?: CountType;
-  TwitchFollower?: CountType;
+  YouTubeSubscriber: CountType | null;
+  TwitchFollower: CountType | null;
 }
 
 export const YouTubeTwitchCountColumn = <

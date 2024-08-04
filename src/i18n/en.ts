@@ -172,6 +172,12 @@ const en: Dictionary = {
     table: "Table",
     calendar: "Calendar (Experimental)",
   },
+  calendarButtonText: {
+    today: "Today",
+    month: "Month",
+    day: "Day",
+    more: "more"
+  }
 } as const;
 
 export default en;

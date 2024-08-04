@@ -1,6 +1,4 @@
 .fixedSize {
-  min-width: 88px;
-  min-height: 88px;
   border: 1px solid black;
   border-radius: 50%;
 }

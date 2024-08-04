@@ -5,7 +5,7 @@ import { JSX } from "preact/jsx-runtime";
 
 export interface NameColumnRowData {
   id: string;
-  imgUrl?: string;
+  imgUrl: string | null;
   name: string;
 }
 

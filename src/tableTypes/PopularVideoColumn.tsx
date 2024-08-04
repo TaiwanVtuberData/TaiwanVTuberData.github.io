@@ -6,7 +6,7 @@ import { ENFORCE_YOUTUBE_COMPLIANCE } from "../Config";
 import { JSX } from "preact/jsx-runtime";
 
 export interface PopularVideoColumnRowData {
-  popularVideo?: VideoInfo;
+  popularVideo: VideoInfo | null;
 }
 
 export const PopularVideoColumn = <

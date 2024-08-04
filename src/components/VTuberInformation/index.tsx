@@ -91,7 +91,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
           <li>
             <Text id="table.group">Group</Text>
             <span>: </span>
-            {vtuber?.group === undefined ? null : (
+            {vtuber?.group === null ? null : (
               <a href={GetRoute({ type: "group", name: vtuber?.group })}>
                 {vtuber?.group}
               </a>

@@ -4,7 +4,7 @@ import { TableColumn } from "react-data-table-component";
 import { GetRoute } from "../utils/TypeSafeRouting";
 
 export interface GroupColumnRowData {
-  group?: string;
+  group: string | null;
 }
 
 export const GroupColumn = <
@@ -13,7 +13,7 @@ export const GroupColumn = <
   return {
     name: <Text id="table.group">Group</Text>,
     cell: (row: RowData): JSX.Element | null =>
-      row.group !== undefined ? (
+      row.group !== null ? (
         <a href={GetRoute({ type: "group", name: row.group })}>{row.group}</a>
       ) : null,
   };

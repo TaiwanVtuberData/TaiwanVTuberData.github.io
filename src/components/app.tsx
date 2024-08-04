@@ -42,6 +42,7 @@ import {
   setCurrentApiSource,
 } from "../global/CurrentApiSource";
 import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
+import { setCurrentLocale } from "../global/Locale";
 
 export function App() {
   const [locale, setLocale] = useState<validI18n>(
@@ -75,8 +76,10 @@ export function App() {
   useEffect(() => {
     if (locale === "zh") {
       setDefinition(zh);
+      setCurrentLocale("zh");
     } else {
       setDefinition(en);
+      setCurrentLocale("en");
     }
 
     setCookie("locale", validI18nArray, locale);

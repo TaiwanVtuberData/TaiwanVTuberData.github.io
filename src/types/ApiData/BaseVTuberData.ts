@@ -7,10 +7,10 @@ export interface BaseVTuberData {
   readonly id: string;
   readonly activity: Activity;
   readonly name: string;
-  readonly imgUrl?: string;
-  readonly YouTube?: BaseYouTubeData;
-  readonly Twitch?: BaseTwitchData;
-  readonly popularVideo?: VideoInfo;
-  readonly group?: string;
-  readonly nationality?: string;
+  readonly imgUrl: string | null;
+  readonly YouTube: BaseYouTubeData | null;
+  readonly Twitch: BaseTwitchData | null;
+  readonly popularVideo: VideoInfo | null;
+  readonly group: string | null;
+  readonly nationality: string | null;
 }
