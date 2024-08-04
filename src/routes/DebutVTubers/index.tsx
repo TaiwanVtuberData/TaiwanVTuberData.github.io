@@ -153,6 +153,7 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
           VTuberId={vtuber.id}
           imgUrl={vtuber.imgUrl}
           name={vtuber.name}
+          compact={true}
         />
       );
     }

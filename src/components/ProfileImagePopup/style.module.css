@@ -6,6 +6,16 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.compactContainer {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .profileImageFlex {
   flex-grow: 0;
 
@@ -13,6 +23,12 @@
 }
 
 .nameFlex {
+  width: 100%;
+  text-align: left;
+  margin-left: 3px;
+}
+
+.compactNameFlex {
   width: 100%;
   text-align: left;
   margin-left: 3px;
@@ -32,5 +48,9 @@
     width: 100%;
     text-align: center;
     height: 20px;
+  }
+
+  .compactNameFlex {
+    display: none;
   }
 }
