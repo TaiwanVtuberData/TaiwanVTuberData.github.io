@@ -35,7 +35,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
       name: <Text id="table.displayName">Name</Text>,
       cell: (row: {
         VTuberId: string;
-        imgUrl?: string;
+        imgUrl: string | null;
         name: string;
       }): JSX.Element => (
         <ProfileImagePopup
@@ -58,7 +58,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
     },
     {
       name: <Text id="table.title">Title</Text>,
-      selector: (row: { title?: string }): string => row.title ?? "",
+      selector: (row: { title: string | null }): string => row.title ?? "",
       wrap: true,
       hide: Media.SM,
     },
@@ -76,7 +76,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
         item.name && item.name.toLowerCase().includes(filterName.toLowerCase()),
     )
     .filter((item) => {
-      if (item.title === undefined) return true;
+      if (item.title === null) return true;
       return item.title.toLowerCase().includes(filterTitle.toLowerCase());
     });
 

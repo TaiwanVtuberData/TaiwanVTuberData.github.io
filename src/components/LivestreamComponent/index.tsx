@@ -6,9 +6,9 @@ import style from "./style.module.css";
 
 export interface LivestreamComponentProps {
   divPrefix: string;
-  id?: number;
+  id: number | null;
   VTuberId: string;
-  imgUrl?: string;
+  imgUrl: string | null;
   name: string;
   thumbnailUrl: string;
   videoUrl: string;

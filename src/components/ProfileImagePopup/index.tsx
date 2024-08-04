@@ -4,7 +4,7 @@ import style from "./style.module.css";
 
 export interface ProfileImagePopupProps {
   VTuberId: string;
-  imgUrl?: string;
+  imgUrl: string | null;
   name: string;
 }
 

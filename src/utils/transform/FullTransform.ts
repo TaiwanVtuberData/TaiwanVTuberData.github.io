@@ -13,8 +13,8 @@ export const VTuberFullToDisplay = (
   popularVideo: e.popularVideo,
   group: e.group,
   nationality: e.nationality,
-  debutDate: e.debutDate,
-  graduateDate: e.graduateDate,
+  debutDate: e.debutDate || null,
+  graduateDate: e.graduateDate || null,
   livestreams: e.livestreams.map((stream) => ({
     ...stream,
     startTime: new Date(stream.startTime),

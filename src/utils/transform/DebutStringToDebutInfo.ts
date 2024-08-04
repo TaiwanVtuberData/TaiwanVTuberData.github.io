@@ -8,7 +8,7 @@ import {
 import { dateDiffInDays, dateStringToDate } from "../DateTimeUtils";
 
 export const maybeDebutStringToDebutInfo = (
-  debutString?: string,
+  debutString: string | null,
 ): DebutInfo => {
   if (debutString === null || debutString === undefined)
     return { hasDebutInfo: false };

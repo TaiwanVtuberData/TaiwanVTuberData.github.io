@@ -26,7 +26,9 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import DropDownList from "../../components/DropDownList";
+import { EventContentArg, EventInput } from "@fullcalendar/core";
 import style from "./style.module.css";
+import ProfileImagePopup from "../../components/ProfileImagePopup";
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -132,7 +134,29 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     getVTubers();
   }, []);
 
-  const debutEvents = data.map((d) => ({ title: d.name, date: d.debutDate }));
+  const debutEvents: Array<EventInput> = data.map((d) => ({
+    id: d.id,
+    title: d.name,
+    date: d.debutDate,
+  }));
+
+  function renderEventContent(eventContent: EventContentArg) {
+    const vtuber: VTuberDebutDisplayData | undefined = data.find(
+      (e) => e.id === eventContent.event.id,
+    );
+
+    if (vtuber === undefined) {
+      return <>{eventContent.event.title}</>;
+    } else {
+      return (
+        <ProfileImagePopup
+          VTuberId={vtuber.id}
+          imgUrl={vtuber.imgUrl}
+          name={vtuber.name}
+        />
+      );
+    }
+  }
 
   const Calendar = () => (
     <FullCalendar
@@ -140,6 +164,8 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
       initialView="dayGridMonth"
       weekends={true}
       events={debutEvents}
+      eventContent={renderEventContent}
+      dayMaxEventRows={2}
       height={"85vh"}
     />
   );

@@ -7,9 +7,9 @@ export type ProfileImageClickBehavior = "popup" | "goToPage" | "noAction";
 
 export interface ProfileImageProps {
   VTuberId: string;
-  imgUrl?: string;
-  size?: number;
+  imgUrl: string | null;
   clickBehavior: ProfileImageClickBehavior;
+  size?: number;
 }
 
 const ProfileImage: FunctionalComponent<ProfileImageProps> = (

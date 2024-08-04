@@ -2,7 +2,7 @@ import { Text } from "preact-i18n";
 import { TableColumn } from "react-data-table-component";
 
 export interface NationalityColumnRowData {
-  nationality?: string;
+  nationality: string | null;
 }
 
 export const NationalityColumn = <

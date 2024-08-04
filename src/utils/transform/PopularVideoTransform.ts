@@ -7,7 +7,7 @@ export const PopularVideoToDisplayData = (
 ): VideoPopularityDisplayData => ({
   id: e.id,
   name: e.name,
-  imgUrl: e.imgUrl,
+  imgUrl: e.imgUrl || null,
   title: e.title,
   thumbnailUrl: e.thumbnailUrl,
   videoUrl: e.videoUrl,

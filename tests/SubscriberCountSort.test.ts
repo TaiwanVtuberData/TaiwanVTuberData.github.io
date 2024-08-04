@@ -9,8 +9,8 @@ import {
 describe("SubscriberCountSort Test", () => {
   interface Row {
     id: number;
-    YouTubeSubscriber?: CountType;
-    TwitchFollower?: CountType;
+    YouTubeSubscriber: CountType | null;
+    TwitchFollower: CountType | null;
   }
 
   test("Expected YouTubeSubscriberCountPlusTwitchFollowerCountSort no nullable values to be sorted properly", () => {
@@ -49,9 +49,9 @@ describe("SubscriberCountSort Test", () => {
 
   test("Expected YouTubeSubscriberCountPlusTwitchFollowerCountSort nullable values to be sorted properly", () => {
     const unsortedData: Array<Row> = [
-      { id: 0, YouTubeSubscriber: { tag: "has", count: 100 } },
-      { id: 1, TwitchFollower: { tag: "has", count: 300 } },
-      { id: 2 },
+      { id: 0, YouTubeSubscriber: { tag: "has", count: 100 }, TwitchFollower: null },
+      { id: 1, YouTubeSubscriber: null, TwitchFollower: { tag: "has", count: 300 } },
+      { id: 2, YouTubeSubscriber: null, TwitchFollower: null  },
       {
         id: 3,
         YouTubeSubscriber: { tag: "has", count: 100 },
@@ -161,19 +161,19 @@ describe("SubscriberCountSort Test", () => {
     const unsortedData1: Array<Row> = [
       {
         id: 0,
-        YouTubeSubscriber: { tag: "has", count: 100 },
+        YouTubeSubscriber: { tag: "has", count: 100 },TwitchFollower: null
       },
       {
         id: 1,
-        YouTubeSubscriber: { tag: "no" },
+        YouTubeSubscriber: { tag: "no" },TwitchFollower: null
       },
       {
         id: 2,
-        YouTubeSubscriber: { tag: "hidden" },
+        YouTubeSubscriber: { tag: "hidden" },TwitchFollower: null
       },
       {
         id: 3,
-        YouTubeSubscriber: { tag: "has", count: 200 },
+        YouTubeSubscriber: { tag: "has", count: 200 },TwitchFollower: null
       },
     ];
 
@@ -183,19 +183,19 @@ describe("SubscriberCountSort Test", () => {
     const unsortedData2: Array<Row> = [
       {
         id: 0,
-        YouTubeSubscriber: { tag: "has", count: 100 },
+        YouTubeSubscriber: { tag: "has", count: 100 },TwitchFollower: null
       },
       {
         id: 1,
-        YouTubeSubscriber: { tag: "hidden" },
+        YouTubeSubscriber: { tag: "hidden" },TwitchFollower: null
       },
       {
         id: 2,
-        YouTubeSubscriber: { tag: "no" },
+        YouTubeSubscriber: { tag: "no" },TwitchFollower: null
       },
       {
         id: 3,
-        YouTubeSubscriber: { tag: "has", count: 200 },
+        YouTubeSubscriber: { tag: "has", count: 200 },TwitchFollower: null
       },
     ];
 
@@ -218,19 +218,19 @@ describe("SubscriberCountSort Test", () => {
 
     const unsortedData1: Array<Row> = [
       {
-        id: 0,
+        id: 0,YouTubeSubscriber:null,
         TwitchFollower: { tag: "has", count: 100 },
       },
       {
-        id: 1,
+        id: 1,YouTubeSubscriber:null,
         TwitchFollower: { tag: "no" },
       },
       {
-        id: 2,
+        id: 2,YouTubeSubscriber:null,
         TwitchFollower: { tag: "hidden" },
       },
       {
-        id: 3,
+        id: 3,YouTubeSubscriber:null,
         TwitchFollower: { tag: "has", count: 200 },
       },
     ];
@@ -240,19 +240,19 @@ describe("SubscriberCountSort Test", () => {
 
     const unsortedData2: Array<Row> = [
       {
-        id: 0,
+        id: 0,YouTubeSubscriber:null,
         TwitchFollower: { tag: "has", count: 100 },
       },
       {
-        id: 1,
+        id: 1,YouTubeSubscriber:null,
         TwitchFollower: { tag: "hidden" },
       },
       {
-        id: 2,
+        id: 2,YouTubeSubscriber:null,
         TwitchFollower: { tag: "no" },
       },
       {
-        id: 3,
+        id: 3,YouTubeSubscriber:null,
         TwitchFollower: { tag: "has", count: 200 },
       },
     ];

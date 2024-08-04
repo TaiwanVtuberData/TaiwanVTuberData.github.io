@@ -9,7 +9,7 @@ export const VTuberViewCountToDisplay = (
   name: e.name,
   imgUrl: e.imgUrl,
   YouTubeId: e.YouTube.id,
-  TwitchId: e.Twitch?.id,
+  TwitchId: e.Twitch?.id || null,
   totalViewCount: e.YouTube.totalViewCount,
   _7DaysGrowth: e.YouTube._7DaysGrowth,
   _30DaysGrowth: e.YouTube._30DaysGrowth,

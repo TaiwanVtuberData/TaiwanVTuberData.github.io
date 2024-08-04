@@ -7,14 +7,14 @@ export interface VTuberDisplayData {
   id: string;
   activity: Activity;
   name: string;
-  imgUrl?: string;
-  YouTubeId?: string;
-  YouTubeSubscriber?: CountType;
-  TwitchId?: string;
-  TwitchFollower?: CountType;
-  popularVideo?: VideoInfo;
-  group?: string;
-  nationality?: string;
+  imgUrl: string | null;
+  YouTubeId: string | null;
+  YouTubeSubscriber: CountType | null;
+  TwitchId: string | null;
+  TwitchFollower: CountType | null;
+  popularVideo: VideoInfo | null;
+  group: string | null;
+  nationality: string | null;
   debutInfo: DebutInfo;
   debutDate: string | null;
 }

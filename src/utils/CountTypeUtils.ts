@@ -1,8 +1,8 @@
 /* eslint-disable no-fallthrough */
 import { CountType } from "../types/Common/CountType";
 
-export const GetCount = (countType?: CountType): number | null => {
-  if (countType === undefined) return null;
+export const GetCount = (countType: CountType | null): number | null => {
+  if (countType === null) return null;
 
   switch (countType.tag) {
     case "has":

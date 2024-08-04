@@ -6,7 +6,7 @@ import { getDebutDate } from "../DebutInfoUtils";
 export type SortMethod = "YouTube+Twitch" | "YouTube" | "Twitch" | "debutDate";
 
 const YouTubeSubscriberCountDescendingSort = <
-  T extends { YouTubeSubscriber?: CountType },
+  T extends { YouTubeSubscriber: CountType | null },
 >(
   rowA: T,
   rowB: T,
@@ -28,7 +28,7 @@ const YouTubeSubscriberCountDescendingSort = <
 };
 
 const TwitchFollowerCountDescendingSort = <
-  T extends { TwitchFollower?: CountType },
+  T extends { TwitchFollower: CountType | null },
 >(
   rowA: T,
   rowB: T,
@@ -50,7 +50,10 @@ const TwitchFollowerCountDescendingSort = <
 };
 
 export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
-  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType },
+  T extends {
+    YouTubeSubscriber: CountType | null;
+    TwitchFollower: CountType | null;
+  },
 >(
   rowA: T,
   rowB: T,
@@ -69,9 +72,11 @@ export const YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort = <
   return 0;
 };
 
-// TODO: Merge the logic of descending and ascending functions
 export const YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort = <
-  T extends { YouTubeSubscriber?: CountType; TwitchFollower?: CountType },
+  T extends {
+    YouTubeSubscriber: CountType | null;
+    TwitchFollower: CountType | null;
+  },
 >(
   rowA: T,
   rowB: T,
@@ -111,6 +116,7 @@ export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
       return YouTubeSubscriberCountDescendingSort;
     case "Twitch":
       return TwitchFollowerCountDescendingSort;
+    // FIXME: debutDate should not be part of SubscriberCountDescendingSort
     case "debutDate":
       return debutDateDescendingSort;
   }
