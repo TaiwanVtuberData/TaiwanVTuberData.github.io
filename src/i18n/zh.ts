@@ -171,8 +171,8 @@ const zh: Dictionary = {
     today: "今日",
     month: "月",
     day: "日",
-    more: "更多"
-  }
+    more: "更多",
+  },
 } as const;
 
 export default zh;

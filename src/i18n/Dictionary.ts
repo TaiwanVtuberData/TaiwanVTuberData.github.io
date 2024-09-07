@@ -158,9 +158,9 @@ export interface Dictionary {
     calendar: string;
   };
   calendarButtonText: {
-    today: string,
-    month: string,
-    day: string,
-    more: string,
-  }
+    today: string;
+    month: string;
+    day: string;
+    more: string;
+  };
 }

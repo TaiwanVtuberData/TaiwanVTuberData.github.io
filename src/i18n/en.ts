@@ -176,8 +176,8 @@ const en: Dictionary = {
     today: "Today",
     month: "Month",
     day: "Day",
-    more: "more"
-  }
+    more: "more",
+  },
 } as const;
 
 export default en;

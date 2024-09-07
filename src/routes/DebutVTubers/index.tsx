@@ -22,14 +22,9 @@ import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
 import { VTuberDebutDisplayDataFilterModel } from "../../types/FilterType/VTuberDebutDisplayDataFilterModel";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import FilterWindow from "../../components/FilterWindow";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction";
 import DropDownList from "../../components/DropDownList";
-import { EventContentArg, EventInput } from "@fullcalendar/core";
-import ProfileImagePopup from "../../components/ProfileImagePopup";
 import style from "./style.module.css";
-import { useCurrentLocale } from "../../global/Locale";
+import Calendar from "../../components/Calendar";
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
@@ -135,46 +130,6 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
     getVTubers();
   }, []);
 
-  const debutEvents: Array<EventInput> = data.map((d) => ({
-    id: d.id,
-    title: d.name,
-    date: d.debutDate,
-  }));
-
-  function renderEventContent(eventContent: EventContentArg) {
-    const vtuber: VTuberDebutDisplayData | undefined = data.find(
-      (e) => e.id === eventContent.event.id,
-    );
-
-    if (vtuber === undefined) {
-      return <>{eventContent.event.title}</>;
-    } else {
-      return (
-        <ProfileImagePopup
-          VTuberId={vtuber.id}
-          imgUrl={vtuber.imgUrl}
-          name={vtuber.name}
-          compact={true}
-        />
-      );
-    }
-  }
-
-  const Calendar = () => (
-    <FullCalendar
-      plugins={[dayGridPlugin, interactionPlugin]}
-      initialView="dayGridMonth"
-      weekends={true}
-      events={debutEvents}
-      eventContent={renderEventContent}
-      dayMaxEventRows={2}
-      locale={useCurrentLocale() === "zh" ? "zh-tw" : "en"}
-      buttonText={props.dictionary.calendarButtonText}
-      moreLinkText={props.dictionary.calendarButtonText.more}
-      height={"85vh"}
-    />
-  );
-
   return (
     <>
       <h1>
@@ -195,7 +150,12 @@ const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
         />
       </div>
       <div class={viewStyle === "calendar" ? "" : style.hidden}>
-        <Calendar />
+        <Calendar
+          displayData={data.map((d) => {
+            return { ...d, date: d.debutDate };
+          })}
+          dictionary={props.dictionary}
+        />
       </div>
       <div class={viewStyle === "table" ? "" : style.hidden}>
         <DataTable
