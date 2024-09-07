@@ -20,6 +20,7 @@ interface CalendarDisplayDataType {
 }
 
 function Calendar(props: CalendarProps): JSX.Element {
+    console.log(props.displayData)
   const events: Array<EventInput> = props.displayData.map((d) => ({
     id: d.id,
     title: d.name,

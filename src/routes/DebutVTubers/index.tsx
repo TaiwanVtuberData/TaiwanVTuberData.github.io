@@ -25,30 +25,29 @@ import FilterWindow from "../../components/FilterWindow";
 import DropDownList from "../../components/DropDownList";
 import style from "./style.module.css";
 import Calendar from "../../components/Calendar";
+import { DataViewStyle } from "../../types/DataViewStyle";
 
 export interface DebutVTubersPageProps {
   dictionary: Dictionary;
 }
 
-type ViewStyle = "table" | "calendar";
-
 const DebutVTubersPage: FunctionalComponent<DebutVTubersPageProps> = (
   props: DebutVTubersPageProps,
 ) => {
   document.title = `${props.dictionary.header.debutVTubers} | ${props.dictionary.header.title}`;
-  const [viewStyle, setViewStyle] = useState<ViewStyle>("table");
+  const [viewStyle, setViewStyle] = useState<DataViewStyle>("calendar");
 
   const optionValue: Array<{
     option: JSX.Element;
-    value: ViewStyle;
+    value: DataViewStyle;
   }> = [
-    {
-      option: <Text id="dropDown.table">Table</Text>,
-      value: "table",
-    },
     {
       option: <Text id="dropDown.calendar">Calendar</Text>,
       value: "calendar",
+    },
+    {
+      option: <Text id="dropDown.table">Table</Text>,
+      value: "table",
     },
   ];
 

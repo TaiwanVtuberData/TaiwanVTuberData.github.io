@@ -1,5 +1,5 @@
 import * as Api from "../../services/ApiService";
-import { FunctionalComponent } from "preact";
+import { FunctionalComponent, JSX } from "preact";
 import { Text } from "preact-i18n";
 import { useState, useMemo, useEffect } from "preact/hooks";
 import DataTable, { TableColumn } from "react-data-table-component";
@@ -24,6 +24,11 @@ import { VTuberAnniversaryDisplayDataFilterModel } from "../../types/FilterType/
 import { AnniversaryCountColumn } from "../../tableTypes/AnniversaryCountColumn";
 import { DebutDateOfTheYearColumn } from "../../tableTypes/DebutDateOfTheYearColumn";
 import { DebutDateOfTheYearDescendingCompare } from "../../utils/sort/DebutDateOfTheYearSort";
+import DropDownList from "../../components/DropDownList";
+import Calendar from "../../components/Calendar";
+import style from "./style.module.css";
+import { TODAY_DATE } from "../../global/TodayDate";
+import { DataViewStyle } from "../../types/DataViewStyle";
 
 export interface AnniversaryVTubersPageProps {
   dictionary: Dictionary;
@@ -33,6 +38,22 @@ const AnniversaryVTubersPage: FunctionalComponent<
   AnniversaryVTubersPageProps
 > = (props: AnniversaryVTubersPageProps) => {
   document.title = `${props.dictionary.header.anniversaryVTubers} | ${props.dictionary.header.title}`;
+  const [viewStyle, setViewStyle] = useState<DataViewStyle>("calendar");
+
+  const optionValue: Array<{
+    option: JSX.Element;
+    value: DataViewStyle;
+  }> = [
+    {
+      option: <Text id="dropDown.calendar">Calendar</Text>,
+      value: "calendar",
+    },
+    {
+      option: <Text id="dropDown.table">Table</Text>,
+      value: "table",
+    },
+  ];
+
   const columns: Array<TableColumn<VTuberAnniversaryDisplayData>> = [
     {
       ...DebutDateOfTheYearColumn(),
@@ -55,8 +76,11 @@ const AnniversaryVTubersPage: FunctionalComponent<
     NationalityColumn(),
   ];
 
-  // search filter
   const [data, setData] = useState<Array<VTuberAnniversaryDisplayData>>([]);
+  // calender data
+  const calenderData = data.map(d => {return {...d, date: TODAY_DATE.getFullYear() + '-' + d.debutInfo.debutDateOfTheYear}});
+  
+  // search filter
   const [filterModel, setFilterModel] =
     useState<VTuberAnniversaryDisplayDataFilterModel>({
       name: null,
@@ -128,22 +152,38 @@ const AnniversaryVTubersPage: FunctionalComponent<
           text={<Text id="toolTip.anniversaryVTubers">tooltip text</Text>}
         />
       </h1>
-      <DataTable
-        {...DefaultDataTableProps}
-        columns={columns}
-        data={filteredData}
-        // Typescript does not accept concat two array of different types
-        conditionalRowStyles={ActivityRowStyles.concat(
-          IsTodayRowStyle as Array<any>,
-        )}
-        fixedHeader
-        pagination
-        paginationComponentOptions={props.dictionary.table.paginationOptions}
-        progressComponent={<Text id="text.loading">Loading...</Text>}
-        progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
-      />
+      <div class={style.dropDown}>
+        <DropDownList
+          tipText={props.dictionary.dropDown.viewStyle}
+          value={viewStyle}
+          optionValue={optionValue}
+          onChange={(e: any) => setViewStyle(e.target.value)}
+        />
+      </div>
+      <div class={viewStyle === "calendar" ? "" : style.hidden}>
+        <Calendar
+          displayData={calenderData}
+          dictionary={props.dictionary}
+        />
+      </div>
+      <div class={viewStyle === "table" ? "" : style.hidden}>
+        <DataTable
+          {...DefaultDataTableProps}
+          columns={columns}
+          data={filteredData}
+          // Typescript does not accept concat two array of different types
+          conditionalRowStyles={ActivityRowStyles.concat(
+            IsTodayRowStyle as Array<any>,
+          )}
+          fixedHeader
+          pagination
+          paginationComponentOptions={props.dictionary.table.paginationOptions}
+          progressComponent={<Text id="text.loading">Loading...</Text>}
+          progressPending={pending}
+          subHeader
+          subHeaderComponent={searchBarComponent}
+        />
+      </div>
     </>
   );
 };
