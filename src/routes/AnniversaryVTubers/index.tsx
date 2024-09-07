@@ -78,8 +78,13 @@ const AnniversaryVTubersPage: FunctionalComponent<
 
   const [data, setData] = useState<Array<VTuberAnniversaryDisplayData>>([]);
   // calender data
-  const calenderData = data.map(d => {return {...d, date: TODAY_DATE.getFullYear() + '-' + d.debutInfo.debutDateOfTheYear}});
-  
+  const calenderData = data.map((d) => {
+    return {
+      ...d,
+      date: TODAY_DATE.getFullYear() + "-" + d.debutInfo.debutDateOfTheYear,
+    };
+  });
+
   // search filter
   const [filterModel, setFilterModel] =
     useState<VTuberAnniversaryDisplayDataFilterModel>({
@@ -161,10 +166,7 @@ const AnniversaryVTubersPage: FunctionalComponent<
         />
       </div>
       <div class={viewStyle === "calendar" ? "" : style.hidden}>
-        <Calendar
-          displayData={calenderData}
-          dictionary={props.dictionary}
-        />
+        <Calendar displayData={calenderData} dictionary={props.dictionary} />
       </div>
       <div class={viewStyle === "table" ? "" : style.hidden}>
         <DataTable
