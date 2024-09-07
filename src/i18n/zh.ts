@@ -165,14 +165,14 @@ const zh: Dictionary = {
   dropDown: {
     viewStyle: "檢視方式：",
     table: "表格",
-    calendar: "日曆(實驗性功能)",
+    calendar: "日曆",
   },
   calendarButtonText: {
     today: "今日",
     month: "月",
     day: "日",
-    more: "更多"
-  }
+    more: "更多",
+  },
 } as const;
 
 export default zh;

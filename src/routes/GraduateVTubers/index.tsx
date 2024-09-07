@@ -1,5 +1,5 @@
 import * as Api from "../../services/ApiService";
-import { FunctionalComponent } from "preact";
+import { FunctionalComponent, JSX } from "preact";
 import { Text } from "preact-i18n";
 import { useState, useMemo, useEffect } from "preact/hooks";
 import DataTable, { TableColumn } from "react-data-table-component";
@@ -22,6 +22,10 @@ import tableStyle from "../../style/DataTableStyle.module.css";
 import { VTuberGraduateDisplayDataFilterModel } from "../../types/FilterType/VTuberGraduateDisplayDataFilterModel";
 import { filterFunction } from "../../utils/FilterModelHelper";
 import FilterWindow from "../../components/FilterWindow";
+import DropDownList from "../../components/DropDownList";
+import style from "./style.module.css";
+import Calendar from "../../components/Calendar";
+import { DataViewStyle } from "../../types/DataViewStyle";
 
 export interface GraduateVTubersPageProps {
   dictionary: Dictionary;
@@ -31,6 +35,22 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
   props: GraduateVTubersPageProps,
 ) => {
   document.title = `${props.dictionary.header.graduateVTubers} | ${props.dictionary.header.title}`;
+  const [viewStyle, setViewStyle] = useState<DataViewStyle>("calendar");
+
+  const optionValue: Array<{
+    option: JSX.Element;
+    value: DataViewStyle;
+  }> = [
+    {
+      option: <Text id="dropDown.calendar">Calendar</Text>,
+      value: "calendar",
+    },
+    {
+      option: <Text id="dropDown.table">Table</Text>,
+      value: "table",
+    },
+  ];
+
   const columns: Array<TableColumn<VTuberGraduateDisplayData>> = [
     {
       ...GraduateDateColumn(),
@@ -120,22 +140,40 @@ const GraduateVTubersPage: FunctionalComponent<GraduateVTubersPageProps> = (
           text={<Text id="toolTip.graduateVTubers">tooltip text</Text>}
         />
       </h1>
-      <DataTable
-        {...DefaultDataTableProps}
-        columns={columns}
-        data={filteredData}
-        // Typescript does not accept concat two array of different types
-        conditionalRowStyles={ActivityRowStyles.concat(
-          IsTodayRowStyle as Array<any>,
-        )}
-        fixedHeader
-        pagination
-        paginationComponentOptions={props.dictionary.table.paginationOptions}
-        progressComponent={<Text id="text.loading">Loading...</Text>}
-        progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
-      />
+      <div class={style.dropDown}>
+        <DropDownList
+          tipText={props.dictionary.dropDown.viewStyle}
+          value={viewStyle}
+          optionValue={optionValue}
+          onChange={(e: any) => setViewStyle(e.target.value)}
+        />
+      </div>
+      <div class={viewStyle === "calendar" ? "" : style.hidden}>
+        <Calendar
+          displayData={data.map((d) => {
+            return { ...d, date: d.graduateDate };
+          })}
+          dictionary={props.dictionary}
+        />
+      </div>
+      <div class={viewStyle === "table" ? "" : style.hidden}>
+        <DataTable
+          {...DefaultDataTableProps}
+          columns={columns}
+          data={filteredData}
+          // Typescript does not accept concat two array of different types
+          conditionalRowStyles={ActivityRowStyles.concat(
+            IsTodayRowStyle as Array<any>,
+          )}
+          fixedHeader
+          pagination
+          paginationComponentOptions={props.dictionary.table.paginationOptions}
+          progressComponent={<Text id="text.loading">Loading...</Text>}
+          progressPending={pending}
+          subHeader
+          subHeaderComponent={searchBarComponent}
+        />
+      </div>
     </>
   );
 };

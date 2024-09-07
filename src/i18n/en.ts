@@ -170,14 +170,14 @@ const en: Dictionary = {
   dropDown: {
     viewStyle: "View Style:",
     table: "Table",
-    calendar: "Calendar (Experimental)",
+    calendar: "Calendar",
   },
   calendarButtonText: {
     today: "Today",
     month: "Month",
     day: "Day",
-    more: "more"
-  }
+    more: "more",
+  },
 } as const;
 
 export default en;
