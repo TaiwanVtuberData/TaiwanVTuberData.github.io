@@ -11,18 +11,11 @@ const YouTubeSubscriberCountDescendingSort = <
   rowA: T,
   rowB: T,
 ): number => {
-  const aExist: boolean = rowA.YouTubeSubscriber !== undefined;
-  const bExist: boolean = rowB.YouTubeSubscriber !== undefined;
+  if (rowA.YouTubeSubscriber === null && rowB.YouTubeSubscriber === null) return 0;
 
-  if (!aExist && !bExist) return 0;
+  if (rowB.YouTubeSubscriber === null) return -1;
 
-  if (!bExist) return -1;
-
-  if (!aExist) return 1;
-
-  // This line does nothing but to stop TypeScript from
-  // whining about YouTubeSubscriber might be undefined
-  if (!(rowA.YouTubeSubscriber && rowB.YouTubeSubscriber)) return 0;
+  if (rowA.YouTubeSubscriber === null) return 1;
 
   return CountTypeCompare(rowA.YouTubeSubscriber, rowB.YouTubeSubscriber) * -1;
 };
@@ -33,18 +26,11 @@ const TwitchFollowerCountDescendingSort = <
   rowA: T,
   rowB: T,
 ): number => {
-  const aExist: boolean = rowA.TwitchFollower !== undefined;
-  const bExist: boolean = rowB.TwitchFollower !== undefined;
+  if (rowA.TwitchFollower === null && rowB.TwitchFollower === null) return 0;
 
-  if (!aExist && !bExist) return 0;
+  if (rowB.TwitchFollower === null) return -1;
 
-  if (!bExist) return -1;
-
-  if (!aExist) return 1;
-
-  // This line does nothing but to stop TypeScript from
-  // whining about TwitchFollower might be undefined
-  if (!(rowA.TwitchFollower && rowB.TwitchFollower)) return 0;
+  if (rowA.TwitchFollower === null) return 1;
 
   return CountTypeCompare(rowA.TwitchFollower, rowB.TwitchFollower) * -1;
 };
