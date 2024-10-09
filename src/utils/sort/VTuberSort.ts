@@ -11,11 +11,17 @@ const YouTubeSubscriberCountDescendingSort = <
   rowA: T,
   rowB: T,
 ): number => {
-  if (rowA.YouTubeSubscriber === null && rowB.YouTubeSubscriber === null) return 0;
+  if (rowA.YouTubeSubscriber === null && rowB.YouTubeSubscriber === null) {
+    return 0;
+  }
 
-  if (rowB.YouTubeSubscriber === null) return -1;
+  if (rowB.YouTubeSubscriber === null) {
+    return -1;
+  }
 
-  if (rowA.YouTubeSubscriber === null) return 1;
+  if (rowA.YouTubeSubscriber === null) {
+    return 1;
+  }
 
   return CountTypeCompare(rowA.YouTubeSubscriber, rowB.YouTubeSubscriber) * -1;
 };
@@ -26,11 +32,17 @@ const TwitchFollowerCountDescendingSort = <
   rowA: T,
   rowB: T,
 ): number => {
-  if (rowA.TwitchFollower === null && rowB.TwitchFollower === null) return 0;
+  if (rowA.TwitchFollower === null && rowB.TwitchFollower === null) {
+    return 0;
+  }
 
-  if (rowB.TwitchFollower === null) return -1;
+  if (rowB.TwitchFollower === null) {
+    return -1;
+  }
 
-  if (rowA.TwitchFollower === null) return 1;
+  if (rowA.TwitchFollower === null) {
+    return 1;
+  }
 
   return CountTypeCompare(rowA.TwitchFollower, rowB.TwitchFollower) * -1;
 };
