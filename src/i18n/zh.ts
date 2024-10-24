@@ -173,6 +173,12 @@ const zh: Dictionary = {
     day: "日",
     more: "更多",
   },
+  reloadPageButtonText: {
+    newerVersionAvailable: "有更新版本",
+    clickHere: "點擊此處更新",
+    oldVersion: "舊版本：",
+    newVersion: "新版本：",
+  },
 } as const;
 
 export default zh;

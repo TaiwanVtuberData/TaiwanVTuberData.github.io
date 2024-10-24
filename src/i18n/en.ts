@@ -178,6 +178,12 @@ const en: Dictionary = {
     day: "Day",
     more: "more",
   },
+  reloadPageButtonText: {
+    newerVersionAvailable: "Newer version available",
+    clickHere: "Click here to update",
+    oldVersion: "Old version:",
+    newVersion: "New version:",
+  },
 } as const;
 
 export default en;

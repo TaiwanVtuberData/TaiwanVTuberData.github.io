@@ -163,4 +163,10 @@ export interface Dictionary {
     day: string;
     more: string;
   };
+  reloadPageButtonText: {
+    newerVersionAvailable: string;
+    clickHere: string;
+    oldVersion: string;
+    newVersion: string;
+  };
 }
