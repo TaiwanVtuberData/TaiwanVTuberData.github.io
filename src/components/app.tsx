@@ -45,6 +45,7 @@ import {
 import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
 import { setCurrentLocale } from "../global/Locale";
 import { APP_VERSION } from "../Config";
+import ReloadPageModal from "./ReloadModal";
 
 export function App() {
   const [locale, setLocale] = useState<validI18n>(
@@ -62,6 +63,8 @@ export function App() {
   );
 
   const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
+  const [isRequireUpdate, setIsRequireUpdate] = useState<boolean>(false);
+  const [newVersion, setNewVersion] = useState<string>("unknown");
 
   const startApi = async (): Promise<void> => {
     await Api.bootstrapApi().then((bootstrapped) => {
@@ -71,13 +74,8 @@ export function App() {
 
   const checkUpdate = async (): Promise<void> => {
     await VersionApi.getVersionDetail().then((versionDetail) => {
-      console.log("versionDetail.version", versionDetail.version);
-      console.log("APP_VERSION", APP_VERSION);
-      if (versionDetail.version !== APP_VERSION) {
-        console.log("version mismatch");
-      } else {
-        console.log("version matched");
-      }
+      setIsRequireUpdate(versionDetail.version !== APP_VERSION);
+      setNewVersion(versionDetail.version);
     });
   };
 
@@ -221,6 +219,11 @@ export function App() {
               setNationality={setDisplayNationality}
               apiSource={apiSource}
               setApiSource={setApiSource}
+            />
+            <ReloadPageModal
+              isVisible={isRequireUpdate}
+              oldVersion={APP_VERSION}
+              newVersion={newVersion}
             />
             <ScrollToTopBottom />
             <VTuberProfileModal />
