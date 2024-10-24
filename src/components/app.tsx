@@ -1,4 +1,5 @@
 import * as Api from "../services/ApiService";
+import * as VersionApi from "../services/VersionService";
 import { useEffect, useState } from "preact/hooks";
 import { IntlProvider } from "preact-i18n";
 import { Route, Router } from "preact-router";
@@ -43,6 +44,7 @@ import {
 } from "../global/CurrentApiSource";
 import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
 import { setCurrentLocale } from "../global/Locale";
+import { APP_VERSION } from "../Config";
 
 export function App() {
   const [locale, setLocale] = useState<validI18n>(
@@ -67,10 +69,23 @@ export function App() {
     });
   };
 
+  const checkUpdate = async (): Promise<void> => {
+    await VersionApi.getVersionDetail().then((versionDetail) => {
+      console.log("versionDetail.version", versionDetail.version);
+      console.log("APP_VERSION", APP_VERSION);
+      if (versionDetail.version !== APP_VERSION) {
+        console.log("version mismatch");
+      } else {
+        console.log("version matched");
+      }
+    });
+  };
+
   useEffect(() => {
     setNationalityModifier(displayNationality);
     setCurrentApiSource(apiSource);
     startApi();
+    checkUpdate();
   }, []);
 
   useEffect(() => {
