@@ -175,7 +175,7 @@ const zh: Dictionary = {
   },
   reloadPageButtonText: {
     newerVersionAvailable: "有更新版本",
-    clickHere: "點擊此處更新",
+    clickHere: "點擊此處或是 ctrl + F5 更新",
     oldVersion: "舊版本：",
     newVersion: "新版本：",
   },

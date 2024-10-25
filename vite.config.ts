@@ -49,6 +49,8 @@ export default defineConfig(({ command, mode }) => {
 			'import.meta.env.GITHUB_ISSUE_URL': JSON.stringify(env._P_GITHUB_ISSUE_URL),
 			'import.meta.env.ROUTE_PREFIX': JSON.stringify(env.ROUTE_PREFIX),
 			'import.meta.env.TIMEZONE_DIFF_IN_HOUR': JSON.stringify(env.TIMEZONE_DIFF_IN_HOUR),
+			'import.meta.env.ENABLE_ADVERTISEMENT': JSON.stringify(env.ENABLE_ADVERTISEMENT),
+			'import.meta.env.ADVERTISEMENT_LINK': JSON.stringify(env.ADVERTISEMENT_LINK),
 			}
 	}
 });

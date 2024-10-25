@@ -13,7 +13,6 @@ import { _7DaysGrowthColumn } from "../../../tableTypes/_7DaysGrowthColumn";
 import { VTuberGrowthDisplayData } from "../../../types/TableDisplayData/VTuberGrowthDisplayData";
 import DefaultDataTableProps from "../../../utils/DefaultDataTableProps";
 import { VTuberGrowthToDisplay } from "../../../utils/transform/GrowthTransform";
-import QuestionMarkToolTip from "../../QuestionMarkToolTip";
 import { GetRoute } from "../../../utils/TypeSafeRouting";
 
 export interface GrowingVTubersTableProps {
@@ -62,11 +61,11 @@ const GrowingVTubersTable: FunctionalComponent<GrowingVTubersTableProps> = (
           <> </>
           <Text id="header.top10">Top 10</Text>
         </a>
-        <QuestionMarkToolTip
+        {/* <QuestionMarkToolTip
           width="300px"
           fontSize="13px"
           text={<Text id="toolTip.growingVTubers">tooltip text</Text>}
-        />
+        /> */}
       </h3>
       <DataTable
         {...DefaultDataTableProps}

@@ -11,7 +11,6 @@ import { VTuberPopularityDisplayData } from "../../../types/TableDisplayData/VTu
 import DefaultDataTableProps from "../../../utils/DefaultDataTableProps";
 import { PopularityCountDescendingSort } from "../../../utils/sort/PopularityCountSort";
 import { VTuberPopularityToDisplay } from "../../../utils/transform/PopularityTransform";
-import QuestionMarkToolTip from "../../QuestionMarkToolTip";
 import { PopularVideoColumn } from "../../../tableTypes/PopularVideoColumn";
 import { RankingColumn } from "../../../tableTypes/RankingColumn";
 import ActivityRowStyles from "../../../style/ActivityRowStyles";
@@ -65,11 +64,11 @@ const TrendingVTubersTable: FunctionalComponent = () => {
           <> </>
           <Text id="header.top10">Top 10</Text>
         </a>
-        <QuestionMarkToolTip
+        {/* <QuestionMarkToolTip
           width="300px"
           fontSize="13px"
           text={<Text id="toolTip.trendingVTubers">tooltip text</Text>}
-        />
+        /> */}
       </h3>
       <DataTable
         {...DefaultDataTableProps}
