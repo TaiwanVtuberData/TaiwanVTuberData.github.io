@@ -180,7 +180,7 @@ const en: Dictionary = {
   },
   reloadPageButtonText: {
     newerVersionAvailable: "Newer version available",
-    clickHere: "Click here to update",
+    clickHere: "Click here or ctrl + F5 to update",
     oldVersion: "Old version:",
     newVersion: "New version:",
   },
