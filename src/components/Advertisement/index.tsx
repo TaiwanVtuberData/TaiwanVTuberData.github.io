@@ -1,5 +1,6 @@
 import { FunctionalComponent } from "preact";
 import style from "./style.module.css";
+import { ADVERTISEMENT_LINK } from "../../Config";
 
 interface AdvertisementProps {}
 
@@ -9,7 +10,7 @@ const Advertisement: FunctionalComponent<AdvertisementProps> = (
   return (
     <a
       class={style.advertisement}
-      href={"https://www.youtube.com"}
+      href={ADVERTISEMENT_LINK}
       target="_blank"
       rel="noopener noreferrer"
     ></a>

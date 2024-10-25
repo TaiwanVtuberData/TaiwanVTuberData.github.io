@@ -11,6 +11,7 @@ import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
 import { GetRoute } from "../../utils/TypeSafeRouting";
 import style from "./style.module.css";
 import Advertisement from "../../components/Advertisement";
+import { ENABLE_ADVERTISEMENT } from "../../Config";
 
 export interface HomePageProps {
   dictionary: Dictionary;
@@ -62,7 +63,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
         <Text id="header.title">Taiwan VTuber Data</Text>
         {GetCurrentNationalitySpan()}
       </h1>
-      <Advertisement />
+      { ENABLE_ADVERTISEMENT === true ? <Advertisement /> : <></>}
       <LivestreamsSection />
       <div class={style.tableGrid}>
         <div class={style.tableItem}>

@@ -29,3 +29,5 @@ export const TIMEZONE_DIFF_IN_HOUR: number = tryParseInteger(
   import.meta.env.TIMEZONE_DIFF_IN_HOUR,
   DEFAULT_TIMEZONE_DIFF_IN_HOUR,
 );
+export const ENABLE_ADVERTISEMENT = getEnvAsBooleanOrFalse(import.meta.env.ENABLE_ADVERTISEMENT);
+export const ADVERTISEMENT_LINK = getEnvOrEmpty(import.meta.env.ADVERTISEMENT_LINK);
