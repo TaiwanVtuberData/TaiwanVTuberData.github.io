@@ -1,121 +1,121 @@
 {
-	"compilerOptions": {
-        // Type Checking
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "alwaysStrict": true,
-        "exactOptionalPropertyTypes": false,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitAny": false,
-        "noImplicitOverride": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noPropertyAccessFromIndexSignature": false,
-        "noUncheckedIndexedAccess": false,
-        "noUnusedLocals": true,
-        "noUnusedParameters": false,
-        "strict": true,
-        "strictBindCallApply": true,
-        "strictFunctionTypes": true,
-        "strictNullChecks": true,
-        "strictPropertyInitialization": true,
-        "useUnknownInCatchVariables": true,
-        
-        // Modules
-        "allowArbitraryExtensions": false,
-        "allowImportingTsExtensions": false,
-        "allowUmdGlobalAccess": false,
-        // "baseUrl": "./",
-        "customConditions": [],
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        // "moduleSuffixes": [],
-        "noResolve": false,
-        // "paths": {},
-        "resolveJsonModule": false,
-        "resolvePackageJsonExports": true,
-        "resolvePackageJsonImports": true,
-        // "rootDir": "",
-        // "rootDirs": [],
-        // "typeRoots": [],
-        // "types": [],
+  "compilerOptions": {
+    // Type Checking
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
 
-        // Emit
-        "noEmit": true,
+    // Modules
+    "allowArbitraryExtensions": false,
+    "allowImportingTsExtensions": false,
+    "allowUmdGlobalAccess": false,
+    // "baseUrl": "./",
+    "customConditions": [],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    // "moduleSuffixes": [],
+    "noResolve": false,
+    // "paths": {},
+    "resolveJsonModule": false,
+    "resolvePackageJsonExports": true,
+    "resolvePackageJsonImports": true,
+    // "rootDir": "",
+    // "rootDirs": [],
+    // "typeRoots": [],
+    // "types": [],
 
-        // JavaScript Support
-        "allowJs": true,
-        "checkJs": true,
-        // "maxNodeModuleJsDepth": 0,
-        
-        // Editor Support
-        "disableSizeLimit": false,
-        "plugins": [],
+    // Emit
+    "noEmit": true,
 
-        // Interop Constraints
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "isolatedModules": true,
-        "preserveSymlinks": true,
-        "verbatimModuleSyntax": false,
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": true,
+    // "maxNodeModuleJsDepth": 0,
 
-        // Language and Environment
-        "emitDecoratorMetadata": false,
-        "experimentalDecorators": false,
-		"jsx": "react-jsx",
-        // "jsxFactory": "h",
-        // "jsxFragmentFactory": "Fragment",
-		"jsxImportSource": "preact",
-        // "lib": [],
-        "moduleDetection": "auto",
-        // "noLib": false,
-        // "reactNamespace": "React",
-        "target": "es2022",
-        "useDefineForClassFields": true,
+    // Editor Support
+    "disableSizeLimit": false,
+    "plugins": [],
 
-        // Compiler Diagnostics
-        "diagnostics": false,
-        // "explainFiles": true,
-        // "extendedDiagnostics": false,
-        // "generateCpuProfile": "profile.cpuprofile",
-        // "listEmittedFiles": false,
-        // "listFiles": false,
-        // "traceResolution": false,
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "preserveSymlinks": true,
+    "verbatimModuleSyntax": false,
 
-        // Projects
-        // "composite": false,
-        // "disableReferencedProjectLoad": false,
-        // "disableSolutionSearching": false,
-        // "disableSourceOfProjectReferenceRedirect": false,
-        // "incremental": false,
-        // "tsBuildInfoFile": ".tsbuildinfo",
+    // Language and Environment
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "jsx": "react-jsx",
+    // "jsxFactory": "h",
+    // "jsxFragmentFactory": "Fragment",
+    "jsxImportSource": "preact",
+    // "lib": [],
+    "moduleDetection": "auto",
+    // "noLib": false,
+    // "reactNamespace": "React",
+    "target": "es2022",
+    "useDefineForClassFields": true,
 
-        // Output Formatting
-        "noErrorTruncation": false,
-        "preserveWatchOutput": false,
-        "pretty": true,
+    // Compiler Diagnostics
+    "diagnostics": false,
+    // "explainFiles": true,
+    // "extendedDiagnostics": false,
+    // "generateCpuProfile": "profile.cpuprofile",
+    // "listEmittedFiles": false,
+    // "listFiles": false,
+    // "traceResolution": false,
 
-        // Completeness
-        "skipDefaultLibCheck": false,
-        "skipLibCheck": true,
+    // Projects
+    // "composite": false,
+    // "disableReferencedProjectLoad": false,
+    // "disableSolutionSearching": false,
+    // "disableSourceOfProjectReferenceRedirect": false,
+    // "incremental": false,
+    // "tsBuildInfoFile": ".tsbuildinfo",
 
-        // Watch Options
-        "assumeChangesOnlyAffectDirectDependencies": false,
+    // Output Formatting
+    "noErrorTruncation": false,
+    "preserveWatchOutput": false,
+    "pretty": true,
 
-		/* Preact Config */
-		"paths": {
-			"react": ["./node_modules/preact/compat/"],
-			"react-dom": ["./node_modules/preact/compat/"]
-		}
-	},
-    "watchOptions": {
-        "watchFile": "useFsEvents",
-        "watchDirectory": "useFsEvents",
-        // "fallbackPolling": "fixedPollingInterval",
-        "synchronousWatchDirectory": true,
-        "excludeDirectories": ["**/node_modules", "**/build"],
-        "excludeFiles": []
-    },
-	"include": ["node_modules/vite/client.d.ts", "src/**/*"]
+    // Completeness
+    "skipDefaultLibCheck": false,
+    "skipLibCheck": true,
+
+    // Watch Options
+    "assumeChangesOnlyAffectDirectDependencies": false,
+
+    /* Preact Config */
+    "paths": {
+      "react": ["./node_modules/preact/compat/"],
+      "react-dom": ["./node_modules/preact/compat/"]
+    }
+  },
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    // "fallbackPolling": "fixedPollingInterval",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": ["**/node_modules", "**/build"],
+    "excludeFiles": []
+  },
+  "include": ["node_modules/vite/client.d.ts", "src/**/*"]
 }
