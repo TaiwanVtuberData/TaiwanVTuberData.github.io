@@ -63,7 +63,7 @@ const HomePage: FunctionalComponent<HomePageProps> = (props: HomePageProps) => {
         <Text id="header.title">Taiwan VTuber Data</Text>
         {GetCurrentNationalitySpan()}
       </h1>
-      { ENABLE_ADVERTISEMENT === true ? <Advertisement /> : <></>}
+      {ENABLE_ADVERTISEMENT === true ? <Advertisement /> : <></>}
       <LivestreamsSection />
       <div class={style.tableGrid}>
         <div class={style.tableItem}>
