@@ -2,6 +2,11 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 100%;
-  content: url(../../assets/advertisement/頻道會員感謝祭.png);
+  width: fit-content;
+}
+
+.imgClass {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
