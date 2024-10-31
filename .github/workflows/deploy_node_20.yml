@@ -26,8 +26,6 @@ jobs:
       CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
       ENFORCE_YOUTUBE_COMPLIANCE: ${{ secrets.ENFORCE_YOUTUBE_COMPLIANCE }}
       ENABLE_ADVERTISEMENT: ${{ secrets.ENABLE_ADVERTISEMENT }}
-      ADVERTISEMENT_ASSET_LINK: ${{ secrets.ADVERTISEMENT_ASSET_LINK }}
-      ADVERTISEMENT_LINK: ${{ secrets.ADVERTISEMENT_LINK }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
