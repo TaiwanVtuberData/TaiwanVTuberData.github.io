@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
 import { getCurrentApiSourceState } from "../global/CurrentApiSource";
 import { getNationalityModifierState } from "../global/DisplayNationality";
 import { GroupDataResponse } from "../types/ApiData/GroupData";
@@ -25,29 +26,12 @@ import {
 } from "../types/ApiTypes";
 import { VTuberAnniversaryDataResponse } from "../types/ApiData/VTuberAnniversaryData";
 
-interface CommitDetail {
-  sha: string;
-  date?: string;
-}
-
-let commitDetail: CommitDetail;
+let commitDetail: GitHubCommitDetailService.CommitDetail;
 
 const setCommitDetail = async (): Promise<void> => {
-  await axios
-    .get(
-      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
-    )
-    .then((res) => {
-      commitDetail = {
-        sha: res.data.sha,
-        date: res.data.commit.author.date,
-      };
-    })
-    .catch(() => {
-      commitDetail = {
-        sha: "master",
-      };
-    });
+  commitDetail = await GitHubCommitDetailService.getCommitDetail(
+    "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
+  );
 
   switch (getCurrentApiSourceState()) {
     case "github":

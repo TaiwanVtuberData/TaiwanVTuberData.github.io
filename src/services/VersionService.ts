@@ -1,25 +1,15 @@
 import axios from "axios";
-
-// TODO: Consider merging with ApiService.ts
-interface CommitDetail {
-  sha: string;
-}
+import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
 
 interface VersionDetail {
   version: string;
 }
 
 export const getVersionDetail = async (): Promise<VersionDetail> => {
-  const commitDetail: CommitDetail = await axios
-    .get(
+  const commitDetail: GitHubCommitDetailService.CommitDetail =
+    await GitHubCommitDetailService.getCommitDetail(
       "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberData.github.io/commits/master",
-    )
-    .then((res) => ({
-      sha: res.data.sha,
-    }))
-    .catch(() => ({
-      sha: "master",
-    }));
+    );
 
   const versionDetailUrl = `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberData.github.io/${commitDetail.sha}/package.json`;
 
