@@ -1,21 +1,43 @@
 import { FunctionalComponent } from "preact";
+import * as AdvertisementApi from "../../services/AdvertisementService";
 import style from "./style.module.css";
-import { ADVERTISEMENT_ASSET_LINK, ADVERTISEMENT_LINK } from "../../Config";
+import { AdvertisementDetail } from "../../services/AdvertisementService";
+import { useEffect, useState } from "preact/hooks";
 
 interface AdvertisementProps {}
 
 const Advertisement: FunctionalComponent<AdvertisementProps> = (
   props: AdvertisementProps,
 ) => {
-  return (
+  const [advertisementDetail, setAdvertisementDetail] =
+    useState<AdvertisementDetail | null>(null);
+
+  const getAdvertisementDetail = async (): Promise<void> => {
+    await AdvertisementApi.getAdvertisementDetail().then((res) => {
+      setAdvertisementDetail(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getAdvertisementDetail();
+  }, []);
+
+  advertisementDetail?.hasAdvertisement === true;
+
+  return advertisementDetail?.hasAdvertisement === true ? (
     <a
       class={style.advertisement}
-      href={ADVERTISEMENT_LINK}
+      href={advertisementDetail.advertisement?.url ?? ""}
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img class={style.imgClass} src={ADVERTISEMENT_ASSET_LINK} />
+      <img
+        class={style.imgClass}
+        src={advertisementDetail.advertisement?.imgUrl}
+      />
     </a>
+  ) : (
+    <></>
   );
 };
 

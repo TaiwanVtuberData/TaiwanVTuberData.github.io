@@ -32,10 +32,3 @@ export const TIMEZONE_DIFF_IN_HOUR: number = tryParseInteger(
 export const ENABLE_ADVERTISEMENT = getEnvAsBooleanOrFalse(
   import.meta.env.ENABLE_ADVERTISEMENT,
 );
-export const ADVERTISEMENT_ASSET_LINK = getEnvOrEmpty(
-  import.meta.env.ADVERTISEMENT_ASSET_LINK,
-);
-
-export const ADVERTISEMENT_LINK = getEnvOrEmpty(
-  import.meta.env.ADVERTISEMENT_LINK,
-);
