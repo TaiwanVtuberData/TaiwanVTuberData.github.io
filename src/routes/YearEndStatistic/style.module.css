@@ -1,0 +1,42 @@
+.tableGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row: auto;
+}
+
+@media screen and (max-width: 1280px) {
+  .tableGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: auto;
+  }
+}
+
+.tableGrid .tableItem {
+  margin: 10px;
+}
+
+.streamingSection {
+  margin-top: 10px;
+
+  display: grid;
+  grid-template-columns: 33% 67%;
+  grid-row: auto;
+}
+
+.streamingSection > div {
+  margin: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .streamingSection {
+    display: grid;
+    grid-template-columns: none;
+    grid-row: none;
+  }
+
+  .streamingSection > div {
+    width: 95vw;
+    margin: none;
+  }
+}

@@ -29,3 +29,15 @@ export type LivestreamsModifier =
   | "all-no-title"
   | "debut"
   | "debut-no-title";
+
+export type EstablishTypeModifier = "established" | "new";
+
+export interface YearEndGrowingVTubersModifier {
+  establishType: EstablishTypeModifier;
+  count: "10" | "100" | "all";
+}
+
+export interface YearEndVTubersViewCountChangeModifier {
+  establishType: EstablishTypeModifier;
+  count: "10" | "100" | "all";
+}

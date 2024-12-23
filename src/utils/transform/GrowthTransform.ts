@@ -1,9 +1,11 @@
 import { VTuberGrowthData } from "../../types/ApiData/VTuberGrowthData";
+import { YearEndVTuberYouTubeGrowthData } from "../../types/ApiData/YearEndVTuberYouTubeGrowthData";
 import { GrowthData } from "../../types/Common/GrowthData";
 import {
   GrowthDisplayData,
   VTuberGrowthDisplayData,
 } from "../../types/TableDisplayData/VTuberGrowthDisplayData";
+import { YearEndVTuberYouTubeGrowthDisplayData } from "../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData";
 import { VTuberBasicToDisplay } from "./BasicTransform";
 
 const growthDataToDisplayData = (
@@ -25,6 +27,17 @@ export const VTuberGrowthToDisplay = (
   ),
   _30DaysGrowth: growthDataToDisplayData(
     e.YouTube._30DaysGrowth,
+    e.YouTube.subscriber.count,
+  ),
+});
+
+export const YearEndVTuberYouTubeGrowthToDisplay = (
+  e: YearEndVTuberYouTubeGrowthData,
+): YearEndVTuberYouTubeGrowthDisplayData => ({
+  ...VTuberBasicToDisplay(e),
+  YouTubeSubscriber: e.YouTube.subscriber,
+  _365DaysGrowth: growthDataToDisplayData(
+    e.YouTube._365DaysGrowth,
     e.YouTube.subscriber.count,
   ),
 });

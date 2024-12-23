@@ -31,6 +31,10 @@ export interface Dictionary {
     debutToday: string;
     recentLivestream: string;
     apiSourceSelection: string;
+    yearEndStatistic: string;
+    yearEndEstablished: string;
+    yearEndNewComer: string;
+    growingYouTubeSubscriberCount: string;
   };
   table: {
     displayName: string;
@@ -62,8 +66,10 @@ export interface Dictionary {
     graduateDate: string;
     _7DaysGrowth: string;
     _30DaysGrowth: string;
+    _1YearGrowth: string;
     _7DaysViewCountGrowth: string;
     _30DaysViewCountGrowth: string;
+    _1YearViewCountGrowth: string;
     atLeast: string;
     noRecord: string;
     noDuplicate: string;
