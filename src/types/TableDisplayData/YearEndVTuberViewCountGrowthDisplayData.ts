@@ -9,7 +9,7 @@ export interface YearEndVTuberViewCountGrowthDisplayData {
   YouTubeId: string | null;
   TwitchId: string | null;
   totalViewCount: number;
-  _365DaysGrowth: GrowthData;
+  _1YearGrowth: GrowthData;
   group: string | null;
   nationality: string | null;
   debutInfo: DebutInfo;

@@ -4,7 +4,7 @@ import { GrowthDisplayData } from "../types/TableDisplayData/VTuberGrowthDisplay
 import { GrowthDisplayDataToString } from "../utils/NumberUtils";
 
 export interface Year1GrowthColumnRowData {
-  _365DaysGrowth: GrowthDisplayData;
+  _1YearGrowth: GrowthDisplayData;
 }
 
 export const _1YearGrowthColumn = <
@@ -16,6 +16,6 @@ export const _1YearGrowthColumn = <
   return {
     name: <Text id="table._1YearGrowth">1 Year Growth (Percent)</Text>,
     cell: (row: RowData): string =>
-      GrowthDisplayDataToString(row._365DaysGrowth, tableTranslation), // TODO: change to row._1YearGrowth
+      GrowthDisplayDataToString(row._1YearGrowth, tableTranslation),
   };
 };

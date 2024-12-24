@@ -38,7 +38,7 @@ export const YearEndVTuberYouTubeViewCountGrowthToDisplay = (
     YouTubeId: e.YouTube.id,
     TwitchId: e.Twitch?.id || null,
     totalViewCount: e.YouTube.totalViewCount,
-    _365DaysGrowth: e.YouTube._365DaysGrowth,
+    _1YearGrowth: e.YouTube._1YearGrowth,
     group: e.group,
     nationality: e.nationality,
     activity: e.activity,

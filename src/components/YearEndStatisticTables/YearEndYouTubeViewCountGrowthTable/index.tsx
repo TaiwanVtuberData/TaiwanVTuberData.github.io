@@ -42,8 +42,8 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
     },
     {
       name: <Text id="table._1YearViewCountGrowth">1 Year Growth</Text>,
-      cell: (row: { _365DaysGrowth: GrowthData }): string =>
-        GrowthDisplayDataToString(row._365DaysGrowth, props.dictionary.table),
+      cell: (row: { _1YearGrowth: GrowthData }): string =>
+        GrowthDisplayDataToString(row._1YearGrowth, props.dictionary.table),
       compact: true,
     },
     DebutDateColumn(),
@@ -73,7 +73,7 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
           .map((e, index) =>
             YearEndVTuberYouTubeViewCountGrowthToDisplay(e, index + 1),
           )
-          .sort((a, b) => b._365DaysGrowth.diff - a._365DaysGrowth.diff),
+          .sort((a, b) => b._1YearGrowth.diff - a._1YearGrowth.diff),
       );
       setPending(false);
     });

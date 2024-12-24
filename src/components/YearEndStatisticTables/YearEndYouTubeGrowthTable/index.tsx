@@ -65,7 +65,7 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
       setData(
         res.data.VTubers.map((e) => e)
           .map((e, index) => YearEndVTuberYouTubeGrowthToDisplay(e, index + 1))
-          .sort((a, b) => b._365DaysGrowth.diff - a._365DaysGrowth.diff),
+          .sort((a, b) => b._1YearGrowth.diff - a._1YearGrowth.diff),
       );
       setPending(false);
     });

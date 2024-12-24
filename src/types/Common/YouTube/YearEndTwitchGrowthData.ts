@@ -4,5 +4,5 @@ import { TwitchData } from "../Twitch/TwitchData";
 
 export interface YearEndTwitchGrowthData extends TwitchData {
   readonly follower: HasCountType;
-  readonly _365DaysGrowth: GrowthData;
+  readonly _1YearGrowth: GrowthData;
 }

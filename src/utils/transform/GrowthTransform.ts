@@ -39,8 +39,8 @@ export const YearEndVTuberYouTubeGrowthToDisplay = (
 ): YearEndVTuberYouTubeGrowthDisplayData => ({
   ...VTuberBasicToDisplay(e),
   YouTubeSubscriber: e.YouTube.subscriber,
-  _365DaysGrowth: growthDataToDisplayData(
-    e.YouTube._365DaysGrowth,
+  _1YearGrowth: growthDataToDisplayData(
+    e.YouTube._1YearGrowth,
     e.YouTube.subscriber.count,
   ),
   ranking: ranking,
@@ -52,8 +52,8 @@ export const YearEndVTuberTwitchGrowthToDisplay = (
 ): YearEndVTuberTwitchGrowthDisplayData => ({
   ...VTuberBasicToDisplay(e),
   TwitchFollower: e.Twitch.follower,
-  _365DaysGrowth: growthDataToDisplayData(
-    e.Twitch._365DaysGrowth,
+  _1YearGrowth: growthDataToDisplayData(
+    e.Twitch._1YearGrowth,
     e.Twitch.follower.count,
   ),
   ranking: ranking,
