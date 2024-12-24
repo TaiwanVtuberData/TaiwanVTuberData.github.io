@@ -177,4 +177,7 @@ export interface Dictionary {
     oldVersion: string;
     newVersion: string;
   };
+  detail: {
+    yearEndDetail: string;
+  };
 }

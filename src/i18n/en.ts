@@ -192,6 +192,9 @@ const en: Dictionary = {
     oldVersion: "Old version:",
     newVersion: "New version:",
   },
+  detail: {
+    yearEndDetail: "Statistic Interval: 2024-01-01 through 2025-01-01",
+  },
 } as const;
 
 export default en;

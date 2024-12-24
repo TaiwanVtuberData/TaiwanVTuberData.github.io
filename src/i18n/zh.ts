@@ -187,6 +187,9 @@ const zh: Dictionary = {
     oldVersion: "舊版本：",
     newVersion: "新版本：",
   },
+  detail: {
+    yearEndDetail: "統計期間：2024-01-01 至 2025-01-01",
+  },
 } as const;
 
 export default zh;

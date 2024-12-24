@@ -23,6 +23,11 @@ const YearEndStatistic: FunctionalComponent<YearEndStatisticProps> = (
         <Text id="header.yearEndStatistic">Year End Statistic</Text>
         {GetCurrentNationalitySpan()}
       </h1>
+      <h3>
+        <b>
+          <Text id="detail.yearEndDetail">Placeholder</Text>
+        </b>
+      </h3>
       <div class={style.tableGrid}>
         <div class={style.tableItem}>
           <YearEndYouTubeGrowthTable
