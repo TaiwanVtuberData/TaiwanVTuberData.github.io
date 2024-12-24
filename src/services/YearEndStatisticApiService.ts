@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
 import { getCurrentApiSourceState } from "../global/CurrentApiSource";
 import { getNationalityModifierState } from "../global/DisplayNationality";
@@ -10,29 +10,29 @@ import { YearEndVTuberYouTubeGrowthDataResponse } from "../types/ApiData/YearEnd
 import { YearEndVTuberTwitchGrowthDataResponse } from "../types/ApiData/YearEndVTuberTwitchGrowthData";
 import { YearEndVTuberYouTubeViewCountGrowthData } from "../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData";
 
-let commitDetail: GitHubCommitDetailService.CommitDetail;
+let axiosInstance: AxiosInstance;
 
-const setCommitDetail = async (): Promise<void> => {
-  commitDetail = await GitHubCommitDetailService.getCommitDetail(
-    "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
-  );
+const initAxiosInstance = async (): Promise<AxiosInstance> => {
+  let commitDetail: GitHubCommitDetailService.CommitDetail =
+    await GitHubCommitDetailService.getCommitDetail(
+      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
+    );
+  console.log("commitDetail", commitDetail);
 
   // TODO: change to actual API URL
   switch (getCurrentApiSourceState()) {
     case "github":
-      // axios.defaults.baseURL = `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
-      axios.defaults.baseURL = `http://127.0.0.1:5500`;
-      break;
+      // return axios.create({baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`})
+      return axios.create({ baseURL: `http://127.0.0.1:5500` });
     case "statically":
     default:
-      // axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
-      axios.defaults.baseURL = `http://127.0.0.1:5500`;
-      break;
+      // return axios.create({baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`})
+      return axios.create({ baseURL: `http://127.0.0.1:5500` });
   }
 };
 
 export const bootstrapApi = async (): Promise<boolean> => {
-  await setCommitDetail();
+  await initAxiosInstance();
 
   return true;
 };
@@ -40,9 +40,11 @@ export const bootstrapApi = async (): Promise<boolean> => {
 const AxiosGetWrapper = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (commitDetail === undefined) await setCommitDetail();
+  if (axiosInstance === undefined) {
+    axiosInstance = await initAxiosInstance();
+  }
 
-  return axios.get<DataType>(`${getNationalityModifierState()}/${url}`);
+  return axiosInstance.get<DataType>(`${getNationalityModifierState()}/${url}`);
 };
 
 export const getGrowingYouTubeVTubers = (

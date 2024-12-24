@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
 import { getCurrentApiSourceState } from "../global/CurrentApiSource";
 import { getNationalityModifierState } from "../global/DisplayNationality";
@@ -26,26 +26,29 @@ import {
 } from "../types/ApiTypes";
 import { VTuberAnniversaryDataResponse } from "../types/ApiData/VTuberAnniversaryData";
 
-let commitDetail: GitHubCommitDetailService.CommitDetail;
+let axiosInstance: AxiosInstance;
 
-const setCommitDetail = async (): Promise<void> => {
-  commitDetail = await GitHubCommitDetailService.getCommitDetail(
-    "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
-  );
+const initAxiosInstance = async (): Promise<AxiosInstance> => {
+  let commitDetail: GitHubCommitDetailService.CommitDetail =
+    await GitHubCommitDetailService.getCommitDetail(
+      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
+    );
 
   switch (getCurrentApiSourceState()) {
     case "github":
-      axios.defaults.baseURL = `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
-      break;
+      return axios.create({
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+      });
     case "statically":
     default:
-      axios.defaults.baseURL = `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`;
-      break;
+      return axios.create({
+        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+      });
   }
 };
 
 export const bootstrapApi = async (): Promise<boolean> => {
-  await setCommitDetail();
+  await initAxiosInstance();
 
   return true;
 };
@@ -53,9 +56,11 @@ export const bootstrapApi = async (): Promise<boolean> => {
 const AxiosGetWrapperNoNationality = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (commitDetail === undefined) await setCommitDetail();
+  if (axiosInstance === undefined) {
+    axiosInstance = await initAxiosInstance();
+  }
 
-  return axios.get<DataType>(`/${url}`);
+  return axiosInstance.get<DataType>(`/${url}`);
 };
 
 export const getUpdateTime = (): Promise<AxiosResponse<UpdateTimeResponse>> => {
@@ -73,9 +78,11 @@ export const getVTuber = (
 const AxiosGetWrapper = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (commitDetail === undefined) await setCommitDetail();
+  if (axiosInstance === undefined) {
+    axiosInstance = await initAxiosInstance();
+  }
 
-  return axios.get<DataType>(`${getNationalityModifierState()}/${url}`);
+  return axiosInstance.get<DataType>(`${getNationalityModifierState()}/${url}`);
 };
 
 export const getVTubers = (
