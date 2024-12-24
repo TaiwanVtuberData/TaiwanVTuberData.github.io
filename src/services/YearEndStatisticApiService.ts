@@ -20,10 +20,14 @@ const initAxiosInstance = async (): Promise<AxiosInstance> => {
 
   switch (getCurrentApiSourceState()) {
     case "github":
-      return axios.create({baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}/api/v1`})
+      return axios.create({
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
+      });
     case "statically":
     default:
-      return axios.create({baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}/api/v1`})
+      return axios.create({
+        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
+      });
   }
 };
 
