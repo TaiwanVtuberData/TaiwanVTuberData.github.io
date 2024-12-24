@@ -35,6 +35,7 @@ const en: Dictionary = {
     yearEndEstablished: "Debuted Over 2 Years",
     yearEndNewComer: "Debuted Within 2 Years",
     growingYouTubeSubscriberCount: "YouTube Subscriber Count Growth",
+    growingTwitchFollowerCount: "Twitch Follower Count Growth",
   },
   table: {
     displayName: "Name",

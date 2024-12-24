@@ -35,6 +35,7 @@ export interface Dictionary {
     yearEndEstablished: string;
     yearEndNewComer: string;
     growingYouTubeSubscriberCount: string;
+    growingTwitchFollowerCount: string;
   };
   table: {
     displayName: string;

@@ -1,10 +1,12 @@
 import { VTuberGrowthData } from "../../types/ApiData/VTuberGrowthData";
+import { YearEndVTuberTwitchGrowthData } from "../../types/ApiData/YearEndVTuberTwitchGrowthData";
 import { YearEndVTuberYouTubeGrowthData } from "../../types/ApiData/YearEndVTuberYouTubeGrowthData";
 import { GrowthData } from "../../types/Common/GrowthData";
 import {
   GrowthDisplayData,
   VTuberGrowthDisplayData,
 } from "../../types/TableDisplayData/VTuberGrowthDisplayData";
+import { YearEndVTuberTwitchGrowthDisplayData } from "../../types/TableDisplayData/YearEndVTuberTwitchGrowthDisplayData";
 import { YearEndVTuberYouTubeGrowthDisplayData } from "../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData";
 import { VTuberBasicToDisplay } from "./BasicTransform";
 
@@ -39,5 +41,16 @@ export const YearEndVTuberYouTubeGrowthToDisplay = (
   _365DaysGrowth: growthDataToDisplayData(
     e.YouTube._365DaysGrowth,
     e.YouTube.subscriber.count,
+  ),
+});
+
+export const YearEndVTuberTwitchGrowthToDisplay = (
+  e: YearEndVTuberTwitchGrowthData,
+): YearEndVTuberTwitchGrowthDisplayData => ({
+  ...VTuberBasicToDisplay(e),
+  TwitchFollower: e.Twitch.follower,
+  _365DaysGrowth: growthDataToDisplayData(
+    e.Twitch._365DaysGrowth,
+    e.Twitch.follower.count,
   ),
 });

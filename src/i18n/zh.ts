@@ -35,6 +35,7 @@ const zh: Dictionary = {
     yearEndEstablished: "出道超過 2 年",
     yearEndNewComer: "出道 2 年內",
     growingYouTubeSubscriberCount: "YouTube 訂閱總數成長",
+    growingTwitchFollowerCount: "Twitch 追隨人數成長",
   },
   table: {
     displayName: "名稱",
