@@ -15,19 +15,15 @@ let axiosInstance: AxiosInstance;
 const initAxiosInstance = async (): Promise<AxiosInstance> => {
   let commitDetail: GitHubCommitDetailService.CommitDetail =
     await GitHubCommitDetailService.getCommitDetail(
-      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
+      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/commits/master",
     );
-  console.log("commitDetail", commitDetail);
 
-  // TODO: change to actual API URL
   switch (getCurrentApiSourceState()) {
     case "github":
-      // return axios.create({baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`})
-      return axios.create({ baseURL: `http://127.0.0.1:5500` });
+      return axios.create({baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}/api/v1`})
     case "statically":
     default:
-      // return axios.create({baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`})
-      return axios.create({ baseURL: `http://127.0.0.1:5500` });
+      return axios.create({baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}/api/v1`})
   }
 };
 
