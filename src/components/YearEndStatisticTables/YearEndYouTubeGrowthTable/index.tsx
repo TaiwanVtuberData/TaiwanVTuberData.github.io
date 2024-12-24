@@ -15,6 +15,8 @@ import { YearEndVTuberYouTubeGrowthToDisplay } from "../../../utils/transform/Gr
 import { _1YearGrowthColumn } from "../../../tableTypes/_1YearGrowthColumn";
 import { DebutDateColumn } from "../../../tableTypes/DebutDateColumn";
 import { GroupColumn } from "../../../tableTypes/GroupColumn";
+import { NationalityColumn } from "../../../tableTypes/NationalityColumn";
+import { RankingColumn } from "../../../tableTypes/RankingColumn";
 
 export interface YearEndYouTubeGrowthTableProps {
   dictionary: Dictionary;
@@ -25,11 +27,28 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
   YearEndYouTubeGrowthTableProps
 > = (props: YearEndYouTubeGrowthTableProps) => {
   const columns: Array<TableColumn<YearEndVTuberYouTubeGrowthDisplayData>> = [
+    {
+      ...RankingColumn(),
+      width: "40px",
+    },
     NameColumn(),
-    YouTubeSubscriberColumn(),
-    _1YearGrowthColumn(props.dictionary.table),
+    {
+      ...YouTubeSubscriberColumn(),
+      compact: true,
+    },
+    {
+      ..._1YearGrowthColumn(props.dictionary.table),
+      compact: true,
+    },
     DebutDateColumn(),
-    GroupColumn(),
+    {
+      ...GroupColumn(),
+      width: "150px",
+    },
+    {
+      ...NationalityColumn(),
+      width: "125px",
+    },
   ];
 
   const [data, setData] = useState<
@@ -45,7 +64,7 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
     }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
-          .map((e) => YearEndVTuberYouTubeGrowthToDisplay(e))
+          .map((e, index) => YearEndVTuberYouTubeGrowthToDisplay(e, index + 1))
           .sort((a, b) => b._365DaysGrowth.diff - a._365DaysGrowth.diff),
       );
       setPending(false);

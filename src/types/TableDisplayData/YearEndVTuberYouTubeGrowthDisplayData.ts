@@ -10,4 +10,5 @@ export interface YearEndVTuberYouTubeGrowthDisplayData
   extends VTuberDisplayData {
   YouTubeSubscriber: HasCountType;
   _365DaysGrowth: GrowthDisplayData;
+  ranking: number;
 }

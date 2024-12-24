@@ -10,4 +10,5 @@ export interface YearEndVTuberTwitchGrowthDisplayData
   extends VTuberDisplayData {
   TwitchFollower: HasCountType;
   _365DaysGrowth: GrowthDisplayData;
+  ranking: number;
 }

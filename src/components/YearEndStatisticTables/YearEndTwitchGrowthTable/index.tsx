@@ -15,6 +15,8 @@ import { DebutDateColumn } from "../../../tableTypes/DebutDateColumn";
 import { GroupColumn } from "../../../tableTypes/GroupColumn";
 import { YearEndVTuberTwitchGrowthDisplayData } from "../../../types/TableDisplayData/YearEndVTuberTwitchGrowthDisplayData";
 import { TwitchFollowerColumn } from "../../../tableTypes/TwitchFollowerColumn";
+import { RankingColumn } from "../../../tableTypes/RankingColumn";
+import { NationalityColumn } from "../../../tableTypes/NationalityColumn";
 
 export interface YearEndTwitchGrowthTableProps {
   dictionary: Dictionary;
@@ -25,11 +27,28 @@ const YearEndTwitchGrowthTable: FunctionalComponent<
   YearEndTwitchGrowthTableProps
 > = (props: YearEndTwitchGrowthTableProps) => {
   const columns: Array<TableColumn<YearEndVTuberTwitchGrowthDisplayData>> = [
+    {
+      ...RankingColumn(),
+      width: "40px",
+    },
     NameColumn(),
-    TwitchFollowerColumn(),
-    _1YearGrowthColumn(props.dictionary.table),
+    {
+      ...TwitchFollowerColumn(),
+      compact: true,
+    },
+    {
+      ..._1YearGrowthColumn(props.dictionary.table),
+      compact: true,
+    },
     DebutDateColumn(),
-    GroupColumn(),
+    {
+      ...GroupColumn(),
+      width: "150px",
+    },
+    {
+      ...NationalityColumn(),
+      width: "125px",
+    },
   ];
 
   const [data, setData] = useState<Array<YearEndVTuberTwitchGrowthDisplayData>>(
@@ -45,7 +64,7 @@ const YearEndTwitchGrowthTable: FunctionalComponent<
     }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
-          .map((e) => YearEndVTuberTwitchGrowthToDisplay(e))
+          .map((e, index) => YearEndVTuberTwitchGrowthToDisplay(e, index + 1))
           .sort((a, b) => b._365DaysGrowth.diff - a._365DaysGrowth.diff),
       );
       setPending(false);

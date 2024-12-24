@@ -30,7 +30,6 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
   const columns: Array<TableColumn<YearEndVTuberViewCountGrowthDisplayData>> = [
     {
       ...RankingColumn(),
-      sortable: true,
       width: "40px",
     },
     NameColumn(),
