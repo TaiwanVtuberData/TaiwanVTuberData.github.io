@@ -8,7 +8,7 @@ import {
 } from "../types/ApiTypes";
 import { YearEndVTuberYouTubeGrowthDataResponse } from "../types/ApiData/YearEndVTuberYouTubeGrowthData";
 import { YearEndVTuberTwitchGrowthDataResponse } from "../types/ApiData/YearEndVTuberTwitchGrowthData";
-import { YearEndVTuberYouTubeViewCountGrowthData } from "../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData";
+import { YearEndVTuberViewCountChangeDataResponse } from "../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData";
 
 let axiosInstance: AxiosInstance;
 
@@ -65,8 +65,8 @@ export const getGrowingTwitchVTubers = (
 
 export const getVTubersYouTubeViewCountChange = (
   modifier: YearEndVTubersViewCountChangeModifier,
-): Promise<AxiosResponse<YearEndVTuberYouTubeViewCountGrowthData>> => {
-  return AxiosGetWrapper<YearEndVTuberYouTubeViewCountGrowthData>(
+): Promise<AxiosResponse<YearEndVTuberViewCountChangeDataResponse>> => {
+  return AxiosGetWrapper<YearEndVTuberViewCountChangeDataResponse>(
     `vtubers-view-count-change/youtube/${modifier.establishType}/${modifier.count}.json`,
   );
 };

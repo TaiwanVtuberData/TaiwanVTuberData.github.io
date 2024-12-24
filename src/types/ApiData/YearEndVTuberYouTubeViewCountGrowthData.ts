@@ -1,9 +1,10 @@
-import { YouTubeViewCountGrowthData } from "../Common/YouTube/YouTubeViewCountGrowthData";
+import { YearEndYouTubeViewCountGrowthData } from "../Common/YouTube/YearEndYouTubeViewCountGrowthData";
 import { BaseVTuberData } from "./BaseVTuberData";
 
 export interface YearEndVTuberYouTubeViewCountGrowthData
   extends BaseVTuberData {
-  readonly YouTube: YouTubeViewCountGrowthData;
+  readonly YouTube: YearEndYouTubeViewCountGrowthData;
+  readonly debutDate: string | null;
 }
 
 export interface YearEndVTuberViewCountChangeDataResponse {

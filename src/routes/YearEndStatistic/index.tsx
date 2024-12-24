@@ -6,6 +6,7 @@ import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
 import style from "./style.module.css";
 import YearEndYouTubeGrowthTable from "../../components/YearEndStatisticTables/YearEndYouTubeGrowthTable";
 import YearEndTwitchGrowthTable from "../../components/YearEndStatisticTables/YearEndTwitchGrowthTable";
+import YearEndYouTubeViewCountGrowthTable from "../../components/YearEndStatisticTables/YearEndYouTubeViewCountGrowthTable";
 
 export interface YearEndStatisticProps {
   dictionary: Dictionary;
@@ -14,9 +15,7 @@ export interface YearEndStatisticProps {
 const YearEndStatistic: FunctionalComponent<YearEndStatisticProps> = (
   props: YearEndStatisticProps,
 ) => {
-  if (typeof window !== "undefined") {
-    document.title = `${props.dictionary.header.yearEndStatistic}`;
-  }
+  document.title = `${props.dictionary.header.yearEndStatistic} | ${props.dictionary.header.title}`;
 
   return (
     <>
@@ -45,6 +44,18 @@ const YearEndStatistic: FunctionalComponent<YearEndStatisticProps> = (
         </div>
         <div class={style.tableItem}>
           <YearEndTwitchGrowthTable
+            dictionary={props.dictionary}
+            establishTypeModifier="established"
+          />
+        </div>
+        <div class={style.tableItem}>
+          <YearEndYouTubeViewCountGrowthTable
+            dictionary={props.dictionary}
+            establishTypeModifier="new"
+          />
+        </div>
+        <div class={style.tableItem}>
+          <YearEndYouTubeViewCountGrowthTable
             dictionary={props.dictionary}
             establishTypeModifier="established"
           />
