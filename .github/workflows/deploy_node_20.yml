@@ -26,6 +26,7 @@ jobs:
       CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
       ENFORCE_YOUTUBE_COMPLIANCE: ${{ secrets.ENFORCE_YOUTUBE_COMPLIANCE }}
       ENABLE_ADVERTISEMENT: ${{ secrets.ENABLE_ADVERTISEMENT }}
+      ENABLE_YEAR_END_STATISTIC: ${{ secrets.ENABLE_YEAR_END_STATISTIC }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

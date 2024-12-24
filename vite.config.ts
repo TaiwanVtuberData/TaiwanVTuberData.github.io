@@ -60,6 +60,9 @@ export default defineConfig(({ command, mode }) => {
       "import.meta.env.ENABLE_ADVERTISEMENT": JSON.stringify(
         env.ENABLE_ADVERTISEMENT,
       ),
+      "import.meta.env.ENABLE_YEAR_END_STATISTIC": JSON.stringify(
+        env.ENABLE_YEAR_END_STATISTIC,
+      ),
     },
   };
 });

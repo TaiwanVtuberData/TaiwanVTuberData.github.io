@@ -13,7 +13,7 @@ import { GetRoute } from "../../utils/TypeSafeRouting";
 import LanguageDropDown from "../LanguageDropDown";
 import NationalityDropDown from "../NationalityDropDown";
 import style from "./style.module.css";
-import { APP_VERSION } from "../../Config";
+import { APP_VERSION, ENABLE_YEAR_END_STATISTIC } from "../../Config";
 import { ApiSourceModifier } from "../../types/Common/ApiSource";
 import ApiSourceDropDown from "../ApiSourceDropDown";
 import { ApiSourceOptions } from "../../types/ApiSourceOptions";
@@ -63,10 +63,12 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const NavigationLinks = (): JSX.Element => {
     const links = [
       { textID: "header.home", linkTo: GetRoute({ type: "home" }) },
-      {
-        textID: "header.yearEndStatistic",
-        linkTo: GetRoute({ type: "year-end-statistic" }),
-      },
+      ENABLE_YEAR_END_STATISTIC === true
+        ? {
+            textID: "header.yearEndStatistic",
+            linkTo: GetRoute({ type: "year-end-statistic" }),
+          }
+        : null,
       {
         textID: "header.livestreaming",
         linkTo: GetRoute({ type: "livestreams" }),
@@ -129,7 +131,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
 
     return (
       <div class={style.navGrid}>
-        {links.map((e) => LinkElement(e.textID, e.linkTo))}
+        {links.map((e) =>
+          e !== null ? LinkElement(e.textID, e.linkTo) : <></>,
+        )}
       </div>
     );
   };
