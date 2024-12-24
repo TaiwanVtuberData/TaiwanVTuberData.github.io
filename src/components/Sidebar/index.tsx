@@ -64,6 +64,10 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
     const links = [
       { textID: "header.home", linkTo: GetRoute({ type: "home" }) },
       {
+        textID: "header.yearEndStatistic",
+        linkTo: GetRoute({ type: "year-end-statistic" }),
+      },
+      {
         textID: "header.livestreaming",
         linkTo: GetRoute({ type: "livestreams" }),
       },
