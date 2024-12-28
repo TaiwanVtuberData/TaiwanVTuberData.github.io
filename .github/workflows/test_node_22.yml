@@ -1,12 +1,13 @@
 # Copied from
 # https://github.com/adityac-addepar/todolist/blob/main/.github/workflows/deploy_react.yml
-name: Deploy Preact Application
+name: Test Node.js 22 build
 
 # Controls when the action will run.
 on:
-  workflow_dispatch:
   # Triggers the workflow on push request events but only for the master branch
   push:
+    branches: [ master ]
+  pull_request:
     branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -17,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x] # We will deploy with only one version of node  
+        node-version: [22.x] # We will deploy with only one version of node  
 
     env:
       GOOGLE_FORM_URL: ${{ secrets.GOOGLE_FORM_URL }}
@@ -41,8 +42,3 @@ jobs:
           npm ci
           npm run build:gh
           npm test
-      - name: deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./build
