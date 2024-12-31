@@ -31,6 +31,12 @@ const en: Dictionary = {
     debutToday: "Debut Today",
     recentLivestream: "Recent Livestream",
     apiSourceSelection: "API Source(Select GitHub if the page is not loading):",
+    yearEndStatistic: "2024 Year End Statistic",
+    yearEndEstablished: "Debuted Over 2 Years",
+    yearEndNewComer: "Debuted Within 2 Years",
+    growingYouTubeSubscriberCount: "YouTube Subscriber Count Growth",
+    growingTwitchFollowerCount: "Twitch Follower Count Growth",
+    growingYouTubeViewCount: "YouTube View Count Growth",
   },
   table: {
     displayName: "Name",
@@ -62,8 +68,10 @@ const en: Dictionary = {
     graduateDate: "Graduation Date",
     _7DaysGrowth: "7 Days Growth (Percent)",
     _30DaysGrowth: "30 Days Growth (Percent)",
+    _1YearGrowth: "1 Year Growth (Percent)",
     _7DaysViewCountGrowth: "7 Days Growth",
     _30DaysViewCountGrowth: "30 Days Growth",
+    _1YearViewCountGrowth: "1 Year Growth",
     atLeast: "at least",
     noRecord: "no record",
     noDuplicate: "One video per VTuber",
@@ -183,6 +191,9 @@ const en: Dictionary = {
     clickHere: "Click here or ctrl + F5 to update",
     oldVersion: "Old version:",
     newVersion: "New version:",
+  },
+  detail: {
+    yearEndDetail: "Statistic Interval: 2024-01-01 through 2025-01-01",
   },
 } as const;
 

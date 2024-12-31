@@ -2,7 +2,7 @@
 	"homepage": "https://taiwanvtuberdata.github.io/",
 	"private": true,
 	"name": "taiwan-vtuber-data",
-	"version": "3.6.0",
+	"version": "3.7.0",
 	"license": "BSD-3-Clause",
 	"type": "module",
 	"scripts": {
@@ -29,7 +29,7 @@
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.9.1",
-		"@types/node": "^20.14.8",
+		"@types/node": "^22.10.2",
 		"@types/preact-i18n": "^2.3.3",
 		"@vitest/coverage-v8": "^2.1.1",
 		"eslint": "^8.57.1",

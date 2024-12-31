@@ -186,7 +186,6 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
-          .map((e) => e)
           .sort(GetSortingMethod(props.modifier))
           .map((e, index) => VTuberViewCountToDisplay(e, index + 1)),
       );

@@ -46,6 +46,7 @@ import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
 import { setCurrentLocale } from "../global/Locale";
 import { APP_VERSION } from "../Config";
 import ReloadPageModal from "./ReloadModal";
+import YearEndStatistic from "../routes/YearEndStatistic";
 
 export function App() {
   const [locale, setLocale] = useState<validI18n>(
@@ -202,6 +203,11 @@ export function App() {
         path={GetPlaceholderRoute({ type: "vtubers-view-count" }, ":modifier")}
         dictionary={definition}
         component={VTubersViewCountPage}
+      />
+      <Route
+        path={GetRoute({ type: "year-end-statistic" })}
+        dictionary={definition}
+        component={YearEndStatistic}
       />
       <Redirect default to={GetRoute({ type: "home" })} />
     </Router>

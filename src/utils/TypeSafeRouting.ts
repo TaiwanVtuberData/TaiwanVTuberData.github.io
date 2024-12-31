@@ -94,6 +94,10 @@ interface VTubersViewCountRoute extends BaseTypeSafeRoute {
   sortOrder: DayRangeSortOrder;
 }
 
+interface YearEndStatisticRoute extends BaseTypeSafeRoute {
+  type: "year-end-statistic";
+}
+
 type PlaceholderRoute =
   | VTuberPlaceholderRoute
   | GroupPlaceholderRoute
@@ -117,7 +121,8 @@ type TypeSafeRoute =
   | VTuberRoute
   | GroupRoute
   | TrendingVideosRoute
-  | VTubersViewCountRoute;
+  | VTubersViewCountRoute
+  | YearEndStatisticRoute;
 
 const GetPlaceholderBaseRoute = (
   route: PlaceholderRoute,
@@ -171,6 +176,8 @@ const GetBaseRoute = (route: TypeSafeRoute): string => {
       return `trending-videos/${route.sortOrder}`;
     case "vtubers-view-count":
       return `vtubers-view-count/${route.sortOrder}`;
+    case "year-end-statistic":
+      return `year-end-statistic`;
   }
 };
 
