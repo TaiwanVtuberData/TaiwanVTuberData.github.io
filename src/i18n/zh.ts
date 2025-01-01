@@ -182,8 +182,8 @@ const zh: Dictionary = {
     more: "更多",
   },
   reloadPageButtonText: {
-    newerVersionAvailable: "有更新版本",
-    clickHere: "點擊此處或是 ctrl + F5 更新",
+    newerVersionAvailable: "偵測到新版本",
+    clickHere: "點擊此處更新",
     oldVersion: "舊版本：",
     newVersion: "新版本：",
   },
