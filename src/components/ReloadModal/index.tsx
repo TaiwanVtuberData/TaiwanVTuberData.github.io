@@ -1,49 +1,42 @@
 import { JSX } from "preact";
 import { Text } from "preact-i18n";
-import style from "./style.module.css";
+import "./style.css";
 
-interface ReloadPageModalProps {
-  isVisible: boolean;
-  oldVersion: string;
-  newVersion: string;
-}
+import { useRegisterSW } from "virtual:pwa-register/preact";
 
-export default function ReloadPageModal(
-  props: ReloadPageModalProps,
-): JSX.Element {
-  const reloadPage = () => {
-    window.location.reload();
-  };
+// https://vite-pwa-org.netlify.app/frameworks/preact
+export default function ReloadPrompt(): JSX.Element {
+  const {
+    offlineReady: [],
+    needRefresh: [needRefresh],
+    updateServiceWorker,
+  } = useRegisterSW();
 
   return (
-    <div
-      onClick={reloadPage}
-      class={style.modal}
-      style={{ display: props.isVisible ? "block" : "none" }}
-    >
-      <div>
-        <span>
-          <Text id="reloadPageButtonText.newerVersionAvailable">
-            Newer version available
-          </Text>
-        </span>
-      </div>
-      <div>
-        <span>
-          <Text id="reloadPageButtonText.clickHere">Click here to update</Text>
-        </span>
-      </div>
-      <div>
-        <span>
-          <Text id="reloadPageButtonText.oldVersion">Old version:</Text>
-          {props.oldVersion}
-        </span>
-      </div>
-      <div>
-        <span>
-          <Text id="reloadPageButtonText.newVersion">New version:</Text>
-          {props.newVersion}
-        </span>
+    <div class="reloadPromptContainer">
+      <div
+        class="reloadPromptToast"
+        style={{ display: needRefresh ? "block" : "none" }}
+      >
+        <div
+          onClick={() => updateServiceWorker(true)}
+          class="reloadPromptToastButton"
+        >
+          <div>
+            <span>
+              <Text id="reloadPageButtonText.newerVersionAvailable">
+                Newer version available
+              </Text>
+            </span>
+          </div>
+          <div>
+            <span>
+              <Text id="reloadPageButtonText.clickHere">
+                Click here to update
+              </Text>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

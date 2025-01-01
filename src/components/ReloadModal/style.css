@@ -1,0 +1,37 @@
+.reloadPromptContainer {
+  padding: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+}
+
+.reloadPromptToast {
+  position: fixed;
+  left: 5%;
+  bottom: 30%;
+  margin: 16px;
+  padding: 12px;
+  border: 1px solid #8885;
+  border-radius: 4px;
+  z-index: 1;
+  text-align: left;
+  box-shadow: 3px 4px 5px 0 #8885;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.reloadPromptToastButton {
+  border: 3px solid #636363;
+  outline: none;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 3px 10px;
+  text-align: right;
+  white-space: nowrap;
+  background-color: #e1e1e1;
+}
+
+.reloadPromptToastButton:hover {
+  background-color: #979797;
+  cursor: pointer;
+}

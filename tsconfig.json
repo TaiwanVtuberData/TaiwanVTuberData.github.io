@@ -38,7 +38,7 @@
     // "rootDir": "",
     // "rootDirs": [],
     // "typeRoots": [],
-    // "types": [],
+    "types": ["vite-plugin-pwa/client"],
 
     // Emit
     "noEmit": true,

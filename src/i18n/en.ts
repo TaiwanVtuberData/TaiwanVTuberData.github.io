@@ -187,8 +187,8 @@ const en: Dictionary = {
     more: "more",
   },
   reloadPageButtonText: {
-    newerVersionAvailable: "Newer version available",
-    clickHere: "Click here or ctrl + F5 to update",
+    newerVersionAvailable: "Newer version detected",
+    clickHere: "Click here to update",
     oldVersion: "Old version:",
     newVersion: "New version:",
   },

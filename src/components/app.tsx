@@ -1,5 +1,4 @@
 import * as Api from "../services/ApiService";
-import * as VersionApi from "../services/VersionService";
 import { useEffect, useState } from "preact/hooks";
 import { IntlProvider } from "preact-i18n";
 import { Route, Router } from "preact-router";
@@ -44,8 +43,7 @@ import {
 } from "../global/CurrentApiSource";
 import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
 import { setCurrentLocale } from "../global/Locale";
-import { APP_VERSION } from "../Config";
-import ReloadPageModal from "./ReloadModal";
+import ReloadPrompt from "./ReloadModal";
 import YearEndStatistic from "../routes/YearEndStatistic";
 
 export function App() {
@@ -64,8 +62,6 @@ export function App() {
   );
 
   const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
-  const [isRequireUpdate, setIsRequireUpdate] = useState<boolean>(false);
-  const [newVersion, setNewVersion] = useState<string>("unknown");
 
   const startApi = async (): Promise<void> => {
     await Api.bootstrapApi().then((bootstrapped) => {
@@ -73,18 +69,10 @@ export function App() {
     });
   };
 
-  const checkUpdate = async (): Promise<void> => {
-    await VersionApi.getVersionDetail().then((versionDetail) => {
-      setIsRequireUpdate(versionDetail.version !== APP_VERSION);
-      setNewVersion(versionDetail.version);
-    });
-  };
-
   useEffect(() => {
     setNationalityModifier(displayNationality);
     setCurrentApiSource(apiSource);
     startApi();
-    checkUpdate();
   }, []);
 
   useEffect(() => {
@@ -226,11 +214,7 @@ export function App() {
               apiSource={apiSource}
               setApiSource={setApiSource}
             />
-            <ReloadPageModal
-              isVisible={isRequireUpdate}
-              oldVersion={APP_VERSION}
-              newVersion={newVersion}
-            />
+            <ReloadPrompt />
             <ScrollToTopBottom />
             <VTuberProfileModal />
             <VideoModal />
