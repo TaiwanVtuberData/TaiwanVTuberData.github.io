@@ -1,7 +1,7 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import { GrowthDisplayData } from "../types/TableDisplayData/VTuberGrowthDisplayData";
-import { GrowthDisplayDataToString } from "../utils/NumberUtils";
+import { GrowthDisplayData } from '../types/TableDisplayData/VTuberGrowthDisplayData';
+import { GrowthDisplayDataToString } from '../utils/NumberUtils';
+import { Text } from 'preact-i18n';
+import { TableColumn } from 'react-data-table-component';
 
 export interface Year1GrowthColumnRowData {
   _1YearGrowth: GrowthDisplayData;

@@ -1,8 +1,8 @@
-import { FunctionalComponent, JSX } from "preact";
-import { VTuberLivestreamDisplayData } from "../../types/TableDisplayData/VTuberLivestreamDisplayData";
-import { getFormattedTimeIfNotToday } from "../../utils/DateTimeUtils";
-import VideoLink from "../VideoLink";
-import style from "./style.module.css";
+import { VTuberLivestreamDisplayData } from '../../types/TableDisplayData/VTuberLivestreamDisplayData';
+import { getFormattedTimeIfNotToday } from '../../utils/DateTimeUtils';
+import VideoLink from '../VideoLink';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface IndividualLivestreamsProps {
   livestreams: Array<VTuberLivestreamDisplayData>;

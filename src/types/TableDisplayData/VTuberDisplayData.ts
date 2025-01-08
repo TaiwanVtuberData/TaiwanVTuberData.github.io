@@ -1,7 +1,7 @@
-import { VideoInfo } from "../Common/VideoInfo";
-import { Activity } from "../Common/Activity";
-import { CountType } from "../Common/CountType";
-import { DebutInfo } from "../DebutInfo";
+import { Activity } from '../Common/Activity';
+import { CountType } from '../Common/CountType';
+import { VideoInfo } from '../Common/VideoInfo';
+import { DebutInfo } from '../DebutInfo';
 
 export interface VTuberDisplayData {
   id: string;

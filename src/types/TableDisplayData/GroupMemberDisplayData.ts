@@ -1,3 +1,3 @@
-import { VTuberDisplayData } from "./VTuberDisplayData";
+import { VTuberDisplayData } from './VTuberDisplayData';
 
 export type GroupMemberDisplayData = VTuberDisplayData;

@@ -1,5 +1,5 @@
-import { LivestreamData } from "../../types/ApiData/LivestreamData";
-import { LivestreamDisplayData } from "../../types/TableDisplayData/LivestreamDisplayData";
+import { LivestreamData } from '../../types/ApiData/LivestreamData';
+import { LivestreamDisplayData } from '../../types/TableDisplayData/LivestreamDisplayData';
 
 export const LivestreamToDisplayData = (
   e: LivestreamData,

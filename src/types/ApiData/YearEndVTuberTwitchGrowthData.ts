@@ -1,5 +1,5 @@
-import { YearEndTwitchGrowthData } from "../Common/YouTube/YearEndTwitchGrowthData";
-import { VTuberData } from "./VTuberData";
+import { YearEndTwitchGrowthData } from '../Common/YouTube/YearEndTwitchGrowthData';
+import { VTuberData } from './VTuberData';
 
 export interface YearEndVTuberTwitchGrowthData extends VTuberData {
   readonly Twitch: YearEndTwitchGrowthData;

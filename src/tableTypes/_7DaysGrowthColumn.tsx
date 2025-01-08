@@ -1,8 +1,8 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import { GrowthDisplayData } from "../types/TableDisplayData/VTuberGrowthDisplayData";
-import { GrowthDisplayDataToString } from "../utils/NumberUtils";
-import { ENFORCE_YOUTUBE_COMPLIANCE } from "../Config";
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
+import { GrowthDisplayData } from '../types/TableDisplayData/VTuberGrowthDisplayData';
+import { GrowthDisplayDataToString } from '../utils/NumberUtils';
+import { Text } from 'preact-i18n';
+import { TableColumn } from 'react-data-table-component';
 
 export interface Days7GrowthColumnRowData {
   _7DaysGrowth: GrowthDisplayData;

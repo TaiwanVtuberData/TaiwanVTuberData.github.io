@@ -1,6 +1,6 @@
-import { Activity } from "../Common/Activity";
-import { GrowthData } from "../Common/GrowthData";
-import { DebutInfo } from "../DebutInfo";
+import { Activity } from '../Common/Activity';
+import { GrowthData } from '../Common/GrowthData';
+import { DebutInfo } from '../DebutInfo';
 
 export interface YearEndVTuberViewCountGrowthDisplayData {
   id: string;

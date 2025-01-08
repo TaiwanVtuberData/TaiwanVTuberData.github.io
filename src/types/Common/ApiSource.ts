@@ -1,5 +1,5 @@
 export const apiSourceArray: ReadonlyArray<string> = [
-  "statically",
-  "github",
+  'statically',
+  'github',
 ] as const;
 export type ApiSourceModifier = (typeof apiSourceArray)[number];

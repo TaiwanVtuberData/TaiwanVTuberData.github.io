@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export interface CommitDetail {
   sha: string;
@@ -15,6 +15,6 @@ export const getCommitDetail = async (
       date: res.data.commit.author.date,
     }))
     .catch(() => ({
-      sha: "master",
+      sha: 'master',
     }));
 };

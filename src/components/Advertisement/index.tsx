@@ -1,8 +1,8 @@
-import { FunctionalComponent } from "preact";
-import * as AdvertisementApi from "../../services/AdvertisementService";
-import style from "./style.module.css";
-import { AdvertisementDetail } from "../../services/AdvertisementService";
-import { useEffect, useState } from "preact/hooks";
+import * as AdvertisementApi from '../../services/AdvertisementService';
+import { AdvertisementDetail } from '../../services/AdvertisementService';
+import style from './style.module.css';
+import { FunctionalComponent } from 'preact';
+import { useEffect, useState } from 'preact/hooks';
 
 interface AdvertisementProps {}
 
@@ -27,7 +27,7 @@ const Advertisement: FunctionalComponent<AdvertisementProps> = (
   return advertisementDetail?.hasAdvertisement === true ? (
     <a
       class={style.advertisement}
-      href={advertisementDetail.advertisement?.url ?? ""}
+      href={advertisementDetail.advertisement?.url ?? ''}
       target="_blank"
       rel="noopener noreferrer"
     >

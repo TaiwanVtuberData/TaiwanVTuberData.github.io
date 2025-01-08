@@ -1,7 +1,7 @@
-import { FunctionalComponent, JSX } from "preact";
-import { CountType } from "../../types/Common/CountType";
-import CountFragment from "../CountFragment";
-import style from "./style.module.css";
+import { CountType } from '../../types/Common/CountType';
+import CountFragment from '../CountFragment';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface YouTubeTwitchCountProps {
   YouTubeCount: CountType | null;

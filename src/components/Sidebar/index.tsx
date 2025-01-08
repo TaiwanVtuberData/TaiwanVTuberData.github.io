@@ -1,22 +1,22 @@
-import * as Api from "../../services/ApiService";
-import { FunctionalComponent, JSX } from "preact";
-import { Text } from "preact-i18n";
-import { Link } from "preact-router";
-import { StateUpdater, useState, useEffect, Dispatch } from "preact/hooks";
+import { APP_VERSION, ENABLE_YEAR_END_STATISTIC } from '../../Config';
+import * as Api from '../../services/ApiService';
+import { ApiSourceOptions } from '../../types/ApiSourceOptions';
+import { ApiSourceModifier } from '../../types/Common/ApiSource';
 import {
   NationalityModifier,
   nationalityArray,
-} from "../../types/Common/NationalityModifier";
-import { validI18n, LanguageOptions } from "../../types/LanguageOptions";
-import { getFormattedDateTime } from "../../utils/DateTimeUtils";
-import { GetRoute } from "../../utils/TypeSafeRouting";
-import LanguageDropDown from "../LanguageDropDown";
-import NationalityDropDown from "../NationalityDropDown";
-import style from "./style.module.css";
-import { APP_VERSION, ENABLE_YEAR_END_STATISTIC } from "../../Config";
-import { ApiSourceModifier } from "../../types/Common/ApiSource";
-import ApiSourceDropDown from "../ApiSourceDropDown";
-import { ApiSourceOptions } from "../../types/ApiSourceOptions";
+} from '../../types/Common/NationalityModifier';
+import { validI18n, LanguageOptions } from '../../types/LanguageOptions';
+import { getFormattedDateTime } from '../../utils/DateTimeUtils';
+import { GetRoute } from '../../utils/TypeSafeRouting';
+import ApiSourceDropDown from '../ApiSourceDropDown';
+import LanguageDropDown from '../LanguageDropDown';
+import NationalityDropDown from '../NationalityDropDown';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
+import { Text } from 'preact-i18n';
+import { Link } from 'preact-router';
+import { StateUpdater, useState, useEffect, Dispatch } from 'preact/hooks';
 
 export interface SidebarProps {
   locale: validI18n;
@@ -62,71 +62,71 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
 
   const NavigationLinks = (): JSX.Element => {
     const links = [
-      { textID: "header.home", linkTo: GetRoute({ type: "home" }) },
+      { textID: 'header.home', linkTo: GetRoute({ type: 'home' }) },
       ENABLE_YEAR_END_STATISTIC === true
         ? {
-            textID: "header.yearEndStatistic",
-            linkTo: GetRoute({ type: "year-end-statistic" }),
+            textID: 'header.yearEndStatistic',
+            linkTo: GetRoute({ type: 'year-end-statistic' }),
           }
         : null,
       {
-        textID: "header.livestreaming",
-        linkTo: GetRoute({ type: "livestreams" }),
+        textID: 'header.livestreaming',
+        linkTo: GetRoute({ type: 'livestreams' }),
       },
       {
-        textID: "header.eventCalendar",
-        linkTo: GetRoute({ type: "event-calendar" }),
+        textID: 'header.eventCalendar',
+        linkTo: GetRoute({ type: 'event-calendar' }),
       },
       {
-        textID: "header.allVTubers",
-        linkTo: GetRoute({ type: "all-vtubers" }),
+        textID: 'header.allVTubers',
+        linkTo: GetRoute({ type: 'all-vtubers' }),
       },
       {
-        textID: "header.groupList",
-        linkTo: GetRoute({ type: "group-list" }),
+        textID: 'header.groupList',
+        linkTo: GetRoute({ type: 'group-list' }),
       },
       {
-        textID: "header.trendingVTubers",
+        textID: 'header.trendingVTubers',
         linkTo: GetRoute({
-          type: "trending-vtubers",
-          sortOrder: "livestream",
+          type: 'trending-vtubers',
+          sortOrder: 'livestream',
         }),
       },
       {
-        textID: "header.trendingVideos",
+        textID: 'header.trendingVideos',
         linkTo: GetRoute({
-          type: "trending-videos",
-          sortOrder: "no-duplicate",
+          type: 'trending-videos',
+          sortOrder: 'no-duplicate',
         }),
       },
       {
-        textID: "header.VTubersViewCount",
+        textID: 'header.VTubersViewCount',
         linkTo: GetRoute({
-          type: "vtubers-view-count",
-          sortOrder: "7-days",
+          type: 'vtubers-view-count',
+          sortOrder: '7-days',
         }),
       },
       {
-        textID: "header.growingVTubers",
-        linkTo: GetRoute({ type: "growing-vtubers" }),
+        textID: 'header.growingVTubers',
+        linkTo: GetRoute({ type: 'growing-vtubers' }),
       },
       {
-        textID: "header.debutVTubers",
-        linkTo: GetRoute({ type: "debut-vtubers" }),
+        textID: 'header.debutVTubers',
+        linkTo: GetRoute({ type: 'debut-vtubers' }),
       },
       {
-        textID: "header.anniversaryVTubers",
-        linkTo: GetRoute({ type: "anniversary-vtubers" }),
+        textID: 'header.anniversaryVTubers',
+        linkTo: GetRoute({ type: 'anniversary-vtubers' }),
       },
       {
-        textID: "header.graduateVTubers",
-        linkTo: GetRoute({ type: "graduate-vtubers" }),
+        textID: 'header.graduateVTubers',
+        linkTo: GetRoute({ type: 'graduate-vtubers' }),
       },
       {
-        textID: "header.reportIssue",
-        linkTo: GetRoute({ type: "report-issue" }),
+        textID: 'header.reportIssue',
+        linkTo: GetRoute({ type: 'report-issue' }),
       },
-      { textID: "header.about", linkTo: GetRoute({ type: "about" }) },
+      { textID: 'header.about', linkTo: GetRoute({ type: 'about' }) },
     ];
 
     return (
@@ -202,10 +202,10 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
       </button>
       <div
         class={style.sidebarOverlay}
-        style={{ display: sidebarOpen ? "block" : "none" }}
+        style={{ display: sidebarOpen ? 'block' : 'none' }}
         onClick={closeSidebar}
       />
-      <div style={{ display: sidebarOpen ? "block" : "none" }}>
+      <div style={{ display: sidebarOpen ? 'block' : 'none' }}>
         <div class={style.sidebarContent}>
           <button class={style.xButton} onClick={closeSidebar}>
             <img class={style.xIcon} />

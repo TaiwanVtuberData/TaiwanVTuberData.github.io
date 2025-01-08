@@ -1,7 +1,7 @@
-import { VTuberDebutData } from "../../types/ApiData/VTuberDebutData";
-import { VTuberDebutDisplayData } from "../../types/TableDisplayData/VTuberDebutDisplayData";
-import { VTuberBasicToDisplay } from "./BasicTransform";
-import { debutStringToDebutInfo } from "./DebutStringToDebutInfo";
+import { VTuberDebutData } from '../../types/ApiData/VTuberDebutData';
+import { VTuberDebutDisplayData } from '../../types/TableDisplayData/VTuberDebutDisplayData';
+import { VTuberBasicToDisplay } from './BasicTransform';
+import { debutStringToDebutInfo } from './DebutStringToDebutInfo';
 
 export const VTuberDebutToDisplay = (
   e: VTuberDebutData,

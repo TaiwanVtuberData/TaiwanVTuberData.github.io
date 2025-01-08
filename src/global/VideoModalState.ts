@@ -1,6 +1,6 @@
-import createStore from "react-superstore";
-import { VideoInfo } from "../types/Common/VideoInfo";
-import { VideoInfoToFrameSrc } from "../utils/VideoInfoToFrameSrc";
+import { VideoInfo } from '../types/Common/VideoInfo';
+import { VideoInfoToFrameSrc } from '../utils/VideoInfoToFrameSrc';
+import createStore from 'react-superstore';
 
 interface VideoModal {
   isOpen: boolean;
@@ -22,4 +22,4 @@ export const openVideoModal = (videoInfo: VideoInfo): void =>
   });
 
 export const closeVideoModal = (): void =>
-  setVideoModalState({ isOpen: false, frameSrc: "" });
+  setVideoModalState({ isOpen: false, frameSrc: '' });

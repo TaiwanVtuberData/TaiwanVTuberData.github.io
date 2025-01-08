@@ -1,5 +1,5 @@
-import { FunctionalComponent, JSX } from "preact";
-import style from "./style.module.css";
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface SearchBarProps {
   placeholderText?: string;
@@ -16,7 +16,7 @@ const SearchBar: FunctionalComponent<SearchBarProps> = (
       type="text"
       class={style.textField}
       placeholder={props.placeholderText}
-      value={props.filterText ?? ""}
+      value={props.filterText ?? ''}
       onChange={props.onFilter}
     />
 

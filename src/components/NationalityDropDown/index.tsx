@@ -1,7 +1,7 @@
-import { Text } from "preact-i18n";
-import { NationalityModifier } from "../../types/Common/NationalityModifier";
-import dropDownStyle from "../../style/DropDownStyle.module.css";
-import { JSX } from "preact";
+import dropDownStyle from '../../style/DropDownStyle.module.css';
+import { NationalityModifier } from '../../types/Common/NationalityModifier';
+import { JSX } from 'preact';
+import { Text } from 'preact-i18n';
 
 interface NationalityDropDownProps {
   nationalityOptions: ReadonlyArray<NationalityModifier>;

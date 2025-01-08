@@ -1,7 +1,7 @@
-import { TODAY_DATE_STRING } from "../../global/TodayDate";
-import { VTuberGraduateData } from "../../types/ApiData/VTuberGraduateData";
-import { VTuberGraduateDisplayData } from "../../types/TableDisplayData/VTuberGraduateDisplayData";
-import { VTuberBasicToDisplay } from "./BasicTransform";
+import { TODAY_DATE_STRING } from '../../global/TodayDate';
+import { VTuberGraduateData } from '../../types/ApiData/VTuberGraduateData';
+import { VTuberGraduateDisplayData } from '../../types/TableDisplayData/VTuberGraduateDisplayData';
+import { VTuberBasicToDisplay } from './BasicTransform';
 
 export const VTuberGraduateToDisplay = (
   e: VTuberGraduateData,

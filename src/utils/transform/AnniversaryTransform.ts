@@ -1,7 +1,7 @@
-import { VTuberAnniversaryData } from "../../types/ApiData/VTuberAnniversaryData";
-import { VTuberAnniversaryDisplayData } from "../../types/TableDisplayData/VTuberAnniversaryDisplayData";
-import { VTuberBasicToDisplay } from "./BasicTransform";
-import { debutOfTheYearStringToAnniversaryDebutInfo } from "./DebutStringToDebutInfo";
+import { VTuberAnniversaryData } from '../../types/ApiData/VTuberAnniversaryData';
+import { VTuberAnniversaryDisplayData } from '../../types/TableDisplayData/VTuberAnniversaryDisplayData';
+import { VTuberBasicToDisplay } from './BasicTransform';
+import { debutOfTheYearStringToAnniversaryDebutInfo } from './DebutStringToDebutInfo';
 
 export const VTuberAnniversaryToDisplay = (
   e: VTuberAnniversaryData,

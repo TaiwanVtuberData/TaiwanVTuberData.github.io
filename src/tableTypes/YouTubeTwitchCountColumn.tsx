@@ -1,8 +1,8 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import YouTubeTwitchCount from "../components/YouTubeTwitchCount";
-import { CountType } from "../types/Common/CountType";
-import { JSX } from "preact/jsx-runtime";
+import YouTubeTwitchCount from '../components/YouTubeTwitchCount';
+import { CountType } from '../types/Common/CountType';
+import { Text } from 'preact-i18n';
+import { JSX } from 'preact/jsx-runtime';
+import { TableColumn } from 'react-data-table-component';
 
 export interface YouTubeTwitchCountColumnRowData {
   YouTubeSubscriber: CountType | null;

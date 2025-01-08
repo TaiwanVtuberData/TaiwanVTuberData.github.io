@@ -1,10 +1,10 @@
-import { GrowthRecordType } from "../types/Common/GrowthData";
+import { GrowthRecordType } from '../types/Common/GrowthData';
 
 export const PrependSign = (value: number): string => {
   if (value > 0) return `+${value}`;
   if (value < 0) return `${value}`;
 
-  return "0";
+  return '0';
 };
 
 const valueToPercentString = (value: number): string =>
@@ -16,13 +16,13 @@ export const GrowthDisplayDataToString = (
 ): string => {
   if (e.percentage) {
     switch (e.recordType) {
-      case "none":
+      case 'none':
         return tableTranslation.noRecord;
-      case "partial":
+      case 'partial':
         return `${tableTranslation.atLeast} ${PrependSign(
           e.diff,
         )} (${valueToPercentString(e.percentage as number)}%)`;
-      case "full":
+      case 'full':
         return `${PrependSign(e.diff)} (${valueToPercentString(
           e.percentage,
         )}%)`;
@@ -30,11 +30,11 @@ export const GrowthDisplayDataToString = (
   }
 
   switch (e.recordType) {
-    case "none":
+    case 'none':
       return tableTranslation.noRecord;
-    case "partial":
+    case 'partial':
       return `${tableTranslation.atLeast} ${PrependSign(e.diff)}`;
-    case "full":
+    case 'full':
       return `${PrependSign(e.diff)}`;
   }
 };

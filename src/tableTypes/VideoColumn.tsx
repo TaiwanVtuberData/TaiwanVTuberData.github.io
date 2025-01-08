@@ -1,7 +1,7 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import VideoLink from "../components/VideoLink";
-import { JSX } from "preact/jsx-runtime";
+import VideoLink from '../components/VideoLink';
+import { Text } from 'preact-i18n';
+import { JSX } from 'preact/jsx-runtime';
+import { TableColumn } from 'react-data-table-component';
 
 export interface VideoColumnRowData {
   thumbnailUrl: string;

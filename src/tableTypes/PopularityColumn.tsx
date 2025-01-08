@@ -1,12 +1,12 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import YouTubeTwitchCount from "../components/YouTubeTwitchCount";
-import { CountType } from "../types/Common/CountType";
-import { ENFORCE_YOUTUBE_COMPLIANCE } from "../Config";
-import { JSX } from "preact/jsx-runtime";
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
+import YouTubeTwitchCount from '../components/YouTubeTwitchCount';
+import { CountType } from '../types/Common/CountType';
+import { Text } from 'preact-i18n';
+import { JSX } from 'preact/jsx-runtime';
+import { TableColumn } from 'react-data-table-component';
 
 const numberToCountType = (popularity: number | null): CountType | null => {
-  if (popularity) return { tag: "has", count: popularity };
+  if (popularity) return { tag: 'has', count: popularity };
   return null;
 };
 

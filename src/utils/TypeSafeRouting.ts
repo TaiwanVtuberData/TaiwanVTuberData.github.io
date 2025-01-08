@@ -1,101 +1,101 @@
-import { ROUTE_PREFIX } from "../Config";
+import { ROUTE_PREFIX } from '../Config';
 import {
   DayRangeSortOrder,
   TrendingVTuberSortOrder,
   TrendingVideosModifier,
-} from "../types/ApiTypes";
+} from '../types/ApiTypes';
 
 interface BaseTypeSafeRoute {
   type: string;
 }
 
 interface HomeRoute extends BaseTypeSafeRoute {
-  type: "home";
+  type: 'home';
 }
 
 interface LivestreamsRoute extends BaseTypeSafeRoute {
-  type: "livestreams";
+  type: 'livestreams';
 }
 
 interface EventCalendarRoute extends BaseTypeSafeRoute {
-  type: "event-calendar";
+  type: 'event-calendar';
 }
 
 interface AllVTubersRoute extends BaseTypeSafeRoute {
-  type: "all-vtubers";
+  type: 'all-vtubers';
 }
 
 interface GroupListRoute extends BaseTypeSafeRoute {
-  type: "group-list";
+  type: 'group-list';
 }
 
 interface TrendingVTubersRoute extends BaseTypeSafeRoute {
-  type: "trending-vtubers";
+  type: 'trending-vtubers';
   sortOrder: TrendingVTuberSortOrder;
 }
 
 interface GrowingVTubersRoute extends BaseTypeSafeRoute {
-  type: "growing-vtubers";
+  type: 'growing-vtubers';
 }
 
 interface DebutVTubersRoute extends BaseTypeSafeRoute {
-  type: "debut-vtubers";
+  type: 'debut-vtubers';
 }
 
 interface AnniversaryVTubersRoute extends BaseTypeSafeRoute {
-  type: "anniversary-vtubers";
+  type: 'anniversary-vtubers';
 }
 
 interface GraduateVTubersRoute extends BaseTypeSafeRoute {
-  type: "graduate-vtubers";
+  type: 'graduate-vtubers';
 }
 
 interface ReportIssueRoute extends BaseTypeSafeRoute {
-  type: "report-issue";
+  type: 'report-issue';
 }
 
 interface AboutRoute extends BaseTypeSafeRoute {
-  type: "about";
+  type: 'about';
 }
 
 interface VTuberPlaceholderRoute extends BaseTypeSafeRoute {
-  type: "vtuber";
+  type: 'vtuber';
 }
 
 interface VTuberRoute extends BaseTypeSafeRoute {
-  type: "vtuber";
+  type: 'vtuber';
   id: string;
 }
 
 interface GroupPlaceholderRoute extends BaseTypeSafeRoute {
-  type: "group";
+  type: 'group';
 }
 
 interface GroupRoute extends BaseTypeSafeRoute {
-  type: "group";
+  type: 'group';
   name: string;
 }
 
 interface TrendingVideosPlaceholderRoute extends BaseTypeSafeRoute {
-  type: "trending-videos";
+  type: 'trending-videos';
 }
 
 interface TrendingVideosRoute extends BaseTypeSafeRoute {
-  type: "trending-videos";
+  type: 'trending-videos';
   sortOrder: TrendingVideosModifier;
 }
 
 interface VTubersViewCountPlaceholderRoute extends BaseTypeSafeRoute {
-  type: "vtubers-view-count";
+  type: 'vtubers-view-count';
 }
 
 interface VTubersViewCountRoute extends BaseTypeSafeRoute {
-  type: "vtubers-view-count";
+  type: 'vtubers-view-count';
   sortOrder: DayRangeSortOrder;
 }
 
 interface YearEndStatisticRoute extends BaseTypeSafeRoute {
-  type: "year-end-statistic";
+  type: 'year-end-statistic';
 }
 
 type PlaceholderRoute =
@@ -129,54 +129,54 @@ const GetPlaceholderBaseRoute = (
   placerHolderText: string,
 ): string => {
   switch (route.type) {
-    case "vtuber":
+    case 'vtuber':
       return `vtuber/${placerHolderText}`;
-    case "group":
+    case 'group':
       return `group/${placerHolderText}`;
-    case "trending-videos":
+    case 'trending-videos':
       return `trending-videos/${placerHolderText}`;
-    case "trending-vtubers":
+    case 'trending-vtubers':
       return `trending-vtubers/${placerHolderText}`;
-    case "vtubers-view-count":
+    case 'vtubers-view-count':
       return `vtubers-view-count/${placerHolderText}`;
   }
 };
 
 const GetBaseRoute = (route: TypeSafeRoute): string => {
   switch (route.type) {
-    case "home":
+    case 'home':
       return ``;
-    case "livestreams":
+    case 'livestreams':
       return `livestreams`;
-    case "event-calendar":
+    case 'event-calendar':
       return `event-calendar`;
-    case "all-vtubers":
+    case 'all-vtubers':
       return `all-vtubers`;
-    case "group-list":
+    case 'group-list':
       return `group-list`;
-    case "trending-vtubers":
+    case 'trending-vtubers':
       return `trending-vtubers/${route.sortOrder}`;
-    case "growing-vtubers":
+    case 'growing-vtubers':
       return `growing-vtubers`;
-    case "debut-vtubers":
+    case 'debut-vtubers':
       return `debut-vtubers`;
-    case "anniversary-vtubers":
+    case 'anniversary-vtubers':
       return `anniversary-vtubers`;
-    case "graduate-vtubers":
+    case 'graduate-vtubers':
       return `graduate-vtubers`;
-    case "report-issue":
+    case 'report-issue':
       return `report-issue`;
-    case "about":
+    case 'about':
       return `about`;
-    case "vtuber":
+    case 'vtuber':
       return `vtuber/${route.id}`;
-    case "group":
+    case 'group':
       return `group/${encodeURIComponent(route.name)}`;
-    case "trending-videos":
+    case 'trending-videos':
       return `trending-videos/${route.sortOrder}`;
-    case "vtubers-view-count":
+    case 'vtubers-view-count':
       return `vtubers-view-count/${route.sortOrder}`;
-    case "year-end-statistic":
+    case 'year-end-statistic':
       return `year-end-statistic`;
   }
 };

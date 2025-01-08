@@ -1,4 +1,4 @@
-import createStore from "react-superstore";
+import createStore from 'react-superstore';
 
 interface ProfileModal {
   isOpen: boolean;

@@ -1,6 +1,6 @@
-import { HasCountType } from "../Common/CountType";
-import { GrowthData } from "../Common/GrowthData";
-import { VTuberDisplayData } from "./VTuberDisplayData";
+import { HasCountType } from '../Common/CountType';
+import { GrowthData } from '../Common/GrowthData';
+import { VTuberDisplayData } from './VTuberDisplayData';
 
 export interface GrowthDisplayData extends GrowthData {
   percentage: number;

@@ -1,7 +1,7 @@
-import { GroupData } from "../../types/ApiData/GroupData";
-import { VTuberData } from "../../types/ApiData/VTuberData";
-import { GroupDisplayData } from "../../types/TableDisplayData/GroupDisplayData";
-import { GetCount } from "../CountTypeUtils";
+import { GroupData } from '../../types/ApiData/GroupData';
+import { VTuberData } from '../../types/ApiData/VTuberData';
+import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData';
+import { GetCount } from '../CountTypeUtils';
 
 const accumulator = (prev: number, current: VTuberData): number =>
   prev +

@@ -1,21 +1,21 @@
-import { FunctionalComponent } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
-import { Text } from "preact-i18n";
-import DataTable, { TableColumn } from "react-data-table-component";
-import SearchBar from "../../components/SearchBar";
-import { Dictionary } from "../../i18n/Dictionary";
-import * as Api from "../../services/ApiService";
-import { GroupMemberDisplayData } from "../../types/TableDisplayData/GroupMemberDisplayData";
-import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
-import "../../style/index.css";
-import tableStyle from "../../style/DataTableStyle.module.css";
-import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountColumn";
-import { NameColumn } from "../../tableTypes/NameColumn";
-import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
-import { NationalityColumn } from "../../tableTypes/NationalityColumn";
-import { GroupMemberToDisplay } from "../../utils/transform/GroupMemberTransform";
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/VTuberSort";
-import ActivityRowStyles from "../../style/ActivityRowStyles";
+import SearchBar from '../../components/SearchBar';
+import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import '../../style/index.css';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
+import { GroupMemberDisplayData } from '../../types/TableDisplayData/GroupMemberDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/VTuberSort';
+import { GroupMemberToDisplay } from '../../utils/transform/GroupMemberTransform';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
+import { useEffect, useMemo, useState } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface GroupPageProps {
   groupName: string;
@@ -40,7 +40,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<GroupMemberDisplayData>>([]);
-  const [filterName, setFilterName] = useState<string>("");
+  const [filterName, setFilterName] = useState<string>('');
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
   const filteredData = data.filter(
@@ -52,7 +52,7 @@ const GroupPage: FunctionalComponent<GroupPageProps> = (
     const handleClearName = (): void => {
       if (filterName) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterName("");
+        setFilterName('');
       }
     };
 

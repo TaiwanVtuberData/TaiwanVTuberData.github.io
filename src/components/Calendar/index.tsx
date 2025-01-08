@@ -1,11 +1,11 @@
-import { JSX } from "preact/jsx-runtime";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import { EventContentArg, EventInput } from "@fullcalendar/core";
-import ProfileImagePopup from "../ProfileImagePopup";
-import { useCurrentLocale } from "../../global/Locale";
-import { Dictionary } from "../../i18n/Dictionary";
+import { useCurrentLocale } from '../../global/Locale';
+import { Dictionary } from '../../i18n/Dictionary';
+import ProfileImagePopup from '../ProfileImagePopup';
+import { EventContentArg, EventInput } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
+import { JSX } from 'preact/jsx-runtime';
 
 interface CalendarProps {
   displayData: Array<CalendarDisplayDataType>;
@@ -53,10 +53,10 @@ function Calendar(props: CalendarProps): JSX.Element {
       events={events}
       eventContent={renderEventContent}
       dayMaxEventRows={2}
-      locale={useCurrentLocale() === "zh" ? "zh-tw" : "en"}
+      locale={useCurrentLocale() === 'zh' ? 'zh-tw' : 'en'}
       buttonText={props.dictionary.calendarButtonText}
       moreLinkText={props.dictionary.calendarButtonText.more}
-      height={"85vh"}
+      height={'85vh'}
     />
   );
 }

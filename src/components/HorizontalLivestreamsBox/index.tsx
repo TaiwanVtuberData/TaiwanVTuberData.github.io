@@ -1,6 +1,6 @@
-import { FunctionalComponent, JSX } from "preact";
-import { LivestreamDisplayData } from "../../types/TableDisplayData/LivestreamDisplayData";
-import LivestreamComponent from "../LivestreamComponent";
+import { LivestreamDisplayData } from '../../types/TableDisplayData/LivestreamDisplayData';
+import LivestreamComponent from '../LivestreamComponent';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface HorizontalLivestreamsBoxProps {
   divPrefix: string;

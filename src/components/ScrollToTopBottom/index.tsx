@@ -1,9 +1,9 @@
 // https://www.geeksforgeeks.org/how-to-create-a-scroll-to-top-button-in-react-js/
 // https://www.coderomeos.org/scroll-to-top-of-the-page-a-simple-react-component
-import { JSX } from "preact";
-import { Text } from "preact-i18n";
-import { useEffect, useState } from "preact/hooks";
-import style from "./style.module.css";
+import style from './style.module.css';
+import { JSX } from 'preact';
+import { Text } from 'preact-i18n';
+import { useEffect, useState } from 'preact/hooks';
 
 export default function ScrollToTopBottom(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,19 +16,19 @@ export default function ScrollToTopBottom(): JSX.Element {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
   const scrollToBottom = () => {
     window.scrollTo({
       top: document.body.scrollHeight,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisible);
+    window.addEventListener('scroll', toggleVisible);
   }, []);
 
   return (

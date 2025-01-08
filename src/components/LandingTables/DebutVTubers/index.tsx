@@ -1,19 +1,19 @@
-import * as Api from "../../../services/ApiService";
-import { FunctionalComponent } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useEffect } from "preact/hooks";
-import DataTable, { Media, TableColumn } from "react-data-table-component";
-import ActivityRowStyles from "../../../style/ActivityRowStyles";
-import { CompactTableStyle } from "../../../style/CompactTableStyle";
-import IsTodayRowStyle from "../../../style/IsTodayRowStyles";
-import { NameColumn } from "../../../tableTypes/NameColumn";
-import { PopularVideoColumn } from "../../../tableTypes/PopularVideoColumn";
-import { YouTubeTwitchCountColumn } from "../../../tableTypes/YouTubeTwitchCountColumn";
-import { VTuberDebutDisplayData } from "../../../types/TableDisplayData/VTuberDebutDisplayData";
-import DefaultDataTableProps from "../../../utils/DefaultDataTableProps";
-import { VTuberDebutToDisplay } from "../../../utils/transform/DebutTransform";
-import { DebutDateColumn } from "../../../tableTypes/DebutDateColumn";
-import { GetRoute } from "../../../utils/TypeSafeRouting";
+import * as Api from '../../../services/ApiService';
+import ActivityRowStyles from '../../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import IsTodayRowStyle from '../../../style/IsTodayRowStyles';
+import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
+import { VTuberDebutDisplayData } from '../../../types/TableDisplayData/VTuberDebutDisplayData';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
+import { VTuberDebutToDisplay } from '../../../utils/transform/DebutTransform';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useEffect } from 'preact/hooks';
+import DataTable, { Media, TableColumn } from 'react-data-table-component';
 
 const DebutVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDebutDisplayData>> = [
@@ -32,7 +32,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getDebutVTubers("next-7-days").then((res) => {
+    await Api.getDebutVTubers('next-7-days').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort((a, b) => a.debutDate.localeCompare(b.debutDate))
@@ -49,7 +49,7 @@ const DebutVTubersTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <a href={GetRoute({ type: "debut-vtubers" })}>
+        <a href={GetRoute({ type: 'debut-vtubers' })}>
           <Text id="header.debutVTubersIn7Days">VTubers Debut in 7 days</Text>
         </a>
       </h3>

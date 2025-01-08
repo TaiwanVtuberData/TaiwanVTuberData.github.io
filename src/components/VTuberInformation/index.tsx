@@ -1,15 +1,15 @@
-import { FunctionalComponent, JSX } from "preact";
-import { Text } from "preact-i18n";
-import { Activity } from "../../types/Common/Activity";
-import { CountType } from "../../types/Common/CountType";
-import { VTuberDisplayFullData } from "../../types/TableDisplayData/VTuberDisplayFullData";
-import { TwitchIdToLink, YouTubeIdToLink } from "../../utils/ChannelIdUtils";
-import { GetRoute } from "../../utils/TypeSafeRouting";
-import ProfileImage, { ProfileImageClickBehavior } from "../ProfileImage";
-import CountFragment from "../CountFragment";
-import style from "./style.module.css";
-import ShowVideoButton from "../ShowVideoButton";
-import IndividualLivestreams from "../IndividualLivestreams";
+import { Activity } from '../../types/Common/Activity';
+import { CountType } from '../../types/Common/CountType';
+import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
+import { TwitchIdToLink, YouTubeIdToLink } from '../../utils/ChannelIdUtils';
+import { GetRoute } from '../../utils/TypeSafeRouting';
+import CountFragment from '../CountFragment';
+import IndividualLivestreams from '../IndividualLivestreams';
+import ProfileImage, { ProfileImageClickBehavior } from '../ProfileImage';
+import ShowVideoButton from '../ShowVideoButton';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
+import { Text } from 'preact-i18n';
 
 export interface VTuberInformationProps {
   VTuber: VTuberDisplayFullData;
@@ -31,11 +31,11 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
 
   const getActivityTranslation = (activity?: Activity): JSX.Element => {
     switch (activity) {
-      case "preparing":
+      case 'preparing':
         return <Text id="activityText.preparing">Preparing</Text>;
-      case "active":
+      case 'active':
         return <Text id="activityText.active">Active</Text>;
-      case "graduate":
+      case 'graduate':
         return <Text id="activityText.graduated">Graduated</Text>;
     }
 
@@ -92,7 +92,7 @@ const VTuberInformation: FunctionalComponent<VTuberInformationProps> = (
             <Text id="table.group">Group</Text>
             <span>: </span>
             {vtuber?.group === null ? null : (
-              <a href={GetRoute({ type: "group", name: vtuber?.group })}>
+              <a href={GetRoute({ type: 'group', name: vtuber?.group })}>
                 {vtuber?.group}
               </a>
             )}

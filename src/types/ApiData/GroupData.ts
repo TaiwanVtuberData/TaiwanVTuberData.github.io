@@ -1,4 +1,4 @@
-import { VTuberData } from "./VTuberData";
+import { VTuberData } from './VTuberData';
 
 export interface GroupData {
   readonly id: string;

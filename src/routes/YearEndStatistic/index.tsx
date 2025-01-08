@@ -1,12 +1,12 @@
-import { FunctionalComponent } from "preact";
-import { Text } from "preact-i18n";
-import { Dictionary } from "../../i18n/Dictionary";
-import "../../style/index.css";
-import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import style from "./style.module.css";
-import YearEndYouTubeGrowthTable from "../../components/YearEndStatisticTables/YearEndYouTubeGrowthTable";
-import YearEndTwitchGrowthTable from "../../components/YearEndStatisticTables/YearEndTwitchGrowthTable";
-import YearEndYouTubeViewCountGrowthTable from "../../components/YearEndStatisticTables/YearEndYouTubeViewCountGrowthTable";
+import YearEndTwitchGrowthTable from '../../components/YearEndStatisticTables/YearEndTwitchGrowthTable';
+import YearEndYouTubeGrowthTable from '../../components/YearEndStatisticTables/YearEndYouTubeGrowthTable';
+import YearEndYouTubeViewCountGrowthTable from '../../components/YearEndStatisticTables/YearEndYouTubeViewCountGrowthTable';
+import { Dictionary } from '../../i18n/Dictionary';
+import '../../style/index.css';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import style from './style.module.css';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
 
 export interface YearEndStatisticProps {
   dictionary: Dictionary;

@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
+import * as GitHubCommitDetailService from './GitHubCommitDetailService';
+import axios, { AxiosResponse } from 'axios';
 
 export interface AdvertisementDetail {
   hasAdvertisement: boolean;
@@ -14,7 +14,7 @@ export const getAdvertisementDetail = async (): Promise<
 > => {
   const commitDetail: GitHubCommitDetailService.CommitDetail =
     await GitHubCommitDetailService.getCommitDetail(
-      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataAdvertisement/commits/master",
+      'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataAdvertisement/commits/master',
     );
 
   const currentAdvertisementUrl = `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataAdvertisement/${commitDetail.sha}/api/v1/advertisements/current.json`;

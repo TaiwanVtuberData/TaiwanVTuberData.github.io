@@ -1,11 +1,11 @@
-import { TIMEZONE_DIFF_IN_HOUR } from "../../Config";
-import { TODAY_DATE, TODAY_DATE_STRING } from "../../global/TodayDate";
+import { TIMEZONE_DIFF_IN_HOUR } from '../../Config';
+import { TODAY_DATE, TODAY_DATE_STRING } from '../../global/TodayDate';
 import {
   AnniversaryDebutInfo,
   DebutInfo,
   HasDebutInfo,
-} from "../../types/DebutInfo";
-import { dateDiffInDays, dateStringToDate } from "../DateTimeUtils";
+} from '../../types/DebutInfo';
+import { dateDiffInDays, dateStringToDate } from '../DateTimeUtils';
 
 export const maybeDebutStringToDebutInfo = (
   debutString: string | null,

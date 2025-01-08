@@ -1,5 +1,5 @@
-import { VideoPopularityData } from "../../types/ApiData/VideoPopularityData";
-import { VideoPopularityDisplayData } from "../../types/TableDisplayData/VideoPopularityDisplayData";
+import { VideoPopularityData } from '../../types/ApiData/VideoPopularityData';
+import { VideoPopularityDisplayData } from '../../types/TableDisplayData/VideoPopularityDisplayData';
 
 export const PopularVideoToDisplayData = (
   e: VideoPopularityData,

@@ -1,5 +1,5 @@
-import { AnniversaryDebutInfo } from "../DebutInfo";
-import { VTuberDisplayData } from "./VTuberDisplayData";
+import { AnniversaryDebutInfo } from '../DebutInfo';
+import { VTuberDisplayData } from './VTuberDisplayData';
 
 export interface VTuberAnniversaryDisplayData extends VTuberDisplayData {
   debutInfo: AnniversaryDebutInfo;

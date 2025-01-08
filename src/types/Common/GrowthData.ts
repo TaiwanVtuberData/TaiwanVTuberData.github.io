@@ -1,4 +1,4 @@
-export type GrowthRecordType = "none" | "partial" | "full";
+export type GrowthRecordType = 'none' | 'partial' | 'full';
 
 export interface GrowthData {
   diff: number;

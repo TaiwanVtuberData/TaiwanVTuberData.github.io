@@ -1,29 +1,29 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
-import { getCurrentApiSourceState } from "../global/CurrentApiSource";
-import { getNationalityModifierState } from "../global/DisplayNationality";
+import { getCurrentApiSourceState } from '../global/CurrentApiSource';
+import { getNationalityModifierState } from '../global/DisplayNationality';
+import { YearEndVTuberTwitchGrowthDataResponse } from '../types/ApiData/YearEndVTuberTwitchGrowthData';
+import { YearEndVTuberYouTubeGrowthDataResponse } from '../types/ApiData/YearEndVTuberYouTubeGrowthData';
+import { YearEndVTuberViewCountChangeDataResponse } from '../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData';
 import {
   YearEndGrowingVTubersModifier,
   YearEndVTubersViewCountChangeModifier,
-} from "../types/ApiTypes";
-import { YearEndVTuberYouTubeGrowthDataResponse } from "../types/ApiData/YearEndVTuberYouTubeGrowthData";
-import { YearEndVTuberTwitchGrowthDataResponse } from "../types/ApiData/YearEndVTuberTwitchGrowthData";
-import { YearEndVTuberViewCountChangeDataResponse } from "../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData";
+} from '../types/ApiTypes';
+import * as GitHubCommitDetailService from './GitHubCommitDetailService';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 let axiosInstance: AxiosInstance;
 
 const initAxiosInstance = async (): Promise<AxiosInstance> => {
   let commitDetail: GitHubCommitDetailService.CommitDetail =
     await GitHubCommitDetailService.getCommitDetail(
-      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/commits/master",
+      'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/commits/master',
     );
 
   switch (getCurrentApiSourceState()) {
-    case "github":
+    case 'github':
       return axios.create({
         baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
       });
-    case "statically":
+    case 'statically':
     default:
       return axios.create({
         baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,

@@ -1,4 +1,4 @@
-import { VTuberDisplayData } from "./VTuberDisplayData";
+import { VTuberDisplayData } from './VTuberDisplayData';
 
 export interface VTuberGraduateDisplayData extends VTuberDisplayData {
   isToday: boolean;

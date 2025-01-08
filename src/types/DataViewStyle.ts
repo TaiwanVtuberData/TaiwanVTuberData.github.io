@@ -1,1 +1,1 @@
-export type DataViewStyle = "table" | "calendar";
+export type DataViewStyle = 'table' | 'calendar';

@@ -1,8 +1,8 @@
-import { FunctionalComponent, JSX } from "preact";
-import { getFormattedTimeIfNotToday } from "../../utils/DateTimeUtils";
-import ProfileImagePopUp from "../ProfileImagePopup";
-import VideoLink from "../VideoLink";
-import style from "./style.module.css";
+import { getFormattedTimeIfNotToday } from '../../utils/DateTimeUtils';
+import ProfileImagePopUp from '../ProfileImagePopup';
+import VideoLink from '../VideoLink';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface LivestreamComponentProps {
   divPrefix: string;
