@@ -14,8 +14,8 @@
 }
 
 .image {
+  max-height: 300px;
   width: 100%;
-  height: auto;
   opacity: 0; /* Make image invisible initially */
   transition: opacity 1s ease-in-out; /* Smooth fade-in effect */
 }
