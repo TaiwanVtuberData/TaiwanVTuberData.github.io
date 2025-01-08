@@ -5,9 +5,25 @@
   width: fit-content;
 }
 
-.imgClass {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.imageContainer {
   width: 100%;
+  height: auto;
+  overflow: hidden;
+  max-height: 0; /* Initially, container is collapsed */
+  transition: max-height 1s ease-in-out; /* Smooth transition for max-height */
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  opacity: 0; /* Make image invisible initially */
+  transition: opacity 1s ease-in-out; /* Smooth fade-in effect */
+}
+
+.imageLoaded {
+  opacity: 1;
+}
+
+.imageLoading {
+  background: #f0f0f0;
 }

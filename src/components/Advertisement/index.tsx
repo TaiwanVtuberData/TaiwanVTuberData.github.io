@@ -2,13 +2,22 @@ import * as AdvertisementApi from '../../services/AdvertisementService';
 import { AdvertisementDetail } from '../../services/AdvertisementService';
 import style from './style.module.css';
 import { FunctionalComponent } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 interface AdvertisementProps {}
 
 const Advertisement: FunctionalComponent<AdvertisementProps> = (
   props: AdvertisementProps,
 ) => {
+  const [loading, setLoading] = useState(true);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Handle the image loading completion
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
   const [advertisementDetail, setAdvertisementDetail] =
     useState<AdvertisementDetail | null>(null);
 
@@ -22,7 +31,13 @@ const Advertisement: FunctionalComponent<AdvertisementProps> = (
     getAdvertisementDetail();
   }, []);
 
-  advertisementDetail?.hasAdvertisement === true;
+  // Trigger a layout reflow after the image is loaded
+  useEffect(() => {
+    if (!loading && containerRef.current && imageRef.current) {
+      // Ensure the container height expands smoothly
+      containerRef.current.style.maxHeight = `${imageRef.current.height + 20}px`; // Adds some space around image
+    }
+  }, [loading]);
 
   return advertisementDetail?.hasAdvertisement === true ? (
     <a
@@ -31,10 +46,14 @@ const Advertisement: FunctionalComponent<AdvertisementProps> = (
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img
-        class={style.imgClass}
-        src={advertisementDetail.advertisement?.imgUrl}
-      />
+      <div className={style.imageContainer} ref={containerRef}>
+        <img
+          src={advertisementDetail.advertisement?.imgUrl}
+          onLoad={handleImageLoad}
+          class={`${style.image} ${loading ? style.imageLoading : style.imageLoaded}`}
+          ref={imageRef}
+        />
+      </div>
     </a>
   ) : (
     <></>
