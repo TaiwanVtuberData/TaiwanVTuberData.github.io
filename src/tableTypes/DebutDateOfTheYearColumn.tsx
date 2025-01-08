@@ -1,6 +1,6 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import { AnniversaryDebutInfo } from "../types/DebutInfo";
+import { AnniversaryDebutInfo } from '../types/DebutInfo';
+import { Text } from 'preact-i18n';
+import { TableColumn } from 'react-data-table-component';
 
 export interface DebutDateOfTheYearColumnRowData {
   debutInfo: AnniversaryDebutInfo;

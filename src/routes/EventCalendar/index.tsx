@@ -1,8 +1,8 @@
-import { FunctionalComponent } from "preact";
-import { Dictionary } from "../../i18n/Dictionary";
-import { MarkupText, Text } from "preact-i18n";
-import style from "./style.module.css";
-import QuestionMarkToolTip from "../../components/QuestionMarkToolTip";
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { Dictionary } from '../../i18n/Dictionary';
+import style from './style.module.css';
+import { FunctionalComponent } from 'preact';
+import { MarkupText, Text } from 'preact-i18n';
 
 export interface EventCalendarPageProps {
   dictionary: Dictionary;
@@ -18,7 +18,7 @@ const EventCalendarPage: FunctionalComponent<EventCalendarPageProps> = (
       <h1>
         <Text id="header.eventCalendar">Event Calendar</Text>
         <MarkupText id="header.eventCalendarDetail">
-          {"(Provided By Discord Server <b>DD Refuge</b>)"}
+          {'(Provided By Discord Server <b>DD Refuge</b>)'}
         </MarkupText>
         <QuestionMarkToolTip
           width="300px"

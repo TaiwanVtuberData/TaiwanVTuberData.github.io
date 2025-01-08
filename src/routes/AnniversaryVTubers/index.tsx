@@ -1,34 +1,34 @@
-import * as Api from "../../services/ApiService";
-import { FunctionalComponent, JSX } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useMemo, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import QuestionMarkToolTip from "../../components/QuestionMarkToolTip";
-import { Dictionary } from "../../i18n/Dictionary";
-import ActivityRowStyles from "../../style/ActivityRowStyles";
-import IsTodayRowStyle from "../../style/IsTodayRowStyles";
-import { GroupColumn } from "../../tableTypes/GroupColumn";
-import { NameColumn } from "../../tableTypes/NameColumn";
-import { NationalityColumn } from "../../tableTypes/NationalityColumn";
-import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
-import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountColumn";
-import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
-import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from "../../utils/sort/VTuberSort";
-import tableStyle from "../../style/DataTableStyle.module.css";
-import { filterFunction } from "../../utils/FilterModelHelper";
-import FilterWindow from "../../components/FilterWindow";
-import { VTuberAnniversaryDisplayData } from "../../types/TableDisplayData/VTuberAnniversaryDisplayData";
-import { VTuberAnniversaryToDisplay } from "../../utils/transform/AnniversaryTransform";
-import { VTuberAnniversaryDisplayDataFilterModel } from "../../types/FilterType/VTuberAnniversaryDisplayDataFilterModel";
-import { AnniversaryCountColumn } from "../../tableTypes/AnniversaryCountColumn";
-import { DebutDateOfTheYearColumn } from "../../tableTypes/DebutDateOfTheYearColumn";
-import { DebutDateOfTheYearDescendingCompare } from "../../utils/sort/DebutDateOfTheYearSort";
-import DropDownList from "../../components/DropDownList";
-import Calendar from "../../components/Calendar";
-import style from "./style.module.css";
-import { TODAY_DATE } from "../../global/TodayDate";
-import { DataViewStyle } from "../../types/DataViewStyle";
+import Calendar from '../../components/Calendar';
+import DropDownList from '../../components/DropDownList';
+import FilterWindow from '../../components/FilterWindow';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { TODAY_DATE } from '../../global/TodayDate';
+import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import IsTodayRowStyle from '../../style/IsTodayRowStyles';
+import { AnniversaryCountColumn } from '../../tableTypes/AnniversaryCountColumn';
+import { DebutDateOfTheYearColumn } from '../../tableTypes/DebutDateOfTheYearColumn';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
+import { DataViewStyle } from '../../types/DataViewStyle';
+import { VTuberAnniversaryDisplayDataFilterModel } from '../../types/FilterType/VTuberAnniversaryDisplayDataFilterModel';
+import { VTuberAnniversaryDisplayData } from '../../types/TableDisplayData/VTuberAnniversaryDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { filterFunction } from '../../utils/FilterModelHelper';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { DebutDateOfTheYearDescendingCompare } from '../../utils/sort/DebutDateOfTheYearSort';
+import { YouTubeSubscriberCountPlusTwitchFollowerCountAscendingSort } from '../../utils/sort/VTuberSort';
+import { VTuberAnniversaryToDisplay } from '../../utils/transform/AnniversaryTransform';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface AnniversaryVTubersPageProps {
   dictionary: Dictionary;
@@ -38,7 +38,7 @@ const AnniversaryVTubersPage: FunctionalComponent<
   AnniversaryVTubersPageProps
 > = (props: AnniversaryVTubersPageProps) => {
   document.title = `${props.dictionary.header.anniversaryVTubers} | ${props.dictionary.header.title}`;
-  const [viewStyle, setViewStyle] = useState<DataViewStyle>("calendar");
+  const [viewStyle, setViewStyle] = useState<DataViewStyle>('calendar');
 
   const optionValue: Array<{
     option: JSX.Element;
@@ -46,11 +46,11 @@ const AnniversaryVTubersPage: FunctionalComponent<
   }> = [
     {
       option: <Text id="dropDown.calendar">Calendar</Text>,
-      value: "calendar",
+      value: 'calendar',
     },
     {
       option: <Text id="dropDown.table">Table</Text>,
-      value: "table",
+      value: 'table',
     },
   ];
 
@@ -58,12 +58,12 @@ const AnniversaryVTubersPage: FunctionalComponent<
     {
       ...DebutDateOfTheYearColumn(),
       sortable: true,
-      width: "100px",
+      width: '100px',
     },
     {
       ...AnniversaryCountColumn(),
       sortable: true,
-      width: "85px",
+      width: '85px',
     },
     NameColumn(),
     {
@@ -81,7 +81,7 @@ const AnniversaryVTubersPage: FunctionalComponent<
   const calenderData = data.map((d) => {
     return {
       ...d,
-      date: TODAY_DATE.getFullYear() + "-" + d.debutInfo.debutDateOfTheYear,
+      date: TODAY_DATE.getFullYear() + '-' + d.debutInfo.debutDateOfTheYear,
     };
   });
 
@@ -108,12 +108,12 @@ const AnniversaryVTubersPage: FunctionalComponent<
       string,
       string
     >([
-      ["name", props.dictionary.table.searchByDisplayName],
-      ["YouTubeId", props.dictionary.table.searchByYouTubeId],
-      ["TwitchId", props.dictionary.table.searchByTwitchId],
-      ["group", props.dictionary.table.searchByGroup],
-      ["nationality", props.dictionary.table.searchByNationality],
-      ["debutDate", props.dictionary.table.searchByDate],
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
+      ['debutDate', props.dictionary.table.searchByDate],
     ]);
 
     return (
@@ -132,7 +132,7 @@ const AnniversaryVTubersPage: FunctionalComponent<
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getAnniversaryVTubers("recent").then((res) => {
+    await Api.getAnniversaryVTubers('recent').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .sort(DebutDateOfTheYearDescendingCompare)
@@ -165,10 +165,10 @@ const AnniversaryVTubersPage: FunctionalComponent<
           onChange={(e: any) => setViewStyle(e.target.value)}
         />
       </div>
-      <div class={viewStyle === "calendar" ? "" : style.hidden}>
+      <div class={viewStyle === 'calendar' ? '' : style.hidden}>
         <Calendar displayData={calenderData} dictionary={props.dictionary} />
       </div>
-      <div class={viewStyle === "table" ? "" : style.hidden}>
+      <div class={viewStyle === 'table' ? '' : style.hidden}>
         <DataTable
           {...DefaultDataTableProps}
           columns={columns}

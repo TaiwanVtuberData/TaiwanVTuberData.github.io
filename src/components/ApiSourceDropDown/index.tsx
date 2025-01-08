@@ -1,7 +1,7 @@
-import { Text } from "preact-i18n";
-import dropDownStyle from "../../style/DropDownStyle.module.css";
-import { ApiSourceModifier } from "../../types/Common/ApiSource";
-import { JSX } from "preact/jsx-runtime";
+import dropDownStyle from '../../style/DropDownStyle.module.css';
+import { ApiSourceModifier } from '../../types/Common/ApiSource';
+import { Text } from 'preact-i18n';
+import { JSX } from 'preact/jsx-runtime';
 
 interface ApiSourceDropDownProps {
   apiSourceOptions: ReadonlyArray<ApiSourceModifier>;

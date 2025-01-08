@@ -1,8 +1,8 @@
-import { FunctionalComponent } from "preact";
-import { MarkupText, Text } from "preact-i18n";
-import { Dictionary } from "../../i18n/Dictionary";
-import "../../style/index.css";
-import { CONTACT_EMAIL } from "../../Config";
+import { CONTACT_EMAIL } from '../../Config';
+import { Dictionary } from '../../i18n/Dictionary';
+import '../../style/index.css';
+import { FunctionalComponent } from 'preact';
+import { MarkupText, Text } from 'preact-i18n';
 
 export interface HomeProps {
   dictionary: Dictionary;
@@ -16,7 +16,7 @@ const AboutPage: FunctionalComponent<HomeProps> = (props: HomeProps) => {
       <h1>
         <Text id="header.about">About The Site</Text>
       </h1>
-      <h2 style={{ marginTop: "5px" }}>
+      <h2 style={{ marginTop: '5px' }}>
         <Text id="termsOfService.termsOfService">Terms Of Service</Text>
       </h2>
       <p>
@@ -64,7 +64,7 @@ const AboutPage: FunctionalComponent<HomeProps> = (props: HomeProps) => {
         </li>
       </ol>
 
-      <h2 style={{ marginTop: "5px" }}>
+      <h2 style={{ marginTop: '5px' }}>
         <Text id="privacyPolicy.privacyPolicy">Privacy Policy</Text>
       </h2>
       <p>
@@ -90,7 +90,7 @@ const AboutPage: FunctionalComponent<HomeProps> = (props: HomeProps) => {
           </p>
         </li>
       </ol>
-      <h2 style={{ marginTop: "5px" }}>
+      <h2 style={{ marginTop: '5px' }}>
         <Text id="contactInformation.contactInformation">
           Contact Information
         </Text>
@@ -99,7 +99,7 @@ const AboutPage: FunctionalComponent<HomeProps> = (props: HomeProps) => {
         <Text id="contactInformation.email">Email: </Text>
         <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
       </p>
-      <h2 style={{ marginTop: "5px" }}>
+      <h2 style={{ marginTop: '5px' }}>
         <Text id="technicalDetails.technicalDetails">Technical Details</Text>
       </h2>
       <ul>

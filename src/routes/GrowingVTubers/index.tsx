@@ -1,32 +1,32 @@
-import * as Api from "../../services/ApiService";
-import { FunctionalComponent } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useMemo, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import QuestionMarkToolTip from "../../components/QuestionMarkToolTip";
-import { Dictionary } from "../../i18n/Dictionary";
-import { CompactTableStyle } from "../../style/CompactTableStyle";
-import { GroupColumn } from "../../tableTypes/GroupColumn";
-import { NameColumn } from "../../tableTypes/NameColumn";
-import { NationalityColumn } from "../../tableTypes/NationalityColumn";
-import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
-import { YouTubeSubscriberColumn } from "../../tableTypes/YouTubeSubscriberColumn";
-import { _30DaysGrowthColumn } from "../../tableTypes/_30DaysGrowthColumn";
-import { _7DaysGrowthColumn } from "../../tableTypes/_7DaysGrowthColumn";
-import { VTuberGrowthDisplayData } from "../../types/TableDisplayData/VTuberGrowthDisplayData";
-import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
-import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import { VTuberGrowthToDisplay } from "../../utils/transform/GrowthTransform";
-import tableStyle from "../../style/DataTableStyle.module.css";
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
+import FilterWindow from '../../components/FilterWindow';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../style/CompactTableStyle';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeSubscriberColumn } from '../../tableTypes/YouTubeSubscriberColumn';
+import { _30DaysGrowthColumn } from '../../tableTypes/_30DaysGrowthColumn';
+import { _7DaysGrowthColumn } from '../../tableTypes/_7DaysGrowthColumn';
+import { VTuberGrowthDisplayDataFilterModel } from '../../types/FilterType/VTuberGrowthDisplayDataFilterModel';
+import { VTuberGrowthDisplayData } from '../../types/TableDisplayData/VTuberGrowthDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { filterFunction } from '../../utils/FilterModelHelper';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import {
   _30DaysGrowthSort,
   _7DaysGrowthSort,
-} from "../../utils/sort/GrowthSort";
-import ActivityRowStyles from "../../style/ActivityRowStyles";
-import { VTuberGrowthDisplayDataFilterModel } from "../../types/FilterType/VTuberGrowthDisplayDataFilterModel";
-import { filterFunction } from "../../utils/FilterModelHelper";
-import FilterWindow from "../../components/FilterWindow";
-import { ENFORCE_YOUTUBE_COMPLIANCE } from "../../Config";
+} from '../../utils/sort/GrowthSort';
+import { VTuberGrowthToDisplay } from '../../utils/transform/GrowthTransform';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface GrowingVTubersPageProps {
   dictionary: Dictionary;
@@ -40,7 +40,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
   const columns: Array<TableColumn<VTuberGrowthDisplayData>> = [
     {
       ...NameColumn(),
-      width: "200px",
+      width: '200px',
     },
     {
       ...YouTubeSubscriberColumn(),
@@ -62,15 +62,15 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
     },
     {
       ...PopularVideoColumn(),
-      width: "100px",
+      width: '100px',
     },
     {
       ...GroupColumn(),
-      width: "100px",
+      width: '100px',
     },
     {
       ...NationalityColumn(),
-      width: "100px",
+      width: '100px',
     },
   ];
 
@@ -97,11 +97,11 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       string,
       string
     >([
-      ["name", props.dictionary.table.searchByDisplayName],
-      ["YouTubeId", props.dictionary.table.searchByYouTubeId],
-      ["TwitchId", props.dictionary.table.searchByTwitchId],
-      ["group", props.dictionary.table.searchByGroup],
-      ["nationality", props.dictionary.table.searchByNationality],
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
     ]);
 
     return (
@@ -120,7 +120,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getGrowingVTubers("100").then((res) => {
+    await Api.getGrowingVTubers('100').then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
           .map((e) => VTuberGrowthToDisplay(e))

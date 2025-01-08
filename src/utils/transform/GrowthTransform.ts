@@ -1,14 +1,14 @@
-import { VTuberGrowthData } from "../../types/ApiData/VTuberGrowthData";
-import { YearEndVTuberTwitchGrowthData } from "../../types/ApiData/YearEndVTuberTwitchGrowthData";
-import { YearEndVTuberYouTubeGrowthData } from "../../types/ApiData/YearEndVTuberYouTubeGrowthData";
-import { GrowthData } from "../../types/Common/GrowthData";
+import { VTuberGrowthData } from '../../types/ApiData/VTuberGrowthData';
+import { YearEndVTuberTwitchGrowthData } from '../../types/ApiData/YearEndVTuberTwitchGrowthData';
+import { YearEndVTuberYouTubeGrowthData } from '../../types/ApiData/YearEndVTuberYouTubeGrowthData';
+import { GrowthData } from '../../types/Common/GrowthData';
 import {
   GrowthDisplayData,
   VTuberGrowthDisplayData,
-} from "../../types/TableDisplayData/VTuberGrowthDisplayData";
-import { YearEndVTuberTwitchGrowthDisplayData } from "../../types/TableDisplayData/YearEndVTuberTwitchGrowthDisplayData";
-import { YearEndVTuberYouTubeGrowthDisplayData } from "../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData";
-import { VTuberBasicToDisplay } from "./BasicTransform";
+} from '../../types/TableDisplayData/VTuberGrowthDisplayData';
+import { YearEndVTuberTwitchGrowthDisplayData } from '../../types/TableDisplayData/YearEndVTuberTwitchGrowthDisplayData';
+import { YearEndVTuberYouTubeGrowthDisplayData } from '../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData';
+import { VTuberBasicToDisplay } from './BasicTransform';
 
 const growthDataToDisplayData = (
   e: GrowthData,

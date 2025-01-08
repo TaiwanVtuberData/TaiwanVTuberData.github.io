@@ -1,22 +1,22 @@
-import * as Api from "../../../services/YearEndStatisticApiService";
-import { FunctionalComponent } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import { Dictionary } from "../../../i18n/Dictionary";
-import ActivityRowStyles from "../../../style/ActivityRowStyles";
-import { CompactTableStyle } from "../../../style/CompactTableStyle";
-import { NameColumn } from "../../../tableTypes/NameColumn";
-import { YouTubeSubscriberColumn } from "../../../tableTypes/YouTubeSubscriberColumn";
-import DefaultDataTableProps from "../../../utils/DefaultDataTableProps";
-import { EstablishTypeModifier } from "../../../types/ApiTypes";
-import { YearEndVTuberYouTubeGrowthDisplayData } from "../../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData";
-import { YearEndVTuberYouTubeGrowthToDisplay } from "../../../utils/transform/GrowthTransform";
-import { _1YearGrowthColumn } from "../../../tableTypes/_1YearGrowthColumn";
-import { DebutDateColumn } from "../../../tableTypes/DebutDateColumn";
-import { GroupColumn } from "../../../tableTypes/GroupColumn";
-import { NationalityColumn } from "../../../tableTypes/NationalityColumn";
-import { RankingColumn } from "../../../tableTypes/RankingColumn";
+import { Dictionary } from '../../../i18n/Dictionary';
+import * as Api from '../../../services/YearEndStatisticApiService';
+import ActivityRowStyles from '../../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
+import { GroupColumn } from '../../../tableTypes/GroupColumn';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../../tableTypes/NationalityColumn';
+import { RankingColumn } from '../../../tableTypes/RankingColumn';
+import { YouTubeSubscriberColumn } from '../../../tableTypes/YouTubeSubscriberColumn';
+import { _1YearGrowthColumn } from '../../../tableTypes/_1YearGrowthColumn';
+import { EstablishTypeModifier } from '../../../types/ApiTypes';
+import { YearEndVTuberYouTubeGrowthDisplayData } from '../../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
+import { YearEndVTuberYouTubeGrowthToDisplay } from '../../../utils/transform/GrowthTransform';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface YearEndYouTubeGrowthTableProps {
   dictionary: Dictionary;
@@ -29,7 +29,7 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
   const columns: Array<TableColumn<YearEndVTuberYouTubeGrowthDisplayData>> = [
     {
       ...RankingColumn(),
-      width: "40px",
+      width: '40px',
     },
     NameColumn(),
     {
@@ -43,11 +43,11 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
     DebutDateColumn(),
     {
       ...GroupColumn(),
-      width: "150px",
+      width: '150px',
     },
     {
       ...NationalityColumn(),
-      width: "125px",
+      width: '125px',
     },
   ];
 
@@ -60,7 +60,7 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
   const getVTubers = async (): Promise<void> => {
     await Api.getGrowingYouTubeVTubers({
       establishType: props.establishTypeModifier,
-      count: "10",
+      count: '10',
     }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
@@ -79,10 +79,10 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
     establishTypeModifier: EstablishTypeModifier,
   ): string => {
     switch (establishTypeModifier) {
-      case "established":
-        return "header.yearEndEstablished";
-      case "new":
-        return "header.yearEndNewComer";
+      case 'established':
+        return 'header.yearEndEstablished';
+      case 'new':
+        return 'header.yearEndNewComer';
     }
   };
 

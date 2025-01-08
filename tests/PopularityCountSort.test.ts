@@ -1,17 +1,17 @@
-import { describe, expect, test } from 'vitest'
 import {
   PopularityCountAscendingSort,
   PopularityCountDescendingSort,
-} from "../src/utils/sort/PopularityCountSort";
+} from '../src/utils/sort/PopularityCountSort';
+import { describe, expect, test } from 'vitest';
 
-describe("PopularityCountSort Test", () => {
+describe('PopularityCountSort Test', () => {
   interface Row {
     id: number;
     YouTubePopularity?: number;
     TwitchPopularity?: number;
   }
 
-  test("Expected no nullable values to be sorted properly", () => {
+  test('Expected no nullable values to be sorted properly', () => {
     const unsortedData: Array<Row> = [
       { id: 0, YouTubePopularity: 100, TwitchPopularity: 100 },
       { id: 1, YouTubePopularity: 200, TwitchPopularity: 100 },
@@ -33,7 +33,7 @@ describe("PopularityCountSort Test", () => {
     expect(descendingSortedId).toStrictEqual([1, 0, 2]);
   });
 
-  test("Expected nullable values to be sorted properly", () => {
+  test('Expected nullable values to be sorted properly', () => {
     const unsortedData: Array<Row> = [
       { id: 0, YouTubePopularity: 100 },
       { id: 1, TwitchPopularity: 300 },

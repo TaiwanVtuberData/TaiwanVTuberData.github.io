@@ -1,23 +1,23 @@
-import { FunctionalComponent, JSX } from "preact";
-import { useEffect, useMemo, useState } from "preact/hooks";
-import { Text } from "preact-i18n";
-import DataTable, { TableColumn } from "react-data-table-component";
-import { Dictionary } from "../../i18n/Dictionary";
-import * as Api from "../../services/ApiService";
-import { GroupDisplayData } from "../../types/TableDisplayData/GroupDisplayData";
-import SearchBar from "../../components/SearchBar";
-import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
-import "../../style/index.css";
-import style from "./style.module.css";
-import tableStyle from "../../style/DataTableStyle.module.css";
-import { VTuberData } from "../../types/ApiData/VTuberData";
-import Profile from "../../components/Profile";
-import QuestionMarkToolTip from "../../components/QuestionMarkToolTip";
-import { GetRoute } from "../../utils/TypeSafeRouting";
-import { NameSort } from "../../utils/sort/NameSort";
-import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import { ENFORCE_YOUTUBE_COMPLIANCE } from "../../Config";
-import { groupToDisplay } from "../../utils/transform/GroupTransform";
+import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
+import Profile from '../../components/Profile';
+import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
+import SearchBar from '../../components/SearchBar';
+import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import '../../style/index.css';
+import { VTuberData } from '../../types/ApiData/VTuberData';
+import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { GetRoute } from '../../utils/TypeSafeRouting';
+import { NameSort } from '../../utils/sort/NameSort';
+import { groupToDisplay } from '../../utils/transform/GroupTransform';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
+import { Text } from 'preact-i18n';
+import { useEffect, useMemo, useState } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface GroupListPageProps {
   dictionary: Dictionary;
@@ -31,12 +31,12 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     {
       name: <Text id="table.displayName">Name</Text>,
       cell: (row: { name: string }): JSX.Element => (
-        <a href={GetRoute({ type: "group", name: row.name })}>{row.name}</a>
+        <a href={GetRoute({ type: 'group', name: row.name })}>{row.name}</a>
       ),
       sortFunction: NameSort,
       sortable: true,
-      minWidth: "100px",
-      maxWidth: "150px",
+      minWidth: '100px',
+      maxWidth: '150px',
     },
     {
       name: <Text id="table.popularity">Popularity</Text>,
@@ -44,8 +44,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         row.livestreamPopularity,
       right: true,
       sortable: true,
-      minWidth: "50px",
-      maxWidth: "125px",
+      minWidth: '50px',
+      maxWidth: '125px',
       omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
@@ -54,8 +54,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         row.averageSubscriberCount,
       right: true,
       sortable: true,
-      minWidth: "50px",
-      maxWidth: "125px",
+      minWidth: '50px',
+      maxWidth: '125px',
       omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
@@ -64,8 +64,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         row.totalSubscriberCount,
       right: true,
       sortable: true,
-      minWidth: "50px",
-      maxWidth: "125px",
+      minWidth: '50px',
+      maxWidth: '125px',
       omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
@@ -73,8 +73,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       selector: (row: { memberCount: number }): number => row.memberCount,
       right: true,
       sortable: true,
-      minWidth: "50px",
-      maxWidth: "125px",
+      minWidth: '50px',
+      maxWidth: '125px',
     },
     {
       name: <Text id="table.memberList">Members</Text>,
@@ -92,8 +92,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
 
   // search filter
   const [data, setData] = useState<Array<GroupDisplayData>>([]);
-  const [filterGroup, setFilterGroup] = useState<string>("");
-  const [filterGroupMember, setFilterGroupMember] = useState<string>("");
+  const [filterGroup, setFilterGroup] = useState<string>('');
+  const [filterGroupMember, setFilterGroupMember] = useState<string>('');
   const [resetPaginationToggle, setResetPaginationToggle] =
     useState<boolean>(false);
   const filteredData = data
@@ -114,14 +114,14 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
     const handleClearGroup = (): void => {
       if (filterGroup) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterGroup("");
+        setFilterGroup('');
       }
     };
 
     const handleClearGroupMember = (): void => {
       if (filterGroupMember) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterGroupMember("");
+        setFilterGroupMember('');
       }
     };
 

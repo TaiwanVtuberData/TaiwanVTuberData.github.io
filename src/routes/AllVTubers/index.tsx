@@ -1,31 +1,31 @@
-import * as Api from "../../services/ApiService";
-import { FunctionalComponent, JSX } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useMemo, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import DropDownList from "../../components/DropDownList";
-import { Dictionary } from "../../i18n/Dictionary";
-import { GroupColumn } from "../../tableTypes/GroupColumn";
-import { NameColumn } from "../../tableTypes/NameColumn";
-import { NationalityColumn } from "../../tableTypes/NationalityColumn";
-import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
-import { YouTubeTwitchCountColumn } from "../../tableTypes/YouTubeTwitchCountColumn";
-import { VTuberDisplayData } from "../../types/TableDisplayData/VTuberDisplayData";
-import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
-import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
+import DropDownList from '../../components/DropDownList';
+import FilterWindow from '../../components/FilterWindow';
+import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import { DebutDateColumn } from '../../tableTypes/DebutDateColumn';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../tableTypes/YouTubeTwitchCountColumn';
+import { VTuberDisplayDataFilterModel } from '../../types/FilterType/VTuberDisplayDataFilterModel';
+import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
+import { debutDateExist } from '../../utils/DebutInfoUtils';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { filterFunction } from '../../utils/FilterModelHelper';
+import { getValueByCondition } from '../../utils/GenericMethod';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import {
   SortMethod,
   SubscriberCountDescendingSort,
-} from "../../utils/sort/VTuberSort";
-import { VTuberBasicToDisplay } from "../../utils/transform/BasicTransform";
-import tableStyle from "../../style/DataTableStyle.module.css";
-import ActivityRowStyles from "../../style/ActivityRowStyles";
-import FilterWindow from "../../components/FilterWindow";
-import { filterFunction } from "../../utils/FilterModelHelper";
-import { VTuberDisplayDataFilterModel } from "../../types/FilterType/VTuberDisplayDataFilterModel";
-import { DebutDateColumn } from "../../tableTypes/DebutDateColumn";
-import { debutDateExist } from "../../utils/DebutInfoUtils";
-import { getValueByCondition } from "../../utils/GenericMethod";
+} from '../../utils/sort/VTuberSort';
+import { VTuberBasicToDisplay } from '../../utils/transform/BasicTransform';
+import { FunctionalComponent, JSX } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface AllVTubersPageProps {
   dictionary: Dictionary;
@@ -36,14 +36,14 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
 ) => {
   document.title = `${props.dictionary.header.allVTubers} | ${props.dictionary.header.title}`;
 
-  const [sortMethod, setSortMethod] = useState<SortMethod>("YouTube+Twitch");
+  const [sortMethod, setSortMethod] = useState<SortMethod>('YouTube+Twitch');
 
   const columns: Array<TableColumn<VTuberDisplayData>> = [
     // only show debut date column when sort by debut date
     {
       ...DebutDateColumn(),
       sortable: true,
-      omit: sortMethod !== "debutDate",
+      omit: sortMethod !== 'debutDate',
     },
     NameColumn(),
     YouTubeTwitchCountColumn(),
@@ -67,7 +67,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
     // only filter by by debutDateExist if sort method is debut date
     .filter((e) =>
       getValueByCondition<boolean>(
-        sortMethod === "debutDate",
+        sortMethod === 'debutDate',
         () => debutDateExist(e.debutInfo),
         () => true,
       ),
@@ -85,21 +85,21 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
             YouTube Subscribers + Twitch Followers
           </Text>
         ),
-        value: "YouTube+Twitch",
+        value: 'YouTube+Twitch',
       },
       {
         option: (
           <Text id="table.YouTubeSubscriberCount">YouTube Subscribers</Text>
         ),
-        value: "YouTube",
+        value: 'YouTube',
       },
       {
         option: <Text id="table.TwitchFollowerCount">Twitch Followers</Text>,
-        value: "Twitch",
+        value: 'Twitch',
       },
       {
         option: <Text id="table.debutDate">Debut Date</Text>,
-        value: "debutDate",
+        value: 'debutDate',
       },
     ];
 
@@ -113,12 +113,12 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
       string,
       string
     >([
-      ["name", props.dictionary.table.searchByDisplayName],
-      ["YouTubeId", props.dictionary.table.searchByYouTubeId],
-      ["TwitchId", props.dictionary.table.searchByTwitchId],
-      ["group", props.dictionary.table.searchByGroup],
-      ["nationality", props.dictionary.table.searchByNationality],
-      ["debutDate", props.dictionary.table.searchByDate],
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
+      ['debutDate', props.dictionary.table.searchByDate],
     ]);
 
     return (
@@ -143,7 +143,7 @@ const AllVTubersPage: FunctionalComponent<AllVTubersPageProps> = (
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getVTubers("all").then((res) => {
+    await Api.getVTubers('all').then((res) => {
       setData(res.data.VTubers.map((e) => VTuberBasicToDisplay(e)));
       setPending(false);
     });

@@ -1,64 +1,64 @@
-import * as Api from "../services/ApiService";
-import { useEffect, useState } from "preact/hooks";
-import { IntlProvider } from "preact-i18n";
-import { Route, Router } from "preact-router";
-import Sidebar from "./Sidebar";
-import { Dictionary } from "../i18n/Dictionary";
-import en from "../i18n/en";
-import zh from "../i18n/zh";
-import HomePage from "../routes/home";
-import AllVTubersPage from "../routes/AllVTubers";
-import DebutVTubersPage from "../routes/DebutVTubers";
-import GroupPage from "../routes/Group";
-import GroupListPage from "../routes/GroupList";
-import TrendingVTubersPage from "../routes/TrendingVTubers";
-import { validI18n, validI18nArray } from "../types/LanguageOptions";
-import GraduateVTubersPage from "../routes/GraduateVTubers";
-import GrowingVTubersPage from "../routes/GrowingVTubers";
-import TrendingVideosPage from "../routes/TrendingVideos";
-import AboutPage from "../routes/About";
-import EventCalendarPage from "../routes/EventCalendar";
-import ReportIssuePage from "../routes/ReportIssue";
-import ScrollToTopBottom from "./ScrollToTopBottom";
-import VideoModal from "./VideoModal";
-import VTubersViewCountPage from "../routes/VTubersViewCount";
-import {
-  nationalityArray,
-  NationalityModifier,
-} from "../types/Common/NationalityModifier";
-import {
-  getNationalityModifierState,
-  setNationalityModifier,
-} from "../global/DisplayNationality";
-import { getCookie, setCookie } from "../utils/CookieUtils";
-import VTuberPage from "../routes/VTuber";
-import { GetPlaceholderRoute, GetRoute } from "../utils/TypeSafeRouting";
-import VTuberProfileModal from "./VTuberProfileModal";
-import LivestreamsPage from "../routes/Livestreams";
-import Redirect from "../routes/Redirect";
-import { apiSourceArray, ApiSourceModifier } from "../types/Common/ApiSource";
 import {
   getCurrentApiSourceState,
   setCurrentApiSource,
-} from "../global/CurrentApiSource";
-import AnniversaryVTubersPage from "../routes/AnniversaryVTubers";
-import { setCurrentLocale } from "../global/Locale";
-import ReloadPrompt from "./ReloadModal";
-import YearEndStatistic from "../routes/YearEndStatistic";
+} from '../global/CurrentApiSource';
+import {
+  getNationalityModifierState,
+  setNationalityModifier,
+} from '../global/DisplayNationality';
+import { setCurrentLocale } from '../global/Locale';
+import { Dictionary } from '../i18n/Dictionary';
+import en from '../i18n/en';
+import zh from '../i18n/zh';
+import AboutPage from '../routes/About';
+import AllVTubersPage from '../routes/AllVTubers';
+import AnniversaryVTubersPage from '../routes/AnniversaryVTubers';
+import DebutVTubersPage from '../routes/DebutVTubers';
+import EventCalendarPage from '../routes/EventCalendar';
+import GraduateVTubersPage from '../routes/GraduateVTubers';
+import GroupPage from '../routes/Group';
+import GroupListPage from '../routes/GroupList';
+import GrowingVTubersPage from '../routes/GrowingVTubers';
+import LivestreamsPage from '../routes/Livestreams';
+import Redirect from '../routes/Redirect';
+import ReportIssuePage from '../routes/ReportIssue';
+import TrendingVTubersPage from '../routes/TrendingVTubers';
+import TrendingVideosPage from '../routes/TrendingVideos';
+import VTuberPage from '../routes/VTuber';
+import VTubersViewCountPage from '../routes/VTubersViewCount';
+import YearEndStatistic from '../routes/YearEndStatistic';
+import HomePage from '../routes/home';
+import * as Api from '../services/ApiService';
+import { apiSourceArray, ApiSourceModifier } from '../types/Common/ApiSource';
+import {
+  nationalityArray,
+  NationalityModifier,
+} from '../types/Common/NationalityModifier';
+import { validI18n, validI18nArray } from '../types/LanguageOptions';
+import { getCookie, setCookie } from '../utils/CookieUtils';
+import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
+import ReloadPrompt from './ReloadModal';
+import ScrollToTopBottom from './ScrollToTopBottom';
+import Sidebar from './Sidebar';
+import VTuberProfileModal from './VTuberProfileModal';
+import VideoModal from './VideoModal';
+import { IntlProvider } from 'preact-i18n';
+import { Route, Router } from 'preact-router';
+import { useEffect, useState } from 'preact/hooks';
 
 export function App() {
   const [locale, setLocale] = useState<validI18n>(
-    getCookie("locale", validI18nArray, "zh"),
+    getCookie('locale', validI18nArray, 'zh'),
   );
   const [definition, setDefinition] = useState<Dictionary>(zh);
 
   const [displayNationality, setDisplayNationality] =
     useState<NationalityModifier>(
-      getCookie("nationality", nationalityArray, "all"),
+      getCookie('nationality', nationalityArray, 'all'),
     );
 
   const [apiSource, setApiSource] = useState<ApiSourceModifier>(
-    getCookie("api-source", apiSourceArray, "statically"),
+    getCookie('api-source', apiSourceArray, 'statically'),
   );
 
   const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
@@ -76,15 +76,15 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    if (locale === "zh") {
+    if (locale === 'zh') {
       setDefinition(zh);
-      setCurrentLocale("zh");
+      setCurrentLocale('zh');
     } else {
       setDefinition(en);
-      setCurrentLocale("en");
+      setCurrentLocale('en');
     }
 
-    setCookie("locale", validI18nArray, locale);
+    setCookie('locale', validI18nArray, locale);
   }, [locale]);
 
   useEffect(() => {
@@ -98,10 +98,10 @@ export function App() {
       apiSource !== prevApiSource
     ) {
       setNationalityModifier(displayNationality);
-      setCookie("nationality", nationalityArray, displayNationality);
+      setCookie('nationality', nationalityArray, displayNationality);
 
       setCurrentApiSource(apiSource);
-      setCookie("api-source", apiSourceArray, apiSource);
+      setCookie('api-source', apiSourceArray, apiSource);
       window.location.reload();
     }
   }, [displayNationality, apiSource]);
@@ -109,95 +109,95 @@ export function App() {
   const ValidRouter = () => (
     <Router>
       <Route
-        path={GetRoute({ type: "home" })}
+        path={GetRoute({ type: 'home' })}
         dictionary={definition}
         component={HomePage}
       />
       <Route
-        path={GetRoute({ type: "livestreams" })}
+        path={GetRoute({ type: 'livestreams' })}
         dictionary={definition}
         component={LivestreamsPage}
       />
       <Route
-        path={GetRoute({ type: "event-calendar" })}
+        path={GetRoute({ type: 'event-calendar' })}
         dictionary={definition}
         component={EventCalendarPage}
       />
       <Route
-        path={GetRoute({ type: "all-vtubers" })}
+        path={GetRoute({ type: 'all-vtubers' })}
         dictionary={definition}
         component={AllVTubersPage}
       />
 
       <Route
         path={GetPlaceholderRoute(
-          { type: "trending-vtubers", sortOrder: "livestream" },
-          ":modifier",
+          { type: 'trending-vtubers', sortOrder: 'livestream' },
+          ':modifier',
         )}
         dictionary={definition}
         component={TrendingVTubersPage}
       />
       <Route
-        path={GetRoute({ type: "growing-vtubers" })}
+        path={GetRoute({ type: 'growing-vtubers' })}
         dictionary={definition}
         component={GrowingVTubersPage}
       />
       <Route
-        path={GetRoute({ type: "group-list" })}
+        path={GetRoute({ type: 'group-list' })}
         dictionary={definition}
         component={GroupListPage}
       />
       <Route
-        path={GetRoute({ type: "debut-vtubers" })}
+        path={GetRoute({ type: 'debut-vtubers' })}
         dictionary={definition}
         component={DebutVTubersPage}
       />
       <Route
-        path={GetRoute({ type: "anniversary-vtubers" })}
+        path={GetRoute({ type: 'anniversary-vtubers' })}
         dictionary={definition}
         component={AnniversaryVTubersPage}
       />
       <Route
-        path={GetRoute({ type: "graduate-vtubers" })}
+        path={GetRoute({ type: 'graduate-vtubers' })}
         dictionary={definition}
         component={GraduateVTubersPage}
       />
       <Route
-        path={GetRoute({ type: "report-issue" })}
+        path={GetRoute({ type: 'report-issue' })}
         dictionary={definition}
         component={ReportIssuePage}
       />
       <Route
-        path={GetRoute({ type: "about" })}
+        path={GetRoute({ type: 'about' })}
         dictionary={definition}
         component={AboutPage}
       />
       <Route
-        path={GetPlaceholderRoute({ type: "vtuber" }, ":id")}
+        path={GetPlaceholderRoute({ type: 'vtuber' }, ':id')}
         dictionary={definition}
         component={VTuberPage}
       />
       <Route
-        path={GetPlaceholderRoute({ type: "group" }, ":groupName")}
+        path={GetPlaceholderRoute({ type: 'group' }, ':groupName')}
         dictionary={definition}
         component={GroupPage}
       />
       <Route
-        path={GetPlaceholderRoute({ type: "trending-videos" }, ":modifier")}
+        path={GetPlaceholderRoute({ type: 'trending-videos' }, ':modifier')}
         dictionary={definition}
         component={TrendingVideosPage}
       />
       <Route
-        path={GetPlaceholderRoute({ type: "vtubers-view-count" }, ":modifier")}
+        path={GetPlaceholderRoute({ type: 'vtubers-view-count' }, ':modifier')}
         dictionary={definition}
         component={VTubersViewCountPage}
       />
       <Route
-        path={GetRoute({ type: "year-end-statistic" })}
+        path={GetRoute({ type: 'year-end-statistic' })}
         dictionary={definition}
         component={YearEndStatistic}
       />
-      <Redirect default to={GetRoute({ type: "home" })} />
+      <Redirect default to={GetRoute({ type: 'home' })} />
     </Router>
   );
 

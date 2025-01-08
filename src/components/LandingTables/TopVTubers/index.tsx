@@ -1,17 +1,17 @@
-import * as Api from "../../../services/ApiService";
-import { FunctionalComponent } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import ActivityRowStyles from "../../../style/ActivityRowStyles";
-import { CompactTableStyle } from "../../../style/CompactTableStyle";
-import { NameColumn } from "../../../tableTypes/NameColumn";
-import { PopularVideoColumn } from "../../../tableTypes/PopularVideoColumn";
-import { YouTubeTwitchCountColumn } from "../../../tableTypes/YouTubeTwitchCountColumn";
-import { VTuberDisplayData } from "../../../types/TableDisplayData/VTuberDisplayData";
-import DefaultDataTableProps from "../../../utils/DefaultDataTableProps";
-import { VTuberBasicToDisplay } from "../../../utils/transform/BasicTransform";
-import { GetRoute } from "../../../utils/TypeSafeRouting";
+import * as Api from '../../../services/ApiService';
+import ActivityRowStyles from '../../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { PopularVideoColumn } from '../../../tableTypes/PopularVideoColumn';
+import { YouTubeTwitchCountColumn } from '../../../tableTypes/YouTubeTwitchCountColumn';
+import { VTuberDisplayData } from '../../../types/TableDisplayData/VTuberDisplayData';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
+import { GetRoute } from '../../../utils/TypeSafeRouting';
+import { VTuberBasicToDisplay } from '../../../utils/transform/BasicTransform';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 const TopVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberDisplayData>> = [
@@ -25,7 +25,7 @@ const TopVTubersTable: FunctionalComponent = () => {
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getVTubers("10").then((res) => {
+    await Api.getVTubers('10').then((res) => {
       setData(res.data.VTubers.map((e) => VTuberBasicToDisplay(e)));
       setPending(false);
     });
@@ -38,7 +38,7 @@ const TopVTubersTable: FunctionalComponent = () => {
   return (
     <>
       <h3>
-        <a href={GetRoute({ type: "all-vtubers" })}>
+        <a href={GetRoute({ type: 'all-vtubers' })}>
           <Text id="header.YouTubeSubPlusTwitchFollowers">
             YouTube Subscribers + Twitch Followers
           </Text>

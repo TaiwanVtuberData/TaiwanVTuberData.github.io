@@ -1,8 +1,8 @@
-import { useState } from "preact/hooks";
-import { trimOrNullOnEmpty } from "../../utils/StringUtils";
-import SearchBar from "../SearchBar";
-import style from "./style.module.css";
-import { JSX } from "preact/jsx-runtime";
+import { trimOrNullOnEmpty } from '../../utils/StringUtils';
+import SearchBar from '../SearchBar';
+import style from './style.module.css';
+import { useState } from 'preact/hooks';
+import { JSX } from 'preact/jsx-runtime';
 
 export interface FilterWindowProps<FilterModel extends object> {
   filterModel: FilterModel;

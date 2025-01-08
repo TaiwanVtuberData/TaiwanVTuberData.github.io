@@ -1,14 +1,14 @@
 /* eslint-disable no-fallthrough */
-import { CountType } from "../types/Common/CountType";
+import { CountType } from '../types/Common/CountType';
 
 export const GetCount = (countType: CountType | null): number | null => {
   if (countType === null) return null;
 
   switch (countType.tag) {
-    case "has":
+    case 'has':
       return countType.count;
-    case "hidden":
-    case "no":
+    case 'hidden':
+    case 'no':
       return null;
   }
 };
@@ -16,35 +16,35 @@ export const GetCount = (countType: CountType | null): number | null => {
 // Sort order: no < hidden < 100 < 300
 export const CountTypeCompare = (a: CountType, b: CountType): number => {
   switch (a.tag) {
-    case "has": {
+    case 'has': {
       switch (b.tag) {
-        case "has":
+        case 'has':
           return a.count - b.count;
-        case "hidden":
+        case 'hidden':
           return 1;
-        case "no":
+        case 'no':
           return 1;
       }
     }
 
-    case "hidden": {
+    case 'hidden': {
       switch (b.tag) {
-        case "has":
+        case 'has':
           return -1;
-        case "hidden":
+        case 'hidden':
           return 0;
-        case "no":
+        case 'no':
           return 1;
       }
     }
 
-    case "no": {
+    case 'no': {
       switch (b.tag) {
-        case "has":
+        case 'has':
           return -1;
-        case "hidden":
+        case 'hidden':
           return -1;
-        case "no":
+        case 'no':
           return 0;
       }
     }

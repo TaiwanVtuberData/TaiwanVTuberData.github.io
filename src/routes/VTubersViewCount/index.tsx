@@ -1,30 +1,30 @@
-import * as Api from "../../services/ApiService";
-import { FunctionalComponent, JSX } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useMemo, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import DropDownList from "../../components/DropDownList";
-import { Dictionary } from "../../i18n/Dictionary";
-import { CompactTableStyle } from "../../style/CompactTableStyle";
-import { GroupColumn } from "../../tableTypes/GroupColumn";
-import { NameColumn } from "../../tableTypes/NameColumn";
-import { NationalityColumn } from "../../tableTypes/NationalityColumn";
-import { PopularVideoColumn } from "../../tableTypes/PopularVideoColumn";
-import { RankingColumn } from "../../tableTypes/RankingColumn";
-import { GrowthData } from "../../types/Common/GrowthData";
-import { YouTubeViewCountGrowthData } from "../../types/Common/YouTube/YouTubeViewCountGrowthData";
-import { VTuberViewCountGrowthDisplayData } from "../../types/TableDisplayData/VTuberViewCountGrowthDisplayData";
-import DefaultDataTableProps from "../../utils/DefaultDataTableProps";
-import { GetCurrentNationalitySpan } from "../../utils/NationalityUtils";
-import { GrowthDisplayDataToString } from "../../utils/NumberUtils";
-import { VTuberViewCountToDisplay } from "../../utils/transform/ViewCountTransform";
-import { GoToPage } from "../../utils/TypeSafeRouting";
-import tableStyle from "../../style/DataTableStyle.module.css";
-import { DayRangeSortOrder } from "../../types/ApiTypes";
-import ActivityRowStyles from "../../style/ActivityRowStyles";
-import { VTuberViewCountGrowthDisplayDataFilterModel } from "../../types/FilterType/VTuberViewCountGrowthDisplayDataFilterModel";
-import FilterWindow from "../../components/FilterWindow";
-import { filterFunction } from "../../utils/FilterModelHelper";
+import DropDownList from '../../components/DropDownList';
+import FilterWindow from '../../components/FilterWindow';
+import { Dictionary } from '../../i18n/Dictionary';
+import * as Api from '../../services/ApiService';
+import ActivityRowStyles from '../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../style/CompactTableStyle';
+import tableStyle from '../../style/DataTableStyle.module.css';
+import { GroupColumn } from '../../tableTypes/GroupColumn';
+import { NameColumn } from '../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../tableTypes/NationalityColumn';
+import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
+import { RankingColumn } from '../../tableTypes/RankingColumn';
+import { DayRangeSortOrder } from '../../types/ApiTypes';
+import { GrowthData } from '../../types/Common/GrowthData';
+import { YouTubeViewCountGrowthData } from '../../types/Common/YouTube/YouTubeViewCountGrowthData';
+import { VTuberViewCountGrowthDisplayDataFilterModel } from '../../types/FilterType/VTuberViewCountGrowthDisplayDataFilterModel';
+import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
+import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
+import { filterFunction } from '../../utils/FilterModelHelper';
+import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
+import { GrowthDisplayDataToString } from '../../utils/NumberUtils';
+import { GoToPage } from '../../utils/TypeSafeRouting';
+import { VTuberViewCountToDisplay } from '../../utils/transform/ViewCountTransform';
+import { FunctionalComponent, JSX } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useMemo, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface VTubersViewCountPageProps {
   dictionary: Dictionary;
@@ -40,11 +40,11 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     {
       ...RankingColumn(),
       sortable: true,
-      width: "40px",
+      width: '40px',
     },
     {
       ...NameColumn(),
-      width: "200px",
+      width: '200px',
     },
     {
       name: (
@@ -70,15 +70,15 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     },
     {
       ...PopularVideoColumn(),
-      width: "100px",
+      width: '100px',
     },
     {
       ...GroupColumn(),
-      width: "150px",
+      width: '150px',
     },
     {
       ...NationalityColumn(),
-      width: "125px",
+      width: '125px',
     },
   ];
 
@@ -101,11 +101,11 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
     }> = [
       {
         option: <Text id="table._7DaysViewCountGrowth">7 Days Growth</Text>,
-        value: "7-days",
+        value: '7-days',
       },
       {
         option: <Text id="table._30DaysViewCountGrowth">30 Days Growth</Text>,
-        value: "30-days",
+        value: '30-days',
       },
     ];
 
@@ -119,11 +119,11 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
       string,
       string
     >([
-      ["name", props.dictionary.table.searchByDisplayName],
-      ["YouTubeId", props.dictionary.table.searchByYouTubeId],
-      ["TwitchId", props.dictionary.table.searchByTwitchId],
-      ["group", props.dictionary.table.searchByGroup],
-      ["nationality", props.dictionary.table.searchByNationality],
+      ['name', props.dictionary.table.searchByDisplayName],
+      ['YouTubeId', props.dictionary.table.searchByYouTubeId],
+      ['TwitchId', props.dictionary.table.searchByTwitchId],
+      ['group', props.dictionary.table.searchByGroup],
+      ['nationality', props.dictionary.table.searchByNationality],
     ]);
 
     return (
@@ -134,7 +134,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
           optionValue={optionValue}
           onChange={(e: any) =>
             GoToPage({
-              type: "vtubers-view-count",
+              type: 'vtubers-view-count',
               sortOrder: e.target.value,
             })
           }
@@ -172,9 +172,9 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
 
   const GetSortingMethod = (sortBy: DayRangeSortOrder) => {
     switch (sortBy) {
-      case "7-days":
+      case '7-days':
         return _7DaysDescendingSort;
-      case "30-days":
+      case '30-days':
         return _30DaysDescendingSort;
     }
   };
@@ -182,7 +182,7 @@ const VTubersViewCountPage: FunctionalComponent<VTubersViewCountPageProps> = (
   const getVTubers = async (): Promise<void> => {
     await Api.getVTubersViewCountChange({
       sortBy: props.modifier,
-      count: "100",
+      count: '100',
     }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)

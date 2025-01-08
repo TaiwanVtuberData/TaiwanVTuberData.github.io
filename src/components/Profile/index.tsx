@@ -1,7 +1,7 @@
-import { FunctionalComponent, JSX } from "preact";
-import { VTuberData } from "../../types/ApiData/VTuberData";
-import ProfileImage from "../ProfileImage";
-import ToolTip from "../ToolTip";
+import { VTuberData } from '../../types/ApiData/VTuberData';
+import ProfileImage from '../ProfileImage';
+import ToolTip from '../ToolTip';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface ProfileProps {
   VTuber: VTuberData;

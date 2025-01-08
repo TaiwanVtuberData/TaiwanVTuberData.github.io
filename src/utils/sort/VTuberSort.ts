@@ -1,9 +1,9 @@
-import { CountType } from "../../types/Common/CountType";
-import { DebutInfo } from "../../types/DebutInfo";
-import { CountTypeCompare, GetCount } from "../CountTypeUtils";
-import { getDebutDate } from "../DebutInfoUtils";
+import { CountType } from '../../types/Common/CountType';
+import { DebutInfo } from '../../types/DebutInfo';
+import { CountTypeCompare, GetCount } from '../CountTypeUtils';
+import { getDebutDate } from '../DebutInfoUtils';
 
-export type SortMethod = "YouTube+Twitch" | "YouTube" | "Twitch" | "debutDate";
+export type SortMethod = 'YouTube+Twitch' | 'YouTube' | 'Twitch' | 'debutDate';
 
 const YouTubeSubscriberCountDescendingSort = <
   T extends { YouTubeSubscriber: CountType | null },
@@ -108,14 +108,14 @@ export const debutDateDescendingSort = <T extends { debutInfo: DebutInfo }>(
 
 export const SubscriberCountDescendingSort = (sortMethod: SortMethod) => {
   switch (sortMethod) {
-    case "YouTube+Twitch":
+    case 'YouTube+Twitch':
       return YouTubeSubscriberCountPlusTwitchFollowerCountDescendingSort;
-    case "YouTube":
+    case 'YouTube':
       return YouTubeSubscriberCountDescendingSort;
-    case "Twitch":
+    case 'Twitch':
       return TwitchFollowerCountDescendingSort;
     // FIXME: debutDate should not be part of SubscriberCountDescendingSort
-    case "debutDate":
+    case 'debutDate':
       return debutDateDescendingSort;
   }
 };

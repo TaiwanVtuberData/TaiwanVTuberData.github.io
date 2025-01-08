@@ -1,5 +1,5 @@
-import { YearEndYouTubeViewCountGrowthData } from "../Common/YouTube/YearEndYouTubeViewCountGrowthData";
-import { BaseVTuberData } from "./BaseVTuberData";
+import { YearEndYouTubeViewCountGrowthData } from '../Common/YouTube/YearEndYouTubeViewCountGrowthData';
+import { BaseVTuberData } from './BaseVTuberData';
 
 export interface YearEndVTuberYouTubeViewCountGrowthData
   extends BaseVTuberData {

@@ -1,15 +1,15 @@
-import { useEffect, useState } from "preact/hooks";
-import * as Api from "../../services/ApiService";
 import {
   closeProfileModal,
   useProfileModalState,
-} from "../../global/ProfileModalState";
-import { VTuberDisplayFullData } from "../../types/TableDisplayData/VTuberDisplayFullData";
-import VTuberInformation from "../VTuberInformation";
-import style from "./style.module.css";
-import { VTuberFullToDisplay } from "../../utils/transform/FullTransform";
-import { Text } from "preact-i18n";
-import { JSX } from "preact/jsx-runtime";
+} from '../../global/ProfileModalState';
+import * as Api from '../../services/ApiService';
+import { VTuberDisplayFullData } from '../../types/TableDisplayData/VTuberDisplayFullData';
+import { VTuberFullToDisplay } from '../../utils/transform/FullTransform';
+import VTuberInformation from '../VTuberInformation';
+import style from './style.module.css';
+import { Text } from 'preact-i18n';
+import { useEffect, useState } from 'preact/hooks';
+import { JSX } from 'preact/jsx-runtime';
 
 const VTuberProfileModal = (): JSX.Element => {
   const modalState = useProfileModalState();
@@ -37,7 +37,7 @@ const VTuberProfileModal = (): JSX.Element => {
       onClick={(): void => {
         closeProfileModal();
       }}
-      style={{ display: modalState.isOpen ? "block" : "none" }}
+      style={{ display: modalState.isOpen ? 'block' : 'none' }}
     >
       <div
         class={style.modalContent}

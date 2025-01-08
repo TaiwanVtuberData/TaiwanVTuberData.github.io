@@ -1,6 +1,6 @@
-import { FunctionalComponent, JSX } from "preact";
-import ProfileImage from "../ProfileImage";
-import style from "./style.module.css";
+import ProfileImage from '../ProfileImage';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface ProfileImagePopupProps {
   VTuberId: string;

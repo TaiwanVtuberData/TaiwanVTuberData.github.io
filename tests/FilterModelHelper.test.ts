@@ -1,7 +1,7 @@
-import { describe, expect, test } from 'vitest'
-import { filterFunction } from "../src/utils/FilterModelHelper";
+import { filterFunction } from '../src/utils/FilterModelHelper';
+import { describe, expect, test } from 'vitest';
 
-describe("filterFunction Test", () => {
+describe('filterFunction Test', () => {
   interface TargetType {
     name: string;
     group?: string;
@@ -12,10 +12,10 @@ describe("filterFunction Test", () => {
     group: string | null;
   }
 
-  test("No filter applied", () => {
+  test('No filter applied', () => {
     const testData: TargetType = {
-      name: "汐Seki",
-      group: "子午計劃",
+      name: '汐Seki',
+      group: '子午計劃',
     };
     const filter: FilterModel = {
       name: null,
@@ -27,13 +27,13 @@ describe("filterFunction Test", () => {
     expect(result).toBe(true);
   });
 
-  test("Apply to non null type", () => {
+  test('Apply to non null type', () => {
     const testData: TargetType = {
-      name: "汐Seki",
-      group: "子午計劃",
+      name: '汐Seki',
+      group: '子午計劃',
     };
     const filter: FilterModel = {
-      name: "汐Seki",
+      name: '汐Seki',
       group: null,
     };
 
@@ -42,13 +42,13 @@ describe("filterFunction Test", () => {
     expect(result).toBe(true);
   });
 
-  test("Apply to non null type case insensitive", () => {
+  test('Apply to non null type case insensitive', () => {
     const testData: TargetType = {
-      name: "汐Seki",
-      group: "子午計劃",
+      name: '汐Seki',
+      group: '子午計劃',
     };
     const filter: FilterModel = {
-      name: "SEKI",
+      name: 'SEKI',
       group: null,
     };
 
@@ -57,13 +57,13 @@ describe("filterFunction Test", () => {
     expect(result).toBe(true);
   });
 
-  test("Apply non matching filter", () => {
+  test('Apply non matching filter', () => {
     const testData: TargetType = {
-      name: "汐Seki",
-      group: "子午計劃",
+      name: '汐Seki',
+      group: '子午計劃',
     };
     const filter: FilterModel = {
-      name: "平平子",
+      name: '平平子',
       group: null,
     };
 
@@ -72,13 +72,13 @@ describe("filterFunction Test", () => {
     expect(result).toBe(false);
   });
 
-  test("Apply to nullable type", () => {
+  test('Apply to nullable type', () => {
     const testData: TargetType = {
-      name: "兔姬",
+      name: '兔姬',
     };
     const filter: FilterModel = {
       name: null,
-      group: "子午計劃",
+      group: '子午計劃',
     };
 
     const result = filterFunction(testData, filter);

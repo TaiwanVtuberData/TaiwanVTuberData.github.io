@@ -1,6 +1,6 @@
-import { Text } from "preact-i18n";
-import { TableColumn } from "react-data-table-component";
-import { HasCountType } from "../types/Common/CountType";
+import { HasCountType } from '../types/Common/CountType';
+import { Text } from 'preact-i18n';
+import { TableColumn } from 'react-data-table-component';
 
 export interface YouTubeSubscriberColumnRowData {
   YouTubeSubscriber: HasCountType;

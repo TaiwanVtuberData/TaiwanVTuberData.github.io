@@ -1,10 +1,10 @@
-import { VTuberViewCountGrowthData } from "../../types/ApiData/VTuberViewCountChangeData";
-import { YearEndVTuberYouTubeViewCountGrowthData } from "../../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData";
-import { DebutInfo } from "../../types/DebutInfo";
-import { VTuberViewCountGrowthDisplayData } from "../../types/TableDisplayData/VTuberViewCountGrowthDisplayData";
-import { YearEndVTuberViewCountGrowthDisplayData } from "../../types/TableDisplayData/YearEndVTuberViewCountGrowthDisplayData";
-import { getDebutDate } from "../DebutInfoUtils";
-import { maybeDebutStringToDebutInfo } from "./DebutStringToDebutInfo";
+import { VTuberViewCountGrowthData } from '../../types/ApiData/VTuberViewCountChangeData';
+import { YearEndVTuberYouTubeViewCountGrowthData } from '../../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData';
+import { DebutInfo } from '../../types/DebutInfo';
+import { VTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/VTuberViewCountGrowthDisplayData';
+import { YearEndVTuberViewCountGrowthDisplayData } from '../../types/TableDisplayData/YearEndVTuberViewCountGrowthDisplayData';
+import { getDebutDate } from '../DebutInfoUtils';
+import { maybeDebutStringToDebutInfo } from './DebutStringToDebutInfo';
 
 export const VTuberViewCountToDisplay = (
   e: VTuberViewCountGrowthData,

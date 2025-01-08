@@ -1,7 +1,7 @@
-import { tryParseInteger } from "./utils/NumberUtils";
+import { tryParseInteger } from './utils/NumberUtils';
 
 const getEnvOrEmpty = (env: string | undefined): string => {
-  let defaultValue = "";
+  let defaultValue = '';
   if (env) {
     defaultValue = env;
   }
@@ -12,7 +12,7 @@ const getEnvOrEmpty = (env: string | undefined): string => {
 const getEnvAsBooleanOrFalse = (env: string | undefined): boolean => {
   const envValue = getEnvOrEmpty(env);
 
-  return envValue === "true";
+  return envValue === 'true';
 };
 
 const DEFAULT_TIMEZONE_DIFF_IN_HOUR = 8;

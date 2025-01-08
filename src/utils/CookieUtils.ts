@@ -1,4 +1,4 @@
-export type ValidCookieKey = "locale" | "nationality" | "api-source";
+export type ValidCookieKey = 'locale' | 'nationality' | 'api-source';
 
 // https://fettblog.eu/typescript-array-includes/
 function includes<T extends U, U>(coll: ReadonlyArray<T>, el: U): el is T {
@@ -15,10 +15,10 @@ export const getCookie = <T extends string>(
   const target = `${key}=` as const;
 
   const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(";");
+  const ca = decodedCookie.split(';');
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
-    while (c.charAt(0) == " ") {
+    while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }
     if (c.indexOf(target) == 0) {

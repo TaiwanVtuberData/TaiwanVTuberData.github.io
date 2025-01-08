@@ -1,23 +1,23 @@
-import * as Api from "../../../services/YearEndStatisticApiService";
-import { FunctionalComponent } from "preact";
-import { Text } from "preact-i18n";
-import { useState, useEffect } from "preact/hooks";
-import DataTable, { TableColumn } from "react-data-table-component";
-import { Dictionary } from "../../../i18n/Dictionary";
-import ActivityRowStyles from "../../../style/ActivityRowStyles";
-import { CompactTableStyle } from "../../../style/CompactTableStyle";
-import { NameColumn } from "../../../tableTypes/NameColumn";
-import DefaultDataTableProps from "../../../utils/DefaultDataTableProps";
-import { EstablishTypeModifier } from "../../../types/ApiTypes";
-import { _1YearGrowthColumn } from "../../../tableTypes/_1YearGrowthColumn";
-import { DebutDateColumn } from "../../../tableTypes/DebutDateColumn";
-import { GroupColumn } from "../../../tableTypes/GroupColumn";
-import { YearEndVTuberYouTubeViewCountGrowthToDisplay } from "../../../utils/transform/ViewCountTransform";
-import { YearEndVTuberViewCountGrowthDisplayData } from "../../../types/TableDisplayData/YearEndVTuberViewCountGrowthDisplayData";
-import { RankingColumn } from "../../../tableTypes/RankingColumn";
-import { GrowthData } from "../../../types/Common/GrowthData";
-import { GrowthDisplayDataToString } from "../../../utils/NumberUtils";
-import { NationalityColumn } from "../../../tableTypes/NationalityColumn";
+import { Dictionary } from '../../../i18n/Dictionary';
+import * as Api from '../../../services/YearEndStatisticApiService';
+import ActivityRowStyles from '../../../style/ActivityRowStyles';
+import { CompactTableStyle } from '../../../style/CompactTableStyle';
+import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
+import { GroupColumn } from '../../../tableTypes/GroupColumn';
+import { NameColumn } from '../../../tableTypes/NameColumn';
+import { NationalityColumn } from '../../../tableTypes/NationalityColumn';
+import { RankingColumn } from '../../../tableTypes/RankingColumn';
+import { _1YearGrowthColumn } from '../../../tableTypes/_1YearGrowthColumn';
+import { EstablishTypeModifier } from '../../../types/ApiTypes';
+import { GrowthData } from '../../../types/Common/GrowthData';
+import { YearEndVTuberViewCountGrowthDisplayData } from '../../../types/TableDisplayData/YearEndVTuberViewCountGrowthDisplayData';
+import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
+import { GrowthDisplayDataToString } from '../../../utils/NumberUtils';
+import { YearEndVTuberYouTubeViewCountGrowthToDisplay } from '../../../utils/transform/ViewCountTransform';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
+import { useState, useEffect } from 'preact/hooks';
+import DataTable, { TableColumn } from 'react-data-table-component';
 
 export interface YearEndYouTubeViewCountGrowthTableProps {
   dictionary: Dictionary;
@@ -30,7 +30,7 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
   const columns: Array<TableColumn<YearEndVTuberViewCountGrowthDisplayData>> = [
     {
       ...RankingColumn(),
-      width: "40px",
+      width: '40px',
     },
     NameColumn(),
     {
@@ -49,11 +49,11 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
     DebutDateColumn(),
     {
       ...GroupColumn(),
-      width: "150px",
+      width: '150px',
     },
     {
       ...NationalityColumn(),
-      width: "125px",
+      width: '125px',
     },
   ];
 
@@ -66,7 +66,7 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
   const getVTubers = async (): Promise<void> => {
     await Api.getVTubersYouTubeViewCountChange({
       establishType: props.establishTypeModifier,
-      count: "10",
+      count: '10',
     }).then((res) => {
       setData(
         res.data.VTubers.map((e) => e)
@@ -87,10 +87,10 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
     establishTypeModifier: EstablishTypeModifier,
   ): string => {
     switch (establishTypeModifier) {
-      case "established":
-        return "header.yearEndEstablished";
-      case "new":
-        return "header.yearEndNewComer";
+      case 'established':
+        return 'header.yearEndEstablished';
+      case 'new':
+        return 'header.yearEndNewComer';
     }
   };
 

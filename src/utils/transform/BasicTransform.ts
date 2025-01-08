@@ -1,8 +1,8 @@
-import { VTuberData } from "../../types/ApiData/VTuberData";
-import { DebutInfo } from "../../types/DebutInfo";
-import { VTuberDisplayData } from "../../types/TableDisplayData/VTuberDisplayData";
-import { getDebutDate } from "../DebutInfoUtils";
-import { maybeDebutStringToDebutInfo } from "./DebutStringToDebutInfo";
+import { VTuberData } from '../../types/ApiData/VTuberData';
+import { DebutInfo } from '../../types/DebutInfo';
+import { VTuberDisplayData } from '../../types/TableDisplayData/VTuberDisplayData';
+import { getDebutDate } from '../DebutInfoUtils';
+import { maybeDebutStringToDebutInfo } from './DebutStringToDebutInfo';
 
 export const VTuberBasicToDisplay = (e: VTuberData): VTuberDisplayData => {
   const debutInfo: DebutInfo = maybeDebutStringToDebutInfo(e.debutDate);

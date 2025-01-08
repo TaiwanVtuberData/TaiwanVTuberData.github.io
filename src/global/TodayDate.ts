@@ -1,8 +1,8 @@
-import { TIMEZONE_DIFF_IN_HOUR } from "../Config";
+import { TIMEZONE_DIFF_IN_HOUR } from '../Config';
 import {
   getDateAfterTimezoneAdjustment,
   getISODateString,
-} from "../utils/DateTimeUtils";
+} from '../utils/DateTimeUtils';
 
 export const TODAY_DATE: Date = getDateAfterTimezoneAdjustment(
   new Date(),

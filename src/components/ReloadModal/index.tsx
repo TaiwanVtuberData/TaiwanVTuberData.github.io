@@ -1,8 +1,8 @@
-import { JSX } from "preact";
-import { Text } from "preact-i18n";
-import "./style.css";
+import './style.css';
+import { JSX } from 'preact';
+import { Text } from 'preact-i18n';
 
-import { useRegisterSW } from "virtual:pwa-register/preact";
+import { useRegisterSW } from 'virtual:pwa-register/preact';
 
 // https://vite-pwa-org.netlify.app/frameworks/preact
 export default function ReloadPrompt(): JSX.Element {
@@ -16,7 +16,7 @@ export default function ReloadPrompt(): JSX.Element {
     <div class="reloadPromptContainer">
       <div
         class="reloadPromptToast"
-        style={{ display: needRefresh ? "block" : "none" }}
+        style={{ display: needRefresh ? 'block' : 'none' }}
       >
         <div
           onClick={() => updateServiceWorker(true)}

@@ -1,6 +1,6 @@
-import { FunctionalComponent, JSX } from "preact";
-import ToolTip from "../ToolTip";
-import style from "./style.module.css";
+import ToolTip from '../ToolTip';
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface QuestionMarkToolTip {
   text: string | React.ReactNode;

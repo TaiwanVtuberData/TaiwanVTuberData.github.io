@@ -1,5 +1,5 @@
-import { FunctionalComponent, JSX } from "preact";
-import style from "./style.module.css";
+import style from './style.module.css';
+import { FunctionalComponent, JSX } from 'preact';
 
 export interface VideoLinkProps {
   thumbnailUrl: string;

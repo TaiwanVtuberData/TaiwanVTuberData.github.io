@@ -1,7 +1,7 @@
-import createStore from "react-superstore";
-import { NationalityModifier } from "../types/Common/NationalityModifier";
+import { NationalityModifier } from '../types/Common/NationalityModifier';
+import createStore from 'react-superstore';
 
-const defaultDisplayNationality: NationalityModifier = "all";
+const defaultDisplayNationality: NationalityModifier = 'all';
 
 export const [
   useNationalityModifier,

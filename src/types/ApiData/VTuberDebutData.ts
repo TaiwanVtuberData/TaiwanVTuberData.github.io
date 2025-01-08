@@ -1,4 +1,4 @@
-import { VTuberData } from "./VTuberData";
+import { VTuberData } from './VTuberData';
 
 export interface VTuberDebutData extends VTuberData {
   readonly debutDate: string;

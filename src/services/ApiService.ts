@@ -1,18 +1,17 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import * as GitHubCommitDetailService from "./GitHubCommitDetailService";
-import { getCurrentApiSourceState } from "../global/CurrentApiSource";
-import { getNationalityModifierState } from "../global/DisplayNationality";
-import { GroupDataResponse } from "../types/ApiData/GroupData";
-import { LivestreamDataResponse } from "../types/ApiData/LivestreamData";
-import { UpdateTimeResponse } from "../types/ApiData/UpdateTime";
-import { VideoPopularityDataResponse } from "../types/ApiData/VideoPopularityData";
-import { VTuberDataResponse } from "../types/ApiData/VTuberData";
-import { VTuberDebutDataResponse } from "../types/ApiData/VTuberDebutData";
-import { SingleVTuberFullDataResponse } from "../types/ApiData/VTuberFullData";
-import { VTuberGraduateDataResponse } from "../types/ApiData/VTuberGraduateData";
-import { VTuberGrowthDataResponse } from "../types/ApiData/VTuberGrowthData";
-import { VTuberPopularityDataResponse } from "../types/ApiData/VTuberPopularityData";
-import { VTuberViewCountChangeDataResponse } from "../types/ApiData/VTuberViewCountChangeData";
+import { getCurrentApiSourceState } from '../global/CurrentApiSource';
+import { getNationalityModifierState } from '../global/DisplayNationality';
+import { GroupDataResponse } from '../types/ApiData/GroupData';
+import { LivestreamDataResponse } from '../types/ApiData/LivestreamData';
+import { UpdateTimeResponse } from '../types/ApiData/UpdateTime';
+import { VTuberAnniversaryDataResponse } from '../types/ApiData/VTuberAnniversaryData';
+import { VTuberDataResponse } from '../types/ApiData/VTuberData';
+import { VTuberDebutDataResponse } from '../types/ApiData/VTuberDebutData';
+import { SingleVTuberFullDataResponse } from '../types/ApiData/VTuberFullData';
+import { VTuberGraduateDataResponse } from '../types/ApiData/VTuberGraduateData';
+import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
+import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
+import { VTuberViewCountChangeDataResponse } from '../types/ApiData/VTuberViewCountChangeData';
+import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import {
   AnniversaryVTubersModifier,
   DebutVTubersModifier,
@@ -23,23 +22,24 @@ import {
   TrendingVTubersModifier,
   VTubersModifier,
   VTubersViewCountChangeModifier,
-} from "../types/ApiTypes";
-import { VTuberAnniversaryDataResponse } from "../types/ApiData/VTuberAnniversaryData";
+} from '../types/ApiTypes';
+import * as GitHubCommitDetailService from './GitHubCommitDetailService';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 let axiosInstance: AxiosInstance;
 
 const initAxiosInstance = async (): Promise<AxiosInstance> => {
   let commitDetail: GitHubCommitDetailService.CommitDetail =
     await GitHubCommitDetailService.getCommitDetail(
-      "https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master",
+      'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master',
     );
 
   switch (getCurrentApiSourceState()) {
-    case "github":
+    case 'github':
       return axios.create({
         baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
       });
-    case "statically":
+    case 'statically':
     default:
       return axios.create({
         baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,

@@ -5,7 +5,7 @@ export function trimOrNullOnEmpty(
 
   const trimmed = value.trim();
 
-  if (trimmed === "") return null;
+  if (trimmed === '') return null;
 
   return trimmed;
 }

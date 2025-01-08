@@ -1,8 +1,8 @@
-import { FunctionalComponent } from "preact";
-import { Dictionary } from "../../i18n/Dictionary";
-import { Text } from "preact-i18n";
-import style from "./style.module.css";
-import { GITHUB_ISSUE_URL, GOOGLE_FORM_URL } from "../../Config";
+import { GITHUB_ISSUE_URL, GOOGLE_FORM_URL } from '../../Config';
+import { Dictionary } from '../../i18n/Dictionary';
+import style from './style.module.css';
+import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
 
 export interface ReportIssuePageProps {
   dictionary: Dictionary;
