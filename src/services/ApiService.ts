@@ -40,9 +40,13 @@ const initAxiosInstance = async (): Promise<AxiosInstance> => {
         baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
       });
     case 'statically':
-    default:
       return axios.create({
         baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+      });
+    case 'jsdelivr':
+    default:
+      return axios.create({
+        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${commitDetail.sha}/api/v2`,
       });
   }
 };
