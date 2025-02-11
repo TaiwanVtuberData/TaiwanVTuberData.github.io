@@ -172,6 +172,7 @@ const en: Dictionary = {
     MY: 'Malaysian',
   },
   apiSourceTitle: {
+    jsdelivr: "jsDelivr",
     statically: 'Statically',
     github: 'GitHub',
   },

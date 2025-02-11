@@ -157,6 +157,7 @@ export interface Dictionary {
     MY: string;
   };
   apiSourceTitle: {
+    jsdelivr: string;
     statically: string;
     github: string;
   };

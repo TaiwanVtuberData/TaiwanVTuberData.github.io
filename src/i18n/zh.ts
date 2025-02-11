@@ -167,6 +167,7 @@ const zh: Dictionary = {
     MY: '馬來西亞',
   },
   apiSourceTitle: {
+    jsdelivr: "jsDelivr",
     statically: 'Statically',
     github: 'GitHub',
   },
