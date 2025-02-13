@@ -1,7 +1,9 @@
 import { APP_VERSION, ENABLE_YEAR_END_STATISTIC } from '../../Config';
 import * as Api from '../../services/ApiService';
-import { ApiSourceOptions } from '../../types/ApiSourceOptions';
-import { ApiSourceModifier } from '../../types/Common/ApiSource';
+import {
+  apiSourceArray,
+  ApiSourceModifier,
+} from '../../types/ApiSourceOptions';
 import {
   NationalityModifier,
   nationalityArray,
@@ -176,7 +178,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         </div>
         <div>
           <ApiSourceDropDown
-            apiSourceOptions={ApiSourceOptions}
+            apiSourceOptions={apiSourceArray}
             apiSource={props.apiSource}
             onChange={(newApiSource: ApiSourceModifier): void => {
               props.setApiSource(newApiSource);

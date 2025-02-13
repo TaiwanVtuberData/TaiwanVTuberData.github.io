@@ -29,7 +29,7 @@ import VTubersViewCountPage from '../routes/VTubersViewCount';
 import YearEndStatistic from '../routes/YearEndStatistic';
 import HomePage from '../routes/home';
 import * as Api from '../services/ApiService';
-import { apiSourceArray, ApiSourceModifier } from '../types/Common/ApiSource';
+import { apiSourceArray, ApiSourceModifier } from '../types/ApiSourceOptions';
 import {
   nationalityArray,
   NationalityModifier,
