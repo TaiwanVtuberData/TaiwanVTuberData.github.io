@@ -15,7 +15,6 @@ import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
 import { FunctionalComponent, JSX } from 'preact';
 import { Text } from 'preact-i18n';
-import { Link } from 'preact-router';
 import { StateUpdater, useState, useEffect, Dispatch } from 'preact/hooks';
 
 export interface SidebarProps {
@@ -53,9 +52,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const LinkElement = (textID: string, linkTo: string): JSX.Element => {
     return (
       <div class={style.gridItem}>
-        <Link href={linkTo} onClick={(): void => setSidebarOpen(false)}>
+        <a href={linkTo} onClick={(): void => setSidebarOpen(false)}>
           <Text id={textID}>empty</Text>
-        </Link>
+        </a>
       </div>
     );
   };

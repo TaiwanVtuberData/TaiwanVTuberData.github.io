@@ -13,10 +13,8 @@ export const VideoColumn = <
 >(): TableColumn<RowData> => {
   return {
     name: <Text id="table.video">Video</Text>,
-    cell: (row: RowData): JSX.Element | null =>
-      VideoLink({
-        thumbnailUrl: row.thumbnailUrl,
-        videoUrl: row.videoUrl,
-      }),
+    cell: (row: RowData): JSX.Element | null => (
+      <VideoLink thumbnailUrl={row.thumbnailUrl} videoUrl={row.videoUrl} />
+    ),
   };
 };
