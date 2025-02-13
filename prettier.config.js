@@ -20,6 +20,7 @@ const config = {
   tabWidth: 2,
   rangeStart: 0,
   rangeEnd: Infinity,
+  objectWrap: 'preserve',
   // prettier-plugin-sort-imports
   plugins: ['./node_modules/prettier-plugin-sort-imports/dist/index.js'],
   sortingMethod: 'alphabetical',
