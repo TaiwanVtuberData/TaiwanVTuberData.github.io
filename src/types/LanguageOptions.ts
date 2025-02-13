@@ -1,4 +1,4 @@
-export const validI18nArray: ReadonlyArray<string> = ['zh', 'en'] as const;
+export const validI18nArray = ['zh', 'en'] as const;
 export type validI18n = (typeof validI18nArray)[number];
 
 export interface LanguageOption {
