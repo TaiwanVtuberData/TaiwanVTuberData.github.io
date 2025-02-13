@@ -2,7 +2,7 @@
   "homepage": "https://taiwanvtuberdata.github.io/",
   "private": true,
   "name": "taiwan-vtuber-data",
-  "version": "3.7.3",
+  "version": "3.7.4",
   "license": "BSD-3-Clause",
   "type": "module",
   "scripts": {
