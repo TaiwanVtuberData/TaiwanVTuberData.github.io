@@ -35,18 +35,17 @@ const initAxiosInstance = async (): Promise<AxiosInstance> => {
     );
 
   switch (getCurrentApiSourceState()) {
-    case 'github':
+    case 'jsdelivr':
       return axios.create({
-        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${commitDetail.sha}/api/v2`,
       });
     case 'statically':
       return axios.create({
         baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
       });
-    case 'jsdelivr':
-    default:
+    case 'github':
       return axios.create({
-        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${commitDetail.sha}/api/v2`,
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
       });
   }
 };
