@@ -1,7 +1,9 @@
 import { APP_VERSION, ENABLE_YEAR_END_STATISTIC } from '../../Config';
 import * as Api from '../../services/ApiService';
-import { ApiSourceOptions } from '../../types/ApiSourceOptions';
-import { ApiSourceModifier } from '../../types/Common/ApiSource';
+import {
+  apiSourceArray,
+  ApiSourceModifier,
+} from '../../types/ApiSourceOptions';
 import {
   NationalityModifier,
   nationalityArray,
@@ -15,7 +17,6 @@ import NationalityDropDown from '../NationalityDropDown';
 import style from './style.module.css';
 import { FunctionalComponent, JSX } from 'preact';
 import { Text } from 'preact-i18n';
-import { Link } from 'preact-router';
 import { StateUpdater, useState, useEffect, Dispatch } from 'preact/hooks';
 
 export interface SidebarProps {
@@ -53,9 +54,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
   const LinkElement = (textID: string, linkTo: string): JSX.Element => {
     return (
       <div class={style.gridItem}>
-        <Link href={linkTo} onClick={(): void => setSidebarOpen(false)}>
+        <a href={linkTo} onClick={(): void => setSidebarOpen(false)}>
           <Text id={textID}>empty</Text>
-        </Link>
+        </a>
       </div>
     );
   };
@@ -177,7 +178,7 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         </div>
         <div>
           <ApiSourceDropDown
-            apiSourceOptions={ApiSourceOptions}
+            apiSourceOptions={apiSourceArray}
             apiSource={props.apiSource}
             onChange={(newApiSource: ApiSourceModifier): void => {
               props.setApiSource(newApiSource);

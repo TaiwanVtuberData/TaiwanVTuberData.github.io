@@ -1,7 +1,3 @@
-import { ApiSourceModifier } from './Common/ApiSource';
+export const apiSourceArray = ['jsdelivr', 'statically', 'github'] as const;
 
-export const ApiSourceOptions: Array<ApiSourceModifier> = [
-  'jsdelivr',
-  'statically',
-  'github',
-];
+export type ApiSourceModifier = (typeof apiSourceArray)[number];

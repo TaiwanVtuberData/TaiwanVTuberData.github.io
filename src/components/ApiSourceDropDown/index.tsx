@@ -1,5 +1,5 @@
 import dropDownStyle from '../../style/DropDownStyle.module.css';
-import { ApiSourceModifier } from '../../types/Common/ApiSource';
+import { ApiSourceModifier } from '../../types/ApiSourceOptions';
 import { Text } from 'preact-i18n';
 import { JSX } from 'preact/jsx-runtime';
 

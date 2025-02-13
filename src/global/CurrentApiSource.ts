@@ -1,4 +1,4 @@
-import { ApiSourceModifier } from '../types/Common/ApiSource';
+import { ApiSourceModifier } from '../types/ApiSourceOptions';
 import createStore from 'react-superstore';
 
 const defaultApiSource: ApiSourceModifier = 'statically';
