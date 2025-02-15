@@ -3,7 +3,7 @@ import { ApiSourceModifier, apiSourceModifierArray } from '../types/ApiTypes';
 
 const API_SOURCE_IS_AUTOMATIC_KEY: string = 'apiSource.isAutomatic';
 const API_SOURCE_MODIFIER_KEY: string = 'apiSource.modifier';
-const DEFAULT_API_SOURCE_IS_AUTOMATIC: boolean = false;
+const DEFAULT_API_SOURCE_IS_AUTOMATIC: boolean = true;
 const DEFAULT_API_SOURCE_MODIFIER: ApiSourceModifier = 'jsdelivr';
 
 export function setApiSourceOption(apiSourceOption: ApiSourceOption) {
@@ -46,6 +46,25 @@ export function getIsAutomatic(): boolean {
     return true;
   } else {
     return DEFAULT_API_SOURCE_IS_AUTOMATIC;
+  }
+}
+
+// REMOVE: remove after the feature is stable
+export function getIsAutomaticSet(): boolean {
+  const rawIsAutomatic: string | null = localStorage.getItem(
+    API_SOURCE_IS_AUTOMATIC_KEY,
+  );
+
+  return rawIsAutomatic !== null;
+}
+
+export function getApiSourceOption(): ApiSourceOption {
+  const isAutomatic: boolean = getIsAutomatic();
+
+  if (isAutomatic) {
+    return 'automatic';
+  } else {
+    return getApiSourceModifier();
   }
 }
 

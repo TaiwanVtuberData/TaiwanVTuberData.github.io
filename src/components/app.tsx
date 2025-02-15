@@ -55,7 +55,7 @@ export function App() {
     );
 
   const [apiSource, setApiSource] = useState<ApiSourceOption>(
-    ApiSourceService.getApiSourceModifier(),
+    ApiSourceService.getApiSourceOption(),
   );
   function setApiSourceOption(apiSourceOption: ApiSourceOption) {
     setApiSource(apiSourceOption);
@@ -71,6 +71,11 @@ export function App() {
   };
 
   useEffect(() => {
+    // REMOVE: remove the check when the feature is stable
+    if (ApiSourceService.getIsAutomaticSet() === false) {
+      ApiSourceService.setApiSourceOption('automatic');
+    }
+
     setNationalityModifier(displayNationality);
     startApi();
   }, []);
