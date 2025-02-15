@@ -12,6 +12,7 @@ import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
 import { VTuberViewCountChangeDataResponse } from '../types/ApiData/VTuberViewCountChangeData';
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
+import { ApiSourceModifier } from '../types/ApiSourceOptions';
 import {
   AnniversaryVTubersModifier,
   DebutVTubersModifier,
@@ -26,32 +27,38 @@ import {
 import * as GitHubCommitDetailService from './GitHubCommitDetailService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-let axiosInstance: AxiosInstance;
+let currentCommitSha: string;
 
-const initAxiosInstance = async (): Promise<AxiosInstance> => {
-  let commitDetail: GitHubCommitDetailService.CommitDetail =
-    await GitHubCommitDetailService.getCommitDetail(
+const initCommitSha = async (): Promise<string> => {
+  let commitDetailPromise: Promise<GitHubCommitDetailService.CommitDetail> =
+    GitHubCommitDetailService.getCommitDetail(
       'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master',
     );
 
-  switch (getCurrentApiSourceState()) {
+  return commitDetailPromise.then((commitDetail) => commitDetail.sha);
+};
+
+const initAxiosInstance = (
+  apiSourceModifier: ApiSourceModifier,
+): AxiosInstance => {
+  switch (apiSourceModifier) {
     case 'jsdelivr':
       return axios.create({
-        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${commitDetail.sha}/api/v2`,
+        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${currentCommitSha}/api/v2`,
       });
     case 'statically':
       return axios.create({
-        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${currentCommitSha}/api/v2`,
       });
     case 'github':
       return axios.create({
-        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${currentCommitSha}/api/v2`,
       });
   }
 };
 
 export const bootstrapApi = async (): Promise<boolean> => {
-  await initAxiosInstance();
+  currentCommitSha = await initCommitSha();
 
   return true;
 };
@@ -59,11 +66,16 @@ export const bootstrapApi = async (): Promise<boolean> => {
 const AxiosGetWrapperNoNationality = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (axiosInstance === undefined) {
-    axiosInstance = await initAxiosInstance();
-  }
-
-  return axiosInstance.get<DataType>(`/${url}`);
+  return initAxiosInstance(getCurrentApiSourceState())
+    .get<DataType>(`/${url}`)
+    .then((response) => {
+      // TODO: add fail counter
+      const result: number = response.status;
+      if (result !== 200) {
+        console.log(`${Date.now()} ${url} result ${result}`);
+      }
+      return response;
+    });
 };
 
 export const getUpdateTime = (): Promise<AxiosResponse<UpdateTimeResponse>> => {
@@ -81,11 +93,16 @@ export const getVTuber = (
 const AxiosGetWrapper = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (axiosInstance === undefined) {
-    axiosInstance = await initAxiosInstance();
-  }
-
-  return axiosInstance.get<DataType>(`${getNationalityModifierState()}/${url}`);
+  return initAxiosInstance(getCurrentApiSourceState())
+    .get<DataType>(`${getNationalityModifierState()}/${url}`)
+    .then((response) => {
+      // TODO: add fail counter
+      const result: number = response.status;
+      if (result !== 200) {
+        console.log(`${Date.now()} ${url} result ${result}`);
+      }
+      return response;
+    });
 };
 
 export const getVTubers = (
