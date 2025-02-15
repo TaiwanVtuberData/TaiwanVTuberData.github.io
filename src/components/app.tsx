@@ -58,7 +58,7 @@ export function App() {
     );
 
   const [apiSource, setApiSource] = useState<ApiSourceModifier>(
-    getCookie('api-source', apiSourceArray, 'statically'),
+    getCookie('api-source', apiSourceArray, 'jsdelivr'),
   );
 
   const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
