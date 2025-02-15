@@ -30,7 +30,7 @@ const en: Dictionary = {
     livestreaming: 'Streaming Now',
     debutToday: 'Debut Today',
     recentLivestream: 'Recent Livestream',
-    apiSourceSelection: 'API Source(Select GitHub if the page is not loading):',
+    apiSourceSelection: 'API Source:',
     yearEndStatistic: '2024 Year End Statistic',
     yearEndEstablished: 'Debuted Over 2 Years',
     yearEndNewComer: 'Debuted Within 2 Years',

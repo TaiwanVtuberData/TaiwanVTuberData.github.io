@@ -1,8 +1,4 @@
 import {
-  getCurrentApiSourceState,
-  setCurrentApiSource,
-} from '../global/CurrentApiSource';
-import {
   getNationalityModifierState,
   setNationalityModifier,
 } from '../global/DisplayNationality';
@@ -29,7 +25,8 @@ import VTubersViewCountPage from '../routes/VTubersViewCount';
 import YearEndStatistic from '../routes/YearEndStatistic';
 import HomePage from '../routes/home';
 import * as Api from '../services/ApiService';
-import { apiSourceArray, ApiSourceModifier } from '../types/ApiSourceOptions';
+import * as ApiSourceService from '../services/ApiSourceService';
+import { ApiSourceOption } from '../types/ApiSourceOptions';
 import {
   nationalityArray,
   NationalityModifier,
@@ -57,9 +54,13 @@ export function App() {
       getCookie('nationality', nationalityArray, 'all'),
     );
 
-  const [apiSource, setApiSource] = useState<ApiSourceModifier>(
-    getCookie('api-source', apiSourceArray, 'statically'),
+  const [apiSource, setApiSource] = useState<ApiSourceOption>(
+    ApiSourceService.getApiSourceOption(),
   );
+  function setApiSourceOption(apiSourceOption: ApiSourceOption) {
+    setApiSource(apiSourceOption);
+    ApiSourceService.setApiSourceOption(apiSourceOption);
+  }
 
   const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
 
@@ -70,8 +71,12 @@ export function App() {
   };
 
   useEffect(() => {
+    // REMOVE: remove the check when the feature is stable
+    if (ApiSourceService.getIsAutomaticSet() === false) {
+      ApiSourceService.setApiSourceOption('automatic');
+    }
+
     setNationalityModifier(displayNationality);
-    setCurrentApiSource(apiSource);
     startApi();
   }, []);
 
@@ -90,21 +95,15 @@ export function App() {
   useEffect(() => {
     const prevNationalityModifier: NationalityModifier =
       getNationalityModifierState();
-    const prevApiSource: ApiSourceModifier = getCurrentApiSourceState();
 
     // only reload page on value changed
-    if (
-      displayNationality !== prevNationalityModifier ||
-      apiSource !== prevApiSource
-    ) {
+    if (displayNationality !== prevNationalityModifier) {
       setNationalityModifier(displayNationality);
       setCookie('nationality', nationalityArray, displayNationality);
 
-      setCurrentApiSource(apiSource);
-      setCookie('api-source', apiSourceArray, apiSource);
       window.location.reload();
     }
-  }, [displayNationality, apiSource]);
+  }, [displayNationality]);
 
   const ValidRouter = () => (
     <Router>
@@ -212,7 +211,7 @@ export function App() {
               nationality={displayNationality}
               setNationality={setDisplayNationality}
               apiSource={apiSource}
-              setApiSource={setApiSource}
+              setApiSource={setApiSourceOption}
             />
             <ReloadPrompt />
             <ScrollToTopBottom />

@@ -1,4 +1,3 @@
-import { getCurrentApiSourceState } from '../global/CurrentApiSource';
 import { getNationalityModifierState } from '../global/DisplayNationality';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
 import { LivestreamDataResponse } from '../types/ApiData/LivestreamData';
@@ -14,6 +13,7 @@ import { VTuberViewCountChangeDataResponse } from '../types/ApiData/VTuberViewCo
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import {
   AnniversaryVTubersModifier,
+  ApiSourceModifier,
   DebutVTubersModifier,
   GraduateVTubersModifier,
   GrowingVTubersModifier,
@@ -23,35 +23,42 @@ import {
   VTubersModifier,
   VTubersViewCountChangeModifier,
 } from '../types/ApiTypes';
+import * as ApiSourceService from './ApiSourceService';
 import * as GitHubCommitDetailService from './GitHubCommitDetailService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-let axiosInstance: AxiosInstance;
+let currentCommitSha: string;
 
-const initAxiosInstance = async (): Promise<AxiosInstance> => {
-  let commitDetail: GitHubCommitDetailService.CommitDetail =
-    await GitHubCommitDetailService.getCommitDetail(
+const initCommitSha = async (): Promise<string> => {
+  let commitDetailPromise: Promise<GitHubCommitDetailService.CommitDetail> =
+    GitHubCommitDetailService.getCommitDetail(
       'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master',
     );
 
-  switch (getCurrentApiSourceState()) {
+  return commitDetailPromise.then((commitDetail) => commitDetail.sha);
+};
+
+const initAxiosInstance = (
+  apiSourceModifier: ApiSourceModifier,
+): AxiosInstance => {
+  switch (apiSourceModifier) {
     case 'jsdelivr':
       return axios.create({
-        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${commitDetail.sha}/api/v2`,
+        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${currentCommitSha}/api/v2`,
       });
     case 'statically':
       return axios.create({
-        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${currentCommitSha}/api/v2`,
       });
     case 'github':
       return axios.create({
-        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${commitDetail.sha}/api/v2`,
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${currentCommitSha}/api/v2`,
       });
   }
 };
 
 export const bootstrapApi = async (): Promise<boolean> => {
-  await initAxiosInstance();
+  currentCommitSha = await initCommitSha();
 
   return true;
 };
@@ -59,11 +66,24 @@ export const bootstrapApi = async (): Promise<boolean> => {
 const AxiosGetWrapperNoNationality = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (axiosInstance === undefined) {
-    axiosInstance = await initAxiosInstance();
-  }
+  const currentApiSourceModifier: ApiSourceModifier =
+    ApiSourceService.getApiSourceModifier();
 
-  return axiosInstance.get<DataType>(`/${url}`);
+  return initAxiosInstance(currentApiSourceModifier)
+    .get<DataType>(`/${url}`)
+    .then((response) => {
+      if (ApiSourceService.getIsAutomatic() && response.status !== 200) {
+        const newApiSourceModifier: ApiSourceModifier =
+          ApiSourceService.getNextAvailableApiSourceModifier(
+            currentApiSourceModifier,
+          );
+        console.log(
+          `Calling API [${response.config.url}] failed. Switching API source to [${newApiSourceModifier}].`,
+        );
+        ApiSourceService.setApiSourceModifier(newApiSourceModifier);
+      }
+      return response;
+    });
 };
 
 export const getUpdateTime = (): Promise<AxiosResponse<UpdateTimeResponse>> => {
@@ -81,11 +101,24 @@ export const getVTuber = (
 const AxiosGetWrapper = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  if (axiosInstance === undefined) {
-    axiosInstance = await initAxiosInstance();
-  }
+  const currentApiSourceModifier: ApiSourceModifier =
+    ApiSourceService.getApiSourceModifier();
 
-  return axiosInstance.get<DataType>(`${getNationalityModifierState()}/${url}`);
+  return initAxiosInstance(currentApiSourceModifier)
+    .get<DataType>(`${getNationalityModifierState()}/${url}`)
+    .then((response) => {
+      if (ApiSourceService.getIsAutomatic() && response.status !== 200) {
+        const newApiSourceModifier: ApiSourceModifier =
+          ApiSourceService.getNextAvailableApiSourceModifier(
+            currentApiSourceModifier,
+          );
+        console.log(
+          `Calling API [${response.config.url}] failed. Switching API source to [${newApiSourceModifier}].`,
+        );
+        ApiSourceService.setApiSourceModifier(newApiSourceModifier);
+      }
+      return response;
+    });
 };
 
 export const getVTubers = (

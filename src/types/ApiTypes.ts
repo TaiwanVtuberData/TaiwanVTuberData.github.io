@@ -1,3 +1,11 @@
+export const apiSourceModifierArray = [
+  'jsdelivr',
+  'statically',
+  'github',
+] as const;
+
+export type ApiSourceModifier = (typeof apiSourceModifierArray)[number];
+
 export type VTubersModifier = '10' | 'all';
 
 export type TrendingVTuberSortOrder = 'livestream' | 'video' | 'combined';

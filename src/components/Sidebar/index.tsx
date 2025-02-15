@@ -1,8 +1,8 @@
 import { APP_VERSION, ENABLE_YEAR_END_STATISTIC } from '../../Config';
 import * as Api from '../../services/ApiService';
 import {
-  apiSourceArray,
-  ApiSourceModifier,
+  ApiSourceOption,
+  apiSourceOptionArray,
 } from '../../types/ApiSourceOptions';
 import {
   NationalityModifier,
@@ -24,8 +24,8 @@ export interface SidebarProps {
   setLocale: Dispatch<StateUpdater<validI18n>>;
   nationality: NationalityModifier;
   setNationality: Dispatch<StateUpdater<NationalityModifier>>;
-  apiSource: ApiSourceModifier;
-  setApiSource: Dispatch<StateUpdater<ApiSourceModifier>>;
+  apiSource: ApiSourceOption;
+  setApiSource: (apiSourceOption: ApiSourceOption) => void;
 }
 
 const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
@@ -178,9 +178,9 @@ const Sidebar: FunctionalComponent<SidebarProps> = (props: SidebarProps) => {
         </div>
         <div>
           <ApiSourceDropDown
-            apiSourceOptions={apiSourceArray}
+            apiSourceOptions={apiSourceOptionArray}
             apiSource={props.apiSource}
-            onChange={(newApiSource: ApiSourceModifier): void => {
+            onChange={(newApiSource: ApiSourceOption): void => {
               props.setApiSource(newApiSource);
               closeSidebar();
             }}

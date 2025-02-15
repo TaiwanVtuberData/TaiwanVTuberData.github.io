@@ -1,4 +1,3 @@
-import { getCurrentApiSourceState } from '../global/CurrentApiSource';
 import { getNationalityModifierState } from '../global/DisplayNationality';
 import { YearEndVTuberTwitchGrowthDataResponse } from '../types/ApiData/YearEndVTuberTwitchGrowthData';
 import { YearEndVTuberYouTubeGrowthDataResponse } from '../types/ApiData/YearEndVTuberYouTubeGrowthData';
@@ -7,6 +6,7 @@ import {
   YearEndGrowingVTubersModifier,
   YearEndVTubersViewCountChangeModifier,
 } from '../types/ApiTypes';
+import * as ApiSourceService from './ApiSourceService';
 import * as GitHubCommitDetailService from './GitHubCommitDetailService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
@@ -18,15 +18,18 @@ const initAxiosInstance = async (): Promise<AxiosInstance> => {
       'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/commits/master',
     );
 
-  switch (getCurrentApiSourceState()) {
+  switch (ApiSourceService.getApiSourceModifier()) {
+    case 'jsdelivr':
+      return axios.create({
+        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport@${commitDetail.sha}`,
+      });
+    case 'statically':
+      return axios.create({
+        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
+      });
     case 'github':
       return axios.create({
         baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
-      });
-    case 'statically':
-    default:
-      return axios.create({
-        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
       });
   }
 };
