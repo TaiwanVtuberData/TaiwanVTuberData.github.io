@@ -66,13 +66,21 @@ export const bootstrapApi = async (): Promise<boolean> => {
 const AxiosGetWrapperNoNationality = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  return initAxiosInstance(ApiSourceService.getApiSourceModifier())
+  const currentApiSourceModifier: ApiSourceModifier =
+    ApiSourceService.getApiSourceModifier();
+
+  return initAxiosInstance(currentApiSourceModifier)
     .get<DataType>(`/${url}`)
     .then((response) => {
-      // TODO: add fail counter
-      const result: number = response.status;
-      if (result !== 200) {
-        console.log(`${Date.now()} ${url} result ${result}`);
+      if (ApiSourceService.getIsAutomatic() && response.status !== 200) {
+        const newApiSourceModifier: ApiSourceModifier =
+          ApiSourceService.getNextAvailableApiSourceModifier(
+            currentApiSourceModifier,
+          );
+        console.log(
+          `Calling API [${response.config.url}] failed. Switching API source to [${newApiSourceModifier}].`,
+        );
+        ApiSourceService.setApiSourceModifier(newApiSourceModifier);
       }
       return response;
     });
@@ -93,13 +101,21 @@ export const getVTuber = (
 const AxiosGetWrapper = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  return initAxiosInstance(ApiSourceService.getApiSourceModifier())
+  const currentApiSourceModifier: ApiSourceModifier =
+    ApiSourceService.getApiSourceModifier();
+
+  return initAxiosInstance(currentApiSourceModifier)
     .get<DataType>(`${getNationalityModifierState()}/${url}`)
     .then((response) => {
-      // TODO: add fail counter
-      const result: number = response.status;
-      if (result !== 200) {
-        console.log(`${Date.now()} ${url} result ${result}`);
+      if (ApiSourceService.getIsAutomatic() && response.status !== 200) {
+        const newApiSourceModifier: ApiSourceModifier =
+          ApiSourceService.getNextAvailableApiSourceModifier(
+            currentApiSourceModifier,
+          );
+        console.log(
+          `Calling API [${response.config.url}] failed. Switching API source to [${newApiSourceModifier}].`,
+        );
+        ApiSourceService.setApiSourceModifier(newApiSourceModifier);
       }
       return response;
     });
