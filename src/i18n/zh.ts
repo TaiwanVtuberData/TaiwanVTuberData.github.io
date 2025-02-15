@@ -30,7 +30,7 @@ const zh: Dictionary = {
     livestreaming: '現正實況',
     debutToday: '今日出道',
     recentLivestream: '最近實況',
-    apiSourceSelection: 'API 來源(若頁面無法載入請選擇 GitHub)：',
+    apiSourceSelection: 'API 來源：',
     yearEndStatistic: '2024 年度統計',
     yearEndEstablished: '出道超過 2 年',
     yearEndNewComer: '出道 2 年內',
