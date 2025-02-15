@@ -1,12 +1,12 @@
 import dropDownStyle from '../../style/DropDownStyle.module.css';
-import { ApiSourceModifier } from '../../types/ApiSourceOptions';
+import { ApiSourceOption } from '../../types/ApiSourceOptions';
 import { Text } from 'preact-i18n';
 import { JSX } from 'preact/jsx-runtime';
 
 interface ApiSourceDropDownProps {
-  apiSourceOptions: ReadonlyArray<ApiSourceModifier>;
-  apiSource: ApiSourceModifier;
-  onChange: (newApiSource: ApiSourceModifier) => void;
+  apiSourceOptions: ReadonlyArray<ApiSourceOption>;
+  apiSource: ApiSourceOption;
+  onChange: (newApiSource: ApiSourceOption) => void;
 }
 
 const ApiSourceDropDown = (props: ApiSourceDropDownProps): JSX.Element => {

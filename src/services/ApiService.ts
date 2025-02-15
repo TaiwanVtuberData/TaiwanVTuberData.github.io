@@ -1,4 +1,3 @@
-import { getCurrentApiSourceState } from '../global/CurrentApiSource';
 import { getNationalityModifierState } from '../global/DisplayNationality';
 import { GroupDataResponse } from '../types/ApiData/GroupData';
 import { LivestreamDataResponse } from '../types/ApiData/LivestreamData';
@@ -12,9 +11,9 @@ import { VTuberGrowthDataResponse } from '../types/ApiData/VTuberGrowthData';
 import { VTuberPopularityDataResponse } from '../types/ApiData/VTuberPopularityData';
 import { VTuberViewCountChangeDataResponse } from '../types/ApiData/VTuberViewCountChangeData';
 import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
-import { ApiSourceModifier } from '../types/ApiSourceOptions';
 import {
   AnniversaryVTubersModifier,
+  ApiSourceModifier,
   DebutVTubersModifier,
   GraduateVTubersModifier,
   GrowingVTubersModifier,
@@ -24,6 +23,7 @@ import {
   VTubersModifier,
   VTubersViewCountChangeModifier,
 } from '../types/ApiTypes';
+import * as ApiSourceService from './ApiSourceService';
 import * as GitHubCommitDetailService from './GitHubCommitDetailService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
@@ -66,7 +66,7 @@ export const bootstrapApi = async (): Promise<boolean> => {
 const AxiosGetWrapperNoNationality = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  return initAxiosInstance(getCurrentApiSourceState())
+  return initAxiosInstance(ApiSourceService.getApiSourceModifier())
     .get<DataType>(`/${url}`)
     .then((response) => {
       // TODO: add fail counter
@@ -93,7 +93,7 @@ export const getVTuber = (
 const AxiosGetWrapper = async <DataType>(
   url: string,
 ): Promise<AxiosResponse<DataType>> => {
-  return initAxiosInstance(getCurrentApiSourceState())
+  return initAxiosInstance(ApiSourceService.getApiSourceModifier())
     .get<DataType>(`${getNationalityModifierState()}/${url}`)
     .then((response) => {
       // TODO: add fail counter
