@@ -181,5 +181,6 @@ export interface Dictionary {
   };
   detail: {
     yearEndDetail: string;
+    advertisementPromptDetail: string;
   };
 }

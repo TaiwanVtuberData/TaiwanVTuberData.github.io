@@ -196,6 +196,8 @@ const en: Dictionary = {
   },
   detail: {
     yearEndDetail: 'Statistic Interval: 2024-01-01 through 2025-01-01',
+    advertisementPromptDetail:
+      'The site provides event promotion services. Click the link to apply',
   },
 } as const;
 
