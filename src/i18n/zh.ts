@@ -191,6 +191,7 @@ const zh: Dictionary = {
   },
   detail: {
     yearEndDetail: '統計期間：2024-01-01 至 2025-01-01',
+    advertisementPromptDetail: '本站提供活動宣傳服務，點擊此連結申請',
   },
 } as const;
 

@@ -1,7 +1,9 @@
+import { GOOGLE_FORM_URL } from '../../Config';
 import * as AdvertisementApi from '../../services/AdvertisementService';
 import { AdvertisementDetail } from '../../services/AdvertisementService';
 import style from './style.module.css';
 import { FunctionalComponent } from 'preact';
+import { Text } from 'preact-i18n';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 interface AdvertisementProps {}
@@ -56,7 +58,13 @@ const Advertisement: FunctionalComponent<AdvertisementProps> = (
       </div>
     </a>
   ) : (
-    <></>
+    <div class={style.centerText}>
+      <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
+        <Text id="detail.advertisementPromptDetail">
+          The site provides event promotion services. Click the link to apply
+        </Text>
+      </a>
+    </div>
   );
 };
 
