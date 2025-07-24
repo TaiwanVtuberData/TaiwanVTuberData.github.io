@@ -2,7 +2,7 @@
   "homepage": "https://taiwanvtuberdata.github.io/",
   "private": true,
   "name": "taiwan-vtuber-data",
-  "version": "3.8.3",
+  "version": "3.8.4",
   "license": "BSD-3-Clause",
   "type": "module",
   "scripts": {
@@ -18,7 +18,7 @@
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/interaction": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "preact": "^10.26.9",
     "preact-i18n": "^2.4.0-preactx",
     "preact-iso": "^2.9.2",
