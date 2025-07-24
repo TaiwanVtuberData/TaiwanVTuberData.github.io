@@ -18,7 +18,7 @@
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/interaction": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "preact": "^10.26.9",
     "preact-i18n": "^2.4.0-preactx",
     "preact-iso": "^2.9.2",
