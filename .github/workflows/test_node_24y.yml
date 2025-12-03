@@ -1,0 +1,45 @@
+# Copied from
+# https://github.com/adityac-addepar/todolist/blob/main/.github/workflows/deploy_react.yml
+name: Test Node.js 24 build
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [24.x] # We will deploy with only one version of node  
+
+    env:
+      GOOGLE_FORM_URL: ${{ secrets.GOOGLE_FORM_URL }}
+      _P_GITHUB_ISSUE_URL: ${{ secrets._P_GITHUB_ISSUE_URL }}
+      TIMEZONE_DIFF_IN_HOUR: ${{ secrets.TIMEZONE_DIFF_IN_HOUR }}
+      CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+      ENFORCE_YOUTUBE_COMPLIANCE: ${{ secrets.ENFORCE_YOUTUBE_COMPLIANCE }}
+      ENABLE_ADVERTISEMENT: ${{ secrets.ENABLE_ADVERTISEMENT }}
+      ENABLE_YEAR_END_STATISTIC: ${{ secrets.ENABLE_YEAR_END_STATISTIC }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm ci, build and test
+        continue-on-error: true # This step will only warn if it fails
+        run: |
+          npm ci
+          npm run build:gh
+          npm test
