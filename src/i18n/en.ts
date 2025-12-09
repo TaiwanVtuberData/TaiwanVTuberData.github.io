@@ -31,7 +31,7 @@ const en: Dictionary = {
     debutToday: 'Debut Today',
     recentLivestream: 'Recent Livestream',
     apiSourceSelection: 'API Source:',
-    yearEndStatistic: '2024 Year End Statistic',
+    yearEndStatistic: '2025 Year End Statistic',
     yearEndEstablished: 'Debuted Over 2 Years',
     yearEndNewComer: 'Debuted Within 2 Years',
     growingYouTubeSubscriberCount: 'YouTube Subscriber Count Growth',
@@ -195,7 +195,7 @@ const en: Dictionary = {
     newVersion: 'New version:',
   },
   detail: {
-    yearEndDetail: 'Statistic Interval: 2024-01-01 through 2025-01-01',
+    yearEndDetail: 'Statistic Interval: 2025-01-01 through 2026-01-01',
     advertisementPromptDetail:
       'The site provides event promotion services. Click the link to apply',
   },

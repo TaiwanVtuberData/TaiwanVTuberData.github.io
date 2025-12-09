@@ -31,7 +31,7 @@ const zh: Dictionary = {
     debutToday: '今日出道',
     recentLivestream: '最近實況',
     apiSourceSelection: 'API 來源：',
-    yearEndStatistic: '2024 年度統計',
+    yearEndStatistic: '2025 年度統計',
     yearEndEstablished: '出道超過 2 年',
     yearEndNewComer: '出道 2 年內',
     growingYouTubeSubscriberCount: 'YouTube 訂閱總數成長',
@@ -190,7 +190,7 @@ const zh: Dictionary = {
     newVersion: '新版本：',
   },
   detail: {
-    yearEndDetail: '統計期間：2024-01-01 至 2025-01-01',
+    yearEndDetail: '統計期間：2025-01-01 至 2026-01-01',
     advertisementPromptDetail: '本站提供活動宣傳服務，點擊此連結申請',
   },
 } as const;
