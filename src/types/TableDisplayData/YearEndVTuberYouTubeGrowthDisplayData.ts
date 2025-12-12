@@ -6,8 +6,7 @@ export interface GrowthDisplayData extends GrowthData {
   percentage: number;
 }
 
-export interface YearEndVTuberYouTubeGrowthDisplayData
-  extends VTuberDisplayData {
+export interface YearEndVTuberYouTubeGrowthDisplayData extends VTuberDisplayData {
   YouTubeSubscriber: HasCountType;
   _1YearGrowth: GrowthDisplayData;
   ranking: number;
