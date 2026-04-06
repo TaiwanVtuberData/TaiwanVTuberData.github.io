@@ -45,17 +45,8 @@ export function getIsAutomatic(): boolean {
   if (rawIsAutomatic === 'true') {
     return true;
   } else {
-    return DEFAULT_API_SOURCE_IS_AUTOMATIC;
+    return false;
   }
-}
-
-// REMOVE: remove after the feature is stable
-export function getIsAutomaticSet(): boolean {
-  const rawIsAutomatic: string | null = localStorage.getItem(
-    API_SOURCE_IS_AUTOMATIC_KEY,
-  );
-
-  return rawIsAutomatic !== null;
 }
 
 export function getApiSourceOption(): ApiSourceOption {
