@@ -1,4 +1,3 @@
-import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
 import YouTubeTwitchCount from '../components/YouTubeTwitchCount';
 import { CountType } from '../types/Common/CountType';
 import { Text } from 'preact-i18n';
@@ -26,6 +25,5 @@ export const PopularityColumn = <
         TwitchCount={numberToCountType(row.TwitchPopularity)}
       />
     ),
-    omit: ENFORCE_YOUTUBE_COMPLIANCE,
   };
 };

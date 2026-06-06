@@ -1,4 +1,3 @@
-import { ENFORCE_YOUTUBE_COMPLIANCE } from '../Config';
 import ShowVideoButton from '../components/ShowVideoButton';
 import { VideoInfo } from '../types/Common/VideoInfo';
 import { Text } from 'preact-i18n';
@@ -18,6 +17,5 @@ export const PopularVideoColumn = <
       row.popularVideo !== undefined ? (
         <ShowVideoButton popularVideo={row.popularVideo} />
       ) : null,
-    omit: ENFORCE_YOUTUBE_COMPLIANCE,
   };
 };
