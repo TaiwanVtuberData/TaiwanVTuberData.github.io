@@ -1,4 +1,3 @@
-import { ENFORCE_YOUTUBE_COMPLIANCE } from '../../Config';
 import DropDownList from '../../components/DropDownList';
 import FilterWindow from '../../components/FilterWindow';
 import QuestionMarkToolTip from '../../components/QuestionMarkToolTip';
@@ -53,7 +52,6 @@ const TrendingVTubersPage: FunctionalComponent<TrendingVTubersPageProps> = (
       ...PopularityColumn(),
       sortFunction: PopularityCountAscendingSort,
       sortable: true,
-      omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
       ...YouTubeTwitchCountColumn(),
