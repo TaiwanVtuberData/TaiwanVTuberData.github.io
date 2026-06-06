@@ -1,5 +1,6 @@
 import ProfileImagePopup from '../../components/ProfileImagePopup';
 import SearchBar from '../../components/SearchBar';
+import { TODAY_DATE_MINUS_30_DAYS_STRING } from '../../global/TodayDate';
 import { Dictionary } from '../../i18n/Dictionary';
 import * as Api from '../../services/ApiService';
 import tableStyle from '../../style/DataTableStyle.module.css';
@@ -118,6 +119,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
     await Api.getLivestreams('all').then((res) => {
       const arrayData: Array<LivestreamDisplayData> = res.data.livestreams
         .map((e) => e)
+        .filter((e) => e.startTime > TODAY_DATE_MINUS_30_DAYS_STRING)
         .map((e, index) => LivestreamToDisplayData(e, index))
         // what a great Date API, thanks javascript
         .sort((a, b) => a.startTime.getTime() - b.startTime.getTime());

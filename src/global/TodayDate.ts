@@ -13,3 +13,12 @@ export const TODAY_DATE_STRING: string = getISODateString(
   TODAY_DATE,
   TIMEZONE_DIFF_IN_HOUR,
 );
+
+const PAST_DATE = TODAY_DATE;
+PAST_DATE.setDate(PAST_DATE.getDate() - 30);
+const TODAY_DATE_MINUS_30_DAYS: Date = PAST_DATE;
+
+export const TODAY_DATE_MINUS_30_DAYS_STRING: string = getISODateString(
+  TODAY_DATE_MINUS_30_DAYS,
+  TIMEZONE_DIFF_IN_HOUR,
+);
