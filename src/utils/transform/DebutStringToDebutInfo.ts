@@ -25,7 +25,7 @@ export const debutStringToDebutInfo = (debutString: string): HasDebutInfo => {
       dateDiffInDays(
         dateStringToDate(debutString, TIMEZONE_DIFF_IN_HOUR),
         TODAY_DATE,
-      ) < 30,
+      ) <= 30,
   };
 };
 
