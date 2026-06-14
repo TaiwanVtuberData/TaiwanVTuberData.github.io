@@ -14,7 +14,7 @@ export const TODAY_DATE_STRING: string = getISODateString(
   TIMEZONE_DIFF_IN_HOUR,
 );
 
-const PAST_DATE = TODAY_DATE;
+const PAST_DATE = new Date(TODAY_DATE);
 PAST_DATE.setDate(PAST_DATE.getDate() - 30);
 const TODAY_DATE_MINUS_30_DAYS: Date = PAST_DATE;
 
