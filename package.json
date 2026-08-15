@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.5",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^22.20.1",
     "@types/preact-i18n": "^2.3.6",
     "@vitest/coverage-v8": "^4.1.10",
@@ -37,7 +38,6 @@
     "eslint-config-preact": "^2.0.0",
     "http-server": "^14.1.1",
     "prettier": "^3.9.6",
-    "prettier-plugin-sort-imports": "^1.8.11",
     "typescript": "^7.0.2",
     "vite": "^7.3.6",
     "vite-plugin-checker": "^0.14.5",

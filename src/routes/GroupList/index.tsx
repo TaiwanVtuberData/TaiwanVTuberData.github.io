@@ -31,7 +31,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       cell: (row: { name: string }): JSX.Element => (
         <a href={GetRoute({ type: 'group', name: row.name })}>{row.name}</a>
       ),
-      selector: r => r.name,
+      selector: (r) => r.name,
       sortFunction: (a, b) => a.name.localeCompare(b.name),
       sortable: true,
       minWidth: '100px',

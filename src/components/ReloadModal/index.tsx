@@ -1,7 +1,6 @@
 import './style.css';
 import { JSX } from 'preact';
 import { Text } from 'preact-i18n';
-
 import { useRegisterSW } from 'virtual:pwa-register/preact';
 
 // https://vite-pwa-org.netlify.app/frameworks/preact
