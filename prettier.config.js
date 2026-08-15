@@ -2,6 +2,7 @@ const config = {
   arrowParens: 'always',
   bracketSameLine: false,
   bracketSpacing: true,
+  checkIgnorePragma: false,
   embeddedLanguageFormatting: 'auto',
   endOfLine: 'lf',
   htmlWhitespaceSensitivity: 'css',
