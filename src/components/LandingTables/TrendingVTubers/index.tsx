@@ -20,7 +20,8 @@ const TrendingVTubersTable: FunctionalComponent = () => {
   const columns: Array<TableColumn<VTuberPopularityDisplayData>> = [
     {
       ...RankingColumn(),
-      width: '30px',
+      width: '50px',
+      pinned: 'left',
     },
     NameColumn(),
     PopularityColumn(),

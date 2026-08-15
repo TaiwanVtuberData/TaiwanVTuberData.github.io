@@ -33,10 +33,7 @@ export type GraduateVTubersModifier = 'next-7-days' | 'recent';
 export type TrendingVideosModifier = 'all' | 'no-duplicate';
 
 export type LivestreamsModifier =
-  | 'all'
-  | 'all-no-title'
-  | 'debut'
-  | 'debut-no-title';
+  'all' | 'all-no-title' | 'debut' | 'debut-no-title';
 
 export type EstablishTypeModifier = 'established' | 'new';
 

@@ -2,6 +2,7 @@ const config = {
   arrowParens: 'always',
   bracketSameLine: false,
   bracketSpacing: true,
+  checkIgnorePragma: false,
   embeddedLanguageFormatting: 'auto',
   endOfLine: 'lf',
   htmlWhitespaceSensitivity: 'css',
@@ -21,9 +22,7 @@ const config = {
   rangeStart: 0,
   rangeEnd: Infinity,
   objectWrap: 'preserve',
-  // prettier-plugin-sort-imports
-  plugins: ['./node_modules/prettier-plugin-sort-imports/dist/index.js'],
-  sortingMethod: 'alphabetical',
+  plugins: ['@trivago/prettier-plugin-sort-imports'],
 };
 
 export default config;

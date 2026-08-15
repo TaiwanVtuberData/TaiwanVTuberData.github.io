@@ -37,7 +37,8 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
     {
       ...RankingColumn(),
       sortable: true,
-      width: '40px',
+      width: '55px',
+      pinned: 'left',
     },
     {
       ...NameColumn(),
@@ -189,8 +190,7 @@ const TrendingVideosPage: FunctionalComponent<TrendingVideosPageProps> = (
         paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
+        subHeader={searchBarComponent}
       />
     </>
   );

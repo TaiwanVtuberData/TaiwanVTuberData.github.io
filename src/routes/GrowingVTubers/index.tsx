@@ -11,17 +11,13 @@ import { NameColumn } from '../../tableTypes/NameColumn';
 import { NationalityColumn } from '../../tableTypes/NationalityColumn';
 import { PopularVideoColumn } from '../../tableTypes/PopularVideoColumn';
 import { YouTubeSubscriberColumn } from '../../tableTypes/YouTubeSubscriberColumn';
-import { _30DaysGrowthColumn } from '../../tableTypes/_30DaysGrowthColumn';
 import { _7DaysGrowthColumn } from '../../tableTypes/_7DaysGrowthColumn';
+import { _30DaysGrowthColumn } from '../../tableTypes/_30DaysGrowthColumn';
 import { VTuberGrowthDisplayDataFilterModel } from '../../types/FilterType/VTuberGrowthDisplayDataFilterModel';
 import { VTuberGrowthDisplayData } from '../../types/TableDisplayData/VTuberGrowthDisplayData';
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { filterFunction } from '../../utils/FilterModelHelper';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
-import {
-  _30DaysGrowthSort,
-  _7DaysGrowthSort,
-} from '../../utils/sort/GrowthSort';
 import { VTuberGrowthToDisplay } from '../../utils/transform/GrowthTransform';
 import { FunctionalComponent } from 'preact';
 import { Text } from 'preact-i18n';
@@ -50,14 +46,18 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
       ..._7DaysGrowthColumn(props.dictionary.table),
       right: true,
       sortable: true,
-      sortFunction: _7DaysGrowthSort,
+      selector: (r) => r._7DaysGrowth.percentage,
+      sortFunction: (a, b) =>
+        a._7DaysGrowth.percentage - b._7DaysGrowth.percentage,
       omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
       ..._30DaysGrowthColumn(props.dictionary.table),
       right: true,
       sortable: true,
-      sortFunction: _30DaysGrowthSort,
+      selector: (r) => r._30DaysGrowth.percentage,
+      sortFunction: (a, b) =>
+        a._30DaysGrowth.percentage - b._30DaysGrowth.percentage,
       omit: ENFORCE_YOUTUBE_COMPLIANCE,
     },
     {
@@ -158,8 +158,7 @@ const GrowingVTubersPage: FunctionalComponent<GrowingVTubersPageProps> = (
         paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
+        subHeader={searchBarComponent}
       />
     </>
   );

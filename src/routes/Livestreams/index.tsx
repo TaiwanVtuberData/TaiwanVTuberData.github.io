@@ -180,8 +180,7 @@ const LivestreamsPage: FunctionalComponent<LivestreamsPageProps> = (
         fixedHeader
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
+        subHeader={searchBarComponent}
       />
     </>
   );
