@@ -10,7 +10,6 @@ import { GroupDisplayData } from '../../types/TableDisplayData/GroupDisplayData'
 import DefaultDataTableProps from '../../utils/DefaultDataTableProps';
 import { GetCurrentNationalitySpan } from '../../utils/NationalityUtils';
 import { GetRoute } from '../../utils/TypeSafeRouting';
-import { NameSort } from '../../utils/sort/NameSort';
 import { groupToDisplay } from '../../utils/transform/GroupTransform';
 import style from './style.module.css';
 import { FunctionalComponent, JSX } from 'preact';
@@ -32,7 +31,8 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
       cell: (row: { name: string }): JSX.Element => (
         <a href={GetRoute({ type: 'group', name: row.name })}>{row.name}</a>
       ),
-      sortFunction: NameSort,
+      selector: r => r.name,
+      sortFunction: (a, b) => a.name.localeCompare(b.name),
       sortable: true,
       minWidth: '100px',
       maxWidth: '150px',
@@ -176,8 +176,7 @@ const GroupListPage: FunctionalComponent<GroupListPageProps> = (
         paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
-        subHeader
-        subHeaderComponent={searchBarComponent}
+        subHeader={searchBarComponent}
       />
     </>
   );
