@@ -168,8 +168,7 @@ const zh: Dictionary = {
   },
   apiSourceTitle: {
     automatic: '自動',
-    jsdelivr: 'jsDelivr',
-    statically: 'Statically',
+    apitaiwanvtuberdata: '預設 CDN',
     github: 'GitHub',
   },
   dropDown: {

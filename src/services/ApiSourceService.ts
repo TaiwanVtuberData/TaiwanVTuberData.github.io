@@ -4,7 +4,7 @@ import { ApiSourceModifier, apiSourceModifierArray } from '../types/ApiTypes';
 const API_SOURCE_IS_AUTOMATIC_KEY: string = 'apiSource.isAutomatic';
 const API_SOURCE_MODIFIER_KEY: string = 'apiSource.modifier';
 const DEFAULT_API_SOURCE_IS_AUTOMATIC: boolean = true;
-const DEFAULT_API_SOURCE_MODIFIER: ApiSourceModifier = 'jsdelivr';
+const DEFAULT_API_SOURCE_MODIFIER: ApiSourceModifier = 'apitaiwanvtuberdata';
 
 export function setApiSourceOption(apiSourceOption: ApiSourceOption) {
   switch (apiSourceOption) {
@@ -14,8 +14,7 @@ export function setApiSourceOption(apiSourceOption: ApiSourceOption) {
         setApiSourceModifier(DEFAULT_API_SOURCE_MODIFIER);
       }
       break;
-    case 'jsdelivr':
-    case 'statically':
+    case 'apitaiwanvtuberdata':
     case 'github':
       {
         setIsAutomatic(false);

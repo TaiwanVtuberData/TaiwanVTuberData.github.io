@@ -173,8 +173,7 @@ const en: Dictionary = {
   },
   apiSourceTitle: {
     automatic: 'Automatic',
-    jsdelivr: 'jsDelivr',
-    statically: 'Statically',
+    apitaiwanvtuberdata: 'Default CDN',
     github: 'GitHub',
   },
   dropDown: {

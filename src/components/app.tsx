@@ -24,7 +24,6 @@ import VTuberPage from '../routes/VTuber';
 import VTubersViewCountPage from '../routes/VTubersViewCount';
 import YearEndStatistic from '../routes/YearEndStatistic';
 import HomePage from '../routes/home';
-import * as Api from '../services/ApiService';
 import * as ApiSourceService from '../services/ApiSourceService';
 import { ApiSourceOption } from '../types/ApiSourceOptions';
 import {
@@ -62,17 +61,8 @@ export function App() {
     ApiSourceService.setApiSourceOption(apiSourceOption);
   }
 
-  const [isApiBootstrapped, setIsApiBootstrapped] = useState<boolean>(false);
-
-  const startApi = async (): Promise<void> => {
-    await Api.bootstrapApi().then((bootstrapped) => {
-      setIsApiBootstrapped(bootstrapped);
-    });
-  };
-
   useEffect(() => {
     setNationalityModifier(displayNationality);
-    startApi();
   }, []);
 
   useEffect(() => {
@@ -198,25 +188,21 @@ export function App() {
   return (
     <div id="preact_root">
       <IntlProvider definition={definition}>
-        {isApiBootstrapped ? (
-          <>
-            <Sidebar
-              locale={locale}
-              setLocale={setLocale}
-              nationality={displayNationality}
-              setNationality={setDisplayNationality}
-              apiSource={apiSource}
-              setApiSource={setApiSourceOption}
-            />
-            <ReloadPrompt />
-            <ScrollToTopBottom />
-            <VTuberProfileModal />
-            <VideoModal />
-            <ValidRouter />
-          </>
-        ) : (
-          <span>Loading...</span>
-        )}
+        <>
+          <Sidebar
+            locale={locale}
+            setLocale={setLocale}
+            nationality={displayNationality}
+            setNationality={setDisplayNationality}
+            apiSource={apiSource}
+            setApiSource={setApiSourceOption}
+          />
+          <ReloadPrompt />
+          <ScrollToTopBottom />
+          <VTuberProfileModal />
+          <VideoModal />
+          <ValidRouter />
+        </>
       </IntlProvider>
     </div>
   );
