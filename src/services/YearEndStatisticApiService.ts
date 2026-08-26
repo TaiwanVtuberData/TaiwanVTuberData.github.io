@@ -19,13 +19,10 @@ const initAxiosInstance = async (): Promise<AxiosInstance> => {
     );
 
   switch (ApiSourceService.getApiSourceModifier()) {
-    case 'jsdelivr':
+    // TODO: apitaiwanvtuberdata use custom CDN
+    case 'apitaiwanvtuberdata':
       return axios.create({
-        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport@${commitDetail.sha}`,
-      });
-    case 'statically':
-      return axios.create({
-        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
       });
     case 'github':
       return axios.create({

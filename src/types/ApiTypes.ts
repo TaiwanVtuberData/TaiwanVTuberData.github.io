@@ -1,6 +1,5 @@
 export const apiSourceModifierArray = [
-  'jsdelivr',
-  'statically',
+  'apitaiwanvtuberdata',
   'github',
 ] as const;
 

@@ -1,7 +1,6 @@
 export const apiSourceOptionArray = [
   'automatic',
-  'jsdelivr',
-  'statically',
+  'apitaiwanvtuberdata',
   'github',
 ] as const;
 

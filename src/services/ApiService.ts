@@ -24,43 +24,21 @@ import {
   VTubersViewCountChangeModifier,
 } from '../types/ApiTypes';
 import * as ApiSourceService from './ApiSourceService';
-import * as GitHubCommitDetailService from './GitHubCommitDetailService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-
-let currentCommitSha: string;
-
-const initCommitSha = async (): Promise<string> => {
-  let commitDetailPromise: Promise<GitHubCommitDetailService.CommitDetail> =
-    GitHubCommitDetailService.getCommitDetail(
-      'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/commits/master',
-    );
-
-  return commitDetailPromise.then((commitDetail) => commitDetail.sha);
-};
 
 const initAxiosInstance = (
   apiSourceModifier: ApiSourceModifier,
 ): AxiosInstance => {
   switch (apiSourceModifier) {
-    case 'jsdelivr':
+    case 'apitaiwanvtuberdata':
       return axios.create({
-        baseURL: `https://cdn.jsdelivr.net/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson@${currentCommitSha}/api/v2`,
-      });
-    case 'statically':
-      return axios.create({
-        baseURL: `https://cdn.statically.io/gh/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${currentCommitSha}/api/v2`,
+        baseURL: `https://api-taiwanvtuberdata.nh60211.workers.dev/api/v2`,
       });
     case 'github':
       return axios.create({
-        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/${currentCommitSha}/api/v2`,
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberTrackingDataJson/master/api/v2`,
       });
   }
-};
-
-export const bootstrapApi = async (): Promise<boolean> => {
-  currentCommitSha = await initCommitSha();
-
-  return true;
 };
 
 const AxiosGetWrapperNoNationality = async <DataType>(

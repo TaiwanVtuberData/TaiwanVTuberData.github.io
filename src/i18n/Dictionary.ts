@@ -158,8 +158,7 @@ export interface Dictionary {
   };
   apiSourceTitle: {
     automatic: string;
-    jsdelivr: string;
-    statically: string;
+    apitaiwanvtuberdata: string;
     github: string;
   };
   dropDown: {
