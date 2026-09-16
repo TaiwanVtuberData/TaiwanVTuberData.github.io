@@ -30,31 +30,26 @@ const YearEndYouTubeViewCountGrowthTable: FunctionalComponent<
   const columns: Array<TableColumn<YearEndVTuberViewCountGrowthDisplayData>> = [
     {
       ...RankingColumn(),
-      width: '40px',
+      width: '50px',
     },
-    NameColumn(),
+    {
+      ...NameColumn(),
+      width: '175px',
+    },
     {
       name: (
         <Text id="table.YouTubeTotalViewCount">YouTube Total View Count</Text>
       ),
       selector: (row: { totalViewCount: number }): number => row.totalViewCount,
-      compact: true,
     },
     {
       name: <Text id="table._1YearViewCountGrowth">1 Year Growth</Text>,
       cell: (row: { _1YearGrowth: GrowthData }): string =>
         GrowthDisplayDataToString(row._1YearGrowth, props.dictionary.table),
-      compact: true,
     },
     DebutDateColumn(),
-    {
-      ...GroupColumn(),
-      width: '150px',
-    },
-    {
-      ...NationalityColumn(),
-      width: '125px',
-    },
+    GroupColumn(),
+    NationalityColumn(),
   ];
 
   const [data, setData] = useState<

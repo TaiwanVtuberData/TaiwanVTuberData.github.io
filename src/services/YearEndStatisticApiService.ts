@@ -1,9 +1,11 @@
 import { getNationalityModifierState } from '../global/DisplayNationality';
+import { VideoPopularityDataResponse } from '../types/ApiData/VideoPopularityData';
 import { YearEndVTuberTwitchGrowthDataResponse } from '../types/ApiData/YearEndVTuberTwitchGrowthData';
 import { YearEndVTuberYouTubeGrowthDataResponse } from '../types/ApiData/YearEndVTuberYouTubeGrowthData';
 import { YearEndVTuberViewCountChangeDataResponse } from '../types/ApiData/YearEndVTuberYouTubeViewCountGrowthData';
 import {
   YearEndGrowingVTubersModifier,
+  YearEndTrendingVideosModifier,
   YearEndVTubersViewCountChangeModifier,
 } from '../types/ApiTypes';
 import * as ApiSourceService from './ApiSourceService';
@@ -60,6 +62,14 @@ export const getGrowingTwitchVTubers = (
 ): Promise<AxiosResponse<YearEndVTuberTwitchGrowthDataResponse>> => {
   return AxiosGetWrapper<YearEndVTuberTwitchGrowthDataResponse>(
     `growing-vtubers/twitch/${modifier.establishType}/${modifier.count}.json`,
+  );
+};
+
+export const getTrendingYouTubeVideos = (
+  modifier: YearEndTrendingVideosModifier,
+): Promise<AxiosResponse<VideoPopularityDataResponse>> => {
+  return AxiosGetWrapper<VideoPopularityDataResponse>(
+    `trending-videos/youtube/${modifier.establishType}/${modifier.count}.json`,
   );
 };
 

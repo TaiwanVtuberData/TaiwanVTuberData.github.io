@@ -11,6 +11,7 @@ const zh: Dictionary = {
     groupList: '團體列表',
     VTubersViewCount: 'VTuber 觀看數變化',
     trendingVTubers: '熱門 VTuber',
+    trendingYouTubeVideos: '熱門 YouTube 影片',
     trendingVideos: '熱門影片',
     growingVTubers: '成長中 VTuber',
     debutVTubers: '近期出道',
@@ -22,6 +23,7 @@ const zh: Dictionary = {
     group: '團體',
     memberList: '成員列表',
     top10: '前 10',
+    top100: '前 100',
     YouTubeSubPlusTwitchFollowers: 'YouTube 訂閱 + Twitch 追隨',
     videoInformationUpdateTime: '影片資訊更新時間：',
     VTuberDataUpdateTime: '資料更新時間：',
@@ -31,7 +33,7 @@ const zh: Dictionary = {
     debutToday: '今日出道',
     recentLivestream: '最近實況',
     apiSourceSelection: 'API 來源：',
-    yearEndStatistic: '2025 年度統計',
+    yearEndStatistic: '2026 年度統計',
     yearEndEstablished: '出道超過 2 年',
     yearEndNewComer: '出道 2 年內',
     growingYouTubeSubscriberCount: 'YouTube 訂閱總數成長',
@@ -189,7 +191,7 @@ const zh: Dictionary = {
     newVersion: '新版本：',
   },
   detail: {
-    yearEndDetail: '統計期間：2025-01-01 至 2026-01-01',
+    yearEndDetail: '統計期間：2026-01-01 至 2027-01-01',
     advertisementPromptDetail: '本站提供活動宣傳服務，點擊此連結申請',
   },
 } as const;
