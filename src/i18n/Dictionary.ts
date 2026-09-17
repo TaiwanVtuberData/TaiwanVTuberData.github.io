@@ -11,6 +11,7 @@ export interface Dictionary {
     groupList: string;
     trendingVTubers: string;
     trendingVideos: string;
+    trendingYouTubeVideos: string;
     VTubersViewCount: string;
     growingVTubers: string;
     debutVTubers: string;
@@ -22,6 +23,7 @@ export interface Dictionary {
     group: string;
     memberList: string;
     top10: string;
+    top100: string;
     YouTubeSubPlusTwitchFollowers: string;
     videoInformationUpdateTime: string;
     VTuberDataUpdateTime: string;

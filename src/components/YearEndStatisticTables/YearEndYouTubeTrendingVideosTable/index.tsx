@@ -1,62 +1,63 @@
 import { Dictionary } from '../../../i18n/Dictionary';
 import * as Api from '../../../services/YearEndStatisticApiService';
-import ActivityRowStyles from '../../../style/ActivityRowStyles';
 import { CompactTableStyle } from '../../../style/CompactTableStyle';
-import { DebutDateColumn } from '../../../tableTypes/DebutDateColumn';
-import { GroupColumn } from '../../../tableTypes/GroupColumn';
 import { NameColumn } from '../../../tableTypes/NameColumn';
-import { NationalityColumn } from '../../../tableTypes/NationalityColumn';
 import { RankingColumn } from '../../../tableTypes/RankingColumn';
-import { YouTubeSubscriberColumn } from '../../../tableTypes/YouTubeSubscriberColumn';
+import { VideoColumn } from '../../../tableTypes/VideoColumn';
 import { _1YearGrowthColumn } from '../../../tableTypes/_1YearGrowthColumn';
 import { EstablishTypeModifier } from '../../../types/ApiTypes';
-import { YearEndVTuberYouTubeGrowthDisplayData } from '../../../types/TableDisplayData/YearEndVTuberYouTubeGrowthDisplayData';
+import { VideoPopularityDisplayData } from '../../../types/TableDisplayData/VideoPopularityDisplayData';
 import DefaultDataTableProps from '../../../utils/DefaultDataTableProps';
-import { YearEndVTuberYouTubeGrowthToDisplay } from '../../../utils/transform/GrowthTransform';
+import { PopularVideoToDisplayData } from '../../../utils/transform/PopularVideoTransform';
 import { FunctionalComponent } from 'preact';
 import { Text } from 'preact-i18n';
 import { useState, useEffect } from 'preact/hooks';
 import DataTable, { TableColumn } from 'react-data-table-component';
 
-export interface YearEndYouTubeGrowthTableProps {
+export interface YearEndYouTubeTrendingVideosTableProps {
   dictionary: Dictionary;
   establishTypeModifier: EstablishTypeModifier;
 }
 
-const YearEndYouTubeGrowthTable: FunctionalComponent<
-  YearEndYouTubeGrowthTableProps
-> = (props: YearEndYouTubeGrowthTableProps) => {
-  const columns: Array<TableColumn<YearEndVTuberYouTubeGrowthDisplayData>> = [
+const YearEndYouTubeTrendingVideosTable: FunctionalComponent<
+  YearEndYouTubeTrendingVideosTableProps
+> = (props: YearEndYouTubeTrendingVideosTableProps) => {
+  const columns: Array<TableColumn<VideoPopularityDisplayData>> = [
     {
       ...RankingColumn(),
       width: '50px',
     },
+    NameColumn(),
     {
-      ...NameColumn(),
-      width: '175px',
+      name: <Text id="table.title">Title</Text>,
+      selector: (row: { title: string }): string => row.title,
+      wrap: true,
     },
-    YouTubeSubscriberColumn(),
-    _1YearGrowthColumn(props.dictionary.table),
-    DebutDateColumn(),
-    GroupColumn(),
-    NationalityColumn(),
+    {
+      ...VideoColumn(),
+      width: '200px',
+    },
+    {
+      name: <Text id="table.viewCount">View Count</Text>,
+      selector: (row: { viewCount: number }): number => row.viewCount,
+      width: '100px',
+    },
   ];
 
-  const [data, setData] = useState<
-    Array<YearEndVTuberYouTubeGrowthDisplayData>
-  >([]);
+  const [data, setData] = useState<Array<VideoPopularityDisplayData>>([]);
 
   const [pending, setPending] = useState(true);
 
   const getVTubers = async (): Promise<void> => {
-    await Api.getGrowingYouTubeVTubers({
+    await Api.getTrendingYouTubeVideos({
       establishType: props.establishTypeModifier,
-      count: '10',
+      count: '100',
     }).then((res) => {
       setData(
-        res.data.VTubers.map((e) => e)
-          .map((e, index) => YearEndVTuberYouTubeGrowthToDisplay(e, index + 1))
-          .sort((a, b) => b._1YearGrowth.diff - a._1YearGrowth.diff),
+        res.data.videos
+          .map((e) => e)
+          .sort((a, b) => b.viewCount - a.viewCount)
+          .map((e, index) => PopularVideoToDisplayData(e, index + 1)),
       );
       setPending(false);
     });
@@ -82,18 +83,17 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
       <h3>
         <Text id={getTitlePrefixId(props.establishTypeModifier)}></Text>
         <> </>
-        <Text id="header.growingYouTubeSubscriberCount">
-          YouTube Subscriber Count Growth
-        </Text>
+        <Text id="header.trendingYouTubeVideos">Trending YouTube Videos</Text>
         <> </>
-        <Text id="header.top10">Top 10</Text>
+        <Text id="header.top100">Top 100</Text>
       </h3>
       <DataTable
         {...DefaultDataTableProps}
         columns={columns}
         data={data}
-        conditionalRowStyles={ActivityRowStyles}
         customStyles={CompactTableStyle}
+        pagination
+        paginationComponentOptions={props.dictionary.table.paginationOptions}
         progressComponent={<Text id="text.loading">Loading...</Text>}
         progressPending={pending}
       />
@@ -101,4 +101,4 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
   );
 };
 
-export default YearEndYouTubeGrowthTable;
+export default YearEndYouTubeTrendingVideosTable;

@@ -41,6 +41,11 @@ export interface YearEndGrowingVTubersModifier {
   count: '10' | '100' | 'all';
 }
 
+export interface YearEndTrendingVideosModifier {
+  establishType: EstablishTypeModifier;
+  count: '10' | '100' | '1000';
+}
+
 export interface YearEndVTubersViewCountChangeModifier {
   establishType: EstablishTypeModifier;
   count: '10' | '100' | 'all';

@@ -11,6 +11,7 @@ const en: Dictionary = {
     groupList: 'Group List',
     trendingVTubers: 'Trending VTubers',
     trendingVideos: 'Trending Videos',
+    trendingYouTubeVideos: 'Trending YouTube Videos',
     VTubersViewCount: 'VTubers View Count Change',
     growingVTubers: 'Growing VTubers',
     debutVTubers: 'Debut VTubers',
@@ -22,6 +23,7 @@ const en: Dictionary = {
     group: 'Group',
     memberList: 'Members',
     top10: 'Top 10',
+    top100: 'Top 100',
     YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
     videoInformationUpdateTime: 'Video information update time: ',
     VTuberDataUpdateTime: 'Data update time: ',
@@ -31,7 +33,7 @@ const en: Dictionary = {
     debutToday: 'Debut Today',
     recentLivestream: 'Recent Livestream',
     apiSourceSelection: 'API Source:',
-    yearEndStatistic: '2025 Year End Statistic',
+    yearEndStatistic: '2026 Year End Statistic',
     yearEndEstablished: 'Debuted Over 2 Years',
     yearEndNewComer: 'Debuted Within 2 Years',
     growingYouTubeSubscriberCount: 'YouTube Subscriber Count Growth',
@@ -194,7 +196,7 @@ const en: Dictionary = {
     newVersion: 'New version:',
   },
   detail: {
-    yearEndDetail: 'Statistic Interval: 2025-01-01 through 2026-01-01',
+    yearEndDetail: 'Statistic Interval: 2026-01-01 through 2027-01-01',
     advertisementPromptDetail:
       'The site provides event promotion services. Click the link to apply',
   },
