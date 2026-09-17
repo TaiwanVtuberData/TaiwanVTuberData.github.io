@@ -9,26 +9,19 @@ import {
   YearEndVTubersViewCountChangeModifier,
 } from '../types/ApiTypes';
 import * as ApiSourceService from './ApiSourceService';
-import * as GitHubCommitDetailService from './GitHubCommitDetailService';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 let axiosInstance: AxiosInstance;
 
 const initAxiosInstance = async (): Promise<AxiosInstance> => {
-  let commitDetail: GitHubCommitDetailService.CommitDetail =
-    await GitHubCommitDetailService.getCommitDetail(
-      'https://api.github.com/repos/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/commits/master',
-    );
-
   switch (ApiSourceService.getApiSourceModifier()) {
-    // TODO: apitaiwanvtuberdata use custom CDN
     case 'apitaiwanvtuberdata':
       return axios.create({
-        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
+        baseURL: `https://api-taiwanvtuberdata-yearendreport.nh60211.workers.dev`,
       });
     case 'github':
       return axios.create({
-        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/${commitDetail.sha}`,
+        baseURL: `https://raw.githubusercontent.com/TaiwanVtuberData/TaiwanVTuberDataYearEndReport/master`,
       });
   }
 };
