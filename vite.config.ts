@@ -8,6 +8,10 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
+    legacy: {
+      inconsistentCjsInterop: true,
+    },
+    optimizeDeps: { include: ['react-superstore'] },
     plugins: [
       preact(),
       checker({
