@@ -148,10 +148,6 @@ export interface Dictionary {
     bulletPoint2: string;
     bulletPoint3: string;
   };
-  scroll: {
-    top: string;
-    bottom: string;
-  };
   nationalityTitle: {
     all: string;
     TW: string;

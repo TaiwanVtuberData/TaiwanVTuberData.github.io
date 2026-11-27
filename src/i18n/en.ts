@@ -163,10 +163,6 @@ const en: Dictionary = {
       'Data update time: Every day at 05:10, 07:10, 11:10, 15:40, 17:10, 18:40, 20:10 UTC+8',
     bulletPoint3: `Site source code: <a href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
-  scroll: {
-    top: 'To Top',
-    bottom: 'To Bottom',
-  },
   nationalityTitle: {
     all: 'All',
     TW: 'Taiwanese',
