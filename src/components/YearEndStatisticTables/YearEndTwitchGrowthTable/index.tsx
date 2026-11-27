@@ -29,26 +29,17 @@ const YearEndTwitchGrowthTable: FunctionalComponent<
   const columns: Array<TableColumn<YearEndVTuberTwitchGrowthDisplayData>> = [
     {
       ...RankingColumn(),
-      width: '40px',
-    },
-    NameColumn(),
-    {
-      ...TwitchFollowerColumn(),
-      compact: true,
+      width: '50px',
     },
     {
-      ..._1YearGrowthColumn(props.dictionary.table),
-      compact: true,
+      ...NameColumn(),
+      width: '175px',
     },
+    TwitchFollowerColumn(),
+    _1YearGrowthColumn(props.dictionary.table),
     DebutDateColumn(),
-    {
-      ...GroupColumn(),
-      width: '150px',
-    },
-    {
-      ...NationalityColumn(),
-      width: '125px',
-    },
+    GroupColumn(),
+    NationalityColumn(),
   ];
 
   const [data, setData] = useState<Array<YearEndVTuberTwitchGrowthDisplayData>>(

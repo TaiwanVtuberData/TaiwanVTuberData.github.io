@@ -34,7 +34,6 @@ import { validI18n, validI18nArray } from '../types/LanguageOptions';
 import { getCookie, setCookie } from '../utils/CookieUtils';
 import { GetPlaceholderRoute, GetRoute } from '../utils/TypeSafeRouting';
 import ReloadPrompt from './ReloadModal';
-import ScrollToTopBottom from './ScrollToTopBottom';
 import Sidebar from './Sidebar';
 import VTuberProfileModal from './VTuberProfileModal';
 import VideoModal from './VideoModal';
@@ -198,7 +197,6 @@ export function App() {
             setApiSource={setApiSourceOption}
           />
           <ReloadPrompt />
-          <ScrollToTopBottom />
           <VTuberProfileModal />
           <VideoModal />
           <ValidRouter />

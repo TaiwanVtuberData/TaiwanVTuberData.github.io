@@ -11,6 +11,7 @@ const en: Dictionary = {
     groupList: 'Group List',
     trendingVTubers: 'Trending VTubers',
     trendingVideos: 'Trending Videos',
+    trendingYouTubeVideos: 'Trending YouTube Videos',
     VTubersViewCount: 'VTubers View Count Change',
     growingVTubers: 'Growing VTubers',
     debutVTubers: 'Debut VTubers',
@@ -22,6 +23,7 @@ const en: Dictionary = {
     group: 'Group',
     memberList: 'Members',
     top10: 'Top 10',
+    top100: 'Top 100',
     YouTubeSubPlusTwitchFollowers: 'YouTube Subscribers + Twitch Followers',
     videoInformationUpdateTime: 'Video information update time: ',
     VTuberDataUpdateTime: 'Data update time: ',
@@ -31,7 +33,7 @@ const en: Dictionary = {
     debutToday: 'Debut Today',
     recentLivestream: 'Recent Livestream',
     apiSourceSelection: 'API Source:',
-    yearEndStatistic: '2025 Year End Statistic',
+    yearEndStatistic: '2026 Year End Statistic',
     yearEndEstablished: 'Debuted Over 2 Years',
     yearEndNewComer: 'Debuted Within 2 Years',
     growingYouTubeSubscriberCount: 'YouTube Subscriber Count Growth',
@@ -161,10 +163,6 @@ const en: Dictionary = {
       'Data update time: Every day at 05:10, 07:10, 11:10, 15:40, 17:10, 18:40, 20:10 UTC+8',
     bulletPoint3: `Site source code: <a href="https://github.com/TaiwanVtuberData/TaiwanVTuberData.github.io" target="_blank" rel="noopener noreferrer">https://github.com/TaiwanVtuberData/TaiwanVtuberData.github.io</a>`,
   },
-  scroll: {
-    top: 'To Top',
-    bottom: 'To Bottom',
-  },
   nationalityTitle: {
     all: 'All',
     TW: 'Taiwanese',
@@ -194,7 +192,7 @@ const en: Dictionary = {
     newVersion: 'New version:',
   },
   detail: {
-    yearEndDetail: 'Statistic Interval: 2025-01-01 through 2026-01-01',
+    yearEndDetail: 'Statistic Interval: 2026-01-01 through 2027-01-01',
     advertisementPromptDetail:
       'The site provides event promotion services. Click the link to apply',
   },

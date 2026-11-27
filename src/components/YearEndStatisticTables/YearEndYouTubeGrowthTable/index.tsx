@@ -29,26 +29,17 @@ const YearEndYouTubeGrowthTable: FunctionalComponent<
   const columns: Array<TableColumn<YearEndVTuberYouTubeGrowthDisplayData>> = [
     {
       ...RankingColumn(),
-      width: '40px',
-    },
-    NameColumn(),
-    {
-      ...YouTubeSubscriberColumn(),
-      compact: true,
+      width: '50px',
     },
     {
-      ..._1YearGrowthColumn(props.dictionary.table),
-      compact: true,
+      ...NameColumn(),
+      width: '175px',
     },
+    YouTubeSubscriberColumn(),
+    _1YearGrowthColumn(props.dictionary.table),
     DebutDateColumn(),
-    {
-      ...GroupColumn(),
-      width: '150px',
-    },
-    {
-      ...NationalityColumn(),
-      width: '125px',
-    },
+    GroupColumn(),
+    NationalityColumn(),
   ];
 
   const [data, setData] = useState<

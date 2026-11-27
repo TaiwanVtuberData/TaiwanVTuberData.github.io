@@ -1,5 +1,6 @@
 import YearEndTwitchGrowthTable from '../../components/YearEndStatisticTables/YearEndTwitchGrowthTable';
 import YearEndYouTubeGrowthTable from '../../components/YearEndStatisticTables/YearEndYouTubeGrowthTable';
+import YearEndYouTubeTrendingVideosTable from '../../components/YearEndStatisticTables/YearEndYouTubeTrendingVideosTable';
 import YearEndYouTubeViewCountGrowthTable from '../../components/YearEndStatisticTables/YearEndYouTubeViewCountGrowthTable';
 import { Dictionary } from '../../i18n/Dictionary';
 import '../../style/index.css';
@@ -61,6 +62,18 @@ const YearEndStatistic: FunctionalComponent<YearEndStatisticProps> = (
         </div>
         <div class={style.tableItem}>
           <YearEndYouTubeViewCountGrowthTable
+            dictionary={props.dictionary}
+            establishTypeModifier="established"
+          />
+        </div>
+        <div class={style.tableItem}>
+          <YearEndYouTubeTrendingVideosTable
+            dictionary={props.dictionary}
+            establishTypeModifier="new"
+          />
+        </div>
+        <div class={style.tableItem}>
+          <YearEndYouTubeTrendingVideosTable
             dictionary={props.dictionary}
             establishTypeModifier="established"
           />
